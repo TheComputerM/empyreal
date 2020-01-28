@@ -1,0 +1,108 @@
+%carousel-controls {
+	z-index: $z-index-carousel - 1;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	display: flex;
+	width: 10%;
+	transition: 0.4s cubic-bezier(0.4, 0, 0.6, 1);
+	cursor: pointer;
+	color: rgba(255, 255, 255, 0.6);
+	font-size: 2.4rem;
+	user-select: none;
+	&:hover {
+		color: rgba(255, 255, 255, 0.95);
+	}
+}
+
+.carousel {
+	position: relative;
+	.carousel-controls {
+		.carousel-prev {
+			@extend %carousel-controls;
+		}
+		.carousel-next {
+			@extend %carousel-controls;
+			right: 0;
+		}
+	}
+	.carousel-indicators {
+		position: absolute;
+		display: flex;
+		right: 0;
+		bottom: 8px;
+		left: 0;
+		z-index: $z-index-carousel;
+		justify-content: center;
+		margin-right: 10%;
+		margin-left: 10%;
+		list-style: none;
+		padding-left: 0;
+		li {
+			box-sizing: content-box;
+			width: 0.55rem;
+			height: 0.55rem;
+			border-radius: 50%;
+			margin-left: 4px;
+			margin-right: 4px;
+			transition: 0.3s cubic-bezier(0.4, 0, 0.6, 1);
+			cursor: pointer;
+			flex: 0 1 auto;
+			background-clip: padding-box;
+			background-color: rgba(255, 255, 255, 0.4);
+			user-select: none;
+			&.active {
+				background-color: rgba(255, 255, 255, 1);
+			}
+		}
+	}
+	.carousel-caption {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		color: #FFFFFF;
+		z-index: $z-index-carousel;
+		bottom: 42px;
+		left: 0;
+		right: 0;
+		justify-content: center;
+		text-align: center;
+		flex: 0 1 auto;
+		left: 10%;
+		right: 10%;
+		h1, h2, h3, h4, h5 {
+			margin: 0;
+		}
+	}
+	.carousel-inner {
+		position: relative;
+		width: 100%;
+		overflow: hidden;
+		.carousel-item {
+			position: relative;
+			float: left;
+			width: 100%;
+			margin-right: -100%;
+			transition: 0.8s cubic-bezier(0.4, 0, 0.6, 1);
+			backface-visibility: hidden;
+			opacity: 0;
+			img {
+				width: 100%;
+				display: block;
+			}
+			&.active {
+				transform: translate3d(0, 0, 0);
+				z-index: 1;
+				opacity: 1;
+			}
+		}
+		&::after {
+			display: block;
+			clear: both;
+			content: "";
+		}
+	}
+}

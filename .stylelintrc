@@ -1,0 +1,40 @@
+{
+    "plugins": [
+        "stylelint-scss",
+        "stylelint-prettier"
+    ],
+    "rules": {
+        "at-rule-name-case": "lower",
+        "at-rule-semicolon-newline-after": "always",
+        "at-rule-semicolon-space-before": "never",
+        "at-rule-no-vendor-prefix": true,
+
+        "block-no-empty": false,
+        "block-opening-brace-newline-after": "always-multi-line",
+
+        "color-no-invalid-hex": true,
+        "color-hex-case": "upper",
+        "color-hex-length": "long",
+        "color-named": "never",
+
+        "declaration-block-single-line-max-declarations": 3,
+        "declaration-block-trailing-semicolon": "always",
+        "declaration-block-semicolon-newline-after": "always",
+        "declaration-bang-space-after": "never",
+
+        "font-weight-notation": "numeric",
+        "function-url-quotes": "always",
+        "function-parentheses-space-inside": "never",
+
+        "indentation": "tab",
+        "linebreaks": "unix",
+
+        "max-empty-lines": 2,
+        "no-duplicate-selectors": true,
+        "string-quotes": "double",
+        "selector-list-comma-space-after": "always",
+        "font-family-name-quotes": "always-where-required",
+
+        "scss/dollar-variable-default": true
+    }
+}

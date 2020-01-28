@@ -1,0 +1,6 @@
+dist/**
+docs/**
+sass/components/animations/**
+sass/components/forms/_slider.scss
+sass/components/_waves.scss
+sass/components/_normalize.scss

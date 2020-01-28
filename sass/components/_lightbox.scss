@@ -1,0 +1,118 @@
+.lightbox {
+	img {
+		cursor: zoom-in;
+		transition: opacity 0.4s ease-out;
+		vertical-align: middle;
+		display: inline;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+
+%controls {
+	top: 50%;
+	margin-top: -50px;
+	width: 70px;
+	height: 100px;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
+	opacity: 0.7;
+	transition: opacity 0.3s;
+	background-color: $lightbox-controls-bg-color;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.lightbox-ui {
+	display: none;
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: $z-index-lightbox;
+	cursor: zoom-out;
+	.left, .right, .top-bar {
+		opacity: 0;
+		transition: 0.4s;
+	}
+	&:hover {
+		.left, .right, .top-bar {
+			opacity: 1;
+		}
+	}
+	&.active {
+		display: block;
+		background-color: $lightbox-bg-color;
+	}
+	.lightbox-images {
+		img {
+			max-width: 75%;
+			max-height: 75%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			will-change: transform;
+			cursor: default;
+			user-select: none;
+			display: none;
+			&.active {
+				display: block;
+			}
+		}
+	}
+	.left {
+		@extend %controls;
+		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M0 0h24v24H0z' fill=''/><path d='M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z' fill='white' /></svg>");
+		left: 0;
+	}
+	.right {
+		@extend %controls;
+		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M0 0h24v24H0z' fill='none'/><path d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z' fill='white' /></svg>");
+		right: 0;
+	}
+	.top-bar {
+		top: 0;
+		left: 0;
+		position: absolute;
+		width: 100%;
+		height: 50px;
+		background-color: $lightbox-controls-bg-color;
+		cursor: default;
+		.lightbox-close, .lightbox-fullscreen {
+			position: relative;
+			float: right;
+			height: 50px;
+			width: 50px;
+			background-repeat: no-repeat;
+			background-position: center;
+			cursor: pointer;
+			opacity: 0.7;
+			transition: opacity 0.3s;
+			&:hover {
+				opacity: 1;
+			}
+		}
+		.lightbox-close {
+			background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z' fill='white' /><path d='M0 0h24v24H0z' fill='none'/></svg>");
+		}
+		.lightbox-fullscreen {
+			background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M0 0h24v24H0z' fill='none'/><path d='M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z' fill='white' /></svg>");
+		}
+		.lightbox-counter {
+			color: #FFFFFF;
+			user-select: none;
+			letter-spacing: 6px;
+			font-weight: 400;
+			font-size: $lightbox-counter-font-size;
+			float: left;
+			padding: 12px;
+		}
+	}
+}
