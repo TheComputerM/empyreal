@@ -18,6 +18,75 @@
 	max-width: 100vw;
 }
 
+// Media Query Classes
+.hide-on-small-only, .hide-on-small-and-down {
+	@media #{$small-and-down} {
+		display: none !important;
+	}
+}
+.hide-on-med-and-down {
+	@media #{$medium-and-down} {
+		display: none !important;
+	}
+}
+.hide-on-med-and-up {
+	@media #{$medium-and-up} {
+		display: none !important;
+	}
+}
+.hide-on-med-only {
+	@media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
+		display: none !important;
+	}
+}
+.hide-on-large-only {
+	@media #{$large-and-up} {
+		display: none !important;
+	}
+}
+.hide-on-extra-large-only {
+	@media #{$extra-large-and-up} {
+		display: none !important;
+	}
+}
+.show-on-extra-large {
+	@media #{$extra-large-and-up} {
+		display: block !important;
+	}
+}
+.show-on-large {
+	@media #{$large-and-up} {
+		display: block !important;
+	}
+}
+.show-on-medium {
+	@media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
+		display: block !important;
+	}
+}
+.show-on-small {
+	@media #{$small-and-down} {
+		display: block !important;
+	}
+}
+.show-on-medium-and-up {
+	@media #{$medium-and-up} {
+		display: block !important;
+	}
+}
+.show-on-medium-and-down {
+	@media #{$medium-and-down} {
+		display: block !important;
+	}
+}
+
+// Center text on mobile
+.center-on-small-only {
+	@media #{$small-and-down} {
+		text-align: center;
+	}
+}
+
 .center-align {text-align: center;}
 .right-align {text-align: right;}
 .left-align {text-align: left;}
@@ -46,9 +115,20 @@
 	transition: .8s filter;
 }
 
+.grayscale {
+	filter: grayscale(100%);
+	transition: .8s filter;
+}
+
 // Padding and Margin helpers
 
 .m-0 {margin: 0 !important;}
+.m-1 {margin: $spacer-x !important;}
+.m-2 {margin: $spacer-x*2 !important;}
+.m-3 {margin: $spacer-x*3 !important;}
+.m-4 {margin: $spacer-x*4 !important;}
+.m-5 {margin: $spacer-x*5 !important;}
+.m-auto {margin: auto !important;}
 
 .ml-0 {margin-left: 0 !important;}
 .ml-1 {margin-left: $spacer-x !important;}
@@ -83,6 +163,13 @@
 .mb-auto {margin-bottom: auto !important;}
 
 .p-0 {padding: 0 !important;}
+.p-0 {padding: 0 !important;}
+.p-1 {padding: $spacer-x !important;}
+.p-2 {padding: $spacer-x*2 !important;}
+.p-3 {padding: $spacer-x*3 !important;}
+.p-4 {padding: $spacer-x*4 !important;}
+.p-5 {padding: $spacer-x*5 !important;}
+.p-auto {padding: auto !important;}
 
 .pl-0 {padding-left: 0 !important;}
 .pl-1 {padding-left: $spacer-x !important;}

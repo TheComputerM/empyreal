@@ -1,0 +1,118 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Navbar" %}
+
+{% block content %}
+    <div class="section scrollspy" id="introduction" data-name="Introduction">
+        <p>
+            A navigation bar (or navigation system) is a section of a graphical user interface intended to aid visitors in accessing information. A classic navbar contains a logo/brand link and some navigational links. Empyreal navbars are automatically optimized for mobile (change your device width to see).
+        </p>
+        <div data-syntax="html">
+            <div class="navbar-wrapper blue">
+                <a href="#!" class="brand-name">Navbar</a>
+                <div class="navbar-toggler hide-on-med-and-up" data-target="#navbar1">
+                    <span class="navbar-toggler-icon"></span>
+                </div>
+                <div class="navbar" id="navbar1">
+                    <ul class="navbar-left">
+                        <li class="nav-item active">
+                            <a href="#!">Active</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#!">Item 2</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#!">Item 3</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-right">
+                        <li class="nav-item">
+                            <a href="#!">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#!">Newsletter</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="taller" data-name="Taller">
+        <h1 class="blue-text">Taller</h1>
+        <p>
+            Add class
+            <code>tall</code>
+            to the navbar wrapper to make the navbar taller.
+        </p>
+        <div class="navbar-wrapper tall">
+            <a href="#!" class="brand-name">Navbar</a>
+            <div class="navbar-toggler hide-on-med-and-up" data-target="#navbar2">
+                <span class="navbar-toggler-icon"></span>
+            </div>
+            <div class="navbar" id="navbar2">
+                <ul class="navbar-right">
+                    <li class="nav-item active">
+                        <a href="#!">Active</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#!">Item 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#!">Item 3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <code class="prism-html">
+            <div class="navbar-wrapper tall">
+                ...
+            </div>
+        </code>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+    
+    <div class="section scrollspy" id="fixed" data-name="Fixed">
+        <h1 class="blue-text">Fixed</h1>
+        <p>
+            To make your navbar fixed, simply add the class
+            <code>fixed</code>
+            to the navbar wrapper. This will make your navbar always stay with the user.
+        </p>
+        <br>
+        <code class="prism-html">
+            <div class="navbar-wrapper fixed">
+                ...
+            </div>
+        </code>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="size-down" data-name="Size down">
+        <h1 class="blue-text">Size Down</h1>
+        <p>
+            To make you navbar reduce its height when scrolled down, add the classes
+            <code>size-down</code>
+            and
+            <code>tall</code>
+            to your navbar-wrapper.
+        </p>
+        <code class="prism-html">
+            <div class="navbar-wrapper side-down tall">
+                ...
+            </div>
+        </code>
+    </div>
+
+{% endblock content %}

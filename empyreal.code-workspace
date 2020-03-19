@@ -4,5 +4,17 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.exclude": {
+			".vscode/": true,
+			"LICENSE": true,
+			"logo/": true,
+			"node_modules/": true,
+			"package-lock.json": true,
+		},
+		"emmet.includeLanguages": {
+			"njk": "html"
+		},
+		"editor.wordWrap": "on"
+	}
 }

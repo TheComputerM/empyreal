@@ -1,0 +1,39 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Sidenav" %}
+
+{% block content %}
+    <br>
+    <div class="scrollspy section" data-name="Introduction">
+        <div data-syntax="html">
+            <!-- Trigger -->
+            <a href="#sidenav1" class="btn sidenav-trigger blue">Open Sidenav</a>
+
+            <!-- Sidenav -->
+            <div class="sidenav" id="sidenav1">
+                <div class="user-view purple lighten-2 white-text">
+                    <img src="https://picsum.photos/500" alt="" class="circle">
+                    <span>Mudit Somani</span>
+                    <span>xyz@random.mail</span>
+                </div>
+                <ul class="nav-items">
+                    <li class="nav-item">
+                        <a href="#!">Item 1</a>
+                    </li>
+                    <li class="nav-item waves-effect">
+                        <a href="#!">Item 2 (with waves)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#!">Item 3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        var sidenav = new empy.Sidenav("#sidenav1", {})
+    </script>
+{% endblock %}

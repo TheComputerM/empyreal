@@ -42,7 +42,8 @@
 		&:hover:not(.disabled) {
 			background-color: $dropdown-hover-item-color;
 		}
-		&.focused {
+		&:focus:not(.disabled) {
+			outline: none;
 			background-color: $dropdown-hover-item-color;
 		}
 		a {

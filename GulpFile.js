@@ -19,6 +19,62 @@ const babel = require("rollup-plugin-babel");
 
 const nunjucks = require("gulp-nunjucks");
 
+let config = {
+    ...require("./package.json"),
+    components: [
+        "Modal",
+        "Tabs",
+        "Dropdown",
+        "Cards",
+        "Sidenav",
+        "Collapsible",
+        "Tooltips",
+        "Carousel",
+        "Pushpin",
+        "ScrollSpy",
+        "Lightbox",
+    ],
+    utilities: [
+        "Navbar",
+        "Buttons",
+        "Helpers",
+        "Shadow",
+        "Grid",
+        "Table",
+        "Color",
+        "Animations",
+        "SmoothScroll",
+        "Progress",
+    ],
+    content: ["Typography", "Icons", "Images", "Lists", "Masks"],
+    forms: ["Text Inputs", "Select", "Radio Buttons", "Checkboxes", "Chips", "Pickers", "Autocomplete"],
+    checkIfColorIsLight: function (color) {
+        // Thanks https://awik.io/determine-color-bright-dark-using-javascript/
+        let r, g, b, hsp;
+        if (color.match(/^rgb/)) {
+            color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
+
+            r = color[1];
+            g = color[2];
+            b = color[3];
+        } else {
+            color = +("0x" + color.slice(1).replace(color.length < 5 && /./g, "$&$&"));
+
+            r = color >> 16;
+            g = (color >> 8) & 255;
+            b = color & 255;
+        }
+
+        hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b));
+
+        if (hsp > 127.5) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+};
+
 function server() {
     browserSync.init({
         server: {
@@ -29,17 +85,21 @@ function server() {
 
     watch("./sass/**/*.scss").on("change", series(css, copy, reload));
     watch("./js/**/*.js").on("change", series(rollupBundle, copy, reload));
+    watch("./nunjucks/**/*.njk").on("change", series(documentation, reload));
     watch("./nunjucks/**/*.html").on("change", series(documentation, reload));
 }
 
 function css() {
     return src("./sass/empyreal.scss")
+        .pipe(sourcemaps.init())
         .pipe(wait(200))
         .pipe(sass().on("error", sass.logError))
         .pipe(autoprefixer())
+        .pipe(sourcemaps.write("."))
         .pipe(dest("./dist/css/"))
         .pipe(rename("empyreal.min.css"))
         .pipe(cleanCSS({ compatibility: "ie8" }))
+        .pipe(sourcemaps.write("."))
         .pipe(dest("./dist/css/"));
 }
 
@@ -54,7 +114,7 @@ async function rollupBundle() {
             bundle.write({
                 file: "./dist/js/empyreal.js",
                 format: "iife",
-                name: "empyreal",
+                name: "empy",
                 sourcemap: true,
             });
 
@@ -62,7 +122,7 @@ async function rollupBundle() {
             bundle.write({
                 file: "./dist/js/empyreal.esm.js",
                 format: "esm",
-                name: "empyreal",
+                name: "empy",
                 sourcemap: true,
             });
 
@@ -70,7 +130,7 @@ async function rollupBundle() {
             bundle.write({
                 file: "./dist/js/empyreal.umd.js",
                 format: "umd",
-                name: "empyreal",
+                name: "empy",
                 sourcemap: true,
             });
 
@@ -121,11 +181,13 @@ async function copy() {
 }
 
 function documentation() {
-    return src("nunjucks/**.html")
-        .pipe(nunjucks.compile({ version: "v0.0.1" }, {}))
+    return src("nunjucks/**.njk")
+        .pipe(nunjucks.compile(config, {}))
         .pipe(rename({ extname: ".html" }))
         .pipe(dest("./docs/"));
+
 }
+
 
 exports.css = css;
 exports.js = js;

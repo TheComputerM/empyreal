@@ -1,0 +1,54 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Pushpin" %}
+
+{% block content %}
+    <div class="section scrollspy" data-name="Introduction" id="introduction">
+        <div class="row">
+            <div class="col s4">
+                <br/><br/>
+                <div class="card-panel center-align blue white-text" id="pushpin">
+                    I will follow you
+                </div>
+            </div>
+            <div class="col s8">
+                <div class="container">
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis maxime eos aliquam error repellat voluptatem quam nulla soluta debitis odio consequuntur impedit nostrum eligendi laboriosam qui, dolore dicta nihil quo possimus repellendus quae praesentium nobis doloremque. Exercitationem in repudiandae ullam? Beatae asperiores aliquid harum earum similique praesentium dolores in illo quia. Mollitia eos velit laboriosam labore ad a provident doloremque autem, officiis tempore deserunt similique magnam, molestias at eveniet sint! Dolorem esse ad tempore pariatur eius! Repellat, fugit voluptates ex distinctio ad ipsam nostrum soluta quis assumenda aliquam dolorum consequatur porro nulla hic obcaecati cumque rem iste suscipit iusto corrupti.
+                    </p>
+                    <br/>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima magni nam ipsam maxime blanditiis odio neque, odit aliquid veritatis saepe deserunt unde quaerat quibusdam soluta quae corrupti commodi obcaecati. Accusantium voluptates praesentium architecto fuga deleniti illum voluptatum optio nostrum nemo quis unde exercitationem soluta harum dignissimos, culpa perferendis nulla! Consectetur voluptate ullam enim fugit placeat, est, repellat quisquam vero at saepe, inventore assumenda officiis ipsam illo et magnam facere dolor laudantium? Laudantium, sunt repudiandae similique accusantium, dolorem, exercitationem molestiae adipisci nulla iusto voluptas voluptates libero beatae asperiores facilis fugiat quaerat qui consectetur animi ad unde maxime dolor. Alias, qui dignissimos!
+                    </p>
+                    <br/>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe optio veniam amet architecto impedit distinctio tempora iste obcaecati ab rerum, doloribus animi in asperiores nihil laudantium molestias incidunt nesciunt soluta cumque adipisci. Odit voluptates cum saepe consectetur illum dolore nesciunt ducimus! Dignissimos quas ut fugit officiis explicabo corrupti eligendi libero aperiam totam dicta voluptatum esse nihil ratione blanditiis, laboriosam fuga natus aliquam amet vero dolorum nesciunt placeat consectetur accusantium! Maxime dolore laboriosam cum maiores modi?
+                    </p>
+                    <br/>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus repellendus reiciendis maxime optio sit minus enim corporis deleniti quos quidem cupiditate ipsam est, laudantium vitae officiis a distinctio tenetur natus labore, aliquid accusantium veniam nulla? Minus, quae, voluptas soluta dolores illum sit mollitia quibusdam id magni nam harum tempore sequi autem hic ipsa maxime inventore quia? Explicabo asperiores quam assumenda perspiciatis dolorum repellat maiores officia placeat rem a hic, ullam repudiandae nesciunt ab consequatur, dolores odio repellendus porro voluptatem deleniti!
+                    </p>
+                    <br/>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima veritatis quidem repellendus voluptatibus porro sequi quam aliquam maiores ex dolore veniam commodi magnam culpa corporis amet laudantium iure saepe, architecto consequuntur recusandae molestias vitae, quis, quod adipisci? Maiores explicabo ad deserunt at atque alias fuga aliquid odit, repellat quod cumque, accusamus, quos totam assumenda.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card-panel center-align grey lighten-2 stopper">
+            You shall not pass ⚡
+        </div>
+    </div>
+    <div class="fullscreen">
+        hello
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        var pushpin = new empy.Pushpin(document.getElementById("pushpin"), {
+            stopperElement: ".stopper",
+            offset: 80
+        });
+    </script>
+{% endblock %}

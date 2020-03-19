@@ -1,8 +1,5 @@
-/**
- * This is code for making a new component for Empyreal
- */
-
 import { c, E, anime } from "./global";
+import EmpyrealComponent from "../component";
 
 const VERSION = "0.0.1";
 
@@ -10,24 +7,30 @@ const DEFAULTS = {
     animInDuration: 500,
     animOutDuration: 500,
     coverTrigger: false,
+    isRelative: false,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null,
+    onItemClick: null
 };
 
 const REGISTRY = {
-    animInEasing: "easeOutQuint",
+    animInEasing: "easeOutQuad",
     animOutEasing: "easeOutQuint",
 
     dropdownPadding: 10,
 };
 
-export default class Dropdown {
+export default class Dropdown extends EmpyrealComponent{
     /**
      * @param {Element} el
      * @param {Object} options
      */
     constructor(el, options) {
+        super(el);
         this.settings = { ...DEFAULTS, ...options };
 
-        this.el = el;
         this.$el = c(this.el);
 
         this.id = this.$el.attr("id");
@@ -69,12 +72,12 @@ export default class Dropdown {
     }
 
     _init() {
-        this.el.style.display = "block";
+        this.$el.css("display", "block");
         this.initialDropdownDimensions = {
-            width: this.$el.size().width,
-            height: this.$el.size().height,
+            width: this.$el.outerWidth(),
+            height: this.$el.outerHeight(),
         };
-        this.el.style.display = "none";
+        this.$el.css("display", "none");
 
         this._setupEventHandlers();
     }
@@ -86,7 +89,8 @@ export default class Dropdown {
 
             this.el.style.left = triggerDimensions.left + "px";
 
-            let dropdownTop = triggerDimensions.top + window.scrollY;
+            let dropdownTop = window.scrollY + triggerDimensions.top;
+            if (this.settings.isRelative) dropdownTop = 0;
 
             if (triggerDimensions.top + dropdownDimensions.height <= window.innerHeight) {
                 // Dropdown positioned on bottom of trigger
@@ -102,23 +106,31 @@ export default class Dropdown {
         }
     }
 
-    _handleDropdownOpen() {
+    _handleDropdownOpen(e) {
         this.isOpen = true;
         this.isAnimationDone = false;
-        this.el.style.display = "block";
+        this.$el.css("display", "block");
         this._positionDropdownDialog();
         anime({
             targets: this.el,
             opacity: [0, 1],
             duration: this.settings.animInDuration,
             easing: REGISTRY.animInEasing,
+            begin: () => {
+                if (typeof this.settings.onOpenStart === 'function') {
+                    this.settings.onOpenStart.call(this, this.el, e.target)
+                }
+            },
             complete: () => {
                 this.isAnimationDone = true;
+                if (typeof this.settings.onOpenEnd === 'function') {
+                    this.settings.onOpenEnd.call(this, this.el, e.target)
+                }
             },
         });
     }
 
-    _handleDropdownClose() {
+    _handleDropdownClose(e) {
         this.isOpen = false;
         this.isAnimationDone = false;
         anime({
@@ -126,19 +138,25 @@ export default class Dropdown {
             opacity: [1, 0],
             duration: this.settings.animOutDuration,
             easing: REGISTRY.animOutEasing,
+            begin: () => {
+                if (typeof this.settings.onCloseStart === 'function') {
+                    this.settings.onCloseStart.call(this, this.el, e.target)
+                }
+            },
             complete: () => {
                 this.isAnimationDone = true;
-                this.el.style.display = "none";
+                this.$el.css("display", "none");
+                if (typeof this.settings.onCloseEnd === 'function') {
+                    this.settings.onCloseEnd.call(this, this.el, e.target)
+                }
             },
         });
     }
 
     _handleDocumentClick(e) {
-        e.preventDefault();
         let $elemClicked = c(e.target);
-        console.log($elemClicked);
         if (
-            !$elemClicked.closest(".dropdown").length &&
+            !$elemClicked.closest(this.el).length &&
             this.isOpen &&
             this.isAnimationDone &&
             !$elemClicked.hasClass("dropdown-trigger")
@@ -152,9 +170,16 @@ export default class Dropdown {
         if (this.isOpen) this._handleDropdownClose();
         else this._handleDropdownOpen();
     }
+    
+    _handleDropdownItemClick(e) {
+        if (typeof this.settings.onItemClick === 'function') {
+            this.settings.onItemClick.call(this, this.el, e.target)
+        }
+    }
 
     _setupEventHandlers() {
         this.$trigger.on("click ", this._handleDropdownClick.bind(this));
+        this.$el.on("click", this._handleDropdownItemClick.bind(this));
         window.addEventListener(
             "scroll",
             (this.listeners[0] = this._positionDropdownDialog.bind(this))
@@ -171,9 +196,18 @@ export default class Dropdown {
 
     _removeEventHandlers() {
         this.$trigger.off("click");
+        this.$el.off("click");
         window.removeEventListener("scroll", this.listeners[0]);
         document.removeEventListener("click", this.listeners[1]);
         document.removeEventListener("touchstart", this.listeners[2]);
+    }
+
+    open() {
+        this._handleDropdownOpen();
+    }
+
+    close() {
+        this._handleDropdownClose();
     }
 
     destroy() {

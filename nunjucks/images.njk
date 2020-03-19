@@ -1,0 +1,63 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Images" %}
+
+{% block content %}
+    <div class="section scrollspy" id="introduction" data-name="Introduction">
+        <blockquote>
+            <p>
+                In the beginning, the Web was just text, and it was really quite boring. Fortunately, it wasn't too long before the ability to embed images (and other more interesting types of content) inside web pages was added. There are other types of multimedia to consider, but it is logical to start with the humble
+                <code>img</code>
+                element, used to embed a simple image in a webpage.
+            </p>
+
+            <div class="blockquote-footer">
+                Mozilla
+            </div>
+        </blockquote>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="responsive" data-name="Responsive">
+        <h1 class="blue-text">Responsive</h1>
+        <div data-syntax="html">
+            <img src="dist/img/sample-1.jpg" alt="Responsive Image" class="responsive-img">
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="thumbnail" data-name="Thumbnail">
+        <h1 class="blue-text">Thumbnail</h1>
+        <div data-syntax="html">
+            <img src="dist/img/sample-2.jpg" alt="Thumbnail" class="thumbnail" width="200px">
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="circle" data-name="Circle">
+        <h1 class="blue-text">Circle</h1>
+        <div data-syntax="html">
+            <img src="https://picsum.photos/250" alt="Circle Image" class="circle">
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="rounded" data-name="Rounded">
+        <h1 class="blue-text">Rounded</h1>
+        <div data-syntax="html">
+            <img src="dist/img/sample-3.jpg" alt="Rounded" class="rounded" width="300px">
+        </div>
+    </div>
+{% endblock content %}

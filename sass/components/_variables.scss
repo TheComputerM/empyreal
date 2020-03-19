@@ -1,24 +1,13 @@
 // Colors
 // --------------------------------------------------------
-$primary-color: color("blue", "base") !default;
-$secondary-color: color("purple", "base") !default;
-$default-color: color("teal", "base") !default;
-$success-color: color("green", "base") !default;
-$info-color: color("cyan", "base") !default;
-$danger-color: color("red", "base") !default;
-$warning-color: color("yellow", "base") !default;
+$primary-color: color("deep-purple", "accent-3") !default;
+$secondary-color: color("blue", "base") !default;
 $link-color: color("light-blue", "accent-3") !default;
 $disabled-color: rgba(0, 0, 0, 0.3) !default;
+
 :root {
-	--primary-color: #{$primary-color};
-	--secondary-color: #{$secondary-color};
-	--default-color: #{$default-color};
-	--success-color: #{$success-color};
-	--info-color: #{$info-color};
-	--danger-color: #{$danger-color};
-	--warning-color: #{$warning-color};
-	--link-color: #{$link-color};
-	--disabled-color: #{$disabled-color};
+    --primary-color: $primary-color;
+    --secondary-color: $secondary-color;
 }
 
 // Global
@@ -210,7 +199,7 @@ $row-border-padding: 0.5rem !default;
 
 // Typography
 // --------------------------------------------------------
-$font-size-base: 1rem !default;
+$font-size-base: 1.25rem !default;
 $font-size-base-large: $font-size-base * 1.25 !default;
 $font-size-base-small: $font-size-base * 0.875 !default;
 $line-height-base: 1.5 !default;

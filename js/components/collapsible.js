@@ -1,5 +1,7 @@
 import { c, anime } from "./global";
 
+import EmpyrealComponent from "../component";
+
 const VERSION = "0.0.1";
 
 const DEFAULTS = {
@@ -8,15 +10,15 @@ const DEFAULTS = {
     animOutDuration: 500,
 };
 
-export default class Collapsible {
+export default class Collapsible extends EmpyrealComponent{
     /**
      * @param {Element} el
      * @param {Object} options
      */
     constructor(el, options) {
+        super(el);
         this.settings = { ...DEFAULTS, ...options };
 
-        this.el = el;
         this.$el = c(this.el);
 
         this.$headers = this.$el.find(".collapsible-header");

@@ -1,0 +1,38 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Progress" %}
+
+{% block content %}
+    <div class="section scrollspy" id="linear" data-name="Linear">
+        <h3>Determinate</h3>
+        <div data-syntax="html">
+            <div class="progress-bar">
+                <div class="determinate" style="width: 75%"></div>
+            </div>
+            <br>
+            <div class="progress-bar">
+                <div class="determinate red" style="width: 60%"></div>
+            </div>
+        </div>
+        <br>
+        <h3>Indeterminate</h3>
+        <div data-syntax="html">
+            <div class="progress-bar">
+                <div class="indeterminate"></div>
+            </div>
+            <br>
+            <div class="progress-bar">
+                <div class="indeterminate red"></div>
+            </div>
+        </div>
+    </div>
+    
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="circular" data-name="Circular">
+        <h1 class="blue-text">Circular</h1>
+        <p>Coming Soon</p>
+    </div>
+{% endblock content %}

@@ -1,0 +1,429 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Modal" %}
+
+{% block content %}
+    <div class="section scrollspy" data-name="Basic Modal" id="section1">
+        <div data-syntax="html">
+            <a href="#modal1" class="btn indigo modal-trigger">Launch Modal</a>
+            <div class="modal" id="modal1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <h2>Modal Title</h2>
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis quod non eligendi voluptate blanditiis impedit magni autem vero, esse qui?
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#modal1" class="btn modal-close red">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" data-name="Button Trigger" id="section2">
+        <h2 class="blue-text">Modals with Button Trigger</h2>
+        <p>
+            If you want to use
+            <code>button</code>
+            instead of a link tag then use:
+        </p>
+        <div data-syntax="html">
+            <button class="modal-trigger" data-target="#modal1">Launch Modal</button>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" data-name="Modal Position" id="section3">
+        <h2 class="blue-text">Modal Positions</h2>
+        <p>
+            Add class
+            <code>modal-side</code>
+            and
+            <code>modal-${A}-${B}</code>
+            to the
+            <code>modal-dialog</code>
+            where `A` represents
+            <code>top / bottom</code>
+            and `B` represents
+            <code>left / right</code>
+        </p>
+        <br>
+        <div class="center-align">
+            <a href="#modal2" class="btn indigo modal-trigger">Top Left</a>
+            <a href="#modal3" class="btn indigo modal-trigger">Top Right</a>
+            <a href="#modal4" class="btn indigo modal-trigger">Bottom Left</a>
+            <a href="#modal5" class="btn indigo modal-trigger">Bottom Right</a>
+        </div>
+        <div data-syntax="html">
+        <div class="modal" id="modal2">
+            <div class="modal-dialog modal-side modal-top-left">
+                <div class="modal-content">
+                    <h2>Modal Title</h2>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis quod non eligendi voluptate blanditiis impedit magni autem vero, esse qui?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="btn blue">Button</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" data-name="Modal Sizes" id="section4">
+        <h2 class="blue-text">Modal Sizes</h2>
+        <p>
+            Add class
+            <code>small / medium / large / responsive</code>
+            to the
+            <code>modal-dialog</code>
+        </p>
+        <br>
+        <div class="center-align">
+            <a href="#modal6" class="btn modal-trigger purple lighten-1">Small</a>
+            <a href="#modal7" class="btn modal-trigger purple lighten-1">Medium</a>
+            <a href="#modal8" class="btn modal-trigger purple lighten-1">Large</a>
+            <a href="#modal9" class="btn modal-trigger purple lighten-1">Responsive</a>
+        </div>
+        <div data-syntax="html">
+        <div class="modal" id="modal6">
+            <div class="modal-dialog small">
+                <div class="modal-content">
+                    <h2>Modal Title</h2>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis quod non eligendi voluptate blanditiis impedit magni autem vero, esse qui?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="btn blue">Button</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" data-name="Modal Sheets" id="section5">
+        <h2 class="blue-text">Modal Sheets</h2>
+        <p>
+            Add class
+            <code>modal-sheet</code>
+            and
+            <code>modal-${A}-sheet</code>
+            where `A` is
+            <code>top / bottom / left / right</code>
+        </p>
+        <br>
+        <div class="center-align">
+            <a href="#modal10" class="btn modal-trigger pink lighten-1">Top</a>
+            <a href="#modal11" class="btn modal-trigger pink lighten-1">Bottom</a>
+            <a href="#modal12" class="btn modal-trigger pink lighten-1">Left</a>
+            <a href="#modal13" class="btn modal-trigger pink lighten-1">Right</a>
+        </div>
+        <div data-syntax="html">
+        <div class="modal" id="modal10">
+            <div class="modal-dialog modal-sheet modal-top-sheet">
+                <div class="modal-content">
+                    <h2>Modal Title</h2>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis quod non eligendi voluptate blanditiis impedit magni autem vero, esse qui?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="btn blue">Button</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="initialization" data-name="Initialization">
+        <h2 class="blue-text">Initialization</h2>
+        <p>To create a modal use this.</p>
+        <code class="prism-js">
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = new empy.Modal(".modal", options);
+        });
+        </code>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="options" data-name="Options">
+        <h2 class="blue-text">Options</h2>
+        <p>
+            You can customize the behavior, callbacks and properties of each modal using these options.
+        </p>
+        <table class="highlight">
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>topOffset</td>
+                <td>string</td>
+                <td>"10%"</td>
+                <td>The offset of the modal from the top of the screen.</td>
+            </tr>
+            <tr>
+                <td>overlayColor</td>
+                <td>string</td>
+                <td>"rgba(0, 0, 0, 0.5)"</td>
+                <td>The overlay color of the modal.</td>
+            </tr>
+            <tr>
+                <td>blur</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>If true, blurs background (but is laggy).</td>
+            </tr>
+            <tr>
+                <td>dismissable</td>
+                <td>boolean</td>
+                <td>true</td>
+                <td>If true, then modal closes then user clicks on overlay.</td>
+            </tr>
+            <tr>
+                <td>windowScroll</td>
+                <td>boolean</td>
+                <td>true</td>
+                <td>if false, then user cannot scroll when modal is open.</td>
+            </tr>
+            <tr>
+                <td>animInDuration</td>
+                <td>integer</td>
+                <td>500</td>
+                <td>Time taken for modal to animate in.</td>
+            </tr>
+            <tr>
+                <td>animOutDuration</td>
+                <td>integer</td>
+                <td>500</td>
+                <td>Time taken for modal to animate out.</td>
+            </tr>
+            <tr>
+                <td>onOpenStart</td>
+                <td>function</td>
+                <td>null</td>
+                <td>Callback function called before modal is opened.</td>
+            </tr>
+            <tr>
+                <td>onOpenEnd</td>
+                <td>function</td>
+                <td>null</td>
+                <td>Callback function called after modal is opened.</td>
+            </tr>
+            <tr>
+                <td>onCloseStart</td>
+                <td>function</td>
+                <td>null</td>
+                <td>Callback function called before modal is closed.</td>
+            </tr>
+            <tr>
+                <td>onCloseEnd</td>
+                <td>function</td>
+                <td>null</td>
+                <td>Callback function called after modal is closed.</td>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="methods" data-name="Methods">
+        <h1 class="blue-text">Methods and Properties</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Method / Property</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>open</td>
+                <td>Method</td>
+                <td>Opens the Modal</td>
+            </tr>
+            <tr>
+                <td>close</td>
+                <td>Method</td>
+                <td>Closes the Modal</td>
+            </tr>
+            <tr>
+                <td>destroy</td>
+                <td>Method</td>
+                <td>Destroys the Modal</td>
+            </tr>
+            <tr>
+                <td>el</td>
+                <td>Property</td>
+                <td>The modal element</td>
+            </tr>
+            <tr>
+                <td>trigger</td>
+                <td>Property</td>
+                <td>The trigger elements</td>
+            </tr>
+            <tr>
+                <td>isOpen</td>
+                <td>Property</td>
+                <td>true if modal is open</td>
+            </tr>
+            <tr>
+                <td>isAnimationDone</td>
+                <td>Property</td>
+                <td>true if animation is done.</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="modal" id="modal3">
+        <div class="modal-dialog modal-side modal-top-right">
+            <div class="modal-content">
+                <h2>Modal Title</h2>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis quod non eligendi voluptate blanditiis impedit magni autem vero, esse qui?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="btn blue">Button</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal4">
+        <div class="modal-dialog modal-side modal-bottom-left">
+            <div class="modal-content">
+                <h2>Modal Title</h2>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis quod non eligendi voluptate blanditiis impedit magni autem vero, esse qui?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="btn blue">Button</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal5">
+        <div class="modal-dialog modal-side modal-bottom-right">
+            <div class="modal-content">
+                <h2>Modal Title</h2>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis quod non eligendi voluptate blanditiis impedit magni autem vero, esse qui?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="btn blue">Button</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal7">
+        <div class="modal-dialog medium">
+            <div class="modal-content">
+                <h2>Modal Title</h2>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis quod non eligendi voluptate blanditiis impedit magni autem vero, esse qui?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="btn blue">Button</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal8">
+        <div class="modal-dialog large">
+            <div class="modal-content">
+                <h2>Modal Title</h2>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis quod non eligendi voluptate blanditiis impedit magni autem vero, esse qui?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="btn blue">Button</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal9">
+        <div class="modal-dialog responsive">
+            <div class="modal-content">
+                <h2>Modal Title</h2>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis quod non eligendi voluptate blanditiis impedit magni autem vero, esse qui?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="btn blue">Button</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal11">
+        <div class="modal-dialog modal-sheet modal-bottom-sheet">
+            <div class="modal-content">
+                <h2>Modal Title</h2>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis quod non eligendi voluptate blanditiis impedit magni autem vero, esse qui?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="btn blue">Button</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal12">
+        <div class="modal-dialog modal-sheet modal-left-sheet">
+            <div class="modal-content">
+                <h2>Modal Title</h2>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis quod non eligendi voluptate blanditiis impedit magni autem vero, esse qui?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="btn blue">Button</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal13">
+        <div class="modal-dialog modal-sheet modal-right-sheet">
+            <div class="modal-content">
+                <h2>Modal Title</h2>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis quod non eligendi voluptate blanditiis impedit magni autem vero, esse qui?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="btn blue">Button</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+        let modal = empy.activate(".modal", empy.Modal);
+    </script>
+{% endblock %}

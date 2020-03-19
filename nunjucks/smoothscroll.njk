@@ -1,0 +1,80 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "SmoothScroll" %}
+
+{% block content %}
+    <div class="section scrollspy" id="introduction" data-name="Introduction">
+        <div class="flex">
+            <a href="#section1" class="smoothscroll btn btn-block orange">Go to Section 1</a>
+            <a href="#section2" class="smoothscroll btn btn-block red">Go to Section 2</a>
+        </div>
+        <code class="prism-html">
+            <!-- Links -->
+            <div class="flex">
+                <a href="#section1" class="smoothscroll btn btn-block orange">Go to Section 1</a>
+                <a href="#section2" class="smoothscroll btn btn-block red">Go to Section 2</a>
+            </div>
+
+            <!-- Sections -->
+            <div id="section1">
+                <h4>Section 1</h4>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, libero?</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, quasi!</p>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem culpa magni necessitatibus cum error ratione!
+                </p>
+            </div>
+
+            <div class="container">
+                <div class="divider"></div>
+            </div>
+
+            <div id="section2">
+                <h4>Section 2</h4>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, libero?</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, quasi!</p>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem culpa magni necessitatibus cum error ratione!
+                </p>
+            </div>
+        </code>
+
+        <div id="section1">
+            <h4>Section 1</h4>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, libero?</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, quasi!</p>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem culpa magni necessitatibus cum error ratione!
+            </p>
+        </div>
+
+        <div class="container">
+            <div class="divider"></div>
+        </div>
+
+        <div id="section2">
+            <h4>Section 2</h4>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, libero?</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque, quasi!</p>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem culpa magni necessitatibus cum error ratione!
+            </p>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="customization" data-name="Customization">
+        <h1 class="blue-text">Cutomization</h1>
+        <p>
+            As we use <a href="https://github.com/callmecavs/jump.js">jump.js</a> the smoothscroll is very customizable. You can access the jump.js singleton using
+            <code>empy.jump(target, { options })</code>. Their documentation is available
+            <a href="https://github.com/callmecavs/jump.js">here</a>.
+        </p>
+        <code class="prism-js">
+        empy.jump("#target", {duration: 800});
+        </code>
+    </div>
+{% endblock content %}

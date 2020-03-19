@@ -1,0 +1,110 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Tabs" %}
+
+{% block content %}
+    <div class="section scrollspy" id="introduction" data-name="Introductions">
+        <div data-syntax="html">
+            <div class="tabs">
+                <a href="#tab1" class="tab">Tab 1</a>
+                <a href="#tab2" class="tab">Tab 2</a>
+                <a href="#tab3" class="tab">Tab 3</a>
+            </div>
+            <div class="tab-content" id="tab1">
+                This is the content of Tab 1.
+            </div>
+            <div class="tab-content" id="tab2">
+                This is the content of Tab 2.
+            </div>
+            <div class="tab-content" id="tab3">
+                This is the content of Tab 3.
+            </div>
+        </div>
+        <p>
+            You can also replace the
+            <code>href</code>
+            of the tab with
+            <code>data-target</code>
+            attribute.
+        </p>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="fixed-width" data-name="Fixed Width">
+        <h2 class="blue-text">Fixed Width</h2>
+        <div data-syntax="html">
+            <div class="tabs fixed-width">
+                <a href="#tab4" class="tab">Tab 1</a>
+                <a href="#tab5" class="tab">Tab 2</a>
+                <a href="#tab6" class="tab">Tab 3</a>
+            </div>
+            <div class="tab-content" id="tab4">
+                This is the content of Tab 1.
+            </div>
+            <div class="tab-content" id="tab5">
+                This is the content of Tab 2.
+            </div>
+            <div class="tab-content" id="tab6">
+                This is the content of Tab 3.
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="preselect" data-name="Preselecting">
+        <h2 class="blue-text">Preselecting a Tab</h2>
+        <p>
+            The first tab is selected by empyreal by default, if you want to change the preselected tab then add the class
+            <code>active</code>
+            to the tab you want to be preselected.
+        </p>
+        <code class="prism-html">
+            <a class="tab active" href="#tab1">Tab Content 1</a>
+        </code>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="icons" data-name="Icons">
+        <h2 class="blue-text">Icons</h2>
+        <div data-syntax="html">
+            <div class="tabs">
+                <a class="tab" href="#tab7">
+                    <i class="material-icons">cloud</i>
+                    Tab 1
+                </a>
+                <a class="tab" href="#tab8">
+                    <i class="material-icons">terrain</i>
+                    Tab 2
+                </a>
+                <a class="tab" href="#tab9">
+                    <i class="material-icons">add</i>
+                    Tab 3
+                </a>
+            </div>
+            <div id="tab7" class="tab-content">
+                This is the content of Tab 1.
+            </div>
+            <div id="tab8" class="tab-content">
+                This is the content of Tab 2.
+            </div>
+            <div id="tab9" class="tab-content">
+                This is the content of Tab 3.
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block script %}
+    <script>
+        var tabs = empy.activate(".tabs", empy.Tabs, {});
+    </script>
+{% endblock script %}

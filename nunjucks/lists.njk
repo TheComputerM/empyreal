@@ -1,0 +1,95 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Lists" %}
+
+{% block content %}
+    <div class="section scrollspy" id="collections" data-name="Collections">
+        <h1 class="blue-text">Collections</h1>
+        <div data-syntax="html">
+            <ul class="collection">
+                <li class="p-5">
+                    <h4>This is title</h4>
+                </li>
+                <li class="divider"></li>
+                <li class="collection-item active">I am Active</li>
+                <li class="collection-item waves-effect">Cool Waves Effect</li>
+                <li class="collection-item">I am a classic</li>
+            </ul>
+        </div>
+
+        <br>
+        <h3>With badges</h3>
+        <div data-syntax="html">
+            <ul class="collection">
+                <li class="collection-item">
+                    Stuff Happened
+                    <span class="badge red white-text">+ 5 New</span>
+                </li>
+                <li class="collection-item">
+                    Slide to your right
+                    <span class="badge indigo white-text">Cha Cha</span>
+                </li>
+                <li class="collection-item">
+                    Star Emoji
+                    <span class="badge large">Cool ⭐</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="navs" data-name="Navs">
+        <h1 class="blue-text">Navs</h1>
+        <h3>Basic</h3>
+        <div data-syntax="html">
+            <ul class="nav">
+                <li class="nav-item">Simple Item</li>
+                <li class="nav-item active">Active</li>
+                <li class="nav-item">Simple Item 2</li>
+                <li class="nav-item">
+                    <a href="#!">Nav Link</a>
+                </li>
+                <li class="nav-item disabled">Disabled</li>
+            </ul>
+            <br>
+            <p>
+                The
+                <code>nav</code>
+                system is based on flexbox so you can use any of the flex helper classes you want
+            </p>
+
+            <ul class="nav flex-column">
+                <li class="nav-item">Simple Item</li>
+                <li class="nav-item active">Active</li>
+                <li class="nav-item">Simple Item 2</li>
+                <li class="nav-item">
+                    <a href="#!">Nav Link</a>
+                </li>
+                <li class="nav-item disabled">Disabled</li>
+            </ul>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="sections scrollspy" id="table-of-contents" data-name="Table of Contents">
+        <h1 class="blue-text">Table of Contents</h1>
+        <p>
+            What you see on your right (if you are on a device larger than a modile) is called a table of contents. It is useful when working with scrollspies.
+        </p>
+
+        <div data-syntax="html">
+            <ul class="table-of-contents flex-column">
+                <li class="nav-item">Item 1</li>
+                <li class="nav-item active">Active</li>
+                <li class="nav-item">Item 3</li>
+                <li class="nav-item disabled">Disabled</li>
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

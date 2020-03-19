@@ -1,0 +1,149 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Table" %}
+
+{% block content %}
+    <div class="section scrollspy" id="introduction" data-name="Introduction">
+        <div data-syntax="html">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Favorite Color</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bob</td>
+                        <td>Yellow</td>
+                    </tr>
+                    <tr>
+                        <td>Michelle</td>
+                        <td>Purple</td>
+                    </tr>
+                    <tr>
+                        <td>Mudit</td>
+                        <td>Blue</td>
+                    </tr>
+                    <tr>
+                        <td>Harshit</td>
+                        <td>Green</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="striped" data-name="Striped">
+        <h1 class="blue-text">Striped</h1>
+        <p>Add class
+            <code>striped</code>
+            to the table.</p>
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Favorite Color</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bob</td>
+                    <td>Yellow</td>
+                </tr>
+                <tr>
+                    <td>Michelle</td>
+                    <td>Purple</td>
+                </tr>
+                <tr>
+                    <td>Mudit</td>
+                    <td>Blue</td>
+                </tr>
+                <tr>
+                    <td>Harshit</td>
+                    <td>Green</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="highlight" data-name="Highlight">
+        <h1 class="blue-text">Highlight</h1>
+        <p>Add class
+            <code>highlight</code>
+            to the table.</p>
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Favorite Color</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bob</td>
+                    <td>Yellow</td>
+                </tr>
+                <tr>
+                    <td>Michelle</td>
+                    <td>Purple</td>
+                </tr>
+                <tr>
+                    <td>Mudit</td>
+                    <td>Blue</td>
+                </tr>
+                <tr>
+                    <td>Harshit</td>
+                    <td>Green</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="responsive" data-name="Responsive">
+        <h1 class="blue-text">Responsive</h1>
+        <p>
+            Add class
+            <code>responsive</code>
+            to the table. Make the screen mobile sized to see the magic.
+        </p>
+        <table class="responsive">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Favorite Color</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bob</td>
+                    <td>Yellow</td>
+                </tr>
+                <tr>
+                    <td>Michelle</td>
+                    <td>Purple</td>
+                </tr>
+                <tr>
+                    <td>Mudit</td>
+                    <td>Blue</td>
+                </tr>
+                <tr>
+                    <td>Harshit</td>
+                    <td>Green</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

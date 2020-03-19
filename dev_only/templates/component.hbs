@@ -1,0 +1,40 @@
+import { c, E } from "./global";
+import EmpyrealComponent from "../component";
+
+const VERSION = "0.0.1";
+
+const DEFAULTS = {};
+
+export default class {{ properCase name }} extends EmpyrealComponent {
+    constructor(el, options) {
+        super(el, options);
+
+        this.settings = { ...DEFAULTS, ...options };
+        this.$el = c(this.el);
+
+        this._init();
+    }
+
+    static get version() {
+        return VERSION;
+    }
+    static get defaults() {
+        return DEFAULTS;
+    }
+
+    _init() {
+        this._setupEventHandlers();
+    }
+
+    _setupEventHandlers() {
+
+    }
+
+    _removeEventHandlers() {
+
+    }
+
+    destroy() {
+        this._removeEventHandlers();
+    }
+}

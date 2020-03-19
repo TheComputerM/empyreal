@@ -1,0 +1,108 @@
+<div class="navbar-wrapper fixed deep-purple accent-3">
+    <a href="#main-sidenav" class="white-text sidenav-trigger" style="padding-right: 10px;">
+        <i class="material-icons" style="vertical-align: middle;">menu</i>
+    </a>
+    <a href="/index.html" class="brand-name">Empyreal</a>
+    <div class="navbar">
+        <ul class="navbar-right">
+            <li class="nav-item">
+                <a href="https://github.com/TheComputerM/empyreal">
+                    <img src="dist/img/github.svg" alt="github" style="width:24px;vertical-align:middle"/>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="https://github.com/TheComputerM/empyreal/stargazers">
+                    <img src="dist/img/star.svg" alt="github" style="width:24px;vertical-align:middle"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="sidenav" id="main-sidenav">
+    <ul class="nav-items">
+        <li class="nav-item justify-content-center waves-effect">
+            Empyreal
+        </li>
+        <div class="text-field m-5">
+            <input type="text" id="components-search" class="autocomplete">
+            <label for="#components-search">Search</label>
+        </div>
+        <a href="index.html" class="nav-item black-text">Home</a>
+        <a href="get_started.html" class="nav-item black-text">Get Started</a>
+    </ul>
+    <ul class="collapsible" id="main-collapsible" style="box-shadow:none">
+        <li>
+            <div class="collapsible-header">
+                Utilities
+            </div>
+            <div class="collapsible-body">
+                <ul class="nav flex-column">
+                    {% for item in utilities %}
+                        {% if title == item %}
+                            <a class="nav-item active" href="{{ item | lower | replace(" ", "_")}}.html">{{ item }}</a>
+                        {% else %}
+                            <a class="nav-item" href="{{ item | lower | replace(" ", "_")}}.html">{{ item }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header">
+                Content
+            </div>
+            <div class="collapsible-body">
+                <ul class="nav flex-column">
+                    {% for component in content %}
+                        {% if title == component %}
+                            <a class="nav-item active" href="{{ component | lower | replace(" ", "_")}}.html">
+                                {{ component }}
+                            </a>
+                        {% else %}
+                            <a class="nav-item" href="{{ component | lower | replace(" ", "_")}}.html">{{ component }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header">
+                Components
+            </div>
+            <div class="collapsible-body">
+                <ul class="nav flex-column">
+                    {% for component in components %}
+                        {% if title == component %}
+                            <a class="nav-item active" href="{{ component | lower | replace(" ", "_")}}.html">
+                                {{ component }}
+                            </a>
+                        {% else %}
+                            <a class="nav-item" href="{{ component | lower | replace(" ", "_")}}.html">{{ component }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header">
+                Forms
+            </div>
+            <div class="collapsible-body">
+                <ul class="nav flex-column">
+                    {% for component in forms %}
+                        {% if title == component %}
+                            <a class="nav-item active" href="{{ component | lower | replace(" ", "_")}}.html">
+                                {{ component }}
+                            </a>
+                        {% else %}
+                            <a class="nav-item" href="{{ component | lower | replace(" ", "_")}}.html">
+                                {{ component }}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,76 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Collapsible" %}
+
+{% block content %}
+    <div class="section scrollspy" data-name="Introduction" id="introduction">
+        <div data-syntax="html">
+            <ul class="collapsible" id="collapsible1">
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">terrain</i>First</div>
+                    <div class="collapsible-body font-weight-300">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, cumque.
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">cloud</i>Second</div>
+                    <div class="collapsible-body font-weight-300">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit, inventore!
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">music_note</i>Third</div>
+                    <div class="collapsible-body font-weight-300">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, sapiente.
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <div class="divider"></div>
+    <br>
+    <div class="section scrollspy" data-name="Popout" id="popout">
+        <h1 class="blue-text">Popout Collapsible</h1>
+        <ul class="collapsible popout" id="collapsible2">
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">terrain</i>First</div>
+                <div class="collapsible-body font-weight-300">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, cumque.
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">cloud</i>Second</div>
+                <div class="collapsible-body font-weight-300">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit, inventore!
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">music_note</i>Third</div>
+                <div class="collapsible-body font-weight-300">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, sapiente.
+                </div>
+            </li>
+        </ul>
+        <p>
+            Add class
+            <code>popout</code>
+            to
+            <code>.collapsible</code>
+            to make it popup when activated.
+        </p>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        new empy.Collapsible("#collapsible1", {});
+        new empy.Collapsible("#collapsible2", {});
+    </script>
+{% endblock %}

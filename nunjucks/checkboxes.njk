@@ -1,0 +1,59 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Checkboxes" %}
+
+{% block content %}
+    <div class="section scrollspy" id="introduction" data-name="Introduction">
+        <div data-syntax="html">
+            <div class="checkbox-field">
+                <label>
+                    <input type="checkbox" checked>
+                    <span>Checkbox 1</span>
+                </label>
+            </div>
+            <div class="checkbox-field">
+                <label>
+                    <input type="checkbox" id="indeterminate">
+                    <span>Indeterminate</span>
+                </label>
+            </div>
+            <div class="checkbox-field">
+                <label>
+                    <input type="checkbox" disabled>
+                    <span>Disabled</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="switch" data-name="Switches">
+        <h1 class="blue-text">Switches</h1>
+        <div data-syntax="html">
+            <div class="switch">
+                <label>
+                    Off
+                    <input type="checkbox" checked>
+                    <span class="lever"></span>
+                    On
+                </label>
+            </div>
+            <br><br>
+            <div class="switch">
+                <label>
+                    Off
+                    <input type="checkbox" disabled>
+                    <span class="lever"></span>
+                    On
+                </label>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block script %}
+<script>document.querySelector("#indeterminate").indeterminate = true;</script>
+{% endblock script %}

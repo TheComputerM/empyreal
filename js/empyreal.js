@@ -7,6 +7,13 @@ import Tooltip from "./components/tooltips";
 import Carousel from "./components/carousel";
 import Pushpin from "./components/pushpin";
 import ScrollSpy from "./components/scrollspy";
+import Lightbox from "./components/lightbox";
+import Snackbar from "./components/snackbar";
+
+import Select from "./components/select";
+import Autocomplete from "./components/autocomplete";
+
+import {E} from "./components/global";
 
 let empyreal = {
     Modal,
@@ -17,7 +24,13 @@ let empyreal = {
     Tooltip,
     Carousel,
     Pushpin,
-    ScrollSpy
+    ScrollSpy,
+    Lightbox,
+    Snackbar,
+    Autocomplete,
+    Select,
+    updateTextFields: E.updateTextFields(),
+    jump: E.jump
 };
 
 empyreal.version = "0.0.1";

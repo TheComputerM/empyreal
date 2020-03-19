@@ -1,5 +1,6 @@
 .btn {
 	@extend .z-depth-1;
+	border: 0px solid transparent;
 	border-radius: $button-border-radius;
 	padding: $button-padding;
 	font-size: $button-font-size;
@@ -52,7 +53,7 @@
 		color: #FFFFFF;
 		padding: 1px 8px;
 		border-radius: 10em;
-		background-color: $danger-color;
+		background-color: color("red", "base");
 	}
 }
 
@@ -102,6 +103,7 @@
 	letter-spacing: 0.09rem;
 	&:hover {
 		box-shadow: none !important;
+		background-color: color("grey", "lighten-4");
 	}
 }
 

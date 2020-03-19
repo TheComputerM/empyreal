@@ -1,3 +1,19 @@
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function (obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -67,6 +83,53 @@ function _objectSpread2(target) {
   }
 
   return target;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (typeof call === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
 }
 
 /*
@@ -3237,7 +3300,7 @@ var cash_min = createCommonjsModule(function (module, exports) {
     };
 
     function O(a, b, c, d) {
-      for (var h = [], f = E(b), k = d && L(d), q = 0, S = a.length; q < S; q++) if (f) {
+      for (var h = [], f = E(b), k = d && L(d), q = 0, R = a.length; q < R; q++) if (f) {
         var l = b(a[q]);
         l.length && ha.apply(h, l);
       } else for (l = a[q][b]; !(null == l || d && k(-1, l));) h.push(l), l = c ? l[b] : null;
@@ -3261,7 +3324,7 @@ var cash_min = createCommonjsModule(function (module, exports) {
       if (B(a)) return a = n.getComputedStyle(a, null), c ? a.getPropertyValue(b) || void 0 : a[b];
     }
 
-    function R(a, b) {
+    function S(a, b) {
       return parseInt(Q(a, b), 10) || 0;
     }
 
@@ -3364,13 +3427,13 @@ var cash_min = createCommonjsModule(function (module, exports) {
     }
 
     function Ba(a, b) {
-      return R(a, "border" + (b ? "Left" : "Top") + "Width") + R(a, "padding" + (b ? "Left" : "Top")) + R(a, "padding" + (b ? "Right" : "Bottom")) + R(a, "border" + (b ? "Right" : "Bottom") + "Width");
+      return S(a, "border" + (b ? "Left" : "Top") + "Width") + S(a, "padding" + (b ? "Left" : "Top")) + S(a, "padding" + (b ? "Right" : "Bottom")) + S(a, "border" + (b ? "Right" : "Bottom") + "Width");
     }
 
     I([!0, !1], function (a, b) {
       I(["Width", "Height"], function (a, d) {
         F[(b ? "outer" : "inner") + d] = function (c) {
-          if (this[0]) return K(this[0]) ? b ? this[0]["inner" + d] : this[0].document.documentElement["client" + d] : A(this[0]) ? Aa(this[0], d) : this[0][(b ? "offset" : "client") + d] + (c && b ? R(this[0], "margin" + (a ? "Top" : "Left")) + R(this[0], "margin" + (a ? "Bottom" : "Right")) : 0);
+          if (this[0]) return K(this[0]) ? b ? this[0]["inner" + d] : this[0].document.documentElement["client" + d] : A(this[0]) ? Aa(this[0], d) : this[0][(b ? "offset" : "client") + d] + (c && b ? S(this[0], "margin" + (a ? "Top" : "Left")) + S(this[0], "margin" + (a ? "Bottom" : "Right")) : 0);
         };
       });
     });
@@ -3447,9 +3510,9 @@ var cash_min = createCommonjsModule(function (module, exports) {
       var f = a.___ce = a.___ce || {};
       if (b) f[b] && (f[b] = f[b].filter(function (f) {
         var k = f[0],
-            S = f[1];
+            R = f[1];
         f = f[2];
-        if (h && f.guid !== h.guid || !Ca(k, c) || d && d !== S) return !0;
+        if (h && f.guid !== h.guid || !Ca(k, c) || d && d !== R) return !0;
         a.removeEventListener(b, f);
       }));else for (b in f) Y(a, b, c, d, h);
     }
@@ -3529,7 +3592,7 @@ var cash_min = createCommonjsModule(function (module, exports) {
 
     F.ready = function (a) {
       function b() {
-        return g(a, G);
+        return setTimeout(a, 0, G);
       }
 
       "loading" !== m.readyState ? b() : m.addEventListener("DOMContentLoaded", b);
@@ -3685,12 +3748,12 @@ var cash_min = createCommonjsModule(function (module, exports) {
 
           for (b = a.offsetParent || d.documentElement; (b === d.body || b === d.documentElement) && "static" === Q(b, "position");) b = b.parentNode;
 
-          b !== a && B(b) && (d = G(b).offset(), c.top -= d.top + R(b, "borderTopWidth"), c.left -= d.left + R(b, "borderLeftWidth"));
+          b !== a && B(b) && (d = G(b).offset(), c.top -= d.top + S(b, "borderTopWidth"), c.left -= d.left + S(b, "borderLeftWidth"));
         }
 
         return {
-          top: c.top - R(a, "marginTop"),
-          left: c.left - R(a, "marginLeft")
+          top: c.top - S(a, "marginTop"),
+          left: c.left - S(a, "marginLeft")
         };
       }
     };
@@ -3896,8 +3959,165 @@ var cash_min = createCommonjsModule(function (module, exports) {
   })();
 });
 
+// Robert Penner's easeInOutQuad
+// find the rest of his easing functions here: http://robertpenner.com/easing/
+// find them exported for ES6 consumption here: https://github.com/jaxgeller/ez.js
+var easeInOutQuad = function easeInOutQuad(t, b, c, d) {
+  t /= d / 2;
+  if (t < 1) return c / 2 * t * t + b;
+  t--;
+  return -c / 2 * (t * (t - 2) - 1) + b;
+};
+
+var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+var jumper = function jumper() {
+  // private variable cache
+  // no variables are created during a jump, preventing memory leaks
+  var element = void 0; // element to scroll to                   (node)
+
+  var start = void 0; // where scroll starts                    (px)
+
+  var stop = void 0; // where scroll stops                     (px)
+
+  var offset = void 0; // adjustment from the stop position      (px)
+
+  var easing = void 0; // easing function                        (function)
+
+  var a11y = void 0; // accessibility support flag             (boolean)
+
+  var distance = void 0; // distance of scroll                     (px)
+
+  var duration = void 0; // scroll duration                        (ms)
+
+  var timeStart = void 0; // time scroll started                    (ms)
+
+  var timeElapsed = void 0; // time spent scrolling thus far          (ms)
+
+  var next = void 0; // next scroll position                   (px)
+
+  var callback = void 0; // to call when done scrolling            (function)
+  // scroll position helper
+
+  function location() {
+    return window.scrollY || window.pageYOffset;
+  } // element offset helper
+
+
+  function top(element) {
+    return element.getBoundingClientRect().top + start;
+  } // rAF loop helper
+
+
+  function loop(timeCurrent) {
+    // store time scroll started, if not started already
+    if (!timeStart) {
+      timeStart = timeCurrent;
+    } // determine time spent scrolling so far
+
+
+    timeElapsed = timeCurrent - timeStart; // calculate next scroll position
+
+    next = easing(timeElapsed, start, distance, duration); // scroll to it
+
+    window.scrollTo(0, next); // check progress
+
+    timeElapsed < duration ? window.requestAnimationFrame(loop) // continue scroll loop
+    : done(); // scrolling is done
+  } // scroll finished helper
+
+
+  function done() {
+    // account for rAF time rounding inaccuracies
+    window.scrollTo(0, start + distance); // if scrolling to an element, and accessibility is enabled
+
+    if (element && a11y) {
+      // add tabindex indicating programmatic focus
+      element.setAttribute('tabindex', '-1'); // focus the element
+
+      element.focus();
+    } // if it exists, fire the callback
+
+
+    if (typeof callback === 'function') {
+      callback();
+    } // reset time for next jump
+
+
+    timeStart = false;
+  } // API
+
+
+  function jump(target) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {}; // resolve options, or use defaults
+
+    duration = options.duration || 1000;
+    offset = options.offset || 0;
+    callback = options.callback; // "undefined" is a suitable default, and won't be called
+
+    easing = options.easing || easeInOutQuad;
+    a11y = options.a11y || false; // cache starting position
+
+    start = location(); // resolve target
+
+    switch (typeof target === 'undefined' ? 'undefined' : _typeof$1(target)) {
+      // scroll from current position
+      case 'number':
+        element = undefined; // no element to scroll to
+
+        a11y = false; // make sure accessibility is off
+
+        stop = start + target;
+        break;
+      // scroll to element (node)
+      // bounding rect is relative to the viewport
+
+      case 'object':
+        element = target;
+        stop = top(element);
+        break;
+      // scroll to element (selector)
+      // bounding rect is relative to the viewport
+
+      case 'string':
+        element = document.querySelector(target);
+        stop = top(element);
+        break;
+    } // resolve scroll distance, accounting for offset
+
+
+    distance = stop - start + offset; // resolve duration
+
+    switch (_typeof$1(options.duration)) {
+      // number in ms
+      case 'number':
+        duration = options.duration;
+        break;
+      // function passed the distance of the scroll
+
+      case 'function':
+        duration = options.duration(distance);
+        break;
+    } // start the loop
+
+
+    window.requestAnimationFrame(loop);
+  } // expose only the jump method
+
+
+  return jump;
+}; // export singleton
+
+
+var singleton = jumper();
+
 window.anime = anime;
 AOS.init();
+waves.attach(".chip", "waves-effect");
 waves.init();
 window.Waves = waves;
 
@@ -3905,7 +4125,16 @@ cash_min.fn.size = function () {
   return this[0].getClientRects()[0];
 };
 
-var E = {};
+cash_min.fn.offset = function () {
+  return {
+    top: this[0].offsetTop,
+    left: this[0].offsetLeft
+  };
+};
+
+var E = {
+  jump: singleton
+};
 E.keys = {
   TAB: 9,
   ENTER: 13,
@@ -3946,7 +4175,7 @@ E.getTrigger = function (QueryObj) {
 };
 /**
  * Generates UUID for elements
- * @returns {string}
+ * @returns string
  */
 
 
@@ -3976,15 +4205,70 @@ E.getDocumentScrollLeft = function () {
   return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
 };
 
+E.updateTextFields = function () {
+  cash_min(".text-field input[placeholder], .text-field textarea[placeholder]").siblings("label").addClass("active");
+  cash_min(".text-field input, .text-field textarea").not("[placeholder]").on("focus", function (i) {
+    cash_min(i.target).siblings("label, i").addClass("active");
+  }).on("blur", function (i) {
+    if (cash_min(i.target).val() == "") cash_min(i.target).siblings("label, i").removeClass("active");
+  }).on("change", function (i) {
+    if (cash_min(i.target).val() == "") cash_min(i.target).siblings("label, i").removeClass("active");
+  });
+};
+
+window.addEventListener("DOMContentLoaded", function () {
+  E.updateTextFields();
+  cash_min(".chip .close").on("click", function () {
+    cash_min(this).parent().remove();
+  });
+  document.querySelectorAll(".smoothscroll").forEach(function (i) {
+    i.addEventListener("click", function (e) {
+      e.preventDefault();
+      var target = i.getAttribute("data-scrollto") || i.getAttribute("href");
+      singleton(target, {
+        duration: 800
+      });
+    });
+  });
+  document.querySelectorAll(".navbar-toggler").forEach(function (i) {
+    i.addEventListener("click", function (e) {
+      var targetSelector = i.getAttribute("data-target") || i.getAttribute("href");
+      var target = cash_min(document.querySelector(targetSelector));
+      if (target.hasClass("shown")) target.removeClass("shown");else target.addClass("shown");
+    });
+  });
+  window.addEventListener("scroll", function () {
+    if (E.getDocumentScrollTop() <= 100) {
+      cash_min(".navbar-wrapper.size-down").addClass("tall");
+    } else if (cash_min(".navbar-wrapper.size-down").hasClass("tall")) {
+      cash_min(".navbar-wrapper.size-down").removeClass("tall");
+    }
+  });
+});
+
+var EmpyrealComponent = function EmpyrealComponent(el, options) {
+  _classCallCheck(this, EmpyrealComponent);
+
+  if (typeof el === "string") {
+    this.el = document.querySelector(el);
+  } else {
+    this.el = el;
+  }
+};
+
 var VERSION = "0.0.1";
 var DEFAULTS = {
-  animInDuration: 500,
-  animOutDuration: 500,
   topOffset: "10%",
   overlayColor: "rgba(0, 0, 0, 0.5)",
-  blur: true,
+  blur: false,
   dismissable: true,
-  windowScroll: true
+  windowScroll: true,
+  animInDuration: 500,
+  animOutDuration: 500,
+  onOpenStart: null,
+  onOpenEnd: null,
+  onCloseStart: null,
+  onCloseEnd: null
 };
 var REGISTRY = {
   animInEasing: "easeOutQuad",
@@ -3994,46 +4278,46 @@ var REGISTRY = {
   modalDialogSlideOutEasing: "easeOutSine"
 };
 
-var Modal =
-/*#__PURE__*/
-function () {
-  /**
-   * @param {Element} el
-   * @param {Object} options
-   */
+var Modal = /*#__PURE__*/function (_EmpyrealComponent) {
+  _inherits(Modal, _EmpyrealComponent);
+
   function Modal(el, options) {
+    var _this;
+
     _classCallCheck(this, Modal);
 
-    this.settings = _objectSpread2({}, DEFAULTS, {}, options);
-    this.el = el;
-    this.$el = cash_min(this.el);
-    this.$dialog = this.$el.find(".modal-dialog");
-    this.dialog = this.$dialog[0];
-    this.id = this.$el.attr("id");
-    this.trigger = E.getTrigger({
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Modal).call(this, el, options));
+    _this.settings = _objectSpread2({}, DEFAULTS, {}, options);
+    _this.$el = cash_min(_this.el);
+    _this.$dialog = _this.$el.find(".modal-dialog");
+    _this.dialog = _this.$dialog[0];
+    _this.id = _this.$el.attr("id");
+    _this.trigger = E.getTrigger({
       a: {
         class: "modal-trigger",
         optional: {
-          href: "#".concat(this.id),
-          "data-target": "#".concat(this.id)
+          href: "#".concat(_this.id),
+          "data-target": "#".concat(_this.id)
         }
       },
       button: {
         class: "modal-trigger",
         optional: {
-          "data-target": "#".concat(this.id)
+          "data-target": "#".concat(_this.id)
         }
       }
     });
-    this.$trigger = cash_min(this.trigger);
-    this.isOpen = false;
-    this.isAnimationDone = true;
-    this.$closeModalBtn = this.$dialog.find(".modal-close");
-    this.isModalSheet = this.$dialog.hasClass("modal-sheet") ? true : false;
-    this.isModalSide = this.$dialog.hasClass("modal-side") ? true : false;
-    this.listeners = [];
+    _this.$trigger = cash_min(_this.trigger);
+    _this.isOpen = false;
+    _this.isAnimationDone = true;
+    _this.$closeModalBtn = _this.$dialog.find(".modal-close");
+    _this.isModalSheet = _this.$dialog.hasClass("modal-sheet") ? true : false;
+    _this.isModalSide = _this.$dialog.hasClass("modal-side") ? true : false;
+    _this.listeners = [];
 
-    this._init();
+    _this._init();
+
+    return _this;
   }
 
   _createClass(Modal, [{
@@ -4042,14 +4326,14 @@ function () {
       this.$el.css({
         "backgroundColor": this.settings.overlayColor
       });
-      if (!(this.isModalSize || this.isModalSheet)) this.dialog.style.top = this.settings.topOffset;
+      if (!(this.isModalSide || this.isModalSheet)) this.dialog.style.top = this.settings.topOffset;
 
       this._setupEventHandlers();
     }
   }, {
     key: "_handleModalOpen",
-    value: function _handleModalOpen() {
-      var _this = this;
+    value: function _handleModalOpen(e) {
+      var _this2 = this;
 
       if (this.settings.blur) cash_min(document.body).children().not(".modal").addClass("blurred");
       anime({
@@ -4058,23 +4342,24 @@ function () {
         easing: REGISTRY.animInEasing,
         duration: this.settings.animInDuration,
         begin: function begin() {
-          _this.isAnimationDone = false;
-          _this.isOpen = true;
-          _this.el.style.display = "block";
+          _this2.isAnimationDone = false;
+          _this2.isOpen = true;
+          _this2.el.style.display = "block";
+
+          if (typeof _this2.settings.onOpenStart === 'function') {
+            _this2.settings.onOpenStart.call(_this2, _this2.el, e.target);
+          }
         },
         complete: function complete() {
-          _this.isAnimationDone = true;
+          _this2.isAnimationDone = true;
+
+          if (typeof _this2.settings.onOpenEnd === 'function') {
+            _this2.settings.onOpenEnd.call(_this2, _this2.el, e.target);
+          }
         }
       });
 
-      if (this.isModalSheet || this.isModalSide) {
-        anime({
-          targets: this.dialog,
-          opacity: [0, 1],
-          easing: REGISTRY.modalDialogSlideOutEasing,
-          duration: this.settings.animInDuration
-        });
-      } else {
+      if (!this.isModalSheet && !this.isModalSide) {
         // Modal dialog slide in down
         anime({
           targets: this.dialog,
@@ -4088,8 +4373,8 @@ function () {
     }
   }, {
     key: "_handleModalClose",
-    value: function _handleModalClose() {
-      var _this2 = this;
+    value: function _handleModalClose(e) {
+      var _this3 = this;
 
       if (this.settings.blur) cash_min(document.body).children().not(".modal").removeClass("blurred");
       anime({
@@ -4098,23 +4383,24 @@ function () {
         easing: REGISTRY.animOutEasng,
         duration: this.settings.animOutDuration,
         begin: function begin() {
-          _this2.isAnimationDone = false;
-          _this2.isOpen = false;
+          _this3.isAnimationDone = false;
+          _this3.isOpen = false;
+
+          if (typeof _this3.settings.onCloseStart === 'function') {
+            _this3.settings.onCloseStart.call(_this3, _this3.el, e.target);
+          }
         },
         complete: function complete() {
-          _this2.isAnimationDone = true;
-          _this2.el.style.display = "none";
+          _this3.isAnimationDone = true;
+          _this3.el.style.display = "none";
+
+          if (typeof _this3.settings.onCloseEnd === 'function') {
+            _this3.settings.onCloseEnd.call(_this3, _this3.el, e.target);
+          }
         }
       });
 
-      if (this.isModalSheet || this.isModalSide) {
-        anime({
-          targets: this.dialog,
-          bottom: [1, 0],
-          easing: REGISTRY.modalDialogSlideOutEasing,
-          duration: this.settings.animInDuration
-        });
-      } else {
+      if (!this.isModalSide && !this.isModalSheet) {
         // Modal dialog slide out up
         anime({
           targets: this.dialog,
@@ -4139,18 +4425,11 @@ function () {
   }, {
     key: "_setupEventHandlers",
     value: function _setupEventHandlers() {
-      var _this3 = this;
-
-      this.$trigger.on("click touchstart", function () {
-        _this3._handleModalOpen();
-      });
-      this.$closeModalBtn.on("click touchstart", function () {
-        _this3._handleModalClose();
-      });
+      this.$trigger.on("click touchstart", this._handleModalOpen.bind(this));
+      this.$closeModalBtn.on("click touchstart", this._handleModalClose.bind(this));
       document.addEventListener("click", this.listeners[0] = this._handleOverlayClick.bind(this));
       document.addEventListener("touchstart", this.listeners[1] = this._handleOverlayClick.bind(this));
       document.addEventListener("keydown", this.listeners[2] = this._handleKeyDown.bind(this));
-      window.addEventListener("resize", this.listeners[3] = this._handleModalClose.bind(this));
     }
   }, {
     key: "_removeEventHandlers",
@@ -4160,7 +4439,6 @@ function () {
       document.removeEventListener("click", this.listeners[0]);
       document.removeEventListener("touchstart", this.listeners[1]);
       document.removeEventListener("keydown", this.listeners[2]);
-      window.removeEventListener("resize", this.listeners[3]);
     }
   }, {
     key: "open",
@@ -4190,40 +4468,45 @@ function () {
   }]);
 
   return Modal;
-}();
+}(EmpyrealComponent);
 
 var VERSION$1 = "0.0.1";
 var DEFAULTS$1 = {
   animDuration: 500,
-  activeTab: "",
   activeTabClass: "",
   tabIndicatorClass: ""
 };
 
-var Tabs =
-/*#__PURE__*/
-function () {
+var Tabs = /*#__PURE__*/function (_EmpyrealComponent) {
+  _inherits(Tabs, _EmpyrealComponent);
+
   /**
    * @param {Element} el
    * @param {Object} options
    */
   function Tabs(el, options) {
+    var _this;
+
     _classCallCheck(this, Tabs);
 
-    this.settings = _objectSpread2({}, DEFAULTS$1, {}, options);
-    this.el = el;
-    this.$el = cash_min(this.el);
-    this.$tabs = this.$el.find(".tab");
-    this.$tab_contents = this.$tabs.map(function (val) {
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Tabs).call(this, el));
+    _this.settings = _objectSpread2({}, DEFAULTS$1, {}, options);
+    _this.$el = cash_min(_this.el);
+    _this.$tabs = _this.$el.find(".tab");
+    _this.$tab_contents = _this.$tabs.map(function (i, val) {
       var id = val.getAttribute("data-target") || val.getAttribute("href");
-      return cash_min("div".concat(id));
+      return document.querySelector("div".concat(id));
     });
-    this.$tab_indicator = cash_min("<div class='tab-indicator' />");
-    this.$el.append(this.$tab_indicator);
-    this.tab_indicator = this.$tab_indicator[0];
-    this.listeners = [];
+    _this.$tab_indicator = cash_min("<div class='tab-indicator' />");
 
-    this._init();
+    _this.$el.append(_this.$tab_indicator);
+
+    _this.tab_indicator = _this.$tab_indicator[0];
+    _this.listeners = [];
+
+    _this._init();
+
+    return _this;
   }
 
   _createClass(Tabs, [{
@@ -4232,14 +4515,14 @@ function () {
       this._setupEventHandlers();
 
       this.$tab_indicator.addClass(this.settings.tabIndicatorClass);
-      if (this.settings.activeTab) this._handleTabClick(this.$tabs.filter(this.settings.activeTab)[0]);else this._handleTabClick(this.$tabs.first());
+      if (this.$tabs.filter(".active").length) this._handleTabClick(this.$tabs.filter(".active")[0]);else this._handleTabClick(this.$tabs.first());
     }
   }, {
     key: "_handleTabClick",
     value: function _handleTabClick(e) {
       var tabPressed = e;
       var $tabPressed = cash_min(tabPressed);
-      var id = tabPressed.getAttribute("data-target") || tabPressed.getAttribute("href");
+      var id = $tabPressed.attr("data-target") || $tabPressed.attr("href");
       var $previousActiveTabContent = this.$tab_contents.filter(".active");
       var $activeTabContent = this.$tab_contents.filter(id); // Tab active color
 
@@ -4252,9 +4535,9 @@ function () {
       $activeTabContent.addClass("active"); // Moving Tab Indicator
 
       var tabSize = $tabPressed.size();
-      this.tab_indicator.style.top = tabSize.top + tabSize.height - 2 + "px";
-      this.tab_indicator.style.left = tabSize.left + "px";
-      this.tab_indicator.style.width = tabSize.width + "px";
+      this.tab_indicator.style.top = tabSize.height - 2 + "px";
+      this.tab_indicator.style.left = tabSize.left - this.$el.size().left + "px";
+      this.tab_indicator.style.width = $tabPressed.outerWidth(true) + "px";
     }
   }, {
     key: "_handleWindowResize",
@@ -4264,10 +4547,12 @@ function () {
   }, {
     key: "_setupEventHandlers",
     value: function _setupEventHandlers() {
-      var _this = this;
+      var _this2 = this;
 
       this.$tabs.on("click touchstart", function (e) {
-        _this._handleTabClick(e.target);
+        e.preventDefault();
+
+        _this2._handleTabClick(e.target);
       });
       window.addEventListener("resize", this.listeners[0] = this._handleWindowResize.bind(this));
     }
@@ -4305,70 +4590,80 @@ function () {
   }]);
 
   return Tabs;
-}();
+}(EmpyrealComponent);
 
 var VERSION$2 = "0.0.1";
 var DEFAULTS$2 = {
   animInDuration: 500,
   animOutDuration: 500,
-  coverTrigger: false
+  coverTrigger: false,
+  isRelative: false,
+  onOpenStart: null,
+  onOpenEnd: null,
+  onCloseStart: null,
+  onCloseEnd: null,
+  onItemClick: null
 };
 var REGISTRY$1 = {
-  animInEasing: "easeOutQuint",
+  animInEasing: "easeOutQuad",
   animOutEasing: "easeOutQuint",
   dropdownPadding: 10
 };
 
-var Dropdown =
-/*#__PURE__*/
-function () {
+var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
+  _inherits(Dropdown, _EmpyrealComponent);
+
   /**
    * @param {Element} el
    * @param {Object} options
    */
   function Dropdown(el, options) {
+    var _this;
+
     _classCallCheck(this, Dropdown);
 
-    this.settings = _objectSpread2({}, DEFAULTS$2, {}, options);
-    this.el = el;
-    this.$el = cash_min(this.el);
-    this.id = this.$el.attr("id");
-    this.trigger = E.getTrigger({
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Dropdown).call(this, el));
+    _this.settings = _objectSpread2({}, DEFAULTS$2, {}, options);
+    _this.$el = cash_min(_this.el);
+    _this.id = _this.$el.attr("id");
+    _this.trigger = E.getTrigger({
       a: {
         class: "dropdown-trigger",
         optional: {
-          href: "#".concat(this.id),
-          "data-target": "#".concat(this.id)
+          href: "#".concat(_this.id),
+          "data-target": "#".concat(_this.id)
         }
       },
       button: {
         class: "dropdown-trigger",
         optional: {
-          "data-target": "#".concat(this.id)
+          "data-target": "#".concat(_this.id)
         }
       }
     });
-    this.$trigger = cash_min(this.trigger);
-    this.initialDropdownDimensions = {
+    _this.$trigger = cash_min(_this.trigger);
+    _this.initialDropdownDimensions = {
       width: 0,
       height: 0
     };
-    this.isOpen = false;
-    this.isAnimationDone = true;
-    this.listeners = [];
+    _this.isOpen = false;
+    _this.isAnimationDone = true;
+    _this.listeners = [];
 
-    this._init();
+    _this._init();
+
+    return _this;
   }
 
   _createClass(Dropdown, [{
     key: "_init",
     value: function _init() {
-      this.el.style.display = "block";
+      this.$el.css("display", "block");
       this.initialDropdownDimensions = {
-        width: this.$el.size().width,
-        height: this.$el.size().height
+        width: this.$el.outerWidth(),
+        height: this.$el.outerHeight()
       };
-      this.el.style.display = "none";
+      this.$el.css("display", "none");
 
       this._setupEventHandlers();
     }
@@ -4379,7 +4674,8 @@ function () {
         var triggerDimensions = this.$trigger.size();
         var dropdownDimensions = this.initialDropdownDimensions;
         this.el.style.left = triggerDimensions.left + "px";
-        var dropdownTop = triggerDimensions.top + window.scrollY;
+        var dropdownTop = window.scrollY + triggerDimensions.top;
+        if (this.settings.isRelative) dropdownTop = 0;
 
         if (triggerDimensions.top + dropdownDimensions.height <= window.innerHeight) {
           // Dropdown positioned on bottom of trigger
@@ -4396,12 +4692,12 @@ function () {
     }
   }, {
     key: "_handleDropdownOpen",
-    value: function _handleDropdownOpen() {
-      var _this = this;
+    value: function _handleDropdownOpen(e) {
+      var _this2 = this;
 
       this.isOpen = true;
       this.isAnimationDone = false;
-      this.el.style.display = "block";
+      this.$el.css("display", "block");
 
       this._positionDropdownDialog();
 
@@ -4410,15 +4706,24 @@ function () {
         opacity: [0, 1],
         duration: this.settings.animInDuration,
         easing: REGISTRY$1.animInEasing,
+        begin: function begin() {
+          if (typeof _this2.settings.onOpenStart === 'function') {
+            _this2.settings.onOpenStart.call(_this2, _this2.el, e.target);
+          }
+        },
         complete: function complete() {
-          _this.isAnimationDone = true;
+          _this2.isAnimationDone = true;
+
+          if (typeof _this2.settings.onOpenEnd === 'function') {
+            _this2.settings.onOpenEnd.call(_this2, _this2.el, e.target);
+          }
         }
       });
     }
   }, {
     key: "_handleDropdownClose",
-    value: function _handleDropdownClose() {
-      var _this2 = this;
+    value: function _handleDropdownClose(e) {
+      var _this3 = this;
 
       this.isOpen = false;
       this.isAnimationDone = false;
@@ -4427,20 +4732,28 @@ function () {
         opacity: [1, 0],
         duration: this.settings.animOutDuration,
         easing: REGISTRY$1.animOutEasing,
+        begin: function begin() {
+          if (typeof _this3.settings.onCloseStart === 'function') {
+            _this3.settings.onCloseStart.call(_this3, _this3.el, e.target);
+          }
+        },
         complete: function complete() {
-          _this2.isAnimationDone = true;
-          _this2.el.style.display = "none";
+          _this3.isAnimationDone = true;
+
+          _this3.$el.css("display", "none");
+
+          if (typeof _this3.settings.onCloseEnd === 'function') {
+            _this3.settings.onCloseEnd.call(_this3, _this3.el, e.target);
+          }
         }
       });
     }
   }, {
     key: "_handleDocumentClick",
     value: function _handleDocumentClick(e) {
-      e.preventDefault();
       var $elemClicked = cash_min(e.target);
-      console.log($elemClicked);
 
-      if (!$elemClicked.closest(".dropdown").length && this.isOpen && this.isAnimationDone && !$elemClicked.hasClass("dropdown-trigger")) {
+      if (!$elemClicked.closest(this.el).length && this.isOpen && this.isAnimationDone && !$elemClicked.hasClass("dropdown-trigger")) {
         this._handleDropdownClose();
       }
     }
@@ -4451,9 +4764,17 @@ function () {
       if (this.isOpen) this._handleDropdownClose();else this._handleDropdownOpen();
     }
   }, {
+    key: "_handleDropdownItemClick",
+    value: function _handleDropdownItemClick(e) {
+      if (typeof this.settings.onItemClick === 'function') {
+        this.settings.onItemClick.call(this, this.el, e.target);
+      }
+    }
+  }, {
     key: "_setupEventHandlers",
     value: function _setupEventHandlers() {
       this.$trigger.on("click ", this._handleDropdownClick.bind(this));
+      this.$el.on("click", this._handleDropdownItemClick.bind(this));
       window.addEventListener("scroll", this.listeners[0] = this._positionDropdownDialog.bind(this));
       document.addEventListener("click", this.listeners[1] = this._handleDocumentClick.bind(this));
       document.removeEventListener("touchstart", this.listeners[2] = this._handleDocumentClick.bind(this));
@@ -4462,9 +4783,20 @@ function () {
     key: "_removeEventHandlers",
     value: function _removeEventHandlers() {
       this.$trigger.off("click");
+      this.$el.off("click");
       window.removeEventListener("scroll", this.listeners[0]);
       document.removeEventListener("click", this.listeners[1]);
       document.removeEventListener("touchstart", this.listeners[2]);
+    }
+  }, {
+    key: "open",
+    value: function open() {
+      this._handleDropdownOpen();
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      this._handleDropdownClose();
     }
   }, {
     key: "destroy",
@@ -4484,11 +4816,11 @@ function () {
   }]);
 
   return Dropdown;
-}();
+}(EmpyrealComponent);
 
 var VERSION$3 = "0.0.1";
 var DEFAULTS$3 = {
-  sidenavWidth: "300px",
+  width: "300px",
   overlayColor: "rgba(0, 0, 0, 0.5)",
   animInDuration: 500,
   animOutDuration: 500
@@ -4498,64 +4830,68 @@ var REGISTRY$2 = {
   easingSlideOut: "easeOutQuad"
 };
 
-var ClassName =
-/*#__PURE__*/
-function () {
+var Sidenav = /*#__PURE__*/function (_EmpyrealComponent) {
+  _inherits(Sidenav, _EmpyrealComponent);
+
   /**
    * @param {Element} el
    * @param {Object} options
    */
-  function ClassName(el, options) {
-    _classCallCheck(this, ClassName);
+  function Sidenav(el, options) {
+    var _this;
 
-    this.settings = _objectSpread2({}, DEFAULTS$3, {}, options);
-    this.el = el;
-    this.$el = cash_min(this.el);
-    this.id = this.$el.attr("id");
-    this.trigger = E.getTrigger({
+    _classCallCheck(this, Sidenav);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Sidenav).call(this, el));
+    _this.settings = _objectSpread2({}, DEFAULTS$3, {}, options);
+    _this.$el = cash_min(_this.el);
+    _this.id = _this.$el.attr("id");
+    _this.trigger = E.getTrigger({
       a: {
         class: "sidenav-trigger",
         optional: {
-          href: "#".concat(this.id),
-          "data-target": "#".concat(this.id)
+          href: "#".concat(_this.id),
+          "data-target": "#".concat(_this.id)
         }
       },
       button: {
         class: "sidenav-trigger",
         optional: {
-          "data-target": "#".concat(this.id)
+          "data-target": "#".concat(_this.id)
         }
       }
     });
-    this.$trigger = cash_min(this.trigger);
-    this.closeTrigger = E.getTrigger({
+    _this.$trigger = cash_min(_this.trigger);
+    _this.closeTrigger = E.getTrigger({
       a: {
         class: "sidenav-close",
         optional: {
-          href: "#".concat(this.id),
-          "data-target": "#".concat(this.id)
+          href: "#".concat(_this.id),
+          "data-target": "#".concat(_this.id)
         }
       },
       button: {
         class: "sidenav-close",
         optional: {
-          "data-target": "#".concat(this.id)
+          "data-target": "#".concat(_this.id)
         }
       }
     });
-    this.$closeTrigger = cash_min(this.closeTrigger);
-    this.isOpen = false;
-    this.isAnimationDone = false;
-    this.listeners = [];
-    this.$overlay = cash_min('<div class="sidenav-overlay" />');
+    _this.$closeTrigger = cash_min(_this.closeTrigger);
+    _this.isOpen = false;
+    _this.isAnimationDone = false;
+    _this.listeners = [];
+    _this.$overlay = cash_min("<div class=\"sidenav-overlay\" />");
 
-    this._init();
+    _this._init();
+
+    return _this;
   }
 
-  _createClass(ClassName, [{
+  _createClass(Sidenav, [{
     key: "_init",
     value: function _init() {
-      this.el.style.width = this.settings.sidenavWidth;
+      this.el.style.width = this.settings.width;
       this.el.style.left = "-100%";
       this.$el.after(this.$overlay);
       this.$overlay[0].style.backgroundColor = this.settings.overlayColor;
@@ -4576,7 +4912,7 @@ function () {
   }, {
     key: "_handleOverlayFadeOut",
     value: function _handleOverlayFadeOut() {
-      var _this = this;
+      var _this2 = this;
 
       anime({
         targets: this.$overlay[0],
@@ -4584,14 +4920,14 @@ function () {
         duration: this.settings.animOutDuration,
         easing: REGISTRY$2.easingSlideOut,
         complete: function complete() {
-          _this.$overlay[0].style.display = "none";
+          _this2.$overlay[0].style.display = "none";
         }
       });
     }
   }, {
     key: "_handleSidenavOpen",
     value: function _handleSidenavOpen() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.el.style.display = "block";
       anime({
@@ -4600,11 +4936,11 @@ function () {
         duration: this.settings.animInDuration,
         easing: REGISTRY$2.easingSlideIn,
         begin: function begin() {
-          _this2.isOpen = true;
-          _this2.isAnimationDone = false;
+          _this3.isOpen = true;
+          _this3.isAnimationDone = false;
         },
         complete: function complete() {
-          _this2.isAnimationDone = true;
+          _this3.isAnimationDone = true;
         }
       });
 
@@ -4613,7 +4949,7 @@ function () {
   }, {
     key: "_handleSidenavClose",
     value: function _handleSidenavClose() {
-      var _this3 = this;
+      var _this4 = this;
 
       anime({
         targets: this.el,
@@ -4621,12 +4957,12 @@ function () {
         duration: this.settings.animInDuration,
         easing: REGISTRY$2.easingSlideOut,
         begin: function begin() {
-          _this3.isOpen = false;
-          _this3.isAnimationDone = false;
+          _this4.isOpen = false;
+          _this4.isAnimationDone = false;
         },
         complete: function complete() {
-          _this3.isAnimationDone = true;
-          _this3.el.style.display = "none";
+          _this4.isAnimationDone = true;
+          _this4.el.style.display = "none";
         }
       });
 
@@ -4659,6 +4995,11 @@ function () {
       this._handleSidenavOpen();
     }
   }, {
+    key: "close",
+    value: function close() {
+      this._handleSidenavClose();
+    }
+  }, {
     key: "destroy",
     value: function destroy() {
       this._removeEventHandlers();
@@ -4675,8 +5016,8 @@ function () {
     }
   }]);
 
-  return ClassName;
-}();
+  return Sidenav;
+}(EmpyrealComponent);
 
 var VERSION$4 = "0.0.1";
 var DEFAULTS$4 = {
@@ -4685,24 +5026,28 @@ var DEFAULTS$4 = {
   animOutDuration: 500
 };
 
-var Collapsible =
-/*#__PURE__*/
-function () {
+var Collapsible = /*#__PURE__*/function (_EmpyrealComponent) {
+  _inherits(Collapsible, _EmpyrealComponent);
+
   /**
    * @param {Element} el
    * @param {Object} options
    */
   function Collapsible(el, options) {
+    var _this;
+
     _classCallCheck(this, Collapsible);
 
-    this.settings = _objectSpread2({}, DEFAULTS$4, {}, options);
-    this.el = el;
-    this.$el = cash_min(this.el);
-    this.$headers = this.$el.find(".collapsible-header");
-    this.$bodies = this.$el.find(".collapsible-body");
-    this.listeners = [];
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Collapsible).call(this, el));
+    _this.settings = _objectSpread2({}, DEFAULTS$4, {}, options);
+    _this.$el = cash_min(_this.el);
+    _this.$headers = _this.$el.find(".collapsible-header");
+    _this.$bodies = _this.$el.find(".collapsible-body");
+    _this.listeners = [];
 
-    this._init();
+    _this._init();
+
+    return _this;
   }
 
   _createClass(Collapsible, [{
@@ -4840,24 +5185,22 @@ function () {
   }]);
 
   return Collapsible;
-}();
+}(EmpyrealComponent);
 
 var VERSION$5 = "0.0.1";
 var DEFAULTS$5 = {
   position: "top",
   clickTrigger: false,
   offset: 10,
-  animInDuration: 300,
+  animInDuration: 200,
   animOutDuration: 300
 };
 var REGISTRY$3 = {
-  animInEasing: "easeOutCubic",
+  animInEasing: "easeInQuad",
   animOutEasing: "easeOutCubic"
 };
 
-var Tooltip =
-/*#__PURE__*/
-function () {
+var Tooltip = /*#__PURE__*/function () {
   /**
   * @param {Element} el
   * @param {Object} options
@@ -5000,26 +5343,30 @@ var DEFAULTS$6 = {
   indicators: false
 };
 
-var Carousel =
-/*#__PURE__*/
-function () {
+var Carousel = /*#__PURE__*/function (_EmprealComponent) {
+  _inherits(Carousel, _EmprealComponent);
+
   /**
    * @param {Element} el
    * @param {Object} options
    */
   function Carousel(el, options) {
+    var _this;
+
     _classCallCheck(this, Carousel);
 
-    this.settings = _objectSpread2({}, DEFAULTS$6, {}, options);
-    this.el = el;
-    this.$el = cash_min(this.el);
-    this.$nextBtn = this.$el.find(".carousel-next");
-    this.$prevBtn = this.$el.find(".carousel-prev");
-    this.$carouselContainer = this.$el.find();
-    this.$carouselItems = this.$carouselContainer.children(".carousel-item");
-    this.listeners = [];
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Carousel).call(this, el));
+    _this.settings = _objectSpread2({}, DEFAULTS$6, {}, options);
+    _this.$el = cash_min(_this.el);
+    _this.$nextBtn = _this.$el.find(".carousel-next");
+    _this.$prevBtn = _this.$el.find(".carousel-prev");
+    _this.$carouselContainer = _this.$el.find(".carousel-inner");
+    _this.$carouselItems = _this.$carouselContainer.children(".carousel-item");
+    _this.listeners = [];
 
-    this._init();
+    _this._init();
+
+    return _this;
   }
 
   _createClass(Carousel, [{
@@ -5124,7 +5471,7 @@ function () {
   }]);
 
   return Carousel;
-}();
+}(EmpyrealComponent);
 
 var VERSION$7 = "0.0.1";
 var DEFAULTS$7 = {
@@ -5133,25 +5480,29 @@ var DEFAULTS$7 = {
   stopperElement: ""
 };
 
-var Pushpin =
-/*#__PURE__*/
-function () {
+var Pushpin = /*#__PURE__*/function (_EmpyrealComponent) {
+  _inherits(Pushpin, _EmpyrealComponent);
+
   /**
    * @param {Element} el
    * @param {Object} options
    */
   function Pushpin(el, options) {
+    var _this;
+
     _classCallCheck(this, Pushpin);
 
-    this.settings = _objectSpread2({}, DEFAULTS$7, {}, options);
-    this.el = el;
-    this.$el = cash_min(this.el);
-    this.listeners = [];
-    this.width = 0;
-    this.height = 0;
-    this.stop = this.settings.stop;
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Pushpin).call(this, el));
+    _this.settings = _objectSpread2({}, DEFAULTS$7, {}, options);
+    _this.$el = cash_min(_this.el);
+    _this.listeners = [];
+    _this.width = 0;
+    _this.height = 0;
+    _this.stop = _this.settings.stop;
 
-    this._init();
+    _this._init();
+
+    return _this;
   }
 
   _createClass(Pushpin, [{
@@ -5164,51 +5515,53 @@ function () {
   }, {
     key: "_calculateElementDimensions",
     value: function _calculateElementDimensions() {
-      var size = this.$el.size();
-      this.width = size.width;
-      this.height = size.height;
+      this.$el.css({
+        position: "",
+        top: "",
+        left: "",
+        width: "",
+        height: ""
+      });
+      this.initialY = this.$el.offset().top;
+      this.width = this.$el.outerWidth(true);
+      this.height = this.$el.outerHeight(true);
 
       if (this.settings.stopperElement) {
-        var stopperSize = cash_min(this.settings.stopperElement).size();
-        this.stop = stopperSize.top + window.scrollY - stopperSize.height - 10;
+        var stopperSize = cash_min(this.settings.stopperElement).offset();
+        this.stop = stopperSize.top - this.height;
       }
     }
   }, {
     key: "_handleElementPosition",
     value: function _handleElementPosition() {
-      var top = this.$el.size().top - this.settings.offset;
-      var windowY = window.scrollY;
-
-      if (this.settings.stopperElement) {
-        var stopperSize = cash_min(this.settings.stopperElement).size();
-        this.stop = stopperSize.top + window.scrollY - stopperSize.height - 10;
-      }
+      var windowY = E.getDocumentScrollTop();
 
       if (windowY >= this.stop - this.settings.offset) {
         this.$el.css({
           position: "absolute",
-          width: this.width,
           top: this.stop
         });
+      } else if (windowY < this.initialY - this.settings.offset) {
+        this.$el.css({
+          position: "",
+          top: "",
+          left: "",
+          width: "",
+          height: ""
+        });
       } else {
-        if (top < windowY) {
-          this.$el.css({
-            position: "fixed",
-            width: this.width,
-            top: this.settings.offset
-          });
-        } else {
-          this.$el.css({
-            position: "",
-            width: "",
-            top: ""
-          });
-        }
+        this.$el.css({
+          position: "fixed",
+          top: this.settings.offset,
+          width: this.width,
+          height: this.height
+        });
       }
     }
   }, {
     key: "_setupEventHandlers",
     value: function _setupEventHandlers() {
+      window.addEventListener("DOMContentLoaded", this._calculateElementDimensions.bind(this));
       window.addEventListener("scroll", this.listeners[0] = this._handleElementPosition.bind(this));
       window.addEventListener("resize", this.listeners[1] = this._calculateElementDimensions.bind(this));
     }
@@ -5237,25 +5590,29 @@ function () {
   }]);
 
   return Pushpin;
-}();
+}(EmpyrealComponent);
 
 var VERSION$8 = "0.0.1";
-var DEFAULTS$8 = {};
+var DEFAULTS$8 = {
+  offset: 0,
+  activeClass: "active",
+  linkNode: function linkNode(node) {
+    return node;
+  }
+}; // Do not add `extends EmpyrealComponent` here as this takes a NodeList as input instead of a single Node
 
-var ScrollSpy =
-/*#__PURE__*/
-function () {
+var ScrollSpy = /*#__PURE__*/function () {
   /**
-  * @param {Element} el
-  * @param {Object} options
-  */
+   * @param {Element} el
+   * @param {Object} options
+   */
   function ScrollSpy(el, options) {
     _classCallCheck(this, ScrollSpy);
 
     this.settings = _objectSpread2({}, DEFAULTS$8, {}, options);
     this.el = el;
     this.$el = cash_min(this.el);
-    this.$sections = this.$el.children();
+    this.activeSection;
     this.listeners = [];
 
     this._init();
@@ -5264,26 +5621,87 @@ function () {
   _createClass(ScrollSpy, [{
     key: "_init",
     value: function _init() {
-      this._getLinkofSection(this.$sections.first()).addClass("active");
+      this._calculateOffsets();
 
       this._setupEventHandlers();
     }
   }, {
+    key: "_calculateOffsets",
+    value: function _calculateOffsets() {
+      this.sectionOffsets = {};
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = this.$el[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var section = _step.value;
+          this.sectionOffsets[section.id] = section.offsetTop;
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    }
+  }, {
     key: "_getLinkofSection",
-    value: function _getLinkofSection(elem) {
-      return cash_min("a[href='#".concat(cash_min(elem).attr('id'), "']"));
+    value: function _getLinkofSection(id) {
+      var targetLink = E.getTrigger({
+        a: {
+          optional: {
+            href: "#" + id,
+            "data-scrollspy": "#" + id
+          }
+        },
+        button: {
+          optional: {
+            "data-scrollspy": "#" + id
+          }
+        }
+      });
+      var nodeTransformer = this.settings.linkNode.call(this, targetLink);
+      return cash_min(nodeTransformer);
     }
   }, {
     key: "_handleWindowScroll",
-    value: function _handleWindowScroll() {}
+    value: function _handleWindowScroll() {
+      var windowTop = E.getDocumentScrollTop();
+      windowTop += this.settings.offset + window.innerHeight / 2;
+
+      for (var id in this.sectionOffsets) {
+        if (this.sectionOffsets[id] < windowTop) {
+          this.activeSection = document.getElementById(id);
+
+          this._getLinkofSection(id).addClass(this.settings.activeClass).siblings().removeClass(this.settings.activeClass);
+        }
+      }
+    }
   }, {
     key: "_setupEventHandlers",
     value: function _setupEventHandlers() {
-      window.addEventListener("scroll", this._handleWindowScroll.bind(this));
+      window.addEventListener("scroll", this.listeners[0] = this._handleWindowScroll.bind(this));
+      document.addEventListener("DOMContentLoaded", this._calculateOffsets.bind(this));
     }
   }, {
     key: "_removeEventHandlers",
-    value: function _removeEventHandlers() {}
+    value: function _removeEventHandlers() {
+      window.removeEventListener("scroll", this.listeners[0]);
+    }
+  }, {
+    key: "open",
+    value: function open(id) {
+      this._getLinkofSection(id).addClass(this.settings.activeClass).siblings().removeClass(this.settings.activeClass);
+    }
   }, {
     key: "destroy",
     value: function destroy() {
@@ -5304,16 +5722,621 @@ function () {
   return ScrollSpy;
 }();
 
+var VERSION$9 = "0.0.1";
+var DEFAULTS$9 = {
+  animInDuration: 600,
+  animOutDuration: 600
+};
+
+var Lightbox = /*#__PURE__*/function (_EmpyrealComponent) {
+  _inherits(Lightbox, _EmpyrealComponent);
+
+  /**
+   * @param {Element} el
+   * @param {Object} options
+   */
+  function Lightbox(el, options) {
+    var _this;
+
+    _classCallCheck(this, Lightbox);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Lightbox).call(this, el));
+    _this.settings = _objectSpread2({}, DEFAULTS$9, {}, options);
+    _this.$el = cash_min(_this.el);
+    _this.id = _this.el.id;
+
+    if (!_this.id) {
+      _this.id = E.generateUUID();
+
+      _this.$el.attr("id", _this.id);
+    }
+
+    _this.$images = _this.$el.find("img");
+    _this.numberOfImages = _this.$el.find("img").length;
+    _this.listeners = [];
+
+    _this._init();
+
+    return _this;
+  }
+
+  _createClass(Lightbox, [{
+    key: "_init",
+    value: function _init() {
+      this.$lightbox = cash_min("<div class=\"lightbox-ui\" data-lightbox=".concat(this.id, " />"));
+      this.$imageContainer = cash_min("<div class=\"lightbox-images\" />");
+      this.$lightboxImages = this.$images.clone();
+      this.$imageContainer.append(this.$lightboxImages);
+      this.$topbar = cash_min("<div class=\"top-bar\" />");
+      this.$lightboxCounter = cash_min("<span class=\"lightbox-counter\" />");
+      this.$lightboxClose = cash_min("<span class=\"lightbox-close\" />");
+      this.$lightboxFullscreen = cash_min("<span class=\"lightbox-fullscreen\" />");
+      this.$topbar.append(this.$lightboxCounter).append(this.$lightboxClose).append(this.$lightboxFullscreen);
+      this.$nextBtn = cash_min("<span class=\"right\" />");
+      this.$prevBtn = cash_min("<span class=\"left\" />");
+      this.$lightbox.append(this.$imageContainer).append(this.$topbar).append(this.$prevBtn).append(this.$nextBtn);
+      cash_min("body").append(this.$lightbox);
+
+      this._setupEventHandlers();
+    }
+  }, {
+    key: "_handleLightboxOpen",
+    value: function _handleLightboxOpen(e) {
+      this.open(this.$images.index(e.target));
+      this.$lightbox.addClass("active");
+      anime({
+        targets: this.$lightbox[0],
+        opacity: 1,
+        duration: this.settings.animInDuration,
+        easing: "easeOutQuad"
+      });
+    }
+  }, {
+    key: "_handleLightboxClick",
+    value: function _handleLightboxClick(e) {
+      if (cash_min(e.target).hasClass("lightbox-ui") || cash_min(e.target).hasClass("lightbox-images")) this.close();
+    }
+  }, {
+    key: "_handleFullscreenButtonClick",
+    value: function _handleFullscreenButtonClick() {
+      if (this.$lightbox.hasClass("fullscreen")) {
+        this.$lightbox.removeClass("fullscreen");
+
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      } else {
+        this.$lightbox.addClass("fullscreen");
+
+        if (this.$lightbox[0].requestFullscreen) {
+          this.$lightbox[0].requestFullscreen();
+        } else if (this.$lightbox[0].mozRequestFullScreen) {
+          this.$lightbox[0].mozRequestFullScreen();
+        } else if (this.$lightbox[0].webkitRequestFullscreen) {
+          this.$lightbox[0].webkitRequestFullscreen();
+        } else if (this.$lightbox[0].msRequestFullscreen) {
+          this.$lightbox[0].msRequestFullscreen();
+        }
+      }
+    }
+  }, {
+    key: "_setupEventHandlers",
+    value: function _setupEventHandlers() {
+      this.$images.on("click", this._handleLightboxOpen.bind(this));
+      this.$nextBtn.on("click", this.next.bind(this));
+      this.$prevBtn.on("click", this.prev.bind(this));
+      this.$lightboxClose.on("click", this.close.bind(this));
+      this.$lightboxFullscreen.on("click", this._handleFullscreenButtonClick.bind(this));
+      document.addEventListener("click", this.listeners[0] = this._handleLightboxClick.bind(this));
+    }
+  }, {
+    key: "_removeEventHandlers",
+    value: function _removeEventHandlers() {
+      this.$images.off("click");
+      this.$nextBtn.off("click");
+      this.$prevBtn.off("click");
+      this.$lightboxClose.off("click");
+      this.$lightboxFullscreen.off("click");
+      document.removeEventListener("click", this.listeners[0]);
+    }
+  }, {
+    key: "next",
+    value: function next() {
+      var $activeImageIndex = this.$lightboxImages.filter(".active").index();
+
+      if ($activeImageIndex + 1 == this.numberOfImages) {
+        this.open(0);
+      } else {
+        this.open($activeImageIndex + 1);
+      }
+    }
+  }, {
+    key: "prev",
+    value: function prev() {
+      var $activeImageIndex = this.$lightboxImages.filter(".active").index();
+
+      if ($activeImageIndex == 0) {
+        this.open(this.numberOfImages - 1);
+      } else {
+        this.open($activeImageIndex - 1);
+      }
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      var _this2 = this;
+
+      if (this.$lightbox.hasClass("fullscreen")) this.$lightboxFullscreen.trigger("click");
+      anime({
+        targets: this.$lightbox[0],
+        opacity: 0,
+        duration: this.settings.animOutDuration,
+        easing: "easeOutCubic",
+        complete: function complete() {
+          _this2.$lightbox.removeClass("active");
+        }
+      });
+    }
+  }, {
+    key: "open",
+    value: function open() {
+      var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      var $activeImage = this.$lightboxImages.eq(index);
+      this.$lightboxCounter.text(index + 1 + " / " + this.numberOfImages);
+      $activeImage.addClass("active").siblings().removeClass("active");
+    }
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      this._removeEventHandlers();
+    }
+  }], [{
+    key: "version",
+    get: function get() {
+      return VERSION$9;
+    }
+  }, {
+    key: "defaults",
+    get: function get() {
+      return DEFAULTS$9;
+    }
+  }]);
+
+  return Lightbox;
+}(EmpyrealComponent);
+
+function Snackbar(_ref) {
+  var _ref$html = _ref.html,
+      html = _ref$html === void 0 ? "" : _ref$html,
+      _ref$classes = _ref.classes,
+      classes = _ref$classes === void 0 ? "" : _ref$classes,
+      _ref$dismiss = _ref.dismiss,
+      dismiss = _ref$dismiss === void 0 ? 5000 : _ref$dismiss,
+      _ref$complete = _ref.complete,
+      complete = _ref$complete === void 0 ? function () {} : _ref$complete;
+  var $snackbar = cash_min("<div class=\"snackbar ".concat(classes, "\" />"));
+  $snackbar.html(html);
+  cash_min("body").append($snackbar);
+  $snackbar.css("opacity", 1);
+  var topOffset = 15;
+  var $snackbars = cash_min(".snackbar");
+
+  for (var i = 0; i < $snackbars.length; i++) {
+    var $node = cash_min($snackbars[$snackbars.length - i - 1]);
+    var height = $node.outerHeight();
+    var offset = 15;
+    $node.css("top", topOffset + "px");
+    topOffset += height + offset;
+  }
+
+  setTimeout(function () {
+    var width = $snackbar.outerWidth() + 20;
+    $snackbar.css({
+      right: "-".concat(width, "px"),
+      opacity: 0
+    });
+    complete();
+    setTimeout(function () {
+      $snackbar.remove();
+    }, 500);
+  }, dismiss);
+}
+
+var VERSION$a = "0.0.1";
+var DEFAULTS$a = {
+  dropdown: {}
+};
+
+var Select = /*#__PURE__*/function (_EmpyrealComponent) {
+  _inherits(Select, _EmpyrealComponent);
+
+  function Select(el, options) {
+    var _this;
+
+    _classCallCheck(this, Select);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Select).call(this, el, options));
+    _this.settings = _objectSpread2({}, DEFAULTS$a, {}, options);
+    _this.$el = cash_min(_this.el);
+    _this.id = _this.$el.attr("id") || E.generateUUID();
+    _this.$input = cash_min("<input type='text' readonly='true' class=\"select-dropdown\" />");
+
+    _this.$input.attr("id", _this.id);
+
+    _this.isSelectMultiple = _this.el.hasAttribute("multiple");
+    _this.$list = cash_min("<ul class=\"select-list\" />");
+    _this.value = [];
+    _this.textinput_content = [];
+
+    _this._init();
+
+    return _this;
+  }
+
+  _createClass(Select, [{
+    key: "_init",
+    value: function _init() {
+      cash_min("<span class='caret' />").insertAfter(this.$el);
+      this.$list.insertAfter(this.$el);
+      this.$input.insertAfter(this.$el);
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = this.$el.children()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var elem = _step.value;
+
+          if (elem.nodeName.toLowerCase() == "option") {
+            var $selectItem = this._createSelectOption(elem);
+
+            this.$list.append($selectItem);
+          } else if (elem.nodeName.toLowerCase() == "optgroup") {
+            var $group = cash_min("<li class='optgroup'><p>".concat(cash_min(elem).attr("label"), "</p></li>"));
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+              for (var _iterator2 = cash_min(elem).children()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                var item = _step2.value;
+
+                var _$selectItem = this._createSelectOption(item);
+
+                $group.append(_$selectItem);
+              }
+            } catch (err) {
+              _didIteratorError2 = true;
+              _iteratorError2 = err;
+            } finally {
+              try {
+                if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+                  _iterator2.return();
+                }
+              } finally {
+                if (_didIteratorError2) {
+                  throw _iteratorError2;
+                }
+              }
+            }
+
+            this.$list.append($group);
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      this.dropdown = new Dropdown(this.$list[0], _objectSpread2({
+        isRelative: true
+      }, this.settings.dropdown));
+
+      this.dropdown._removeEventHandlers();
+
+      this.dropdown.trigger = this.$input[0];
+      this.dropdown.$trigger = this.$input;
+
+      this.dropdown._init();
+
+      this._setupEventHandlers();
+    }
+  }, {
+    key: "_createSelectOption",
+    value: function _createSelectOption(element) {
+      var $element = cash_min(element);
+      var $item = cash_min("<li>".concat($element.html(), "</li>"));
+
+      if (this.isSelectMultiple) {
+        $item = cash_min("<li class=checkbox-field><label><input type=\"checkbox\"><span>".concat($element.html(), "</span></label></li>"));
+      }
+
+      var value = $element.attr("value") || $element.text();
+      $item.data("value", value);
+      var img = $element.data("icon");
+
+      if (img) {
+        $item.append("<img src=\"".concat(img, "\" />"));
+      }
+
+      if ($element.attr("class")) {
+        $item.attr("class", $element.attr("class"));
+      }
+
+      if (element.hasAttribute("disabled")) {
+        $item.addClass("disabled");
+      }
+
+      return $item;
+    }
+  }, {
+    key: "_updateTextInputValue",
+    value: function _updateTextInputValue() {
+      if (this.textinput_content.length) {
+        this.$input.siblings("label").addClass("active");
+      } else {
+        this.$input.siblings("label").removeClass("active");
+      }
+
+      if (typeof this.textinput_content == "string") {
+        this.$input.val(this.textinput_content);
+      } else if (_typeof(this.textinput_content) == "object") {
+        this.$input.val(this.textinput_content.join(", "));
+      }
+    }
+  }, {
+    key: "_handleSelectItemClick",
+    value: function _handleSelectItemClick(e) {
+      var $item = cash_min(e.target).closest("li");
+
+      if (!$item.hasClass("disabled") && !$item.hasClass("optgroup")) {
+        if (!this.isSelectMultiple) {
+          this.value = $item.data("value");
+          this.textinput_content = $item.text();
+          this.close();
+        } else {
+          if ($item.hasClass("selected")) {
+            this.value.splice(this.value.indexOf($item.data("value")), 1);
+            this.textinput_content.splice(this.value.indexOf($item.text()), 1);
+            $item.find("input[type=checkbox]").prop("checked", false);
+            $item.removeClass("selected");
+          } else {
+            this.value.push($item.data("value"));
+            this.textinput_content.push($item.text());
+            $item.find("input[type=checkbox]").prop("checked", true);
+            $item.addClass("selected");
+          }
+        }
+
+        this._updateTextInputValue();
+      }
+    }
+  }, {
+    key: "_setupEventHandlers",
+    value: function _setupEventHandlers() {
+      this.$input.on("click", this.open.bind(this));
+      this.$list.on("click", this._handleSelectItemClick.bind(this));
+    }
+  }, {
+    key: "open",
+    value: function open() {
+      this.dropdown.open();
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      this.dropdown.close();
+    }
+  }], [{
+    key: "version",
+    get: function get() {
+      return VERSION$a;
+    }
+  }, {
+    key: "defaults",
+    get: function get() {
+      return DEFAULTS$a;
+    }
+  }]);
+
+  return Select;
+}(EmpyrealComponent);
+
+var VERSION$b = "0.0.1";
+var DEFAULTS$b = {
+  data: [],
+  dropdown: {}
+};
+
+var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
+  _inherits(Autocomplete, _EmpyrealComponent);
+
+  function Autocomplete(el, options) {
+    var _this;
+
+    _classCallCheck(this, Autocomplete);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Autocomplete).call(this, el, options));
+    _this.settings = _objectSpread2({}, DEFAULTS$b, {}, options);
+    _this.$el = cash_min(_this.el);
+    _this.id = _this.$el.attr("id") || E.generateUUID();
+
+    _this._init();
+
+    return _this;
+  }
+
+  _createClass(Autocomplete, [{
+    key: "_init",
+    value: function _init() {
+      this.$list = cash_min("<ul class=dropdown id=".concat("dropdown-" + this.id, "></ul>"));
+      this.$el.parent().append(this.$list);
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = this.settings.data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var item = _step.value;
+
+          if (typeof item == "string") {
+            this.$list.append("<li class=dropdown-item>".concat(item, "</li>"));
+          } else {
+            var $listitem = cash_min("<li class=dropdown-item>".concat(item.name, "</li>"));
+
+            if (item.alias) {
+              $listitem.data("alias", item.alias.join(" "));
+            }
+
+            this.$list.append($listitem);
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      this.dropdown = new Dropdown("#dropdown-" + this.id, _objectSpread2({
+        isRelative: true
+      }, this.settings.dropdown));
+
+      this.dropdown._removeEventHandlers();
+
+      this.dropdown.trigger = this.el;
+      this.dropdown.$trigger = this.$el;
+
+      this.dropdown._init();
+
+      this._setupEventHandlers();
+    }
+  }, {
+    key: "_handleKeyPress",
+    value: function _handleKeyPress(e) {
+      var input = this.$el.val().toLowerCase();
+      var allInvisible = true;
+
+      if (e.keyCode == E.keys.ENTER) {
+        this.$list.children().is(":visible").first().trigger("click");
+      } else {
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
+
+        try {
+          for (var _iterator2 = this.$list.children()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var item = _step2.value;
+            var $item = cash_min(item);
+
+            if ($item.text().toLowerCase().includes(input)) {
+              $item.css("display", "block");
+              allInvisible = false;
+            } else if ($item.data("alias") && $item.data("alias").toLowerCase().includes(input)) {
+              $item.css("display", "block");
+              allInvisible = false;
+            } else {
+              $item.css("display", "none");
+            }
+          }
+        } catch (err) {
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+              _iterator2.return();
+            }
+          } finally {
+            if (_didIteratorError2) {
+              throw _iteratorError2;
+            }
+          }
+        }
+      }
+
+      if (allInvisible) this.$list.css("display", "none");else this.$list.css("display", "block");
+    }
+  }, {
+    key: "_handleDropdownClick",
+    value: function _handleDropdownClick(e) {
+      var $item = cash_min(e.target);
+      this.$el.siblings("label").addClass("active");
+      this.$el.val($item.text());
+      this.dropdown.close();
+    }
+  }, {
+    key: "_setupEventHandlers",
+    value: function _setupEventHandlers() {
+      this.$el.on("keyup change paste", this._handleKeyPress.bind(this));
+      this.$list.on("click touchstart", this._handleDropdownClick.bind(this));
+    }
+  }, {
+    key: "_removeEventHandlers",
+    value: function _removeEventHandlers() {
+      this.$el.off("keyup change paste");
+      this.$list.off("click touchstart");
+    }
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      this._removeEventHandlers();
+    }
+  }], [{
+    key: "version",
+    get: function get() {
+      return VERSION$b;
+    }
+  }, {
+    key: "defaults",
+    get: function get() {
+      return DEFAULTS$b;
+    }
+  }]);
+
+  return Autocomplete;
+}(EmpyrealComponent);
+
 var empyreal = {
   Modal: Modal,
   Tabs: Tabs,
   Dropdown: Dropdown,
-  Sidenav: ClassName,
+  Sidenav: Sidenav,
   Collapsible: Collapsible,
   Tooltip: Tooltip,
   Carousel: Carousel,
   Pushpin: Pushpin,
-  ScrollSpy: ScrollSpy
+  ScrollSpy: ScrollSpy,
+  Lightbox: Lightbox,
+  Snackbar: Snackbar,
+  Autocomplete: Autocomplete,
+  Select: Select,
+  updateTextFields: E.updateTextFields(),
+  jump: E.jump
 };
 empyreal.version = "0.0.1";
 
@@ -5348,11 +6371,6 @@ empyreal.activate = function (selector, component) {
   }
 
   return components;
-};
-
-export default empyreal;
-//# sourceMappingURL=empyreal.esm.js.map
-;
 };
 
 export default empyreal;

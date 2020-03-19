@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include "./partials/metadata.html" %}
+        <title>Empyreal CSS Framework</title>
+        <link rel="stylesheet" href="./dist/css/empyreal.min.css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <style>
+            .main-title {
+                letter-spacing: 6px;
+                text-transform: uppercase;
+                color: #3f51b5;
+                background: linear-gradient(315deg, #4285f4, #3f51b5, #6200ea);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        </style>
+    </head>
+    <body>
+        {% include "./partials/navbar.html" %}
+        <div class="fullscreen flex flex-column align-items-center justify-content-center">
+            <div class="container center-align">
+                <br/>
+                <img src="/dist/img/logo.png" alt="empyreal logo" style="width: 200px;"/>
+                <h1 class="font-weight-700 display-h2 main-title">
+                    Empyreal
+                </h1>
+                <p class="responsive-text font-weight-300">
+                    A modern, blazing fast, responsive front-end framework to make powerful human interfaces.
+                </p>
+                <div>
+                    <a href="#!" class="btn btn-large blue waves-effect waves-light">Get Started</a>
+                    <a href="#!" class="btn btn-large indigo-outline waves-effect">Download</a>
+                </div>
+                <p class="grey-text">Version
+                    {{version}}</p>
+            </div>
+        </div>
+        <br/>
+
+        <div class="row">
+            <div class="col s12 m12 l4">
+                <div class="card-panel center-align white-text red hoverable">
+                    <h3>Speed</h3>
+                    <p>
+                        Beautiful UI in just a few lines and functional javascript, that is also blazing fast. All the hard work done for you 
+                        and handed to you on a silver platter. What more could you ask from a framework.
+                    </p>
+                    <a href="#!" class="btn white black-text waves-effect">
+                        Learn More
+                        <i class="im im-care-right right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col s12 m12 l4">
+                <div class="card-panel center-align white-text green accent-3 hoverable">
+                    <h3>Work In Progress</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, aliquam quia. Praesentium eaque repellendus odio! Sunt vitae ratione alias assumenda? Ea similique magni deserunt quia.
+                    </p>
+                    <a href="#!" class="btn white black-text waves-effect">
+                        Learn More
+                        <i class="im im-care-right right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col s12 m12 l4">
+                <div class="card-panel center-align white-text indigo hoverable">
+                    <h3>Easy</h3>
+                    <p>
+                        Detailed documentation, easy syntax as well as good examples to help you get started in no time. We are also always 
+                        open to feedback and can answer any questions a user may have about Betterial.
+                    </p>
+                    <a href="#!" class="btn white black-text waves-effect">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="divider"></div>
+        <br/>
+        <h1 class="center-align font-weight-700">Pricing</h1>
+        <br/>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="blue-outline">
+                        <div class="container center-align">
+                            <p class="mb-0">MIT</p>
+                            <h2 class="mt-1">Free</h2>
+                            <p class="mt-0">License</p>
+                            <p class="lead">
+                                For Unlimited projects, Unlimited members and forever free.
+                            </p>
+                            <a href="#!" class="btn btn-large btn-block blue waves-effect">
+                                FREE
+                            </a>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="red-outline">
+                        <div class="container center-align">
+                            <p class="mb-0">MIT</p>
+                            <h3 class="mt-1">
+                                Free
+                                <span class="badge red white-text">Delux</span>
+                            </h3>
+                            <p class="mt-0">License</p>
+                            <p class="lead">
+                                That's right, all Empyreal frameworks will always be open source.
+                            </p>
+                            <a href="#!" class="btn btn-large btn-block red waves-effect waves-light">
+                                Even More Free!
+                            </a>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="divider"></div>
+        <br>
+        <div class="container">
+            <h1 class="center-align font-weight-700">How can you use Empyreal?</h1>
+            <br>
+            <div class="row" style="justify-content: center">
+                <div class="col s12 m3">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="./dist/img/empyreal_js.jpg" alt="Empyreal JS" width="50%">
+                        </div>
+                        <div class="card-body center-align">
+                            <h3 class="font-weight-800 m-0">Empyreal</h3>
+                            <h3 class="m-0">JS</h3>
+                            <a href="#!" class="btn yellow">Getting Started</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m3">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="./dist/img/empyreal_svelte.jpg" alt="Empyreal Svelte">
+                        </div>
+                        <div class="card-body center-align">
+                            <h3 class="font-weight-800 m-0">Empyreal</h3>
+                            <h3 class="m-0">Svelte</h3>
+                            <a href="#!" class="btn deep-orange">Coming Soon</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m3">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="./dist/img/empyreal_react.jpg" alt="Empyreal React">
+                        </div>
+                        <div class="card-body center-align">
+                            <h3 class="font-weight-800 m-0">Empyreal</h3>
+                            <h3 class="m-0">React</h3>
+                            <a href="#!" class="btn blue">Coming Soon</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m3">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="./dist/img/empyreal_vue.jpg" alt="Empyreal Vue">
+                        </div>
+                        <div class="card-body center-align">
+                            <h3 class="font-weight-800 m-0">Empyreal</h3>
+                            <h3 class="m-0">Vue</h3>
+                            <a href="#!" class="btn green">Coming Soon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include "./partials/footer.html" %}
+        <script src="./dist/js/empyreal.js"></script>
+        <script src="./dist/js/main.js"></script>
+    </body>
+</html>

@@ -51,7 +51,7 @@ td, th {
 
 // Responsive Table
 @media #{$medium-and-down} {
-	table.responsive-table {
+	table.responsive {
 		width: 100%;
 		border-collapse: collapse;
 		border-spacing: 0;

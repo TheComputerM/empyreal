@@ -1,9 +1,10 @@
 import { c, E, anime } from "./global";
+import EmpyrealComponent from "../component";
 
 const VERSION = "0.0.1";
 
 const DEFAULTS = {
-    sidenavWidth: "300px",
+    width: "300px",
     overlayColor: "rgba(0, 0, 0, 0.5)",
     animInDuration: 500,
     animOutDuration: 500,
@@ -14,15 +15,15 @@ const REGISTRY = {
     easingSlideOut: "easeOutQuad"
 };
 
-export default class ClassName {
+export default class Sidenav extends EmpyrealComponent {
     /**
      * @param {Element} el
      * @param {Object} options
      */
     constructor(el, options) {
+        super(el);
         this.settings = { ...DEFAULTS, ...options };
 
-        this.el = el;
         this.$el = c(this.el);
 
         this.id = this.$el.attr("id");
@@ -68,7 +69,7 @@ export default class ClassName {
 
         this.listeners = [];
 
-        this.$overlay = c('<div class="sidenav-overlay" />');
+        this.$overlay = c("<div class=\"sidenav-overlay\" />");
         this._init();
     }
 
@@ -81,7 +82,7 @@ export default class ClassName {
     }
 
     _init() {
-        this.el.style.width = this.settings.sidenavWidth;
+        this.el.style.width = this.settings.width;
         this.el.style.left = "-100%";
         this.$el.after(this.$overlay);
         this.$overlay[0].style.backgroundColor = this.settings.overlayColor;
@@ -155,7 +156,7 @@ export default class ClassName {
     _setupEventHandlers() {
         this.$trigger.on("click touchstart", this._handleSidenavOpen.bind(this));
         this.$overlay.on("click touchstart", this._handleSidenavClose.bind(this));
-        this.$closeTrigger.on("click touchstart", this._handleSidenavClose.bind(this))
+        this.$closeTrigger.on("click touchstart", this._handleSidenavClose.bind(this));
         document.addEventListener("keydown", (this.listeners[0] = this._handleKeydown.bind(this)));
     }
 
@@ -170,6 +171,10 @@ export default class ClassName {
         this._handleSidenavOpen();
     }
 
+    close () {
+        this._handleSidenavClose();
+    }
+    
     destroy() {
         this._removeEventHandlers();
     }

@@ -1,0 +1,29 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Autocomplete" %}
+
+{% block content %}
+    <div class="section scrollspy" id="introduction" data-name="Introduction">
+        <div class="text-field filled">
+            <input type="text" id="autocomplete1" class="autocomplete">
+            <label for="autocomplete1">Company Name</label>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+{% endblock content %}
+
+{% block script %}
+    <script>
+        var autocomplete = new empy.Autocomplete("#autocomplete1", {
+                data: [
+                    {name: "Microsoft"}, 
+                    {name: "Apple"}, 
+                    {name: "Yahoo", alias: ["Harshit", "fat"]}, 
+                    {name: "Google", alias: ["Mudit", "Lol"]}
+                ]
+            });
+    </script>
+{% endblock script %}

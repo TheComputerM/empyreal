@@ -34,19 +34,25 @@
 	}
 	&.modal-top-sheet {
 		width: 100%;
-		bottom: 0;
+		top: 0;
+		left: 0;
 	}
 	&.modal-left-sheet {
-		width: 100%;
-		bottom: 0;
+		height: 100%;
+		max-width: 40%;
+		left: 0;
+		top: 0;
 	}
 	&.modal-right-sheet {
 		height: 100%;
-		bottom: 0;
+		max-width: 40%;
+		top: 0;
+		right: 0;
 	}
 	&.modal-bottom-sheet {
 		width: 100%;
 		bottom: 0;
+		left: 0;
 	}
 
 	&.modal-side {

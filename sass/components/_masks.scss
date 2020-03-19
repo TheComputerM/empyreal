@@ -39,6 +39,7 @@
 	&:hover {
 		img, video {
 			transform: scale(1.1);
+			transform-origin: center center;
 		}
 	}
 }

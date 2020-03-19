@@ -5,62 +5,60 @@
 	font-weight: 400;
 	input[type="radio"] {
 		position: absolute;
-		opacity: 0;
-		&.with-gap {
-			&:checked + span::after {
-				background-color: $secondary-color;
-				transform: scale(0.5);
+        opacity: 0;
+        pointer-events: none;
+		padding: 0;
+		&:checked ~ span {
+			&::before {
+				border-color: $secondary-color;
+			}
+			&::after {
+				transform: translate(50%, 50%) scale(1);
 			}
 		}
-		&:checked + span::after {
-			background-color: $secondary-color;
-			transform: scale(1);
+		&:not(:disabled) ~ span {
+			cursor: pointer;
 		}
-		&:checked + span::before {
-			border: 2px solid $secondary-color;
-		}
-	}
-	input[type="radio"][disabled] {
-		& + span {
+		&:disabled ~ span {
 			color: $disabled-color;
 			&::before {
-				border: 2px solid $disabled-color;
+				border-color: $disabled-color;
+			}
+			&::after {
+				background-color: $disabled-color;
 			}
 		}
 	}
 	span {
-		color: $input-label-color;
 		position: relative;
-		padding-left: 35px;
-		cursor: pointer;
-		height: 25px;
-		transition: 0.28s ease;
-		line-height: 26px;
-		font-size: 1rem;
 		display: inline-block;
-		vertical-align: middle;
+		padding-left: 35px;
+		line-height: 26px;
+		height: 25px;
+		&::before, &::after {
+			content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+			margin: 4px;
+			transition: all 90ms ease;
+		}
 		&::before {
+			width: 18px;
+			height: 18px;
 			border: 2px solid $input-border-color;
 			border-radius: 50%;
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			margin: 4px;
-			width: 16px;
-			height: 16px;
 		}
 		&::after {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			margin: 4px;
-			width: 16px;
-			height: 16px;
+			width: 9px;
+			height: 9px;
+			top: 0px;
+			left: 0px;
 			border-radius: 50%;
-			transition: 0.2s cubic-bezier(0.4, 0, 0.6, 1);
-			transform: scale(0);
+			background-color: $secondary-color;
+			transform-origin: center center;
+			transform: translate(50%, 50%) scale(0);
+			
 		}
 	}
 }

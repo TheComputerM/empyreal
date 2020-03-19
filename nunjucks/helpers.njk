@@ -1,0 +1,555 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Helpers" %}
+
+{% block content %}
+    <p>
+        These are a collection of classes to make your life easier by transforming common css styles into easy to remember classes.
+    </p>
+    <div class="scrollspy section" data-name="Alignments" id="alignment">
+        <h1 class="blue-text">Alignments</h1>
+        <div data-syntax="html">
+            <div href="#!" class="card-panel grey lighten-2 left-align">Left</div>
+
+            <div href="#!" class="card-panel grey lighten-2 center-align">Center</div>
+
+            <div href="#!" class="card-panel grey lighten-2 right-align">Right</div>
+
+            <div href="#!" class="card-panel grey lighten-2 justified">
+                Here is some Justified Text. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque rem dolores ipsam tenetur natus deserunt soluta earum asperiores magni ab temporibus alias nam veritatis, quo saepe recusandae tempore praesentium suscipit!
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="scrollspy section" data-name="Margin and Padding" id="margin-padding">
+        <h1 class="blue-text">Margin and Padding</h1>
+        <div class="row">
+            <div class="col s12 m6">
+                <table>
+                    <tr>
+                        <th>Class
+                        </th>
+                        <th>Padding Right
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>pr-0</code>
+                        </td>
+                        <td>0 px</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>pr-1</code>
+                        </td>
+                        <td>2 px</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>pr-2</code>
+                        </td>
+                        <td>4 px</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>pr-3</code>
+                        </td>
+                        <td>6 px</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>pr-4</code>
+                        </td>
+                        <td>8 px</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>pr-5</code>
+                        </td>
+                        <td>10 px</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>pr-auto</code>
+                        </td>
+                        <td>auto</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col s12 m6">
+                As you can see there is a difference of 2px between every consecutive class. The format of these classes are:
+                <code>${A}${B}-${C}</code>
+                where:
+                <p>`A` is either
+                    <code>p / m</code>
+                    which are padding and margin respectively.</p>
+                <p>
+                    `B` is either
+                    <code>t / b / l / r</code>
+                    which are top, bottom, left and right respectively. This can be blank if you want the padding valve to be in all dimensions.
+                </p>
+                <p>
+                    `C` can be numbers between 0 to 5 or `auto` depending on the value you need.
+                </p>
+            </div>
+        </div>
+
+        <br>
+        <div class="divider"></div>
+        <br>
+
+        <div class="section scrollspy" id="flex" data-name="Flex">
+            <h1 class="blue-text">Flex</h1>
+            <p>
+                Add class
+                <code>flex</code>
+                to change the display type of the element to flex and then you can use the other classes listed below.
+            </p>
+            <div class="row">
+                <div class="col s12 m6">
+                    <h3>Flex Direction</h3>
+                    <p>
+                        This class manipulates the
+                        <code>flex-direction:</code>
+                        style.
+                    </p>
+                    <p>
+                        It establishes the main-axis, thus defining the direction flex items are placed in the flex container.
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Flex Direction</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>flex-row</code>
+                            </td>
+                            <td>row</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>flex-row-reverse</code>
+                            </td>
+                            <td>row-reverse</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>flex-column</code>
+                            </td>
+                            <td>column</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>flex-column-reverse</code>
+                            </td>
+                            <td>column-reverse</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col s12 m6">
+                    <h3>Flex Wrap</h3>
+                    <p>
+                        This class manipulates the
+                        <code>flex-warp:</code>
+                        style.
+                    </p>
+                    <p>
+                        It defines whether the flex items are forced in a single line or can be flowed into multiple lines. If set to multiple lines, it also defines the cross-axis which determines the direction new lines are stacked in.
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Flex Wrap</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>flex-wrap</code>
+                            </td>
+                            <td>wrap</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>flex-nowrap</code>
+                            </td>
+                            <td>nowrap</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col s12 m6">
+                    <br>
+                    <h3>Align Items</h3>
+                    <p>
+                        This class manipulates the
+                        <code>align-items:</code>
+                        style.
+                    </p>
+                    <p>
+                        The align-items property defines the default behavior for how items are laid out along the cross axis (perpendicular to the main axis).
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Align Items</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-items-center</code>
+                            </td>
+                            <td>center</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-items-start</code>
+                            </td>
+                            <td>flex-start</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-items-end</code>
+                            </td>
+                            <td>flex-end</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-items-stretch</code>
+                            </td>
+                            <td>stretch</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-items-baseline</code>
+                            </td>
+                            <td>baseline</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col s12 m6">
+                    <br>
+                    <h3>Align Self</h3>
+                    <p>
+                        This class manipulates the
+                        <code>align-self:</code>
+                        style.
+                    </p>
+                    <p>
+                        It makes possible to override the
+                        <code>align-items</code>
+                        value for specific flex items.
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Align Self</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-self-center</code>
+                            </td>
+                            <td>center</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-self-start</code>
+                            </td>
+                            <td>flex-start</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-self-send</code>
+                            </td>
+                            <td>flex-end</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-self-stretch</code>
+                            </td>
+                            <td>stretch</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-self-baseline</code>
+                            </td>
+                            <td>baseline</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col s12 m6">
+                    <br>
+                    <h3>Align Content</h3>
+                    <p>
+                        This class manipulates the
+                        <code>align-content:</code>
+                        style.
+                    </p>
+                    <p>
+                        It helps to align a flex container's lines within it when there is extra space in the cross-axis, similar to how
+                        <code>justify-content</code>
+                        aligns individual items within the main-axis.
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Align Content</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-content-center</code>
+                            </td>
+                            <td>center</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-content-start</code>
+                            </td>
+                            <td>flex-start</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-content-end</code>
+                            </td>
+                            <td>flex-end</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-content-stretch</code>
+                            </td>
+                            <td>stretch</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-content-around</code>
+                            </td>
+                            <td>around</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col s12 m6">
+                    <br>
+                    <h3>Justify Content</h3>
+                    <p>
+                        This class manipulates the
+                        <code>justify-content:</code>
+                        style.
+                    </p>
+                    <p>
+                        It defines the alignment along the main axis. It helps distribute extra free space leftover when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size. It also exerts some control over the alignment of items when they overflow the line.
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Justify Content</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>justify-content-center</code>
+                            </td>
+                            <td>center</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>justify-content-start</code>
+                            </td>
+                            <td>flex-start</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>justify-content-end</code>
+                            </td>
+                            <td>flex-end</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>justify-content-between</code>
+                            </td>
+                            <td>space-between</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>justify-content-around</code>
+                            </td>
+                            <td>space-around</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col s12 m6">
+                    <br>
+                    <h3>Order</h3>
+                    <p>
+                        This class manipulates the
+                        <code>order:</code>
+                        style.
+                    </p>
+                    <p>
+                        Flex items are displayed in the same order as they appear in the source document by default. The
+                        <code>order</code>
+                        property can be used to change this ordering.
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Order</th>
+                        </tr>
+                        {% for i in range(1, 13) %}
+                            <tr>
+                                <td>
+                                    <code>order-{{i}}</code>
+                                </td>
+                                <td>{{ i }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="col s12 m6 flex justify-content-center flex-column">
+                    <h4 class="yellow-text">Note:
+                    </h4>
+                    <p>
+                        <code>order-*</code>
+                        class can also be used responsively by adding the screen character before the number. For example to display the item in the 3rd position in tablet devices use:
+                        <code>order-m3</code>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="scrollspy section" id="show-hide" data-name="Showing / Hiding">
+        <h1 class="blue-text">Showing / Hiding content</h1>
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Screen Range</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <code>.hide</code>
+                    </td>
+                    <td>Hidden for all Devices</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.hide-on-small-only</code>
+                    </td>
+                    <td>Hidden for Mobile Only</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.hide-on-med-only</code>
+                    </td>
+                    <td>Hidden for Tablet Only</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.hide-on-med-and-down</code>
+                    </td>
+                    <td>Hidden for Tablet and Below</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.hide-on-med-and-up</code>
+                    </td>
+                    <td>Hidden for Tablet and Above</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.hide-on-large-only</code>
+                    </td>
+                    <td>Hidden for Desktop Only</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.show-on-small</code>
+                    </td>
+                    <td>Show for Mobile Only</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.show-on-medium</code>
+                    </td>
+                    <td>Show for Tablet Only</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.show-on-large</code>
+                    </td>
+                    <td>Show for Desktop Only</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.show-on-medium-and-up</code>
+                    </td>
+                    <td>Show for Tablet and Above</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.show-on-medium-and-down</code>
+                    </td>
+                    <td>Show for Tablet and Below</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.center-on-small-only</code>
+                    </td>
+                    <td>Center text on Mobile Only</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="formatting" data-name="Formatting">
+        <h1 class="blue-text">Formatting</h1>
+        <h3>Truncation</h3>
+        <div class="divider"></div>
+        <div data-syntax="html" class="card-panel">
+            <h4 class="truncate">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias assumenda magni at possimus animi fugit?
+            </h4>
+        </div>
+        <br>
+        <h3>Hoverable</h3>
+        <p>
+            This adds shadow to the element when the user hovers on it.
+        </p>
+        <div data-syntax="html">
+            <div class="p-5 hoverable blue white-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, porro.
+            </div>
+            <br>
+        </div>
+        <br>
+        <h3>Blurred</h3>
+        <div data-syntax="html">
+            <div class="card-panel teal white-text blurred">
+                <h4>Card Title</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet, obcaecati.
+                </p>
+            </div>
+        </div>
+        <br>
+        <h3>Grayscale</h3>
+        <div data-syntax="html">
+            <div class="card-panel teal grayscale">
+                <h4>Card Title</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet, obcaecati.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

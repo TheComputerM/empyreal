@@ -4,6 +4,7 @@
 		transition: opacity 0.4s ease-out;
 		vertical-align: middle;
 		display: inline;
+		width: 100%;
 		&:hover {
 			opacity: 0.8;
 		}
@@ -51,13 +52,18 @@
 		background-color: $lightbox-bg-color;
 	}
 	.lightbox-images {
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		width: 75%;
+		height: 75%;
+		align-items: center;
+		justify-content: center;
 		img {
-			max-width: 75%;
-			max-height: 75%;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
+			height: 100%;
+			position: relative;
 			will-change: transform;
 			cursor: default;
 			user-select: none;
@@ -69,7 +75,7 @@
 	}
 	.left {
 		@extend %controls;
-		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M0 0h24v24H0z' fill=''/><path d='M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z' fill='white' /></svg>");
+		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M0 0h24v24H0z' fill='none'/><path d='M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z' fill='white' /></svg>");
 		left: 0;
 	}
 	.right {

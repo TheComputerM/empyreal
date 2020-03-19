@@ -1,0 +1,58 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Shadow" %}
+
+{% block content %}
+    <div class="section scrollspy" id="introduction" data-name="Introduction">
+        <div class="row white-text center-align" data-syntax="html">
+            <div class="col s12 m2">
+                <div class="p-5 blue z-depth-1">
+                    Depth 1
+                </div>
+            </div>
+            <div class="col s12 m2">
+                <div class="p-5 blue z-depth-1-half">
+                    Depth 1 and 1/2
+                </div>
+            </div>
+            <div class="col s12 m2">
+                <div class="p-5 blue z-depth-2">
+                    Depth 2
+                </div>
+            </div>
+            <div class="col s12 m2">
+                <div class="p-5 blue z-depth-3">
+                    Depth 3
+                </div>
+            </div>
+            <div class="col s12 m2">
+                <div class="p-5 blue z-depth-4">
+                    Depth 4
+                </div>
+            </div>
+            <div class="col s12 m2">
+                <div class="p-5 blue z-depth-5">
+                    Depth 5
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="hoverable" data-name="Hoverable">
+        <div data-syntax="html">
+            <div class="hoverable blue white-text">
+                <div class="container">
+                    <br>
+                    <h4>Card Title</h4>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, libero.</p>
+                    <br>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+{% endblock content %}

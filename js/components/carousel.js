@@ -1,4 +1,5 @@
 import { c } from "./global";
+import EmprealComponent from "../component";
 
 const VERSION = "0.0.1";
 
@@ -6,23 +7,21 @@ const DEFAULTS = {
     indicators: false,
 };
 
-
-export default class Carousel {
+export default class Carousel extends EmprealComponent{
     /**
      * @param {Element} el
      * @param {Object} options
      */
     constructor(el, options) {
+        super(el);
 
         this.settings = { ...DEFAULTS, ...options };
-
-        this.el = el;
         this.$el = c(this.el);
 
         this.$nextBtn = this.$el.find(".carousel-next");
         this.$prevBtn = this.$el.find(".carousel-prev");
 
-        this.$carouselContainer = this.$el.find();
+        this.$carouselContainer = this.$el.find(".carousel-inner");
         this.$carouselItems = this.$carouselContainer.children(".carousel-item");
 
         this.listeners = [];
@@ -45,7 +44,7 @@ export default class Carousel {
     }
 
     _setupIndicators() {
-        let indicatorContainer = c(`<ol class='carousel-indicators'></ol>`);
+        let indicatorContainer = c("<ol class='carousel-indicators'></ol>");
         this.$el.append(indicatorContainer);
         for (let i = 0; i < this.$carouselItems.length; i++) indicatorContainer.append("<li />");
         this.$indicators = indicatorContainer.children("li");

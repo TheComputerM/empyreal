@@ -1,4 +1,5 @@
-import { c } from "./global";
+import { c, E } from "./global";
+import EmpyrealComponent from "../component";
 
 const VERSION = "0.0.1";
 
@@ -8,17 +9,15 @@ const DEFAULTS = {
     stopperElement: "",
 };
 
-const REGISTRY = {};
-
-export default class Pushpin {
+export default class Pushpin extends EmpyrealComponent{
     /**
      * @param {Element} el
      * @param {Object} options
      */
     constructor(el, options) {
+        super(el);
         this.settings = { ...DEFAULTS, ...options };
 
-        this.el = el;
         this.$el = c(this.el);
 
         this.listeners = [];
@@ -45,46 +44,49 @@ export default class Pushpin {
     }
 
     _calculateElementDimensions() {
-        let size = this.$el.size();
-        this.width = size.width;
-        this.height = size.height;
+        this.$el.css({
+            position: "",
+            top: "",
+            left: "",
+            width: "",
+            height: "",
+        });
+        this.initialY = this.$el.offset().top;
+        this.width = this.$el.outerWidth(true);
+        this.height = this.$el.outerHeight(true);
         if (this.settings.stopperElement) {
-            let stopperSize = c(this.settings.stopperElement).size();
-            this.stop = stopperSize.top + window.scrollY - stopperSize.height - 10;
+            let stopperSize = c(this.settings.stopperElement).offset();
+            this.stop = stopperSize.top - this.height;
         }
     }
 
     _handleElementPosition() {
-        let top = this.$el.size().top - this.settings.offset;
-        let windowY = window.scrollY;
-        if (this.settings.stopperElement) {
-            let stopperSize = c(this.settings.stopperElement).size();
-            this.stop = stopperSize.top + window.scrollY - stopperSize.height - 10;
-        }
+        let windowY = E.getDocumentScrollTop();
         if (windowY >= this.stop - this.settings.offset) {
             this.$el.css({
                 position: "absolute",
-                width: this.width,
-                top: this.stop,
+                top: this.stop
+            });
+        } else if (windowY < this.initialY - this.settings.offset) {
+            this.$el.css({
+                position: "",
+                top: "",
+                left: "",
+                width: "",
+                height: "",
             });
         } else {
-            if (top < windowY) {
-                this.$el.css({
-                    position: "fixed",
-                    width: this.width,
-                    top: this.settings.offset,
-                });
-            } else {
-                this.$el.css({
-                    position: "",
-                    width: "",
-                    top: "",
-                });
-            }
+            this.$el.css({
+                position: "fixed",
+                top: this.settings.offset,
+                width: this.width,
+                height: this.height
+            });
         }
     }
 
     _setupEventHandlers() {
+        window.addEventListener("DOMContentLoaded", this._calculateElementDimensions.bind(this));
         window.addEventListener(
             "scroll",
             (this.listeners[0] = this._handleElementPosition.bind(this))

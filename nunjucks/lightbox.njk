@@ -1,0 +1,27 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Lightbox" %}
+
+{% block content %}
+    <br><br><br>
+    <div class="scrollspy section" data-name="Introduction" id="introduction">
+        <div data-syntax="html">
+            <div class="lightbox">
+                <div class="row no-pad">
+                    <div class="col s12 m4"><img src="https://picsum.photos/300/200?random=1"></div>
+                    <div class="col s12 m4"><img src="https://picsum.photos/300/200?random=2"></div>
+                    <div class="col s12 m4"><img src="https://picsum.photos/300/200?random=3"></div>
+                    <div class="col s12 m4"><img src="https://picsum.photos/300/200?random=4"></div>
+                    <div class="col s12 m4"><img src="https://picsum.photos/300/200?random=5"></div>
+                    <div class="col s12 m4"><img src="https://picsum.photos/300/200?random=6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        var lightbox = new empy.Lightbox(".lightbox", {});
+    </script>
+{% endblock %}

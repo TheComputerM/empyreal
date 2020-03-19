@@ -24,6 +24,13 @@
 	justify-content: flex-start;
 	padding-left: $row-border-padding;
 	padding-right: $row-border-padding;
+	&.no-pad {
+		padding-left: 0;
+		padding-right: 0;
+		.col {
+			padding: 0;
+		}
+	}
 }
 
 .col {
@@ -32,6 +39,7 @@
 	@for $i from 1 through $num-cols {
 		&.s#{$i} {
 			flex-basis: (100%/$num-cols)*$i;
+			width: (100%/$num-cols)*$i;
 		}
 		&.offset-s#{$i} {
 			margin-left: (100%/$num-cols)*$i;
@@ -41,6 +49,7 @@
 		@for $i from 1 through $num-cols {
 			&.m#{$i} {
 				flex-basis: (100%/$num-cols)*$i;
+				width: (100%/$num-cols)*$i;
 			}
 			&.offset-m#{$i} {
 				margin-left: (100%/$num-cols)*$i;
@@ -51,6 +60,7 @@
 		@for $i from 1 through $num-cols {
 			&.l#{$i} {
 				flex-basis: (100%/$num-cols)*$i;
+				width: (100%/$num-cols)*$i;
 			}
 			&.offset-l#{$i} {
 				margin-left: (100%/$num-cols)*$i;
@@ -61,6 +71,7 @@
 		@for $i from 1 through $num-cols {
 			&.xl#{$i} {
 				flex-basis: (100%/$num-cols)*$i;
+				width: (100%/$num-cols)*$i;
 			}
 			&.offset-xl#{$i} {
 				margin-left: (100%/$num-cols)*$i;

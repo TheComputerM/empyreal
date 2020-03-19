@@ -1,0 +1,239 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Grid" %}
+
+{% block content %}
+    <div class="section scrollspy" id="container" data-name="Container">
+        <div class="blue white-text p-5">
+            <br>
+            <h4>
+                This is
+                <span class="badge red">NOT</span>
+                a Container
+            </h4>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi aliquam placeat ipsum atque voluptatibus delectus natus explicabo! Voluptatem, soluta. Ea?
+            </p>
+            <br>
+        </div>
+        <br>
+        <div class="container blue white-text p-5">
+            <br>
+            <h4>This is a Container</h4>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dignissimos error placeat. Veniam eaque ratione exercitationem officia consequatur facilis laborum?
+            </p>
+            <br>
+        </div>
+        <br>
+        <code class="prism-html">
+            <!-- This is a container -->
+            <div class="container">
+                <!-- Content goes here -->
+            </div>
+        </code>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="grid-system" data-name="Grid System">
+        <h1 class="blue-text">Grid System</h1>
+        <div class="row">
+            <div class="col s1">
+                <div class="card-panel">1</div>
+            </div>
+            <div class="col s1">
+                <div class="card-panel">2</div>
+            </div>
+            <div class="col s1">
+                <div class="card-panel">3</div>
+            </div>
+            <div class="col s1">
+                <div class="card-panel">4</div>
+            </div>
+            <div class="col s1">
+                <div class="card-panel">5</div>
+            </div>
+            <div class="col s1">
+                <div class="card-panel">6</div>
+            </div>
+            <div class="col s1">
+                <div class="card-panel">7</div>
+            </div>
+            <div class="col s1">
+                <div class="card-panel">8</div>
+            </div>
+            <div class="col s1">
+                <div class="card-panel">9</div>
+            </div>
+            <div class="col s1">
+                <div class="card-panel">10</div>
+            </div>
+            <div class="col s1">
+                <div class="card-panel">11</div>
+            </div>
+            <div class="col s1">
+                <div class="card-panel">12</div>
+            </div>
+        </div>
+        <br>
+        <code class="prism-html">
+            <div class="row">
+                <div class="col s1">1</div>
+                <div class="col s1">2</div>
+                <div class="col s1">3</div>
+                <div class="col s1">4</div>
+                <div class="col s1">5</div>
+                <div class="col s1">6</div>
+                <div class="col s1">7</div>
+                <div class="col s1">8</div>
+                <div class="col s1">9</div>
+                <div class="col s1">10</div>
+                <div class="col s1">11</div>
+                <div class="col s1">12</div>
+            </div>
+        </code>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="responsive" data-name="Screen Sizes">
+        <h1 class="blue-text">Screen Sizes</h1>
+        <table>
+            <tr>
+                <th>Screen</th>
+                <th>Screen Width</th>
+                <th>Class Prefix</th>
+            </tr>
+            <tr>
+                <td>Mobile Devices</td>
+                <td><= 600px</td>
+                <td><code>s</code></td>
+            </tr>
+            <tr>
+                <td>Mobile Devices</td>
+                <td>> 600px</td>
+                <td><code>m</code></td>
+            </tr>
+            <tr>
+                <td>Desktop Devices</td>
+                <td>> 992px</td>
+                <td><code>l</code></td>
+            </tr>
+            <tr>
+                <td>Extra Large Devices</td>
+                <td>> 1200px</td>
+                <td><code>xl</code></td>
+            </tr>
+        </table>
+    </div>
+    
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="offset" data-name="Offsets">
+        <h1 class="blue-text">Offsets</h1>
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel center-align indigo white-text">Full Width</div>
+            </div>
+            <div class="col s6 offset-s6">
+                <div class="card-panel indigo white-text">Offset by 6 columns</div>
+            </div>
+        </div>
+        <code class="prism-html">
+            <div class="row">
+                <div class="col s12">Full Width</div>
+                <!-- Below is the column with the offset -->
+                <div class="col s12 offset-s6">Offset by 6 columns</div>
+            </div>
+        </code>
+        <p>
+            Like columns, offsets also range from 1 to 12 and they are also responsive, so to add an offset of 3 columns in tablet screens and above use
+            <code>offset-m3</code>. Offsets will always be applied from the left.
+        </p>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="order" data-name="Order">
+        <h1 class="blue-text">Order</h1>
+        <p>
+            As the grid system is based on FlexBox, you can arrange the grid items using the
+            <code>order-*</code>
+            class.
+        </p>
+        <div class="row">
+            <div class="col s6 order-2">
+                <div class="card-panel indigo white-text">
+                    I am the first child but am second in order.
+                </div>
+            </div>
+            <div class="col s6">
+                <div class="card-panel indigo white-text">
+                    I am the second child but am first in order.
+                </div>
+            </div>
+        </div>
+        <br>
+        <code class="prism-html">
+            <div class="row">
+                <div class="col s6 order-2">I am the first child but am second in order.</div>
+                <div class="col s6">I am the second child but am first in order.</div>
+            </div>
+        </code>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="layout" data-name="Creating Layouts">
+        <h1 class="blue-text">Creating a Layout</h1>
+        <div class="row center-align white-text">
+            <div class="col s12">
+                <div class="card-panel pink">col s12</div>
+            </div>
+            <div class="col s12 m4 l2">
+                <div class="card-panel red">col s12 m4 l2</div>
+            </div>
+            <div class="col s12 m4 l8">
+                <div class="card-panel red">col s12 m4 l8</div>
+            </div>
+            <div class="col s12 m4 l2">
+                <div class="card-panel red">col s12 m4 l2</div>
+            </div>
+            <div class="col s6 l3">
+                <div class="card-panel indigo">col s6 l3</div>
+            </div>
+            <div class="col s6 l3">
+                <div class="card-panel indigo">col s6 l3</div>
+            </div>
+            <div class="col s6 l3">
+                <div class="card-panel indigo">col s6 l3</div>
+            </div>
+            <div class="col s6 l3">
+                <div class="card-panel indigo">col s6 l3</div>
+            </div>
+        </div>
+        <code class="prism-html">
+            <div class="row">
+                <div class="col s12">col s12</div>
+                <div class="col s12 m4 l2">col s12 m4 l2</div>
+                <div class="col s12 m4 l8">col s12 m4 l8</div>
+                <div class="col s12 m4 l2">col s12 m4 l2</div>
+                <div class="col s6 l3">col s6 l3</div>
+                <div class="col s6 l3">col s6 l3</div>
+                <div class="col s6 l3">col s6 l3</div>
+                <div class="col s6 l3">col s6 l3</div>
+            </div>
+        </code>
+    </div>
+{% endblock content %}

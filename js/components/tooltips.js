@@ -6,12 +6,12 @@ const DEFAULTS = {
     position: "top",
     clickTrigger: false,
     offset: 10,
-    animInDuration: 300,
+    animInDuration: 200,
     animOutDuration: 300
 };
 
 const REGISTRY = {
-    animInEasing: "easeOutCubic",
+    animInEasing: "easeInQuad",
     animOutEasing: "easeOutCubic",
 };
 
@@ -40,7 +40,7 @@ export default class Tooltip {
     }
 
     static get defaults() {
-        return DEFAULTS
+        return DEFAULTS;
     }
 
     _init() {

@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="shortcut icon" href="./dist/img/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="./dist/css/empyreal.min.css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prism-theme-one-dark@1.0.0/prism-onedark.css" rel="stylesheet">
+        <link rel="stylesheet" href="./dist/css/main.css">
+        <title>
+            Helpers | Empyreal Framework
+        </title>
+        
+    </head>
+    <body>
+        <div class="navbar-wrapper fixed deep-purple accent-3">
+    <a href="#main-sidenav" class="white-text sidenav-trigger" style="padding-right: 10px;">
+        <i class="material-icons" style="vertical-align: middle;">menu</i>
+    </a>
+    <a href="/index.html" class="brand-name">Empyreal</a>
+    <div class="navbar">
+        <ul class="navbar-right">
+            <li class="nav-item">
+                <a href="https://github.com/TheComputerM/empyreal">
+                    <img src="dist/img/github.svg" alt="github" style="width:24px;vertical-align:middle"/>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="https://github.com/TheComputerM/empyreal/stargazers">
+                    <img src="dist/img/star.svg" alt="github" style="width:24px;vertical-align:middle"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="sidenav" id="main-sidenav">
+    <ul class="nav-items">
+        <li class="nav-item justify-content-center waves-effect">
+            Empyreal
+        </li>
+        <div class="text-field m-5">
+            <input type="text" id="components-search" class="autocomplete">
+            <label for="#components-search">Search</label>
+        </div>
+        <a href="index.html" class="nav-item black-text">Home</a>
+        <a href="get_started.html" class="nav-item black-text">Get Started</a>
+    </ul>
+    <ul class="collapsible" id="main-collapsible" style="box-shadow:none">
+        <li>
+            <div class="collapsible-header">
+                Utilities
+            </div>
+            <div class="collapsible-body">
+                <ul class="nav flex-column">
+                    
+                        
+                            <a class="nav-item" href="navbar.html">Navbar</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="buttons.html">Buttons</a>
+                        
+                    
+                        
+                            <a class="nav-item active" href="helpers.html">Helpers</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="shadow.html">Shadow</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="grid.html">Grid</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="table.html">Table</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="color.html">Color</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="animations.html">Animations</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="smoothscroll.html">SmoothScroll</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="progress.html">Progress</a>
+                        
+                    
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header">
+                Content
+            </div>
+            <div class="collapsible-body">
+                <ul class="nav flex-column">
+                    
+                        
+                            <a class="nav-item" href="typography.html">Typography</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="icons.html">Icons</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="images.html">Images</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="lists.html">Lists</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="masks.html">Masks</a>
+                        
+                    
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header">
+                Components
+            </div>
+            <div class="collapsible-body">
+                <ul class="nav flex-column">
+                    
+                        
+                            <a class="nav-item" href="modal.html">Modal</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="tabs.html">Tabs</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="dropdown.html">Dropdown</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="cards.html">Cards</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="sidenav.html">Sidenav</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="collapsible.html">Collapsible</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="tooltips.html">Tooltips</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="carousel.html">Carousel</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="pushpin.html">Pushpin</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="scrollspy.html">ScrollSpy</a>
+                        
+                    
+                        
+                            <a class="nav-item" href="lightbox.html">Lightbox</a>
+                        
+                    
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header">
+                Forms
+            </div>
+            <div class="collapsible-body">
+                <ul class="nav flex-column">
+                    
+                        
+                            <a class="nav-item" href="text_inputs.html">
+                                Text Inputs
+                            </a>
+                        
+                    
+                        
+                            <a class="nav-item" href="select.html">
+                                Select
+                            </a>
+                        
+                    
+                        
+                            <a class="nav-item" href="radio_buttons.html">
+                                Radio Buttons
+                            </a>
+                        
+                    
+                        
+                            <a class="nav-item" href="checkboxes.html">
+                                Checkboxes
+                            </a>
+                        
+                    
+                        
+                            <a class="nav-item" href="chips.html">
+                                Chips
+                            </a>
+                        
+                    
+                        
+                            <a class="nav-item" href="pickers.html">
+                                Pickers
+                            </a>
+                        
+                    
+                        
+                            <a class="nav-item" href="autocomplete.html">
+                                Autocomplete
+                            </a>
+                        
+                    
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
+        <div class="row">
+            <div class="col s12 m10">
+                <br><br><br>
+                <h1 class="blue-text display-h1">Helpers</h1>
+                <div class="divider"></div>
+                <br>
+                
+    <p>
+        These are a collection of classes to make your life easier by transforming common css styles into easy to remember classes.
+    </p>
+    <div class="scrollspy section" data-name="Alignments" id="alignment">
+        <h1 class="blue-text">Alignments</h1>
+        <div data-syntax="html">
+            <div href="#!" class="card-panel grey lighten-2 left-align">Left</div>
+
+            <div href="#!" class="card-panel grey lighten-2 center-align">Center</div>
+
+            <div href="#!" class="card-panel grey lighten-2 right-align">Right</div>
+
+            <div href="#!" class="card-panel grey lighten-2 justified">
+                Here is some Justified Text. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque rem dolores ipsam tenetur natus deserunt soluta earum asperiores magni ab temporibus alias nam veritatis, quo saepe recusandae tempore praesentium suscipit!
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="scrollspy section" data-name="Margin and Padding" id="margin-padding">
+        <h1 class="blue-text">Margin and Padding</h1>
+        <div class="row">
+            <div class="col s12 m6">
+                <table>
+                    <tr>
+                        <th>Class
+                        </th>
+                        <th>Padding Right
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>pr-0</code>
+                        </td>
+                        <td>0 px</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>pr-1</code>
+                        </td>
+                        <td>2 px</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>pr-2</code>
+                        </td>
+                        <td>4 px</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>pr-3</code>
+                        </td>
+                        <td>6 px</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>pr-4</code>
+                        </td>
+                        <td>8 px</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>pr-5</code>
+                        </td>
+                        <td>10 px</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>pr-auto</code>
+                        </td>
+                        <td>auto</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col s12 m6">
+                As you can see there is a difference of 2px between every consecutive class. The format of these classes are:
+                <code>${A}${B}-${C}</code>
+                where:
+                <p>`A` is either
+                    <code>p / m</code>
+                    which are padding and margin respectively.</p>
+                <p>
+                    `B` is either
+                    <code>t / b / l / r</code>
+                    which are top, bottom, left and right respectively. This can be blank if you want the padding valve to be in all dimensions.
+                </p>
+                <p>
+                    `C` can be numbers between 0 to 5 or `auto` depending on the value you need.
+                </p>
+            </div>
+        </div>
+
+        <br>
+        <div class="divider"></div>
+        <br>
+
+        <div class="section scrollspy" id="flex" data-name="Flex">
+            <h1 class="blue-text">Flex</h1>
+            <p>
+                Add class
+                <code>flex</code>
+                to change the display type of the element to flex and then you can use the other classes listed below.
+            </p>
+            <div class="row">
+                <div class="col s12 m6">
+                    <h3>Flex Direction</h3>
+                    <p>
+                        This class manipulates the
+                        <code>flex-direction:</code>
+                        style.
+                    </p>
+                    <p>
+                        It establishes the main-axis, thus defining the direction flex items are placed in the flex container.
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Flex Direction</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>flex-row</code>
+                            </td>
+                            <td>row</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>flex-row-reverse</code>
+                            </td>
+                            <td>row-reverse</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>flex-column</code>
+                            </td>
+                            <td>column</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>flex-column-reverse</code>
+                            </td>
+                            <td>column-reverse</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col s12 m6">
+                    <h3>Flex Wrap</h3>
+                    <p>
+                        This class manipulates the
+                        <code>flex-warp:</code>
+                        style.
+                    </p>
+                    <p>
+                        It defines whether the flex items are forced in a single line or can be flowed into multiple lines. If set to multiple lines, it also defines the cross-axis which determines the direction new lines are stacked in.
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Flex Wrap</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>flex-wrap</code>
+                            </td>
+                            <td>wrap</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>flex-nowrap</code>
+                            </td>
+                            <td>nowrap</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col s12 m6">
+                    <br>
+                    <h3>Align Items</h3>
+                    <p>
+                        This class manipulates the
+                        <code>align-items:</code>
+                        style.
+                    </p>
+                    <p>
+                        The align-items property defines the default behavior for how items are laid out along the cross axis (perpendicular to the main axis).
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Align Items</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-items-center</code>
+                            </td>
+                            <td>center</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-items-start</code>
+                            </td>
+                            <td>flex-start</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-items-end</code>
+                            </td>
+                            <td>flex-end</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-items-stretch</code>
+                            </td>
+                            <td>stretch</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-items-baseline</code>
+                            </td>
+                            <td>baseline</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col s12 m6">
+                    <br>
+                    <h3>Align Self</h3>
+                    <p>
+                        This class manipulates the
+                        <code>align-self:</code>
+                        style.
+                    </p>
+                    <p>
+                        It makes possible to override the
+                        <code>align-items</code>
+                        value for specific flex items.
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Align Self</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-self-center</code>
+                            </td>
+                            <td>center</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-self-start</code>
+                            </td>
+                            <td>flex-start</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-self-send</code>
+                            </td>
+                            <td>flex-end</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-self-stretch</code>
+                            </td>
+                            <td>stretch</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-self-baseline</code>
+                            </td>
+                            <td>baseline</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col s12 m6">
+                    <br>
+                    <h3>Align Content</h3>
+                    <p>
+                        This class manipulates the
+                        <code>align-content:</code>
+                        style.
+                    </p>
+                    <p>
+                        It helps to align a flex container's lines within it when there is extra space in the cross-axis, similar to how
+                        <code>justify-content</code>
+                        aligns individual items within the main-axis.
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Align Content</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-content-center</code>
+                            </td>
+                            <td>center</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-content-start</code>
+                            </td>
+                            <td>flex-start</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-content-end</code>
+                            </td>
+                            <td>flex-end</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-content-stretch</code>
+                            </td>
+                            <td>stretch</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>align-content-around</code>
+                            </td>
+                            <td>around</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col s12 m6">
+                    <br>
+                    <h3>Justify Content</h3>
+                    <p>
+                        This class manipulates the
+                        <code>justify-content:</code>
+                        style.
+                    </p>
+                    <p>
+                        It defines the alignment along the main axis. It helps distribute extra free space leftover when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size. It also exerts some control over the alignment of items when they overflow the line.
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Justify Content</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>justify-content-center</code>
+                            </td>
+                            <td>center</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>justify-content-start</code>
+                            </td>
+                            <td>flex-start</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>justify-content-end</code>
+                            </td>
+                            <td>flex-end</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>justify-content-between</code>
+                            </td>
+                            <td>space-between</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>justify-content-around</code>
+                            </td>
+                            <td>space-around</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col s12 m6">
+                    <br>
+                    <h3>Order</h3>
+                    <p>
+                        This class manipulates the
+                        <code>order:</code>
+                        style.
+                    </p>
+                    <p>
+                        Flex items are displayed in the same order as they appear in the source document by default. The
+                        <code>order</code>
+                        property can be used to change this ordering.
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Class</th>
+                            <th>Order</th>
+                        </tr>
+                        
+                            <tr>
+                                <td>
+                                    <code>order-1</code>
+                                </td>
+                                <td>1</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    <code>order-2</code>
+                                </td>
+                                <td>2</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    <code>order-3</code>
+                                </td>
+                                <td>3</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    <code>order-4</code>
+                                </td>
+                                <td>4</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    <code>order-5</code>
+                                </td>
+                                <td>5</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    <code>order-6</code>
+                                </td>
+                                <td>6</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    <code>order-7</code>
+                                </td>
+                                <td>7</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    <code>order-8</code>
+                                </td>
+                                <td>8</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    <code>order-9</code>
+                                </td>
+                                <td>9</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    <code>order-10</code>
+                                </td>
+                                <td>10</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    <code>order-11</code>
+                                </td>
+                                <td>11</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    <code>order-12</code>
+                                </td>
+                                <td>12</td>
+                            </tr>
+                        
+                    </table>
+                </div>
+                <div class="col s12 m6 flex justify-content-center flex-column">
+                    <h4 class="yellow-text">Note:
+                    </h4>
+                    <p>
+                        <code>order-*</code>
+                        class can also be used responsively by adding the screen character before the number. For example to display the item in the 3rd position in tablet devices use:
+                        <code>order-m3</code>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="scrollspy section" id="show-hide" data-name="Showing / Hiding">
+        <h1 class="blue-text">Showing / Hiding content</h1>
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Screen Range</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <code>.hide</code>
+                    </td>
+                    <td>Hidden for all Devices</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.hide-on-small-only</code>
+                    </td>
+                    <td>Hidden for Mobile Only</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.hide-on-med-only</code>
+                    </td>
+                    <td>Hidden for Tablet Only</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.hide-on-med-and-down</code>
+                    </td>
+                    <td>Hidden for Tablet and Below</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.hide-on-med-and-up</code>
+                    </td>
+                    <td>Hidden for Tablet and Above</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.hide-on-large-only</code>
+                    </td>
+                    <td>Hidden for Desktop Only</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.show-on-small</code>
+                    </td>
+                    <td>Show for Mobile Only</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.show-on-medium</code>
+                    </td>
+                    <td>Show for Tablet Only</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.show-on-large</code>
+                    </td>
+                    <td>Show for Desktop Only</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.show-on-medium-and-up</code>
+                    </td>
+                    <td>Show for Tablet and Above</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.show-on-medium-and-down</code>
+                    </td>
+                    <td>Show for Tablet and Below</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>.center-on-small-only</code>
+                    </td>
+                    <td>Center text on Mobile Only</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="formatting" data-name="Formatting">
+        <h1 class="blue-text">Formatting</h1>
+        <h3>Truncation</h3>
+        <div class="divider"></div>
+        <div data-syntax="html" class="card-panel">
+            <h4 class="truncate">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias assumenda magni at possimus animi fugit?
+            </h4>
+        </div>
+        <br>
+        <h3>Hoverable</h3>
+        <p>
+            This adds shadow to the element when the user hovers on it.
+        </p>
+        <div data-syntax="html">
+            <div class="p-5 hoverable blue white-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, porro.
+            </div>
+            <br>
+        </div>
+        <br>
+        <h3>Blurred</h3>
+        <div data-syntax="html">
+            <div class="card-panel teal white-text blurred">
+                <h4>Card Title</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet, obcaecati.
+                </p>
+            </div>
+        </div>
+        <br>
+        <h3>Grayscale</h3>
+        <div data-syntax="html">
+            <div class="card-panel teal grayscale">
+                <h4>Card Title</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet, obcaecati.
+                </p>
+            </div>
+        </div>
+    </div>
+
+            </div>
+            <div class="col hide-on-small-and-down m2">
+                <br><br><br><br>
+                <ul class="flex-column table-of-contents navigator">
+    
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+</footer>
+
+        <script src="./dist/js/empyreal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/prism.min.js" data-manual="data-manual"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+        <script src="./dist/js/main.js"></script>
+        
+    </body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Tooltips" %}
+
+{% block content %}
+    <div class="section scrollspy" data-name="Introduction" id="introduction">
+        <div data-syntax="html" class="center-align flex align-content-center justify-content-around">
+            <!-- You can also specify position in js initialisation -->
+            <a class="btn blue tooltip-trigger" data-tooltip="I am tooltip" data-position="top">Top</a>
+            <a class="btn blue tooltip-trigger" data-tooltip="I am tooltip" data-position="bottom">Bottom</a>
+            <a class="btn blue tooltip-trigger" data-tooltip="I am tooltip" data-position="left">Left</a>
+            <a class="btn blue tooltip-trigger" data-tooltip="I am tooltip" data-position="right">Right</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        var tooltip = empy.activate(".tooltip-trigger", empy.Tooltip);
+    </script>
+{% endblock %}

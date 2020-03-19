@@ -1,0 +1,32 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Radio Buttons" %}
+
+{% block content %}
+    <div class="section scrollspy" id="introduction" data-name="Introduction">
+        <div data-syntax="html">
+            <div class="radio-field">
+                <label>
+                    <input name="group1" type="radio"/>
+                    <span>Red</span>
+                </label>
+            </div>
+            <div class="radio-field">
+                <label>
+                    <input name="group1" type="radio"/>
+                    <span>Blue</span>
+                </label>
+            </div>
+            <div class="radio-field">
+                <label>
+                    <input name="group1" type="radio" disabled/>
+                    <span>Green</span>
+                </label>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block script %}
+    <script></script>
+{% endblock script %}

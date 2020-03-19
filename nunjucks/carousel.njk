@@ -1,0 +1,34 @@
+{% extends "./partials/base.html" %}
+{% set title = "Carousel" %}
+
+{% block content %}
+    <div class="section scrollspy" data-name="Introduction" id="introduction">
+        <div class="carousel" data-syntax="html">
+            <div class="carousel-controls">
+                <div class="carousel-prev">
+                    <i class="material-icons">navigate_before</i>
+                </div>
+                <div class="carousel-next">
+                    <i class="material-icons">navigate_next</i>
+                </div>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item">
+                    <img src="./dist/img/sample-1.jpg" alt="Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="./dist/img/sample-2.jpg" alt="Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="./dist/img/sample-3.jpg" alt="Image 3">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        let carousel = new empy.Carousel(document.querySelector(".carousel"), {});
+    </script>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "./partials/base.html" %}
+
+{% set title = "Dropdown" %}
+
+{% block content %}
+    <div class="section scrollspy" id="introduction" data-name="Introduction">
+        <div data-syntax="html">
+            <!-- Dropdown -->
+            <ul class="dropdown" id="dropdown1">
+                <li class="dropdown-item">
+                    <a href="#!">Item 1</a>
+                </li>
+                <li class="dropdown-item">
+                    <a href="#!">Item 2</a>
+                </li>
+                <li class="dropdown-item">
+                    <a href="#!">Item 3</a>
+                </li>
+                <li class="divider"></li>
+                <li class="dropdown-item">
+                    <a href="#!">Item 4</a>
+                </li>
+            </ul>
+
+            <!-- Trigger -->
+            <a href="#dropdown1" class="btn dropdown-trigger">Dropdown</a>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block script %}
+    <script>
+        var dropdown = new empy.Dropdown("#dropdown1", {});
+    </script>
+{% endblock script %}

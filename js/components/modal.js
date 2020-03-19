@@ -1,15 +1,20 @@
 import { c, E, anime } from "./global";
+import EmpyrealComponent from "../component";
 
 const VERSION = "0.0.1";
 
 const DEFAULTS = {
-    animInDuration: 500,
-    animOutDuration: 500,
     topOffset: "10%",
     overlayColor: "rgba(0, 0, 0, 0.5)",
-    blur: true,
+    blur: false,
     dismissable: true,
     windowScroll: true,
+    animInDuration: 500,
+    animOutDuration: 500,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null,
 };
 
 const REGISTRY = {
@@ -22,15 +27,11 @@ const REGISTRY = {
 
 };
 
-export default class Modal {
-    /**
-     * @param {Element} el
-     * @param {Object} options
-     */
+export default class Modal extends EmpyrealComponent {
     constructor(el, options) {
-        this.settings = { ...DEFAULTS, ...options };
+        super(el, options);
 
-        this.el = el;
+        this.settings = { ...DEFAULTS, ...options };
         this.$el = c(this.el);
 
         this.$dialog = this.$el.find(".modal-dialog");
@@ -81,14 +82,14 @@ export default class Modal {
             "backgroundColor": this.settings.overlayColor
         });
 
-    
-        if (!(this.isModalSize || this.isModalSheet))
+
+        if (!(this.isModalSide || this.isModalSheet))
             this.dialog.style.top = this.settings.topOffset;
 
         this._setupEventHandlers();
     }
 
-    _handleModalOpen() {
+    _handleModalOpen(e) {
         if (this.settings.blur) c(document.body).children().not(".modal").addClass("blurred");
         anime({
             targets: this.el,
@@ -99,20 +100,19 @@ export default class Modal {
                 this.isAnimationDone = false;
                 this.isOpen = true;
                 this.el.style.display = "block";
+                if (typeof this.settings.onOpenStart === 'function') {
+                    this.settings.onOpenStart.call(this, this.el, e.target)
+                }
             },
             complete: () => {
                 this.isAnimationDone = true;
+                if (typeof this.settings.onOpenEnd === 'function') {
+                    this.settings.onOpenEnd.call(this, this.el, e.target)
+                }
             },
         });
 
-        if (this.isModalSheet || this.isModalSide) {
-            anime({
-                targets: this.dialog,
-                opacity: [0, 1],
-                easing: REGISTRY.modalDialogSlideOutEasing,
-                duration: this.settings.animInDuration,
-            });
-        } else {
+        if (!this.isModalSheet && !this.isModalSide) {
             // Modal dialog slide in down
             anime({
                 targets: this.dialog,
@@ -125,7 +125,7 @@ export default class Modal {
         if (!this.settings.windowScroll) document.body.style.overflow = "hidden";
     }
 
-    _handleModalClose() {
+    _handleModalClose(e) {
         if (this.settings.blur) c(document.body).children().not(".modal").removeClass("blurred");
         anime({
             targets: this.el,
@@ -135,21 +135,20 @@ export default class Modal {
             begin: () => {
                 this.isAnimationDone = false;
                 this.isOpen = false;
+                if (typeof this.settings.onCloseStart === 'function') {
+                    this.settings.onCloseStart.call(this, this.el, e.target)
+                }
             },
             complete: () => {
                 this.isAnimationDone = true;
                 this.el.style.display = "none";
+                if (typeof this.settings.onCloseEnd === 'function') {
+                    this.settings.onCloseEnd.call(this, this.el, e.target)
+                }
             },
         });
 
-        if (this.isModalSheet || this.isModalSide) {
-            anime({
-                targets: this.dialog,
-                bottom: [1, 0],
-                easing: REGISTRY.modalDialogSlideOutEasing,
-                duration: this.settings.animInDuration,
-            });
-        } else {
+        if (!this.isModalSide && !this.isModalSheet) {
             // Modal dialog slide out up
             anime({
                 targets: this.dialog,
@@ -177,12 +176,8 @@ export default class Modal {
     }
 
     _setupEventHandlers() {
-        this.$trigger.on("click touchstart", () => {
-            this._handleModalOpen();
-        });
-        this.$closeModalBtn.on("click touchstart", () => {
-            this._handleModalClose();
-        });
+        this.$trigger.on("click touchstart", this._handleModalOpen.bind(this));
+        this.$closeModalBtn.on("click touchstart", this._handleModalClose.bind(this));
         document.addEventListener(
             "click",
             (this.listeners[0] = this._handleOverlayClick.bind(this))
@@ -195,7 +190,6 @@ export default class Modal {
             "keydown",
             (this.listeners[2] = this._handleKeyDown.bind(this))
         );
-        window.addEventListener("resize", (this.listeners[3] = this._handleModalClose.bind(this)));
     }
 
     _removeEventHandlers() {
@@ -204,7 +198,6 @@ export default class Modal {
         document.removeEventListener("click", this.listeners[0]);
         document.removeEventListener("touchstart", this.listeners[1]);
         document.removeEventListener("keydown", this.listeners[2]);
-        window.removeEventListener("resize", this.listeners[3]);
     }
 
     open() {
