@@ -59,7 +59,9 @@ export default class Autocomplete extends EmpyrealComponent {
         let input = this.$el.val().toLowerCase();
         let allInvisible = true;
         if (e.keyCode == E.keys.ENTER) {
-            this.$list.children().is(":visible").first().trigger("click");
+            this.$list.children().filter((i, item) => {
+                if (item.style.display != "none") return true;
+            }).first().trigger("click");
         } else {
             for (let item of this.$list.children()) {
                 let $item = c(item);

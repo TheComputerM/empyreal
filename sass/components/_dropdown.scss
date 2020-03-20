@@ -1,6 +1,6 @@
 // Dropdown
 .dropdown {
-	@extend .z-depth-1-half;
+	@extend .z-depth-2;
 	position: absolute;
 	overflow-y: auto;
 	min-width: $dropdown-min-width;
@@ -35,21 +35,20 @@
 			color: $disabled-color;
 			cursor: default;
 			a {
-				color: $disabled-color;
 				cursor: default;
 			}
 		}
 		&:hover:not(.disabled) {
-			background-color: $dropdown-hover-item-color;
+			background-color: $dropdown-hover-item-bg-color;
 		}
-		&:focus:not(.disabled) {
-			outline: none;
-			background-color: $dropdown-hover-item-color;
+		&:focus:not(.disabled), &.focused:not(.disabled) {
+			background-color: $dropdown-focus-item-bg-color;
+			color: $primary-color;
 		}
 		a {
 			text-decoration: none;
 			cursor: pointer;
-			color: $dropdown-item-color;
+			color: inherit;
 			display: block;
 		}
 	}

@@ -4625,6 +4625,8 @@ var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Dropdown).call(this, el));
     _this.settings = _objectSpread2({}, DEFAULTS$2, {}, options);
     _this.$el = cash_min(_this.el);
+    _this.$items = _this.$el.children(".dropdown-item");
+    _this.focusedIndex = -1;
     _this.id = _this.$el.attr("id");
     _this.trigger = E.getTrigger({
       a: {
@@ -4668,8 +4670,8 @@ var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
       this._setupEventHandlers();
     }
   }, {
-    key: "_positionDropdownDialog",
-    value: function _positionDropdownDialog() {
+    key: "positionDropdown",
+    value: function positionDropdown() {
       if (this.isOpen) {
         var triggerDimensions = this.$trigger.size();
         var dropdownDimensions = this.initialDropdownDimensions;
@@ -4695,26 +4697,25 @@ var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
     value: function _handleDropdownOpen(e) {
       var _this2 = this;
 
+      this.focusedIndex = -1;
       this.isOpen = true;
       this.isAnimationDone = false;
       this.$el.css("display", "block");
-
-      this._positionDropdownDialog();
-
+      this.positionDropdown();
       anime({
         targets: this.el,
         opacity: [0, 1],
         duration: this.settings.animInDuration,
         easing: REGISTRY$1.animInEasing,
         begin: function begin() {
-          if (typeof _this2.settings.onOpenStart === 'function') {
+          if (typeof _this2.settings.onOpenStart === "function") {
             _this2.settings.onOpenStart.call(_this2, _this2.el, e.target);
           }
         },
         complete: function complete() {
           _this2.isAnimationDone = true;
 
-          if (typeof _this2.settings.onOpenEnd === 'function') {
+          if (typeof _this2.settings.onOpenEnd === "function") {
             _this2.settings.onOpenEnd.call(_this2, _this2.el, e.target);
           }
         }
@@ -4733,7 +4734,7 @@ var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
         duration: this.settings.animOutDuration,
         easing: REGISTRY$1.animOutEasing,
         begin: function begin() {
-          if (typeof _this3.settings.onCloseStart === 'function') {
+          if (typeof _this3.settings.onCloseStart === "function") {
             _this3.settings.onCloseStart.call(_this3, _this3.el, e.target);
           }
         },
@@ -4742,7 +4743,7 @@ var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
 
           _this3.$el.css("display", "none");
 
-          if (typeof _this3.settings.onCloseEnd === 'function') {
+          if (typeof _this3.settings.onCloseEnd === "function") {
             _this3.settings.onCloseEnd.call(_this3, _this3.el, e.target);
           }
         }
@@ -4758,26 +4759,55 @@ var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
       }
     }
   }, {
-    key: "_handleDropdownClick",
-    value: function _handleDropdownClick(e) {
+    key: "_handleDropdownTriggerClick",
+    value: function _handleDropdownTriggerClick(e) {
       e.preventDefault();
       if (this.isOpen) this._handleDropdownClose();else this._handleDropdownOpen();
     }
   }, {
     key: "_handleDropdownItemClick",
     value: function _handleDropdownItemClick(e) {
-      if (typeof this.settings.onItemClick === 'function') {
+      this.$items.removeClass("focused");
+      this.focusedIndex = -1;
+
+      if (typeof this.settings.onItemClick === "function") {
         this.settings.onItemClick.call(this, this.el, e.target);
+      }
+    }
+  }, {
+    key: "_handleDropdownKeyPress",
+    value: function _handleDropdownKeyPress(e) {
+      if (this.isOpen) {
+        if (e.keyCode == E.keys.TAB) {
+          this._handleDropdownClose();
+
+          e.preventDefault();
+        } else if (e.keyCode == E.keys.ENTER && this.focusedIndex != -1) {
+          this.$items.eq(this.focusedIndex).trigger("click");
+          e.preventDefault();
+        } else {
+          if (e.keyCode == E.keys.ARROW_DOWN && this.focusedIndex != this.$items.length - 1) {
+            this.focusedIndex += 1;
+          } else if (e.keyCode == E.keys.ARROW_UP && this.focusedIndex > 0) {
+            this.focusedIndex -= 1;
+          }
+
+          this.focusItem(this.focusedIndex);
+          e.preventDefault();
+        }
       }
     }
   }, {
     key: "_setupEventHandlers",
     value: function _setupEventHandlers() {
-      this.$trigger.on("click ", this._handleDropdownClick.bind(this));
+      this.$trigger.on("click ", this._handleDropdownTriggerClick.bind(this));
       this.$el.on("click", this._handleDropdownItemClick.bind(this));
-      window.addEventListener("scroll", this.listeners[0] = this._positionDropdownDialog.bind(this));
+      window.addEventListener("scroll", this.listeners[0] = this.positionDropdown.bind(this));
       document.addEventListener("click", this.listeners[1] = this._handleDocumentClick.bind(this));
-      document.removeEventListener("touchstart", this.listeners[2] = this._handleDocumentClick.bind(this));
+      document.removeEventListener("touchstart", this.listeners[2] = this._handleDocumentClick.bind(this), {
+        passive: true
+      });
+      window.addEventListener("keydown", this.listeners[3] = this._handleDropdownKeyPress.bind(this));
     }
   }, {
     key: "_removeEventHandlers",
@@ -4787,6 +4817,17 @@ var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
       window.removeEventListener("scroll", this.listeners[0]);
       document.removeEventListener("click", this.listeners[1]);
       document.removeEventListener("touchstart", this.listeners[2]);
+      window.removeEventListener("keydown", this.listeners[3]);
+    }
+  }, {
+    key: "focusItem",
+    value: function focusItem() {
+      var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      this.$el.children(".dropdown-item.focused").removeClass("focused");
+      var $focused = this.$el.children(".dropdown-item").eq(index);
+      $focused.addClass("focused");
+      $focused[0].focus();
+      $focused[0].scrollIntoView();
     }
   }, {
     key: "open",
@@ -6242,7 +6283,9 @@ var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
       var allInvisible = true;
 
       if (e.keyCode == E.keys.ENTER) {
-        this.$list.children().is(":visible").first().trigger("click");
+        this.$list.children().filter(function (i, item) {
+          if (item.style.display != "none") return true;
+        }).first().trigger("click");
       } else {
         var _iteratorNormalCompletion2 = true;
         var _didIteratorError2 = false;

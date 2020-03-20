@@ -12,7 +12,7 @@ const DEFAULTS = {
     onOpenEnd: null,
     onCloseStart: null,
     onCloseEnd: null,
-    onItemClick: null
+    onItemClick: null,
 };
 
 const REGISTRY = {
@@ -22,7 +22,7 @@ const REGISTRY = {
     dropdownPadding: 10,
 };
 
-export default class Dropdown extends EmpyrealComponent{
+export default class Dropdown extends EmpyrealComponent {
     /**
      * @param {Element} el
      * @param {Object} options
@@ -32,6 +32,9 @@ export default class Dropdown extends EmpyrealComponent{
         this.settings = { ...DEFAULTS, ...options };
 
         this.$el = c(this.el);
+        this.$items = this.$el.children(".dropdown-item");
+
+        this.focusedIndex = -1;
 
         this.id = this.$el.attr("id");
 
@@ -82,7 +85,7 @@ export default class Dropdown extends EmpyrealComponent{
         this._setupEventHandlers();
     }
 
-    _positionDropdownDialog() {
+    positionDropdown() {
         if (this.isOpen) {
             let triggerDimensions = this.$trigger.size();
             let dropdownDimensions = this.initialDropdownDimensions;
@@ -107,24 +110,25 @@ export default class Dropdown extends EmpyrealComponent{
     }
 
     _handleDropdownOpen(e) {
+        this.focusedIndex = -1;
         this.isOpen = true;
         this.isAnimationDone = false;
         this.$el.css("display", "block");
-        this._positionDropdownDialog();
+        this.positionDropdown();
         anime({
             targets: this.el,
             opacity: [0, 1],
             duration: this.settings.animInDuration,
             easing: REGISTRY.animInEasing,
             begin: () => {
-                if (typeof this.settings.onOpenStart === 'function') {
-                    this.settings.onOpenStart.call(this, this.el, e.target)
+                if (typeof this.settings.onOpenStart === "function") {
+                    this.settings.onOpenStart.call(this, this.el, e.target);
                 }
             },
             complete: () => {
                 this.isAnimationDone = true;
-                if (typeof this.settings.onOpenEnd === 'function') {
-                    this.settings.onOpenEnd.call(this, this.el, e.target)
+                if (typeof this.settings.onOpenEnd === "function") {
+                    this.settings.onOpenEnd.call(this, this.el, e.target);
                 }
             },
         });
@@ -139,15 +143,15 @@ export default class Dropdown extends EmpyrealComponent{
             duration: this.settings.animOutDuration,
             easing: REGISTRY.animOutEasing,
             begin: () => {
-                if (typeof this.settings.onCloseStart === 'function') {
-                    this.settings.onCloseStart.call(this, this.el, e.target)
+                if (typeof this.settings.onCloseStart === "function") {
+                    this.settings.onCloseStart.call(this, this.el, e.target);
                 }
             },
             complete: () => {
                 this.isAnimationDone = true;
                 this.$el.css("display", "none");
-                if (typeof this.settings.onCloseEnd === 'function') {
-                    this.settings.onCloseEnd.call(this, this.el, e.target)
+                if (typeof this.settings.onCloseEnd === "function") {
+                    this.settings.onCloseEnd.call(this, this.el, e.target);
                 }
             },
         });
@@ -165,32 +169,56 @@ export default class Dropdown extends EmpyrealComponent{
         }
     }
 
-    _handleDropdownClick(e) {
+    _handleDropdownTriggerClick(e) {
         e.preventDefault();
         if (this.isOpen) this._handleDropdownClose();
         else this._handleDropdownOpen();
     }
-    
+
     _handleDropdownItemClick(e) {
-        if (typeof this.settings.onItemClick === 'function') {
-            this.settings.onItemClick.call(this, this.el, e.target)
+        this.$items.removeClass("focused");
+        this.focusedIndex = -1;
+        if (typeof this.settings.onItemClick === "function") {
+            this.settings.onItemClick.call(this, this.el, e.target);
+        }
+    }
+
+    _handleDropdownKeyPress(e) {
+        if (this.isOpen) {
+            if (e.keyCode == E.keys.TAB) {
+                this._handleDropdownClose()
+                e.preventDefault();
+            } else if (e.keyCode == E.keys.ENTER && this.focusedIndex != -1) {
+                this.$items.eq(this.focusedIndex).trigger("click");
+                e.preventDefault();
+            } else {
+                if (e.keyCode == E.keys.ARROW_DOWN && this.focusedIndex != this.$items.length - 1) {
+                    this.focusedIndex += 1;
+                } else if (e.keyCode == E.keys.ARROW_UP && this.focusedIndex > 0) {
+                    this.focusedIndex -= 1;
+                }
+                this.focusItem(this.focusedIndex);
+                e.preventDefault();
+            }
         }
     }
 
     _setupEventHandlers() {
-        this.$trigger.on("click ", this._handleDropdownClick.bind(this));
+        this.$trigger.on("click ", this._handleDropdownTriggerClick.bind(this));
         this.$el.on("click", this._handleDropdownItemClick.bind(this));
-        window.addEventListener(
-            "scroll",
-            (this.listeners[0] = this._positionDropdownDialog.bind(this))
-        );
+        window.addEventListener("scroll", (this.listeners[0] = this.positionDropdown.bind(this)));
         document.addEventListener(
             "click",
             (this.listeners[1] = this._handleDocumentClick.bind(this))
         );
         document.removeEventListener(
             "touchstart",
-            (this.listeners[2] = this._handleDocumentClick.bind(this))
+            (this.listeners[2] = this._handleDocumentClick.bind(this)),
+            { passive: true }
+        );
+        window.addEventListener(
+            "keydown",
+            (this.listeners[3] = this._handleDropdownKeyPress.bind(this))
         );
     }
 
@@ -200,6 +228,15 @@ export default class Dropdown extends EmpyrealComponent{
         window.removeEventListener("scroll", this.listeners[0]);
         document.removeEventListener("click", this.listeners[1]);
         document.removeEventListener("touchstart", this.listeners[2]);
+        window.removeEventListener("keydown", this.listeners[3]);
+    }
+
+    focusItem(index = 0) {
+        this.$el.children(".dropdown-item.focused").removeClass("focused");
+        let $focused = this.$el.children(".dropdown-item").eq(index);
+        $focused.addClass("focused");
+        $focused[0].focus();
+        $focused[0].scrollIntoView();
     }
 
     open() {
