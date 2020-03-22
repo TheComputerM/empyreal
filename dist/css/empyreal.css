@@ -2358,54 +2358,6 @@ img.thumbnail {
           -ms-user-select: none;
               user-select: none; }
 
-.chip {
-  margin: 4px;
-  font-size: 0.875rem;
-  line-height: 32px;
-  background-color: #E0E0E0;
-  border-radius: 16px;
-  height: 32px;
-  padding: 0 12px;
-  margin-right: 12px;
-  overflow: hidden;
-  display: inline-block;
-  align-items: center;
-  color: rgba(0, 0, 0, 0.87); }
-  .chip.medium {
-    padding: 0 18px;
-    height: 42px;
-    line-height: 42px;
-    border-radius: 21px; }
-    .chip.medium > img {
-      height: 42px;
-      width: 42px;
-      margin: 0 12px 0 -18px; }
-  .chip.large {
-    padding: 0 24px;
-    height: 52px;
-    line-height: 52px;
-    border-radius: 26px; }
-    .chip.large > img {
-      height: 52px;
-      width: 52px;
-      margin: 0 14px 0 -24px; }
-  .chip i {
-    padding-left: 8px;
-    vertical-align: middle;
-    font-size: 1.1rem; }
-  .chip > img {
-    float: left;
-    margin: 0 8px 0 -12px;
-    height: 32px;
-    width: 32px;
-    border-radius: 50%; }
-  .chip .close {
-    cursor: pointer;
-    color: #616161;
-    transition: .4s; }
-    .chip .close:hover {
-      color: #424242; }
-
 .empyreal-tooltip {
   background-color: #212121;
   padding: 10px 8px;
@@ -4464,7 +4416,7 @@ p {
         cursor: default; }
     .dropdown .dropdown-item:hover:not(.disabled) {
       background-color: rgba(0, 0, 0, 0.05); }
-    .dropdown .dropdown-item:focus:not(.disabled), .dropdown .dropdown-item.focused:not(.disabled) {
+    .dropdown .dropdown-item.focused:not(.disabled) {
       background-color: rgba(0, 0, 0, 0.12);
       color: #651FFF; }
     .dropdown .dropdown-item a {
@@ -4831,6 +4783,81 @@ p {
     padding-top: 1rem;
     padding-bottom: 1rem;
     text-align: center; }
+
+.chip {
+  display: inline-block;
+  height: 32px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.87);
+  line-height: 32px;
+  padding: 0 12px;
+  border-radius: 16px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  transition: .4s;
+  background-color: #E0E0E0;
+  cursor: pointer; }
+  .chip:hover {
+    background-color: #BDBDBD; }
+  .chip:focus {
+    color: #651FFF;
+    outline: 0px solid transparent;
+    background-color: #EEEEEE; }
+  .chip > img {
+    float: left;
+    margin: 0 8px 0 -12px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%; }
+  .chip.rounded {
+    border-radius: 4px; }
+  .chip.medium {
+    padding: 0 18px;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 21px; }
+    .chip.medium > img {
+      height: 42px;
+      width: 42px;
+      margin: 0 12px 0 -18px; }
+  .chip.large {
+    padding: 0 24px;
+    height: 52px;
+    line-height: 52px;
+    border-radius: 26px; }
+    .chip.large > img {
+      height: 52px;
+      width: 52px;
+      margin: 0 14px 0 -24px; }
+  .chip i {
+    margin: 4px;
+    vertical-align: middle;
+    font-size: 1.1rem; }
+
+.chips {
+  margin: 0 0 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  min-height: 45px;
+  outline: none;
+  transition: 0.15s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.15s ease-in-out;
+  letter-spacing: 0.025rem; }
+  .chips input {
+    background: none;
+    border: none;
+    color: rgba(0, 0, 0, 0.87);
+    display: inline-block;
+    font-size: 16px;
+    height: 3rem;
+    line-height: 32px;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    width: 120px;
+    font-weight: 400; }
+  .chips.focused {
+    border-color: #2196F3;
+    border-width: 2px; }
 
 .text-field input.valid:not([type]) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=text]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=password]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=email]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=url]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=time]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=date]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=datetime]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=datetime-local]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=tel]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=number]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=search]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field textarea.valid ~ .bottom-text > .helper-text[data-success],
 .text-field textarea:focus.valid ~ .bottom-text > .helper-text[data-success],

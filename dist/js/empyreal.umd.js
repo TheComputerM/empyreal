@@ -4123,9 +4123,10 @@
 
   window.anime = anime;
   AOS.init();
-  waves.attach(".chip", "waves-effect");
+  waves.attach(".chip");
   waves.init();
   window.Waves = waves;
+  window.cash = cash_min;
 
   cash_min.fn.size = function () {
     return this[0].getClientRects()[0];
@@ -4224,8 +4225,8 @@
 
   window.addEventListener("DOMContentLoaded", function () {
     E.updateTextFields();
-    cash_min(".chip .close").on("click", function () {
-      cash_min(this).parent().remove();
+    cash_min(document).on("click", ".chip .close", function (e) {
+      cash_min(e.target).closest(".chip").remove();
     });
     document.querySelectorAll(".smoothscroll").forEach(function (i) {
       i.addEventListener("click", function (e) {
@@ -4612,8 +4613,7 @@
   };
   var REGISTRY$1 = {
     animInEasing: "easeOutQuad",
-    animOutEasing: "easeOutQuint",
-    dropdownPadding: 10
+    animOutEasing: "easeOutQuint"
   };
 
   var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
@@ -4794,12 +4794,13 @@
           } else {
             if (e.keyCode == E.keys.ARROW_DOWN && this.focusedIndex != this.$items.length - 1) {
               this.focusedIndex += 1;
+              this.focusItem(this.focusedIndex);
+              e.preventDefault();
             } else if (e.keyCode == E.keys.ARROW_UP && this.focusedIndex > 0) {
               this.focusedIndex -= 1;
+              this.focusItem(this.focusedIndex);
+              e.preventDefault();
             }
-
-            this.focusItem(this.focusedIndex);
-            e.preventDefault();
           }
         }
       }
@@ -4832,7 +4833,6 @@
         this.$el.children(".dropdown-item.focused").removeClass("focused");
         var $focused = this.$el.children(".dropdown-item").eq(index);
         $focused.addClass("focused");
-        $focused[0].focus();
         $focused[0].scrollIntoView();
       }
     }, {
@@ -5997,6 +5997,111 @@
 
   var VERSION$a = "0.0.1";
   var DEFAULTS$a = {
+    data: [],
+    placeholder: "",
+    secondaryPlaceholder: "",
+    verify: null
+  };
+
+  var Chips = /*#__PURE__*/function (_EmpyrealComponent) {
+    _inherits(Chips, _EmpyrealComponent);
+
+    function Chips(el, options) {
+      var _this;
+
+      _classCallCheck(this, Chips);
+
+      _this = _possibleConstructorReturn(this, _getPrototypeOf(Chips).call(this, el, options));
+      _this.settings = _objectSpread2({}, DEFAULTS$a, {}, options);
+      _this.$el = cash_min(_this.el);
+      _this.$input = _this.$el.find("input");
+      _this.value = [];
+
+      _this._init();
+
+      return _this;
+    }
+
+    _createClass(Chips, [{
+      key: "_init",
+      value: function _init() {
+        this._setupEventHandlers();
+      }
+    }, {
+      key: "add",
+      value: function add(_ref) {
+        var tag = _ref.tag,
+            image = _ref.image;
+        var chip = cash_min("<div class=chip tabindex=0>\n            ".concat(tag, "\n            <i class='material-icons close'>close</i>\n        </div>"));
+        if (image) chip.append("<img src=".concat(image, " />"));
+
+        if (typeof this.settings.verify === 'function') {
+          if (this.settings.verify.call(this, tag)) chip.insertBefore(this.$input);
+        } else chip.insertBefore(this.$input);
+      }
+    }, {
+      key: "_handleInputKeypress",
+      value: function _handleInputKeypress(e) {
+        if (e.keyCode == E.keys.ENTER) {
+          var val = this.$input.val();
+
+          if (val != "" && this.value.indexOf(val) == -1) {
+            this.add({
+              tag: val
+            });
+            this.value.push(val);
+            this.$input.val("");
+          }
+        }
+      }
+    }, {
+      key: "_handleInputClick",
+      value: function _handleInputClick(e) {
+        if (!cash_min(e.target).closest(".chip").length) {
+          this.$input[0].focus();
+          this.$el.addClass("focused");
+        }
+      }
+    }, {
+      key: "_handleInputBlur",
+      value: function _handleInputBlur() {
+        this.$el.removeClass("focused");
+      }
+    }, {
+      key: "_setupEventHandlers",
+      value: function _setupEventHandlers() {
+        this.$input.on("keyup", this._handleInputKeypress.bind(this));
+        this.$el.on("click", this._handleInputClick.bind(this));
+        this.$input.on("blur", this._handleInputBlur.bind(this));
+      }
+    }, {
+      key: "_removeEventHandlers",
+      value: function _removeEventHandlers() {
+        this.$input.off("keyup");
+        this.$el.off("click");
+      }
+    }, {
+      key: "destroy",
+      value: function destroy() {
+        this._removeEventHandlers();
+      }
+    }], [{
+      key: "version",
+      get: function get() {
+        return VERSION$a;
+      }
+    }, {
+      key: "defaults",
+      get: function get() {
+        return DEFAULTS$a;
+      }
+    }]);
+
+    return Chips;
+  }(EmpyrealComponent);
+
+  var VERSION$b = "0.0.1";
+  var DEFAULTS$b = {
     dropdown: {}
   };
 
@@ -6009,7 +6114,7 @@
       _classCallCheck(this, Select);
 
       _this = _possibleConstructorReturn(this, _getPrototypeOf(Select).call(this, el, options));
-      _this.settings = _objectSpread2({}, DEFAULTS$a, {}, options);
+      _this.settings = _objectSpread2({}, DEFAULTS$b, {}, options);
       _this.$el = cash_min(_this.el);
       _this.id = _this.$el.attr("id") || E.generateUUID();
       _this.$input = cash_min("<input type='text' readonly='true' class=\"select-dropdown\" />");
@@ -6193,20 +6298,20 @@
     }], [{
       key: "version",
       get: function get() {
-        return VERSION$a;
+        return VERSION$b;
       }
     }, {
       key: "defaults",
       get: function get() {
-        return DEFAULTS$a;
+        return DEFAULTS$b;
       }
     }]);
 
     return Select;
   }(EmpyrealComponent);
 
-  var VERSION$b = "0.0.1";
-  var DEFAULTS$b = {
+  var VERSION$c = "0.0.1";
+  var DEFAULTS$c = {
     data: [],
     dropdown: {}
   };
@@ -6220,7 +6325,7 @@
       _classCallCheck(this, Autocomplete);
 
       _this = _possibleConstructorReturn(this, _getPrototypeOf(Autocomplete).call(this, el, options));
-      _this.settings = _objectSpread2({}, DEFAULTS$b, {}, options);
+      _this.settings = _objectSpread2({}, DEFAULTS$c, {}, options);
       _this.$el = cash_min(_this.el);
       _this.id = _this.$el.attr("id") || E.generateUUID();
 
@@ -6243,15 +6348,12 @@
             var item = _step.value;
 
             if (typeof item == "string") {
-              this.$list.append("<li class=dropdown-item>".concat(item, "</li>"));
+              this.$list.append("<a class=dropdown-item>".concat(item, "</a>"));
             } else {
-              var $listitem = cash_min("<li class=dropdown-item>".concat(item.name, "</li>"));
-
-              if (item.alias) {
-                $listitem.data("alias", item.alias.join(" "));
-              }
-
-              this.$list.append($listitem);
+              var $listItem = cash_min("<a class=dropdown-item>".concat(item.name, "</a>"));
+              if (item.alias) $listItem.data("alias", item.alias.join(" "));
+              if (item.href) $listItem.attr("href", item.href);
+              this.$list.append($listItem);
             }
           }
         } catch (err) {
@@ -6326,6 +6428,8 @@
               }
             }
           }
+
+          if (!this.dropdown.isOpen) this.dropdown.open();
         }
 
         if (allInvisible) this.$list.css("display", "none");else this.$list.css("display", "block");
@@ -6358,12 +6462,12 @@
     }], [{
       key: "version",
       get: function get() {
-        return VERSION$b;
+        return VERSION$c;
       }
     }, {
       key: "defaults",
       get: function get() {
-        return DEFAULTS$b;
+        return DEFAULTS$c;
       }
     }]);
 
@@ -6384,6 +6488,7 @@
     Snackbar: Snackbar,
     Autocomplete: Autocomplete,
     Select: Select,
+    Chips: Chips,
     updateTextFields: E.updateTextFields(),
     jump: E.jump
   };

@@ -5,12 +5,12 @@ import AOS from "aos";
 AOS.init();
 
 import Waves from "node-waves";
-Waves.attach(".chip", "waves-effect");
+Waves.attach(".chip")
 Waves.init();
 window.Waves = Waves;
 
 import c from "cash-dom/dist/cash.min";
-
+window.cash = c;
 import jump from "jump.js";
 
 c.fn.size = function () {
@@ -117,10 +117,8 @@ E.updateTextFields = function () {
 
 window.addEventListener("DOMContentLoaded", () => {
     E.updateTextFields();
-    c(".chip .close").on("click", function () {
-        c(this)
-            .parent()
-            .remove();
+    c(document).on("click", ".chip .close", function (e) {
+        c(e.target).closest(".chip").remove();
     });
 
     document.querySelectorAll(".smoothscroll").forEach((i) => {

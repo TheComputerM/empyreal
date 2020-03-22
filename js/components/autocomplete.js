@@ -34,13 +34,14 @@ export default class Autocomplete extends EmpyrealComponent {
 
         for (let item of this.settings.data) {
             if (typeof item == "string") {
-                this.$list.append(`<li class=dropdown-item>${item}</li>`);
+                this.$list.append(`<a class=dropdown-item>${item}</a>`);
             } else {
-                let $listitem = c(`<li class=dropdown-item>${item.name}</li>`);
-                if (item.alias) {
-                    $listitem.data("alias", item.alias.join(" "));
-                }
-                this.$list.append($listitem);
+                let $listItem = c(`<a class=dropdown-item>${item.name}</a>`);
+                if (item.alias) 
+                    $listItem.data("alias", item.alias.join(" "));
+                if (item.href) $listItem.attr("href", item.href);
+
+                this.$list.append($listItem);
             }
         }
 
@@ -75,6 +76,7 @@ export default class Autocomplete extends EmpyrealComponent {
                     $item.css("display", "none");
                 }
             }
+            if (!this.dropdown.isOpen) this.dropdown.open();
         }
         if (allInvisible) this.$list.css("display", "none");
         else this.$list.css("display", "block");

@@ -353,131 +353,137 @@
             </tr>
             <tr>
                 <td>Mobile Devices</td>
-                <td><= 600px</td>
-                <td><code>s</code></td>
-            </tr>
-            <tr>
-                <td>Mobile Devices</td>
-                <td>> 600px</td>
-                <td><code>m</code></td>
-            </tr>
-            <tr>
-                <td>Desktop Devices</td>
-                <td>> 992px</td>
-                <td><code>l</code></td>
-            </tr>
-            <tr>
-                <td>Extra Large Devices</td>
-                <td>> 1200px</td>
-                <td><code>xl</code></td>
-            </tr>
-        </table>
-    </div>
-    
-    <br>
-    <div class="divider"></div>
-    <br>
+                <td><= <cod 600px</td>="600px</td>" <td>>s</code>
+            </td>
+        </tr>
+        <tr>
+            <td>Mobile Devices</td>
+            <td>> 600px</td>
+            <td>
+                <code>m</code>
+            </td>
+        </tr>
+        <tr>
+            <td>Desktop Devices</td>
+            <td>> 992px</td>
+            <td>
+                <code>l</code>
+            </td>
+        </tr>
+        <tr>
+            <td>Extra Large Devices</td>
+            <td>> 1200px</td>
+            <td>
+                <code>xl</code>
+            </td>
+        </tr>
+    </table>
+</div>
 
-    <div class="section scrollspy" id="offset" data-name="Offsets">
-        <h1 class="blue-text">Offsets</h1>
+<br>
+<div class="divider"></div>
+<br>
+
+<div class="section scrollspy" id="offset" data-name="Offsets">
+    <h1 class="blue-text">Offsets</h1>
+    <div class="row">
+        <div class="col s12">
+            <div class="card-panel center-align indigo white-text">Full Width</div>
+        </div>
+        <div class="col s6 offset-s6">
+            <div class="card-panel indigo white-text">Offset by 6 columns</div>
+        </div>
+    </div>
+    <code class="prism-html">
         <div class="row">
-            <div class="col s12">
-                <div class="card-panel center-align indigo white-text">Full Width</div>
-            </div>
-            <div class="col s6 offset-s6">
-                <div class="card-panel indigo white-text">Offset by 6 columns</div>
+            <div class="col s12">Full Width</div>
+            <!-- Below is the column with the offset -->
+            <div class="col s12 offset-s6">Offset by 6 columns</div>
+        </div>
+    </code>
+    <p>
+        Like columns, offsets also range from 1 to 12 and they are also responsive, so to add an offset of 3 columns in tablet screens and above use
+        <code>offset-m3</code>. Offsets will always be applied from the left.
+    </p>
+</div>
+
+<br>
+<div class="divider"></div>
+<br>
+
+<div class="section scrollspy" id="order" data-name="Order">
+    <h1 class="blue-text">Order</h1>
+    <p>
+        As the grid system is based on FlexBox, you can arrange the grid items using the
+        <code>order-*</code>
+        class.
+    </p>
+    <div class="row">
+        <div class="col s6 order-2">
+            <div class="card-panel indigo white-text">
+                I am the first child but am second in order.
             </div>
         </div>
-        <code class="prism-html">
-            <div class="row">
-                <div class="col s12">Full Width</div>
-                <!-- Below is the column with the offset -->
-                <div class="col s12 offset-s6">Offset by 6 columns</div>
+        <div class="col s6">
+            <div class="card-panel indigo white-text">
+                I am the second child but am first in order.
             </div>
-        </code>
-        <p>
-            Like columns, offsets also range from 1 to 12 and they are also responsive, so to add an offset of 3 columns in tablet screens and above use
-            <code>offset-m3</code>. Offsets will always be applied from the left.
-        </p>
+        </div>
     </div>
-
     <br>
-    <div class="divider"></div>
-    <br>
-
-    <div class="section scrollspy" id="order" data-name="Order">
-        <h1 class="blue-text">Order</h1>
-        <p>
-            As the grid system is based on FlexBox, you can arrange the grid items using the
-            <code>order-*</code>
-            class.
-        </p>
+    <code class="prism-html">
         <div class="row">
-            <div class="col s6 order-2">
-                <div class="card-panel indigo white-text">
-                    I am the first child but am second in order.
-                </div>
-            </div>
-            <div class="col s6">
-                <div class="card-panel indigo white-text">
-                    I am the second child but am first in order.
-                </div>
-            </div>
+            <div class="col s6 order-2">I am the first child but am second in order.</div>
+            <div class="col s6">I am the second child but am first in order.</div>
         </div>
-        <br>
-        <code class="prism-html">
-            <div class="row">
-                <div class="col s6 order-2">I am the first child but am second in order.</div>
-                <div class="col s6">I am the second child but am first in order.</div>
-            </div>
-        </code>
-    </div>
+    </code>
+</div>
 
-    <br>
-    <div class="divider"></div>
-    <br>
+<br>
+<div class="divider"></div>
+<br>
 
-    <div class="section scrollspy" id="layout" data-name="Creating Layouts">
-        <h1 class="blue-text">Creating a Layout</h1>
-        <div class="row center-align white-text">
-            <div class="col s12">
-                <div class="card-panel pink">col s12</div>
-            </div>
-            <div class="col s12 m4 l2">
-                <div class="card-panel red">col s12 m4 l2</div>
-            </div>
-            <div class="col s12 m4 l8">
-                <div class="card-panel red">col s12 m4 l8</div>
-            </div>
-            <div class="col s12 m4 l2">
-                <div class="card-panel red">col s12 m4 l2</div>
-            </div>
-            <div class="col s6 l3">
-                <div class="card-panel indigo">col s6 l3</div>
-            </div>
-            <div class="col s6 l3">
-                <div class="card-panel indigo">col s6 l3</div>
-            </div>
-            <div class="col s6 l3">
-                <div class="card-panel indigo">col s6 l3</div>
-            </div>
-            <div class="col s6 l3">
-                <div class="card-panel indigo">col s6 l3</div>
-            </div>
+<div class="section scrollspy" id="layout" data-name="Creating Layouts">
+    <h1 class="blue-text">Creating a Layout</h1>
+    <div class="row center-align white-text">
+        <div class="col s12">
+            <div class="card-panel pink">col s12</div>
         </div>
-        <code class="prism-html">
-            <div class="row">
-                <div class="col s12">col s12</div>
-                <div class="col s12 m4 l2">col s12 m4 l2</div>
-                <div class="col s12 m4 l8">col s12 m4 l8</div>
-                <div class="col s12 m4 l2">col s12 m4 l2</div>
-                <div class="col s6 l3">col s6 l3</div>
-                <div class="col s6 l3">col s6 l3</div>
-                <div class="col s6 l3">col s6 l3</div>
-                <div class="col s6 l3">col s6 l3</div>
-            </div>
-        </code>
+        <div class="col s12 m4 l2">
+            <div class="card-panel red">col s12 m4 l2</div>
+        </div>
+        <div class="col s12 m4 l8">
+            <div class="card-panel red">col s12 m4 l8</div>
+        </div>
+        <div class="col s12 m4 l2">
+            <div class="card-panel red">col s12 m4 l2</div>
+        </div>
+        <div class="col s6 l3">
+            <div class="card-panel indigo">col s6 l3</div>
+        </div>
+        <div class="col s6 l3">
+            <div class="card-panel indigo">col s6 l3</div>
+        </div>
+        <div class="col s6 l3">
+            <div class="card-panel indigo">col s6 l3</div>
+        </div>
+        <div class="col s6 l3">
+            <div class="card-panel indigo">col s6 l3</div>
+        </div>
     </div>
+    <code class="prism-html">
+        <div class="row">
+            <div class="col s12">col s12</div>
+            <div class="col s12 m4 l2">col s12 m4 l2</div>
+            <div class="col s12 m4 l8">col s12 m4 l8</div>
+            <div class="col s12 m4 l2">col s12 m4 l2</div>
+            <div class="col s6 l3">col s6 l3</div>
+            <div class="col s6 l3">col s6 l3</div>
+            <div class="col s6 l3">col s6 l3</div>
+            <div class="col s6 l3">col s6 l3</div>
+        </div>
+    </code>
+</div>
 
             </div>
             <div class="col hide-on-small-and-down m2">

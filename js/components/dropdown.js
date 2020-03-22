@@ -18,8 +18,6 @@ const DEFAULTS = {
 const REGISTRY = {
     animInEasing: "easeOutQuad",
     animOutEasing: "easeOutQuint",
-
-    dropdownPadding: 10,
 };
 
 export default class Dropdown extends EmpyrealComponent {
@@ -194,11 +192,13 @@ export default class Dropdown extends EmpyrealComponent {
             } else {
                 if (e.keyCode == E.keys.ARROW_DOWN && this.focusedIndex != this.$items.length - 1) {
                     this.focusedIndex += 1;
+                    this.focusItem(this.focusedIndex);
+                    e.preventDefault();
                 } else if (e.keyCode == E.keys.ARROW_UP && this.focusedIndex > 0) {
                     this.focusedIndex -= 1;
+                    this.focusItem(this.focusedIndex);
+                    e.preventDefault();
                 }
-                this.focusItem(this.focusedIndex);
-                e.preventDefault();
             }
         }
     }
@@ -235,7 +235,6 @@ export default class Dropdown extends EmpyrealComponent {
         this.$el.children(".dropdown-item.focused").removeClass("focused");
         let $focused = this.$el.children(".dropdown-item").eq(index);
         $focused.addClass("focused");
-        $focused[0].focus();
         $focused[0].scrollIntoView();
     }
 

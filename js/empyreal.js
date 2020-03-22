@@ -9,6 +9,7 @@ import Pushpin from "./components/pushpin";
 import ScrollSpy from "./components/scrollspy";
 import Lightbox from "./components/lightbox";
 import Snackbar from "./components/snackbar";
+import Chips from "./components/chips";
 
 import Select from "./components/select";
 import Autocomplete from "./components/autocomplete";
@@ -29,6 +30,7 @@ let empyreal = {
     Snackbar,
     Autocomplete,
     Select,
+    Chips,
     updateTextFields: E.updateTextFields(),
     jump: E.jump
 };
