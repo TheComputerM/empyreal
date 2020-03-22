@@ -41,7 +41,7 @@
 		&:hover:not(.disabled) {
 			background-color: $dropdown-hover-item-bg-color;
 		}
-		&:focus:not(.disabled), &.focused:not(.disabled) {
+		&.focused:not(.disabled) {
 			background-color: $dropdown-focus-item-bg-color;
 			color: $primary-color;
 		}
