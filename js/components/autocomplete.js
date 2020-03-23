@@ -37,7 +37,7 @@ export default class Autocomplete extends EmpyrealComponent {
                 this.$list.append(`<a class=dropdown-item>${item}</a>`);
             } else {
                 let $listItem = c(`<a class=dropdown-item>${item.name}</a>`);
-                if (item.alias) 
+                if (item.alias)
                     $listItem.data("alias", item.alias.join(" "));
                 if (item.href) $listItem.attr("href", item.href);
 
@@ -59,25 +59,22 @@ export default class Autocomplete extends EmpyrealComponent {
     _handleKeyPress(e) {
         let input = this.$el.val().toLowerCase();
         let allInvisible = true;
-        if (e.keyCode == E.keys.ENTER) {
-            this.$list.children().filter((i, item) => {
-                if (item.style.display != "none") return true;
-            }).first().trigger("click");
-        } else {
-            for (let item of this.$list.children()) {
-                let $item = c(item);
-                if ($item.text().toLowerCase().includes(input)) {
-                    $item.css("display", "block");
-                    allInvisible = false;
-                } else if ($item.data("alias") && $item.data("alias").toLowerCase().includes(input)) {
-                    $item.css("display", "block");
-                    allInvisible = false;
-                } else {
-                    $item.css("display", "none");
-                }
+        for (let item of this.$list.children()) {
+            let $item = c(item);
+            if ($item.text().toLowerCase().includes(input)) {
+                $item.css("display", "block");
+                allInvisible = false;
+            } else if ($item.data("alias") && $item.data("alias").toLowerCase().includes(input)) {
+                $item.css("display", "block");
+                allInvisible = false;
+            } else {
+                $item.css("display", "none");
             }
-            if (!this.dropdown.isOpen) this.dropdown.open();
         }
+        this.dropdown.calculateDropdownDimensions();
+        this.dropdown.positionDropdown();
+        if (!this.dropdown.isOpen) this.dropdown.open();
+
         if (allInvisible) this.$list.css("display", "none");
         else this.$list.css("display", "block");
     }

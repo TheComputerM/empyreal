@@ -276,7 +276,7 @@
         <h1 class="blue-text">Input</h1>
         <div data-syntax="html">
             <div class="chips">
-                <input type="text" id="input-1">
+                <input type="text" id="input1">
             </div>
         </div>
     </div>
@@ -299,7 +299,21 @@
         <script src="./dist/js/main.js"></script>
         
     <script>
-        new empy.Chips(".chips", {});
+        new empy.Chips(".chips", {
+            autocomplete: {
+                data: [
+                    {
+                        name: "Microsoft"
+                    }, {
+                        name: "Apple"
+                    }, {
+                        name: "Yahoo",
+                    }, {
+                        name: "Google",
+                    }
+                ]
+            }
+        });
     </script>
 
     </body>

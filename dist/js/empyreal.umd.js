@@ -122,6 +122,19 @@
     return _setPrototypeOf(o, p);
   }
 
+  function _isNativeReflectConstruct() {
+    if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+    if (Reflect.construct.sham) return false;
+    if (typeof Proxy === "function") return true;
+
+    try {
+      Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   function _assertThisInitialized(self) {
     if (self === void 0) {
       throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -136,6 +149,95 @@
     }
 
     return _assertThisInitialized(self);
+  }
+
+  function _createSuper(Derived) {
+    return function () {
+      var Super = _getPrototypeOf(Derived),
+          result;
+
+      if (_isNativeReflectConstruct()) {
+        var NewTarget = _getPrototypeOf(this).constructor;
+
+        result = Reflect.construct(Super, arguments, NewTarget);
+      } else {
+        result = Super.apply(this, arguments);
+      }
+
+      return _possibleConstructorReturn(this, result);
+    };
+  }
+
+  function _unsupportedIterableToArray(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+  }
+
+  function _arrayLikeToArray(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+
+    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+    return arr2;
+  }
+
+  function _createForOfIteratorHelper(o) {
+    if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
+      if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {
+        var i = 0;
+
+        var F = function () {};
+
+        return {
+          s: F,
+          n: function () {
+            if (i >= o.length) return {
+              done: true
+            };
+            return {
+              done: false,
+              value: o[i++]
+            };
+          },
+          e: function (e) {
+            throw e;
+          },
+          f: F
+        };
+      }
+
+      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+    }
+
+    var it,
+        normalCompletion = true,
+        didErr = false,
+        err;
+    return {
+      s: function () {
+        it = o[Symbol.iterator]();
+      },
+      n: function () {
+        var step = it.next();
+        normalCompletion = step.done;
+        return step;
+      },
+      e: function (e) {
+        didErr = true;
+        err = e;
+      },
+      f: function () {
+        try {
+          if (!normalCompletion && it.return != null) it.return();
+        } finally {
+          if (didErr) throw err;
+        }
+      }
+    };
   }
 
   /*
@@ -2500,7 +2602,7 @@
       var Waves = Waves || {};
       var $$ = document.querySelectorAll.bind(document);
       var toString = Object.prototype.toString;
-      var isTouchAvailable = 'ontouchstart' in window; // Find exact position of element
+      var isTouchAvailable = ('ontouchstart' in window); // Find exact position of element
 
       function isWindow(obj) {
         return obj !== null && obj === obj.window;
@@ -3618,7 +3720,7 @@
         }
 
         a.___td = b;
-        var f = a.type in W;
+        var f = (a.type in W);
         return this.each(function (b, c) {
           if (f && E(c[a.type])) c[a.type]();else c.dispatchEvent(a);
         });
@@ -4288,12 +4390,14 @@
   var Modal = /*#__PURE__*/function (_EmpyrealComponent) {
     _inherits(Modal, _EmpyrealComponent);
 
+    var _super = _createSuper(Modal);
+
     function Modal(el, options) {
       var _this;
 
       _classCallCheck(this, Modal);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(Modal).call(this, el, options));
+      _this = _super.call(this, el, options);
       _this.settings = _objectSpread2({}, DEFAULTS, {}, options);
       _this.$el = cash_min(_this.el);
       _this.$dialog = _this.$el.find(".modal-dialog");
@@ -4487,6 +4591,8 @@
   var Tabs = /*#__PURE__*/function (_EmpyrealComponent) {
     _inherits(Tabs, _EmpyrealComponent);
 
+    var _super = _createSuper(Tabs);
+
     /**
      * @param {Element} el
      * @param {Object} options
@@ -4496,7 +4602,7 @@
 
       _classCallCheck(this, Tabs);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(Tabs).call(this, el));
+      _this = _super.call(this, el);
       _this.settings = _objectSpread2({}, DEFAULTS$1, {}, options);
       _this.$el = cash_min(_this.el);
       _this.$tabs = _this.$el.find(".tab");
@@ -4619,6 +4725,8 @@
   var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
     _inherits(Dropdown, _EmpyrealComponent);
 
+    var _super = _createSuper(Dropdown);
+
     /**
      * @param {Element} el
      * @param {Object} options
@@ -4628,7 +4736,7 @@
 
       _classCallCheck(this, Dropdown);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(Dropdown).call(this, el));
+      _this = _super.call(this, el);
       _this.settings = _objectSpread2({}, DEFAULTS$2, {}, options);
       _this.$el = cash_min(_this.el);
       _this.$items = _this.$el.children(".dropdown-item");
@@ -4674,6 +4782,16 @@
         this.$el.css("display", "none");
 
         this._setupEventHandlers();
+      }
+    }, {
+      key: "calculateDropdownDimensions",
+      value: function calculateDropdownDimensions() {
+        this.$el.css("display", "block");
+        this.initialDropdownDimensions = {
+          width: this.$el.outerWidth(),
+          height: this.$el.outerHeight()
+        };
+        if (!this.isOpen) this.$el.css("display", "none");
       }
     }, {
       key: "positionDropdown",
@@ -4880,6 +4998,8 @@
   var Sidenav = /*#__PURE__*/function (_EmpyrealComponent) {
     _inherits(Sidenav, _EmpyrealComponent);
 
+    var _super = _createSuper(Sidenav);
+
     /**
      * @param {Element} el
      * @param {Object} options
@@ -4889,7 +5009,7 @@
 
       _classCallCheck(this, Sidenav);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(Sidenav).call(this, el));
+      _this = _super.call(this, el);
       _this.settings = _objectSpread2({}, DEFAULTS$3, {}, options);
       _this.$el = cash_min(_this.el);
       _this.id = _this.$el.attr("id");
@@ -5076,6 +5196,8 @@
   var Collapsible = /*#__PURE__*/function (_EmpyrealComponent) {
     _inherits(Collapsible, _EmpyrealComponent);
 
+    var _super = _createSuper(Collapsible);
+
     /**
      * @param {Element} el
      * @param {Object} options
@@ -5085,7 +5207,7 @@
 
       _classCallCheck(this, Collapsible);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(Collapsible).call(this, el));
+      _this = _super.call(this, el);
       _this.settings = _objectSpread2({}, DEFAULTS$4, {}, options);
       _this.$el = cash_min(_this.el);
       _this.$headers = _this.$el.find(".collapsible-header");
@@ -5179,29 +5301,19 @@
         }
 
         if (this.settings.accordion) {
-          var _iteratorNormalCompletion = true;
-          var _didIteratorError = false;
-          var _iteratorError = undefined;
+          var _iterator = _createForOfIteratorHelper($parent.filter(".active").siblings()),
+              _step;
 
           try {
-            for (var _iterator = $parent.filter(".active").siblings()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
               var i = _step.value;
 
               this._handleHeaderClose(cash_min(i).find(".collapsible-header")[0]);
             }
           } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
+            _iterator.e(err);
           } finally {
-            try {
-              if (!_iteratorNormalCompletion && _iterator.return != null) {
-                _iterator.return();
-              }
-            } finally {
-              if (_didIteratorError) {
-                throw _iteratorError;
-              }
-            }
+            _iterator.f();
           }
         }
       }
@@ -5393,6 +5505,8 @@
   var Carousel = /*#__PURE__*/function (_EmprealComponent) {
     _inherits(Carousel, _EmprealComponent);
 
+    var _super = _createSuper(Carousel);
+
     /**
      * @param {Element} el
      * @param {Object} options
@@ -5402,7 +5516,7 @@
 
       _classCallCheck(this, Carousel);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(Carousel).call(this, el));
+      _this = _super.call(this, el);
       _this.settings = _objectSpread2({}, DEFAULTS$6, {}, options);
       _this.$el = cash_min(_this.el);
       _this.$nextBtn = _this.$el.find(".carousel-next");
@@ -5530,6 +5644,8 @@
   var Pushpin = /*#__PURE__*/function (_EmpyrealComponent) {
     _inherits(Pushpin, _EmpyrealComponent);
 
+    var _super = _createSuper(Pushpin);
+
     /**
      * @param {Element} el
      * @param {Object} options
@@ -5539,7 +5655,7 @@
 
       _classCallCheck(this, Pushpin);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(Pushpin).call(this, el));
+      _this = _super.call(this, el);
       _this.settings = _objectSpread2({}, DEFAULTS$7, {}, options);
       _this.$el = cash_min(_this.el);
       _this.listeners = [];
@@ -5676,28 +5792,19 @@
       key: "_calculateOffsets",
       value: function _calculateOffsets() {
         this.sectionOffsets = {};
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
+
+        var _iterator = _createForOfIteratorHelper(this.$el),
+            _step;
 
         try {
-          for (var _iterator = this.$el[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
             var section = _step.value;
             this.sectionOffsets[section.id] = section.offsetTop;
           }
         } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
+          _iterator.e(err);
         } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator.return != null) {
-              _iterator.return();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
-          }
+          _iterator.f();
         }
       }
     }, {
@@ -5778,6 +5885,8 @@
   var Lightbox = /*#__PURE__*/function (_EmpyrealComponent) {
     _inherits(Lightbox, _EmpyrealComponent);
 
+    var _super = _createSuper(Lightbox);
+
     /**
      * @param {Element} el
      * @param {Object} options
@@ -5787,7 +5896,7 @@
 
       _classCallCheck(this, Lightbox);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(Lightbox).call(this, el));
+      _this = _super.call(this, el);
       _this.settings = _objectSpread2({}, DEFAULTS$9, {}, options);
       _this.$el = cash_min(_this.el);
       _this.id = _this.el.id;
@@ -5998,87 +6107,124 @@
   var VERSION$a = "0.0.1";
   var DEFAULTS$a = {
     data: [],
-    placeholder: "",
-    secondaryPlaceholder: "",
-    verify: null
+    dropdown: {}
   };
 
-  var Chips = /*#__PURE__*/function (_EmpyrealComponent) {
-    _inherits(Chips, _EmpyrealComponent);
+  var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
+    _inherits(Autocomplete, _EmpyrealComponent);
 
-    function Chips(el, options) {
+    var _super = _createSuper(Autocomplete);
+
+    function Autocomplete(el, options) {
       var _this;
 
-      _classCallCheck(this, Chips);
+      _classCallCheck(this, Autocomplete);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(Chips).call(this, el, options));
+      _this = _super.call(this, el, options);
       _this.settings = _objectSpread2({}, DEFAULTS$a, {}, options);
       _this.$el = cash_min(_this.el);
-      _this.$input = _this.$el.find("input");
-      _this.value = [];
+      _this.id = _this.$el.attr("id") || E.generateUUID();
 
       _this._init();
 
       return _this;
     }
 
-    _createClass(Chips, [{
+    _createClass(Autocomplete, [{
       key: "_init",
       value: function _init() {
+        this.$list = cash_min("<ul class=dropdown id=".concat("dropdown-" + this.id, "></ul>"));
+        this.$el.parent().append(this.$list);
+
+        var _iterator = _createForOfIteratorHelper(this.settings.data),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var item = _step.value;
+
+            if (typeof item == "string") {
+              this.$list.append("<a class=dropdown-item>".concat(item, "</a>"));
+            } else {
+              var $listItem = cash_min("<a class=dropdown-item>".concat(item.name, "</a>"));
+              if (item.alias) $listItem.data("alias", item.alias.join(" "));
+              if (item.href) $listItem.attr("href", item.href);
+              this.$list.append($listItem);
+            }
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+
+        this.dropdown = new Dropdown("#dropdown-" + this.id, _objectSpread2({
+          isRelative: true
+        }, this.settings.dropdown));
+
+        this.dropdown._removeEventHandlers();
+
+        this.dropdown.trigger = this.el;
+        this.dropdown.$trigger = this.$el;
+
+        this.dropdown._init();
+
         this._setupEventHandlers();
       }
     }, {
-      key: "add",
-      value: function add(_ref) {
-        var tag = _ref.tag,
-            image = _ref.image;
-        var chip = cash_min("<div class=chip tabindex=0>\n            ".concat(tag, "\n            <i class='material-icons close'>close</i>\n        </div>"));
-        if (image) chip.append("<img src=".concat(image, " />"));
+      key: "_handleKeyPress",
+      value: function _handleKeyPress(e) {
+        var input = this.$el.val().toLowerCase();
+        var allInvisible = true;
 
-        if (typeof this.settings.verify === 'function') {
-          if (this.settings.verify.call(this, tag)) chip.insertBefore(this.$input);
-        } else chip.insertBefore(this.$input);
-      }
-    }, {
-      key: "_handleInputKeypress",
-      value: function _handleInputKeypress(e) {
-        if (e.keyCode == E.keys.ENTER) {
-          var val = this.$input.val();
+        var _iterator2 = _createForOfIteratorHelper(this.$list.children()),
+            _step2;
 
-          if (val != "" && this.value.indexOf(val) == -1) {
-            this.add({
-              tag: val
-            });
-            this.value.push(val);
-            this.$input.val("");
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var item = _step2.value;
+            var $item = cash_min(item);
+
+            if ($item.text().toLowerCase().includes(input)) {
+              $item.css("display", "block");
+              allInvisible = false;
+            } else if ($item.data("alias") && $item.data("alias").toLowerCase().includes(input)) {
+              $item.css("display", "block");
+              allInvisible = false;
+            } else {
+              $item.css("display", "none");
+            }
           }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
         }
+
+        this.dropdown.calculateDropdownDimensions();
+        this.dropdown.positionDropdown();
+        if (!this.dropdown.isOpen) this.dropdown.open();
+        if (allInvisible) this.$list.css("display", "none");else this.$list.css("display", "block");
       }
     }, {
-      key: "_handleInputClick",
-      value: function _handleInputClick(e) {
-        if (!cash_min(e.target).closest(".chip").length) {
-          this.$input[0].focus();
-          this.$el.addClass("focused");
-        }
-      }
-    }, {
-      key: "_handleInputBlur",
-      value: function _handleInputBlur() {
-        this.$el.removeClass("focused");
+      key: "_handleDropdownClick",
+      value: function _handleDropdownClick(e) {
+        var $item = cash_min(e.target);
+        this.$el.siblings("label").addClass("active");
+        this.$el.val($item.text());
+        this.dropdown.close();
       }
     }, {
       key: "_setupEventHandlers",
       value: function _setupEventHandlers() {
-        this.$input.on("keyup", this._handleInputKeypress.bind(this));
-        this.$el.on("click", this._handleInputClick.bind(this));
-        this.$input.on("blur", this._handleInputBlur.bind(this));
+        this.$el.on("keyup change paste", this._handleKeyPress.bind(this));
+        this.$list.on("click touchstart", this._handleDropdownClick.bind(this));
       }
     }, {
       key: "_removeEventHandlers",
       value: function _removeEventHandlers() {
-        this.$input.off("keyup");
-        this.$el.off("click");
+        this.$el.off("keyup change paste");
+        this.$list.off("click touchstart");
       }
     }, {
       key: "destroy",
@@ -6097,24 +6243,170 @@
       }
     }]);
 
-    return Chips;
+    return Autocomplete;
   }(EmpyrealComponent);
 
   var VERSION$b = "0.0.1";
   var DEFAULTS$b = {
+    data: [],
+    placeholder: "",
+    secondaryPlaceholder: "",
+    autocomplete: null,
+    verify: null,
+    onChipAdd: null,
+    onChipDelete: null,
+    onChipSelect: null
+  };
+
+  var Chips = /*#__PURE__*/function (_EmpyrealComponent) {
+    _inherits(Chips, _EmpyrealComponent);
+
+    var _super = _createSuper(Chips);
+
+    function Chips(el, options) {
+      var _this;
+
+      _classCallCheck(this, Chips);
+
+      _this = _super.call(this, el, options);
+      _this.settings = _objectSpread2({}, DEFAULTS$b, {}, options);
+      _this.$el = cash_min(_this.el);
+      _this.$input = _this.$el.find("input");
+      _this.value = [];
+
+      _this._init();
+
+      return _this;
+    }
+
+    _createClass(Chips, [{
+      key: "_init",
+      value: function _init() {
+        this.$input.attr("placeholder", this.settings.placeholder);
+
+        var _iterator = _createForOfIteratorHelper(this.settings.data),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var i = _step.value;
+            this.add(i);
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+
+        if (this.settings.autocomplete) {
+          this.autocomplete = new Autocomplete(this.$input[0], _objectSpread2({}, this.settings.autocomplete));
+        }
+
+        this._setupEventHandlers();
+      }
+    }, {
+      key: "add",
+      value: function add(_ref) {
+        var tag = _ref.tag,
+            image = _ref.image;
+        var chip = cash_min("\n        <div class=chip tabindex=0 data-value=".concat(tag, ">\n            ").concat(tag, " <i class='material-icons close'>close</i>\n        </div>\n        "));
+        if (image) chip.append("<img src=".concat(image, " />"));
+        this.value.push(tag);
+        chip.insertBefore(this.$input);
+        if (typeof this.settings.onChipAdd === "function") this.settings.onChipAdd.call(this, tag, this.el);
+        if (this.settings.secondaryPlaceholder) this.$input.attr("placeholder", this.settings.secondaryPlaceholder);
+      }
+    }, {
+      key: "_handleInputKeypress",
+      value: function _handleInputKeypress(e) {
+        if (e.keyCode == E.keys.ENTER) {
+          var val = this.$input.val();
+
+          if (val != "" && this.value.indexOf(val) == -1) {
+            this.add({
+              tag: val
+            });
+            this.$input.val("");
+          }
+        }
+      }
+    }, {
+      key: "_handleInputClick",
+      value: function _handleInputClick(e) {
+        if (cash_min(e.target).closest(".chip").length) {
+          if (cash_min(e.target).hasClass("close")) {
+            this.value.splice(this.value.indexOf(cash_min(e.target).closest(".chip").data("value")), 1);
+            if (typeof this.settings.onChipDelete === "function") this.settings.onChipDelete.call(this, e.target, this.el);
+            if (this.$el.children(".chip").length == 0) this.$input.attr("placeholder", this.settings.placeholder);
+          }
+        } else {
+          this.$input[0].focus();
+          this.$el.addClass("focused");
+        }
+      }
+    }, {
+      key: "_handleChipFocus",
+      value: function _handleChipFocus(e) {
+        if (typeof this.settings.onChipSelect === "function") this.settings.onChipDelete.call(this, e.target, this.el);
+      }
+    }, {
+      key: "_handleInputBlur",
+      value: function _handleInputBlur() {
+        this.$el.removeClass("focused");
+      }
+    }, {
+      key: "_setupEventHandlers",
+      value: function _setupEventHandlers() {
+        this.$input.on("keyup", this._handleInputKeypress.bind(this));
+        this.$el.on("click", this._handleInputClick.bind(this));
+        this.$input.on("blur", this._handleInputBlur.bind(this));
+        this.$el.children(".chip").on("focus", this._handleChipFocus.bind(this));
+      }
+    }, {
+      key: "_removeEventHandlers",
+      value: function _removeEventHandlers() {
+        this.$input.off("keyup");
+        this.$el.off("click");
+        this.$input.off("blur");
+        this.$el.children(".chip").off("focus");
+      }
+    }, {
+      key: "destroy",
+      value: function destroy() {
+        this._removeEventHandlers();
+      }
+    }], [{
+      key: "version",
+      get: function get() {
+        return VERSION$b;
+      }
+    }, {
+      key: "defaults",
+      get: function get() {
+        return DEFAULTS$b;
+      }
+    }]);
+
+    return Chips;
+  }(EmpyrealComponent);
+
+  var VERSION$c = "0.0.1";
+  var DEFAULTS$c = {
     dropdown: {}
   };
 
   var Select = /*#__PURE__*/function (_EmpyrealComponent) {
     _inherits(Select, _EmpyrealComponent);
 
+    var _super = _createSuper(Select);
+
     function Select(el, options) {
       var _this;
 
       _classCallCheck(this, Select);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(Select).call(this, el, options));
-      _this.settings = _objectSpread2({}, DEFAULTS$b, {}, options);
+      _this = _super.call(this, el, options);
+      _this.settings = _objectSpread2({}, DEFAULTS$c, {}, options);
       _this.$el = cash_min(_this.el);
       _this.id = _this.$el.attr("id") || E.generateUUID();
       _this.$input = cash_min("<input type='text' readonly='true' class=\"select-dropdown\" />");
@@ -6137,12 +6429,12 @@
         cash_min("<span class='caret' />").insertAfter(this.$el);
         this.$list.insertAfter(this.$el);
         this.$input.insertAfter(this.$el);
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
+
+        var _iterator = _createForOfIteratorHelper(this.$el.children()),
+            _step;
 
         try {
-          for (var _iterator = this.$el.children()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
             var elem = _step.value;
 
             if (elem.nodeName.toLowerCase() == "option") {
@@ -6151,12 +6443,12 @@
               this.$list.append($selectItem);
             } else if (elem.nodeName.toLowerCase() == "optgroup") {
               var $group = cash_min("<li class='optgroup'><p>".concat(cash_min(elem).attr("label"), "</p></li>"));
-              var _iteratorNormalCompletion2 = true;
-              var _didIteratorError2 = false;
-              var _iteratorError2 = undefined;
+
+              var _iterator2 = _createForOfIteratorHelper(cash_min(elem).children()),
+                  _step2;
 
               try {
-                for (var _iterator2 = cash_min(elem).children()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
                   var item = _step2.value;
 
                   var _$selectItem = this._createSelectOption(item);
@@ -6164,36 +6456,18 @@
                   $group.append(_$selectItem);
                 }
               } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
+                _iterator2.e(err);
               } finally {
-                try {
-                  if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-                    _iterator2.return();
-                  }
-                } finally {
-                  if (_didIteratorError2) {
-                    throw _iteratorError2;
-                  }
-                }
+                _iterator2.f();
               }
 
               this.$list.append($group);
             }
           }
         } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
+          _iterator.e(err);
         } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator.return != null) {
-              _iterator.return();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
-          }
+          _iterator.f();
         }
 
         this.dropdown = new Dropdown(this.$list[0], _objectSpread2({
@@ -6298,170 +6572,6 @@
     }], [{
       key: "version",
       get: function get() {
-        return VERSION$b;
-      }
-    }, {
-      key: "defaults",
-      get: function get() {
-        return DEFAULTS$b;
-      }
-    }]);
-
-    return Select;
-  }(EmpyrealComponent);
-
-  var VERSION$c = "0.0.1";
-  var DEFAULTS$c = {
-    data: [],
-    dropdown: {}
-  };
-
-  var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
-    _inherits(Autocomplete, _EmpyrealComponent);
-
-    function Autocomplete(el, options) {
-      var _this;
-
-      _classCallCheck(this, Autocomplete);
-
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(Autocomplete).call(this, el, options));
-      _this.settings = _objectSpread2({}, DEFAULTS$c, {}, options);
-      _this.$el = cash_min(_this.el);
-      _this.id = _this.$el.attr("id") || E.generateUUID();
-
-      _this._init();
-
-      return _this;
-    }
-
-    _createClass(Autocomplete, [{
-      key: "_init",
-      value: function _init() {
-        this.$list = cash_min("<ul class=dropdown id=".concat("dropdown-" + this.id, "></ul>"));
-        this.$el.parent().append(this.$list);
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-          for (var _iterator = this.settings.data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var item = _step.value;
-
-            if (typeof item == "string") {
-              this.$list.append("<a class=dropdown-item>".concat(item, "</a>"));
-            } else {
-              var $listItem = cash_min("<a class=dropdown-item>".concat(item.name, "</a>"));
-              if (item.alias) $listItem.data("alias", item.alias.join(" "));
-              if (item.href) $listItem.attr("href", item.href);
-              this.$list.append($listItem);
-            }
-          }
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator.return != null) {
-              _iterator.return();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
-          }
-        }
-
-        this.dropdown = new Dropdown("#dropdown-" + this.id, _objectSpread2({
-          isRelative: true
-        }, this.settings.dropdown));
-
-        this.dropdown._removeEventHandlers();
-
-        this.dropdown.trigger = this.el;
-        this.dropdown.$trigger = this.$el;
-
-        this.dropdown._init();
-
-        this._setupEventHandlers();
-      }
-    }, {
-      key: "_handleKeyPress",
-      value: function _handleKeyPress(e) {
-        var input = this.$el.val().toLowerCase();
-        var allInvisible = true;
-
-        if (e.keyCode == E.keys.ENTER) {
-          this.$list.children().filter(function (i, item) {
-            if (item.style.display != "none") return true;
-          }).first().trigger("click");
-        } else {
-          var _iteratorNormalCompletion2 = true;
-          var _didIteratorError2 = false;
-          var _iteratorError2 = undefined;
-
-          try {
-            for (var _iterator2 = this.$list.children()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-              var item = _step2.value;
-              var $item = cash_min(item);
-
-              if ($item.text().toLowerCase().includes(input)) {
-                $item.css("display", "block");
-                allInvisible = false;
-              } else if ($item.data("alias") && $item.data("alias").toLowerCase().includes(input)) {
-                $item.css("display", "block");
-                allInvisible = false;
-              } else {
-                $item.css("display", "none");
-              }
-            }
-          } catch (err) {
-            _didIteratorError2 = true;
-            _iteratorError2 = err;
-          } finally {
-            try {
-              if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-                _iterator2.return();
-              }
-            } finally {
-              if (_didIteratorError2) {
-                throw _iteratorError2;
-              }
-            }
-          }
-
-          if (!this.dropdown.isOpen) this.dropdown.open();
-        }
-
-        if (allInvisible) this.$list.css("display", "none");else this.$list.css("display", "block");
-      }
-    }, {
-      key: "_handleDropdownClick",
-      value: function _handleDropdownClick(e) {
-        var $item = cash_min(e.target);
-        this.$el.siblings("label").addClass("active");
-        this.$el.val($item.text());
-        this.dropdown.close();
-      }
-    }, {
-      key: "_setupEventHandlers",
-      value: function _setupEventHandlers() {
-        this.$el.on("keyup change paste", this._handleKeyPress.bind(this));
-        this.$list.on("click touchstart", this._handleDropdownClick.bind(this));
-      }
-    }, {
-      key: "_removeEventHandlers",
-      value: function _removeEventHandlers() {
-        this.$el.off("keyup change paste");
-        this.$list.off("click touchstart");
-      }
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        this._removeEventHandlers();
-      }
-    }], [{
-      key: "version",
-      get: function get() {
         return VERSION$c;
       }
     }, {
@@ -6471,7 +6581,7 @@
       }
     }]);
 
-    return Autocomplete;
+    return Select;
   }(EmpyrealComponent);
 
   var empyreal = {
@@ -6499,29 +6609,20 @@
     var json = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
     var elements = NodeList.prototype.isPrototypeOf(selector) ? selector : document.querySelectorAll(selector);
     var components = json ? {} : [];
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+
+    var _iterator = _createForOfIteratorHelper(elements),
+        _step;
 
     try {
-      for (var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
         var element = _step.value;
         var initailize = new component(element, options);
         json ? components[element] = initailize : components.push(initailize);
       }
     } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
+      _iterator.e(err);
     } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return != null) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
+      _iterator.f();
     }
 
     return components;

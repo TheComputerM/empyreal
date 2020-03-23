@@ -4836,12 +4836,16 @@ p {
     font-size: 1.1rem; }
 
 .chips {
+  position: relative;
   margin: 0 0 8px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.42);
   min-height: 45px;
   outline: none;
   transition: 0.15s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.15s ease-in-out;
-  letter-spacing: 0.025rem; }
+  letter-spacing: 0.025rem;
+  cursor: text; }
+  .chips .chip {
+    cursor: pointer; }
   .chips input {
     background: none;
     border: none;

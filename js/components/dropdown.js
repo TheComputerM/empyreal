@@ -83,6 +83,15 @@ export default class Dropdown extends EmpyrealComponent {
         this._setupEventHandlers();
     }
 
+    calculateDropdownDimensions() {
+        this.$el.css("display", "block");
+        this.initialDropdownDimensions = {
+            width: this.$el.outerWidth(),
+            height: this.$el.outerHeight(),
+        };
+        if (!this.isOpen) this.$el.css("display", "none");
+    }
+
     positionDropdown() {
         if (this.isOpen) {
             let triggerDimensions = this.$trigger.size();
