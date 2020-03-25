@@ -6,7 +6,9 @@ const VERSION = "0.0.1";
 
 const DEFAULTS = {
     data: [],
+    highlightClass: "primary-text font-weight-400",
     dropdown: {},
+    minLength: 1
 };
 
 export default class Autocomplete extends EmpyrealComponent {
@@ -18,6 +20,7 @@ export default class Autocomplete extends EmpyrealComponent {
 
         this.id = this.$el.attr("id") || E.generateUUID();
 
+        this.isDropdownEmpty = true;
         this._init();
     }
 
@@ -32,18 +35,7 @@ export default class Autocomplete extends EmpyrealComponent {
         this.$list = c(`<ul class=dropdown id=${"dropdown-" + this.id}></ul>`);
         this.$el.parent().append(this.$list);
 
-        for (let item of this.settings.data) {
-            if (typeof item == "string") {
-                this.$list.append(`<a class=dropdown-item>${item}</a>`);
-            } else {
-                let $listItem = c(`<a class=dropdown-item>${item.name}</a>`);
-                if (item.alias)
-                    $listItem.data("alias", item.alias.join(" "));
-                if (item.href) $listItem.attr("href", item.href);
-
-                this.$list.append($listItem);
-            }
-        }
+        this.renderAutocompleteItems('');
 
         this.dropdown = new Dropdown(
             "#dropdown-" + this.id,
@@ -56,27 +48,57 @@ export default class Autocomplete extends EmpyrealComponent {
         this._setupEventHandlers();
     }
 
-    _handleKeyPress(e) {
-        let input = this.$el.val().toLowerCase();
-        let allInvisible = true;
-        for (let item of this.$list.children()) {
-            let $item = c(item);
-            if ($item.text().toLowerCase().includes(input)) {
-                $item.css("display", "block");
-                allInvisible = false;
-            } else if ($item.data("alias") && $item.data("alias").toLowerCase().includes(input)) {
-                $item.css("display", "block");
-                allInvisible = false;
+    _addItem(text, input, href = "") {
+        let startIndex = text.toLowerCase().indexOf(input);
+        let value = text;
+        if (startIndex != -1) {
+            let highlight = text.slice(startIndex, startIndex + input.length);
+            let highlightElem = `<span class='${this.settings.highlightClass}'>${highlight}</span>`;
+            value = text.replace(highlight, highlightElem);
+        }
+        let $item = c(`<a class=dropdown-item>${value}</a>`);
+        if (href) $item.attr("href", href);
+        this.$list.append($item);
+    }
+
+    renderAutocompleteItems(input) {
+        this.$list.empty();
+        this.isDropdownEmpty = true;
+        for (let item of this.settings.data) {
+            if (typeof item == "string") {
+                if (item.toLowerCase().includes(input)) {
+                    this._addItem(item, input);
+                    this.isDropdownEmpty = false;
+                }
             } else {
-                $item.css("display", "none");
+                let names = [item.value];
+                if (item.alias) {
+                    for (let alias of item.alias) names.push(alias);
+                }
+                for (let name of names) {
+                    if (name.toLowerCase().includes(input)) {
+                        this._addItem(item.value, input, item.href);
+                        this.isDropdownEmpty = false;
+                        break;
+                    }
+                }
             }
         }
+    }
+
+    _handleKeyPress(e) {
+        if (e.keyCode == E.keys.ARROW_DOWN || e.keyCode == E.keys.ARROW_UP) return;
+        let input = this.$el.val().toLowerCase();
+
+        if (input.length >= this.settings.minLength) this.renderAutocompleteItems(input);
+
+        this.dropdown.$items = this.$list.children(".dropdown-item");
+        this.dropdown.focusedIndex = -1;
         this.dropdown.calculateDropdownDimensions();
         this.dropdown.positionDropdown();
-        if (!this.dropdown.isOpen) this.dropdown.open();
 
-        if (allInvisible) this.$list.css("display", "none");
-        else this.$list.css("display", "block");
+        if (!this.dropdown.isOpen) this.dropdown.open();
+        if (this.isDropdownEmpty) this.$list.css("display", "none");
     }
 
     _handleDropdownClick(e) {

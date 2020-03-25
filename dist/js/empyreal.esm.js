@@ -4901,7 +4901,7 @@ var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
 
           e.preventDefault();
         } else if (e.keyCode == E.keys.ENTER && this.focusedIndex != -1) {
-          this.$items.eq(this.focusedIndex).trigger("click");
+          this.$items.filter(".focused").trigger("click");
           e.preventDefault();
         } else {
           if (e.keyCode == E.keys.ARROW_DOWN && this.focusedIndex != this.$items.length - 1) {
@@ -6101,7 +6101,9 @@ function Snackbar(_ref) {
 var VERSION$a = "0.0.1";
 var DEFAULTS$a = {
   data: [],
-  dropdown: {}
+  highlightClass: "primary-text font-weight-400",
+  dropdown: {},
+  minLength: 1
 };
 
 var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
@@ -6118,6 +6120,7 @@ var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
     _this.settings = _objectSpread2({}, DEFAULTS$a, {}, options);
     _this.$el = cash_min(_this.el);
     _this.id = _this.$el.attr("id") || E.generateUUID();
+    _this.isDropdownEmpty = true;
 
     _this._init();
 
@@ -6129,29 +6132,7 @@ var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
     value: function _init() {
       this.$list = cash_min("<ul class=dropdown id=".concat("dropdown-" + this.id, "></ul>"));
       this.$el.parent().append(this.$list);
-
-      var _iterator = _createForOfIteratorHelper(this.settings.data),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var item = _step.value;
-
-          if (typeof item == "string") {
-            this.$list.append("<a class=dropdown-item>".concat(item, "</a>"));
-          } else {
-            var $listItem = cash_min("<a class=dropdown-item>".concat(item.name, "</a>"));
-            if (item.alias) $listItem.data("alias", item.alias.join(" "));
-            if (item.href) $listItem.attr("href", item.href);
-            this.$list.append($listItem);
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
+      this.renderAutocompleteItems('');
       this.dropdown = new Dropdown("#dropdown-" + this.id, _objectSpread2({
         isRelative: true
       }, this.settings.dropdown));
@@ -6166,39 +6147,90 @@ var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
       this._setupEventHandlers();
     }
   }, {
-    key: "_handleKeyPress",
-    value: function _handleKeyPress(e) {
-      var input = this.$el.val().toLowerCase();
-      var allInvisible = true;
+    key: "_addItem",
+    value: function _addItem(text, input) {
+      var href = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+      var startIndex = text.toLowerCase().indexOf(input);
+      var value = text;
 
-      var _iterator2 = _createForOfIteratorHelper(this.$list.children()),
-          _step2;
+      if (startIndex != -1) {
+        var highlight = text.slice(startIndex, startIndex + input.length);
+        var highlightElem = "<span class='".concat(this.settings.highlightClass, "'>").concat(highlight, "</span>");
+        value = text.replace(highlight, highlightElem);
+      }
+
+      var $item = cash_min("<a class=dropdown-item>".concat(value, "</a>"));
+      if (href) $item.attr("href", href);
+      this.$list.append($item);
+    }
+  }, {
+    key: "renderAutocompleteItems",
+    value: function renderAutocompleteItems(input) {
+      this.$list.empty();
+      this.isDropdownEmpty = true;
+
+      var _iterator = _createForOfIteratorHelper(this.settings.data),
+          _step;
 
       try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var item = _step2.value;
-          var $item = cash_min(item);
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var item = _step.value;
 
-          if ($item.text().toLowerCase().includes(input)) {
-            $item.css("display", "block");
-            allInvisible = false;
-          } else if ($item.data("alias") && $item.data("alias").toLowerCase().includes(input)) {
-            $item.css("display", "block");
-            allInvisible = false;
+          if (typeof item == "string") {
+            if (item.toLowerCase().includes(input)) {
+              this._addItem(item, input);
+
+              this.isDropdownEmpty = false;
+            }
           } else {
-            $item.css("display", "none");
+            var names = [item.value];
+
+            if (item.alias) {
+              var _iterator2 = _createForOfIteratorHelper(item.alias),
+                  _step2;
+
+              try {
+                for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+                  var alias = _step2.value;
+                  names.push(alias);
+                }
+              } catch (err) {
+                _iterator2.e(err);
+              } finally {
+                _iterator2.f();
+              }
+            }
+
+            for (var _i = 0, _names = names; _i < _names.length; _i++) {
+              var name = _names[_i];
+
+              if (name.toLowerCase().includes(input)) {
+                this._addItem(item.value, input, item.href);
+
+                this.isDropdownEmpty = false;
+                break;
+              }
+            }
           }
         }
       } catch (err) {
-        _iterator2.e(err);
+        _iterator.e(err);
       } finally {
-        _iterator2.f();
+        _iterator.f();
       }
-
+    }
+  }, {
+    key: "_handleKeyPress",
+    value: function _handleKeyPress(e) {
+      if (e.keyCode == E.keys.ARROW_DOWN || e.keyCode == E.keys.ARROW_UP) return;
+      var input = this.$el.val().toLowerCase();
+      if (input.length >= this.settings.minLength) this.renderAutocompleteItems(input);
+      this.dropdown.$items = this.$list.children(".dropdown-item");
+      this.dropdown.focusedIndex = -1;
       this.dropdown.calculateDropdownDimensions();
       this.dropdown.positionDropdown();
       if (!this.dropdown.isOpen) this.dropdown.open();
-      if (allInvisible) this.$list.css("display", "none");else this.$list.css("display", "block");
+      if (this.isDropdownEmpty) this.$list.css("display", "none");
     }
   }, {
     key: "_handleDropdownClick",

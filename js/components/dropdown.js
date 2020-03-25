@@ -196,7 +196,7 @@ export default class Dropdown extends EmpyrealComponent {
                 this._handleDropdownClose()
                 e.preventDefault();
             } else if (e.keyCode == E.keys.ENTER && this.focusedIndex != -1) {
-                this.$items.eq(this.focusedIndex).trigger("click");
+                this.$items.filter(".focused").trigger("click");
                 e.preventDefault();
             } else {
                 if (e.keyCode == E.keys.ARROW_DOWN && this.focusedIndex != this.$items.length - 1) {
