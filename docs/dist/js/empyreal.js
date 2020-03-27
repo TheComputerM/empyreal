@@ -4582,7 +4582,8 @@ var empy = (function () {
   var DEFAULTS$1 = {
     animDuration: 500,
     activeTabClass: "",
-    tabIndicatorClass: ""
+    tabIndicatorClass: "",
+    onTabOpen: null
   };
 
   var Tabs = /*#__PURE__*/function (_EmpyrealComponent) {
@@ -4603,15 +4604,14 @@ var empy = (function () {
       _this.settings = _objectSpread2({}, DEFAULTS$1, {}, options);
       _this.$el = cash_min(_this.el);
       _this.$tabs = _this.$el.find(".tab");
-      _this.$tab_contents = _this.$tabs.map(function (i, val) {
+      _this.$tabContents = _this.$tabs.map(function (i, val) {
         var id = val.getAttribute("data-target") || val.getAttribute("href");
         return document.querySelector("div".concat(id));
       });
-      _this.$tab_indicator = cash_min("<div class='tab-indicator' />");
+      _this.$tabIndicator = cash_min("<div class='tab-indicator' />");
 
-      _this.$el.append(_this.$tab_indicator);
+      _this.$el.append(_this.$tabIndicator);
 
-      _this.tab_indicator = _this.$tab_indicator[0];
       _this.listeners = [];
 
       _this._init();
@@ -4624,17 +4624,20 @@ var empy = (function () {
       value: function _init() {
         this._setupEventHandlers();
 
-        this.$tab_indicator.addClass(this.settings.tabIndicatorClass);
-        if (this.$tabs.filter(".active").length) this._handleTabClick(this.$tabs.filter(".active")[0]);else this._handleTabClick(this.$tabs.first());
+        this.$tabIndicator.addClass(this.settings.tabIndicatorClass);
+        if (this.$tabs.filter(".active").length) this._handleTabOpen(this.$tabs.filter(".active")[0]);else this._handleTabOpen(this.$tabs.first());
       }
     }, {
-      key: "_handleTabClick",
-      value: function _handleTabClick(e) {
-        var tabPressed = e;
-        var $tabPressed = cash_min(tabPressed);
+      key: "_handleTabOpen",
+      value: function _handleTabOpen(e) {
+        if (typeof this.settings.onTabOpen === "function") {
+          this.settings.onTabOpen.call(this, e, this.$el);
+        }
+
+        var $tabPressed = cash_min(e);
         var id = $tabPressed.attr("data-target") || $tabPressed.attr("href");
-        var $previousActiveTabContent = this.$tab_contents.filter(".active");
-        var $activeTabContent = this.$tab_contents.filter(id); // Tab active color
+        var $previousActiveTabContent = this.$tabContents.filter(".active");
+        var $activeTabContent = this.$tabContents.filter(id); // Tab active color
 
         this.$tabs.removeClass("active");
         this.$tabs.removeClass(this.settings.activeTabClass);
@@ -4644,15 +4647,17 @@ var empy = (function () {
         $previousActiveTabContent.removeClass("active");
         $activeTabContent.addClass("active"); // Moving Tab Indicator
 
-        var tabSize = $tabPressed.size();
-        this.tab_indicator.style.top = tabSize.height - 2 + "px";
-        this.tab_indicator.style.left = tabSize.left - this.$el.size().left + "px";
-        this.tab_indicator.style.width = $tabPressed.outerWidth(true) + "px";
+        this._handleResizeIndicator($tabPressed);
       }
     }, {
-      key: "_handleWindowResize",
-      value: function _handleWindowResize() {
-        this._handleTabClick(this.$tabs.first());
+      key: "_handleResizeIndicator",
+      value: function _handleResizeIndicator($tabPressed) {
+        var tabSize = $tabPressed.size();
+        this.$tabIndicator.css({
+          top: tabSize.height - 2 + "px",
+          left: tabSize.left - this.$el.size().left + "px",
+          width: $tabPressed.outerWidth(true) + "px"
+        });
       }
     }, {
       key: "_setupEventHandlers",
@@ -4662,9 +4667,9 @@ var empy = (function () {
         this.$tabs.on("click touchstart", function (e) {
           e.preventDefault();
 
-          _this2._handleTabClick(e.target);
+          _this2._handleTabOpen(e.target);
         });
-        window.addEventListener("resize", this.listeners[0] = this._handleWindowResize.bind(this));
+        window.addEventListener("resize", this.listeners[0] = this._handleResizeIndicator.bind(this));
       }
     }, {
       key: "_removeEventHandlers",
@@ -4675,12 +4680,12 @@ var empy = (function () {
     }, {
       key: "toggleTab",
       value: function toggleTab(selector) {
-        this._handleTabClick(this.$tabs.filter(selector)[0]);
+        this._handleTabOpen(this.$tabs.filter(selector)[0]);
       }
     }, {
       key: "toggleTabUsingIndex",
       value: function toggleTabUsingIndex(index) {
-        this._handleTabClick(this.$tabs.filter(".tab:nth-child(".concat(index, ")"))[0]);
+        this._handleTabOpen(this.$tabs.filter(".tab:nth-child(".concat(index, ")"))[0]);
       }
     }, {
       key: "destroy",
@@ -4704,10 +4709,10 @@ var empy = (function () {
 
   var VERSION$2 = "0.0.1";
   var DEFAULTS$2 = {
-    animInDuration: 500,
-    animOutDuration: 500,
     coverTrigger: false,
     isRelative: false,
+    animInDuration: 500,
+    animOutDuration: 500,
     onOpenStart: null,
     onOpenEnd: null,
     onCloseStart: null,
@@ -4771,12 +4776,7 @@ var empy = (function () {
     _createClass(Dropdown, [{
       key: "_init",
       value: function _init() {
-        this.$el.css("display", "block");
-        this.initialDropdownDimensions = {
-          width: this.$el.outerWidth(),
-          height: this.$el.outerHeight()
-        };
-        this.$el.css("display", "none");
+        this.calculateDropdownDimensions();
 
         this._setupEventHandlers();
       }
@@ -4815,9 +4815,10 @@ var empy = (function () {
       }
     }, {
       key: "_handleDropdownOpen",
-      value: function _handleDropdownOpen(e) {
+      value: function _handleDropdownOpen() {
         var _this2 = this;
 
+        var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'none';
         this.focusedIndex = -1;
         this.isOpen = true;
         this.isAnimationDone = false;
@@ -4844,9 +4845,10 @@ var empy = (function () {
       }
     }, {
       key: "_handleDropdownClose",
-      value: function _handleDropdownClose(e) {
+      value: function _handleDropdownClose() {
         var _this3 = this;
 
+        var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'none';
         this.isOpen = false;
         this.isAnimationDone = false;
         anime({
@@ -4883,7 +4885,7 @@ var empy = (function () {
       key: "_handleDropdownTriggerClick",
       value: function _handleDropdownTriggerClick(e) {
         e.preventDefault();
-        if (this.isOpen) this._handleDropdownClose();else this._handleDropdownOpen();
+        if (this.isOpen) this._handleDropdownClose(e);else this._handleDropdownOpen(e);
       }
     }, {
       key: "_handleDropdownItemClick",
@@ -6153,6 +6155,7 @@ var empy = (function () {
       key: "_addItem",
       value: function _addItem(text, input) {
         var href = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+        var image = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
         var startIndex = text.toLowerCase().indexOf(input);
         var value = text;
 
@@ -6164,6 +6167,7 @@ var empy = (function () {
 
         var $item = cash_min("<a class=dropdown-item>".concat(value, "</a>"));
         if (href) $item.attr("href", href);
+        if (image) $item.append("<img src=".concat(image, " />"));
         this.$list.append($item);
       }
     }, {
@@ -6208,7 +6212,7 @@ var empy = (function () {
                 var name = _names[_i];
 
                 if (name.toLowerCase().includes(input)) {
-                  this._addItem(item.value, input, item.href);
+                  this._addItem(item.value, input, item.href, item.image);
 
                   this.isDropdownEmpty = false;
                   break;
@@ -6443,7 +6447,7 @@ var empy = (function () {
       _this.$input.attr("id", _this.id);
 
       _this.isSelectMultiple = _this.el.hasAttribute("multiple");
-      _this.$list = cash_min("<ul class=\"select-list\" />");
+      _this.$list = cash_min("<ul class=select-list />");
       _this.value = [];
       _this.textinput_content = [];
 
@@ -6455,6 +6459,8 @@ var empy = (function () {
     _createClass(Select, [{
       key: "_init",
       value: function _init() {
+        var _this2 = this;
+
         cash_min("<span class='caret' />").insertAfter(this.$el);
         this.$list.insertAfter(this.$el);
         this.$input.insertAfter(this.$el);
@@ -6500,7 +6506,13 @@ var empy = (function () {
         }
 
         this.dropdown = new Dropdown(this.$list[0], _objectSpread2({
-          isRelative: true
+          isRelative: true,
+          onOpenStart: function onOpenStart() {
+            _this2.$el.siblings(".caret").addClass("active");
+          },
+          onCloseStart: function onCloseStart() {
+            _this2.$el.siblings(".caret").removeClass("active");
+          }
         }, this.settings.dropdown));
 
         this.dropdown._removeEventHandlers();
@@ -6585,7 +6597,6 @@ var empy = (function () {
     }, {
       key: "_setupEventHandlers",
       value: function _setupEventHandlers() {
-        this.$input.on("click", this.open.bind(this));
         this.$list.on("click", this._handleSelectItemClick.bind(this));
       }
     }, {

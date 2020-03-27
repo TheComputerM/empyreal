@@ -15,6 +15,11 @@
 		width: 12px;
 		height: 12px;
 		top: 50%;
+		transition: 200ms ease;
+		&.active {
+			transform: rotateZ(180deg);
+			bottom: 4px;
+		}
 	}
 	ul.select-list {
 		display: none;
@@ -45,6 +50,7 @@
 			}
 			&.disabled {
 				color: $disabled-color;
+				cursor: default;
 			}
 			&:hover:not(.disabled):not(.optgroup) {
 				background-color: $select-hover-item-color;

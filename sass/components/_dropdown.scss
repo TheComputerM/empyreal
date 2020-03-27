@@ -24,6 +24,12 @@
 		display: block;
 		transition: 0.4s;
 		font-size: $dropdown-item-font-size;
+		img {
+			float: right;
+			width: 40px;
+			top: -10px;
+			position: relative;
+		}
 		i {
 			font-size: $dropdown-item-icon-font-size;
 			margin-right: 1.2rem;

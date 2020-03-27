@@ -4,10 +4,10 @@ import EmpyrealComponent from "../component";
 const VERSION = "0.0.1";
 
 const DEFAULTS = {
-    animInDuration: 500,
-    animOutDuration: 500,
     coverTrigger: false,
     isRelative: false,
+    animInDuration: 500,
+    animOutDuration: 500,
     onOpenStart: null,
     onOpenEnd: null,
     onCloseStart: null,
@@ -73,13 +73,7 @@ export default class Dropdown extends EmpyrealComponent {
     }
 
     _init() {
-        this.$el.css("display", "block");
-        this.initialDropdownDimensions = {
-            width: this.$el.outerWidth(),
-            height: this.$el.outerHeight(),
-        };
-        this.$el.css("display", "none");
-
+        this.calculateDropdownDimensions();
         this._setupEventHandlers();
     }
 
@@ -116,7 +110,7 @@ export default class Dropdown extends EmpyrealComponent {
         }
     }
 
-    _handleDropdownOpen(e) {
+    _handleDropdownOpen(e = 'none') {
         this.focusedIndex = -1;
         this.isOpen = true;
         this.isAnimationDone = false;
@@ -141,7 +135,7 @@ export default class Dropdown extends EmpyrealComponent {
         });
     }
 
-    _handleDropdownClose(e) {
+    _handleDropdownClose(e = 'none') {
         this.isOpen = false;
         this.isAnimationDone = false;
         anime({
@@ -178,8 +172,8 @@ export default class Dropdown extends EmpyrealComponent {
 
     _handleDropdownTriggerClick(e) {
         e.preventDefault();
-        if (this.isOpen) this._handleDropdownClose();
-        else this._handleDropdownOpen();
+        if (this.isOpen) this._handleDropdownClose(e);
+        else this._handleDropdownOpen(e);
     }
 
     _handleDropdownItemClick(e) {

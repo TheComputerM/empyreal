@@ -21,7 +21,7 @@ export default class Select extends EmpyrealComponent {
 
         this.isSelectMultiple = this.el.hasAttribute("multiple");
 
-        this.$list = c("<ul class=\"select-list\" />");
+        this.$list = c("<ul class=select-list />");
 
         this.value = [];
         this.textinput_content = [];
@@ -55,11 +55,21 @@ export default class Select extends EmpyrealComponent {
             }
         }
 
-        this.dropdown = new Dropdown(this.$list[0], {isRelative: true, ...this.settings.dropdown});
+        this.dropdown = new Dropdown(this.$list[0], {
+            isRelative: true,
+            onOpenStart: () => {
+                this.$el.siblings(".caret").addClass("active")
+            },
+            onCloseStart: () => {
+                this.$el.siblings(".caret").removeClass("active")
+            },
+            ...this.settings.dropdown
+        });
         this.dropdown._removeEventHandlers();
         this.dropdown.trigger = this.$input[0];
         this.dropdown.$trigger = this.$input;
         this.dropdown._init();
+
         this._setupEventHandlers();
     }
 
@@ -116,11 +126,9 @@ export default class Select extends EmpyrealComponent {
             }
             this._updateTextInputValue();
         }
-
     }
 
     _setupEventHandlers() {
-        this.$input.on("click", this.open.bind(this));
         this.$list.on("click", this._handleSelectItemClick.bind(this));
     }
 

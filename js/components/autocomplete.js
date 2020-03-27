@@ -48,7 +48,7 @@ export default class Autocomplete extends EmpyrealComponent {
         this._setupEventHandlers();
     }
 
-    _addItem(text, input, href = "") {
+    _addItem(text, input, href = "", image = "") {
         let startIndex = text.toLowerCase().indexOf(input);
         let value = text;
         if (startIndex != -1) {
@@ -58,6 +58,7 @@ export default class Autocomplete extends EmpyrealComponent {
         }
         let $item = c(`<a class=dropdown-item>${value}</a>`);
         if (href) $item.attr("href", href);
+        if (image) $item.append(`<img src=${image} />`);
         this.$list.append($item);
     }
 
@@ -77,7 +78,7 @@ export default class Autocomplete extends EmpyrealComponent {
                 }
                 for (let name of names) {
                     if (name.toLowerCase().includes(input)) {
-                        this._addItem(item.value, input, item.href);
+                        this._addItem(item.value, input, item.href, item.image);
                         this.isDropdownEmpty = false;
                         break;
                     }

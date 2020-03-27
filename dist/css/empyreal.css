@@ -2314,7 +2314,7 @@ img.thumbnail {
 .z-depth-0 {
   box-shadow: none !important; }
 
-.z-depth-1, .pagination li.active, .badge, .btn, .collapsible, .collapsible.popout > li, .navbar-wrapper, .nav .nav-item.active, .switch .lever::after {
+.z-depth-1, .pagination li.active, .badge, .btn, .collapsible.popout > li, .navbar-wrapper, .nav .nav-item.active, .switch .lever::after {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
 .z-depth-1-half, .btn:hover, .card, .card.card-cascade.wide .card-body, .card-panel, .select-field ul.select-list, .noUi-handle {
@@ -3875,13 +3875,14 @@ a.waves-effect, a.waves-light {
   transform-origin: center center; }
 
 .collapsible {
-  border-top: 1px solid #E0E0E0;
-  border-right: 1px solid #E0E0E0;
-  border-left: 1px solid #E0E0E0;
   margin: 0.5rem 0 1rem 0;
   padding-left: 0px;
   padding-right: 0px;
   list-style: none; }
+  .collapsible li {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
+  .collapsible li.active {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
   .collapsible .collapsible-header {
     display: flex;
     cursor: pointer;
@@ -3889,7 +3890,6 @@ a.waves-effect, a.waves-light {
     line-height: 1.5;
     padding: 1rem;
     background-color: #ffffff;
-    border-bottom: 1px solid #E0E0E0;
     color: rgba(0, 0, 0, 0.85);
     transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
     font-size: 1rem; }
@@ -3909,7 +3909,7 @@ a.waves-effect, a.waves-light {
     display: none;
     border-bottom: 1px solid #E0E0E0;
     box-sizing: border-box;
-    padding: 1.5rem 1.6rem; }
+    padding: 1.2rem 1.4rem; }
   .collapsible.popout {
     border: none;
     box-shadow: none; }
@@ -4403,6 +4403,11 @@ p {
     display: block;
     transition: 0.4s;
     font-size: 0.95rem; }
+    .dropdown .dropdown-item img {
+      float: right;
+      width: 40px;
+      top: -10px;
+      position: relative; }
     .dropdown .dropdown-item i {
       font-size: 1.4rem;
       margin-right: 1.2rem;
@@ -5072,7 +5077,11 @@ p {
     background-size: 12px;
     width: 12px;
     height: 12px;
-    top: 50%; }
+    top: 50%;
+    transition: 200ms ease; }
+    .select-field .caret.active {
+      transform: rotateZ(180deg);
+      bottom: 4px; }
   .select-field ul.select-list {
     display: none;
     width: 100%;
@@ -5099,7 +5108,8 @@ p {
         width: 28px;
         margin-top: -2px; }
       .select-field ul.select-list li.disabled {
-        color: rgba(0, 0, 0, 0.3); }
+        color: rgba(0, 0, 0, 0.3);
+        cursor: default; }
       .select-field ul.select-list li:hover:not(.disabled):not(.optgroup) {
         background-color: rgba(0, 0, 0, 0.1); }
       .select-field ul.select-list li.optgroup {
