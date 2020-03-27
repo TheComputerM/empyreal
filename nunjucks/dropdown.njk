@@ -18,6 +18,150 @@
             <a href="#dropdown1" class="btn dropdown-trigger">Dropdown</a>
         </div>
     </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="initialization" data-name="Initialization">
+        <h2 class="blue-text">Initialization</h2>
+        <code class="prism-js">
+            var dropdown = new empy.Dropdown("#dropdown1", options);
+        </code>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="options" data-name="Options">
+        <h2 class="blue-text">Options</h2>
+        <p>
+            You can customize the behavior, callbacks and properties of each dropdown using these options.
+        </p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>coverTrigger</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>If true, the dropdown covers trigger</td>
+            </tr>
+            <tr>
+                <td>isRelative</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>If true, the dropdown is positions according to parent.</td>
+            </tr>
+            <tr>
+                <td>animInDuration</td>
+                <td>integer</td>
+                <td>500</td>
+                <td>Time taken for dropdown to animate in.</td>
+            </tr>
+            <tr>
+                <td>animOutDropdown</td>
+                <td>integer</td>
+                <td>500</td>
+                <td>Time taken for dropdown to animate out.</td>
+            </tr>
+            <tr>
+                <td>onOpenStart</td>
+                <td>function</td>
+                <td>null</td>
+                <td>Callback function called before dropdown is opened.</td>
+            </tr>
+            <tr>
+                <td>onOpenEnd</td>
+                <td>function</td>
+                <td>null</td>
+                <td>Callback function called after dropdown is opened.</td>
+            </tr>
+            <tr>
+                <td>onCloseStart</td>
+                <td>function</td>
+                <td>null</td>
+                <td>Callback function called before dropdown is closed.</td>
+            </tr>
+            <tr>
+                <td>onCloseEnd</td>
+                <td>function</td>
+                <td>null</td>
+                <td>Callback function called after dropdown is closed.</td>
+            </tr>
+            <tr>
+                <td>onItemClick</td>
+                <td>function</td>
+                <td>null</td>
+                <td>Callback function called when dropdown item is clicked.</td>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+    <div class="section scrollspy" id="methods" data-name="Methods">
+    <h2 class="blue-text">Methods and Properties</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Method / Property</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>open</td>
+                <td>Method</td>
+                <td>Opens the dropdown.</td>
+            </tr>
+            <tr>
+                <td>close</td>
+                <td>Method</td>
+                <td>Closes the dropdown.</td>
+            </tr>
+            <tr>
+                <td>destroy</td>
+                <td>Method</td>
+                <td>Destroys the dropdown.</td>
+            </tr>
+            <tr>
+                <td>calculateDropdownDimensions</td>
+                <td>Method</td>
+                <td>Calculates the dimensions of dropdown.</td>
+            </tr>
+            <tr>
+                <td>positionDropdown</td>
+                <td>Method</td>
+                <td>Positions the dropdown.</td>
+            </tr>
+            <tr>
+                <td>el</td>
+                <td>Property</td>
+                <td>Dropdown element.</td>
+            </tr>
+            <tr>
+                <td>trigger</td>
+                <td>Property</td>
+                <td>The trigger elements</td>
+            </tr>
+            <tr>
+                <td>isOpen</td>
+                <td>Property</td>
+                <td>true if dropdown is open</td>
+            </tr>
+            <tr>
+                <td>isAnimationDone</td>
+                <td>Property</td>
+                <td>true if animation is done.</td>
+            </tr>
+        </table>
+    </div>
 {% endblock content %}
 
 {% block script %}
