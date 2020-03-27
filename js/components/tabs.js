@@ -7,6 +7,7 @@ const DEFAULTS = {
     animDuration: 500,
     activeTabClass: "",
     tabIndicatorClass: "",
+    onTabOpen: null
 };
 
 export default class Tabs extends EmpyrealComponent {
@@ -22,14 +23,13 @@ export default class Tabs extends EmpyrealComponent {
 
         this.$tabs = this.$el.find(".tab");
 
-        this.$tab_contents = this.$tabs.map(function(i, val) {
+        this.$tabContents = this.$tabs.map(function(i, val) {
             let id = val.getAttribute("data-target") || val.getAttribute("href");
             return document.querySelector(`div${id}`);
         });
 
-        this.$tab_indicator = c("<div class='tab-indicator' />");
-        this.$el.append(this.$tab_indicator);
-        this.tab_indicator = this.$tab_indicator[0];
+        this.$tabIndicator = c("<div class='tab-indicator' />");
+        this.$el.append(this.$tabIndicator);
 
         this.listeners = [];
 
@@ -46,22 +46,23 @@ export default class Tabs extends EmpyrealComponent {
     _init() {
         this._setupEventHandlers();
 
-        this.$tab_indicator.addClass(this.settings.tabIndicatorClass);
+        this.$tabIndicator.addClass(this.settings.tabIndicatorClass);
 
         if (this.$tabs.filter(".active").length)
-            this._handleTabClick(this.$tabs.filter(".active")[0]);
-        else this._handleTabClick(this.$tabs.first());
+            this._handleTabOpen(this.$tabs.filter(".active")[0]);
+        else this._handleTabOpen(this.$tabs.first());
     }
 
-    _handleTabClick(e) {
-        
-        let tabPressed = e;
-        let $tabPressed = c(tabPressed);
+    _handleTabOpen(e) {
+        if (typeof this.settings.onTabOpen === "function") {
+            this.settings.onTabOpen.call(this, e, this.$el)
+        }
+        let $tabPressed = c(e);
 
         let id = $tabPressed.attr("data-target") || $tabPressed.attr("href");
 
-        let $previousActiveTabContent = this.$tab_contents.filter(".active");
-        let $activeTabContent = this.$tab_contents.filter(id);
+        let $previousActiveTabContent = this.$tabContents.filter(".active");
+        let $activeTabContent = this.$tabContents.filter(id);
 
         // Tab active color
         this.$tabs.removeClass("active");
@@ -74,25 +75,27 @@ export default class Tabs extends EmpyrealComponent {
         $activeTabContent.addClass("active");
 
         // Moving Tab Indicator
-        let tabSize = $tabPressed.size();
-        this.tab_indicator.style.top = tabSize.height - 2 + "px";
-        this.tab_indicator.style.left = tabSize.left - this.$el.size().left + "px";
-        this.tab_indicator.style.width = $tabPressed.outerWidth(true) + "px";
+        this._handleResizeIndicator($tabPressed);
     }
 
-    _handleWindowResize() {
-        this._handleTabClick(this.$tabs.first());
+    _handleResizeIndicator($tabPressed) {
+        let tabSize = $tabPressed.size();
+        this.$tabIndicator.css({
+            top: tabSize.height - 2 + "px",
+            left: tabSize.left - this.$el.size().left + "px",
+            width: $tabPressed.outerWidth(true) + "px"
+        })
     }
 
     _setupEventHandlers() {
         this.$tabs.on("click touchstart", (e) => {
             e.preventDefault();
-            this._handleTabClick(e.target);
+            this._handleTabOpen(e.target);
         });
 
         window.addEventListener(
             "resize",
-            (this.listeners[0] = this._handleWindowResize.bind(this))
+            (this.listeners[0] = this._handleResizeIndicator.bind(this))
         );
     }
 
@@ -102,11 +105,11 @@ export default class Tabs extends EmpyrealComponent {
     }
 
     toggleTab(selector) {
-        this._handleTabClick(this.$tabs.filter(selector)[0]);
+        this._handleTabOpen(this.$tabs.filter(selector)[0]);
     }
 
     toggleTabUsingIndex(index) {
-        this._handleTabClick(this.$tabs.filter(`.tab:nth-child(${index})`)[0]);
+        this._handleTabOpen(this.$tabs.filter(`.tab:nth-child(${index})`)[0]);
     }
 
     destroy() {
