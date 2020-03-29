@@ -48,7 +48,6 @@
 
 	.#{$color}-outline {
 		border: 2px solid $color_value;
-		background: transparent;
 		color: $color_value !important;
 	}
 
@@ -73,7 +72,6 @@
 }
 .primary-outline {
 	border: 2px solid $primary-color !important;
-	background: transparent !important;
 	color: $primary-color !important;
 }
 .primary-rgba-dark {
@@ -94,7 +92,6 @@
 }
 .secondary-outline {
 	border: 2px solid $secondary-color !important;
-	background: transparent !important;
 	color: $secondary-color !important;
 }
 .secondary-rgba-dark {
