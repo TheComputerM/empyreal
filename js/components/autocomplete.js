@@ -8,7 +8,7 @@ const DEFAULTS = {
     data: [],
     highlightClass: "primary-text font-weight-400",
     dropdown: {},
-    minLength: 1
+    minLength: 1,
 };
 
 export default class Autocomplete extends EmpyrealComponent {
@@ -22,6 +22,8 @@ export default class Autocomplete extends EmpyrealComponent {
 
         this.isDropdownEmpty = true;
         this._init();
+
+        this.listeners = [];
     }
 
     static get version() {
@@ -35,12 +37,12 @@ export default class Autocomplete extends EmpyrealComponent {
         this.$list = c(`<ul class=dropdown id=${"dropdown-" + this.id}></ul>`);
         this.$el.parent().append(this.$list);
 
-        this.renderAutocompleteItems('');
+        this.renderAutocompleteItems("");
 
-        this.dropdown = new Dropdown(
-            "#dropdown-" + this.id,
-            { isRelative: true, ...this.settings.dropdown }
-        );
+        this.dropdown = new Dropdown("#dropdown-" + this.id, {
+            isRelative: true,
+            ...this.settings.dropdown,
+        });
         this.dropdown._removeEventHandlers();
         this.dropdown.trigger = this.el;
         this.dropdown.$trigger = this.$el;
@@ -111,12 +113,12 @@ export default class Autocomplete extends EmpyrealComponent {
 
     _setupEventHandlers() {
         this.$el.on("keyup change paste", this._handleKeyPress.bind(this));
-        this.$list.on("click touchstart", this._handleDropdownClick.bind(this));
+        this.$list.on("click", this._handleDropdownClick.bind(this));
     }
 
     _removeEventHandlers() {
         this.$el.off("keyup change paste");
-        this.$list.off("click touchstart");
+        this.$list.off("click");
     }
 
     destroy() {

@@ -176,15 +176,16 @@ export default class Modal extends EmpyrealComponent {
     }
 
     _setupEventHandlers() {
-        this.$trigger.on("click touchstart", this._handleModalOpen.bind(this));
-        this.$closeModalBtn.on("click touchstart", this._handleModalClose.bind(this));
+        this.$trigger.on("click", this._handleModalOpen.bind(this));
+        this.$closeModalBtn.on("click", this._handleModalClose.bind(this));
         document.addEventListener(
             "click",
             (this.listeners[0] = this._handleOverlayClick.bind(this))
         );
         document.addEventListener(
             "touchstart",
-            (this.listeners[1] = this._handleOverlayClick.bind(this))
+            (this.listeners[1] = this._handleOverlayClick.bind(this)),
+            {passive: true}
         );
         document.addEventListener(
             "keydown",
@@ -193,8 +194,8 @@ export default class Modal extends EmpyrealComponent {
     }
 
     _removeEventHandlers() {
-        this.$trigger.off("click touchstart");
-        this.$closeModalBtn.off("click touchstart");
+        this.$trigger.off("click");
+        this.$closeModalBtn.off("click");
         document.removeEventListener("click", this.listeners[0]);
         document.removeEventListener("touchstart", this.listeners[1]);
         document.removeEventListener("keydown", this.listeners[2]);
