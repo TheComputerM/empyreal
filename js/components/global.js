@@ -121,24 +121,20 @@ window.addEventListener("DOMContentLoaded", () => {
         c(e.target).closest(".chip").remove();
     });
 
-    document.querySelectorAll(".smoothscroll").forEach((i) => {
-        i.addEventListener("click", (e) => {
-            e.preventDefault();
-            let target = i.getAttribute("data-scrollto") || i.getAttribute("href");
-            jump(target, {
-                duration: 800,
-            });
+    c(document).on("click", ".smoothscroll", function(e) {
+        e.preventDefault();
+        let target = this.getAttribute("data-scrollto") || this.getAttribute("href");
+        jump(target, {
+            duration: 800,
         });
-    });
+    })
 
-    document.querySelectorAll(".navbar-toggler").forEach((i) => {
-        i.addEventListener("click", (e) => {
-            let targetSelector = i.getAttribute("data-target") || i.getAttribute("href");
-            let target = c(document.querySelector(targetSelector));
-            if (target.hasClass("shown")) target.removeClass("shown");
-            else target.addClass("shown");
-        });
-    });
+    c(document).on("click", ".navbar-toggler", function(e) {
+        let targetSelector = this.getAttribute("data-target") || this.getAttribute("href");
+        let target = c(document.querySelector(targetSelector));
+        if (target.hasClass("shown")) target.removeClass("shown");
+        else target.addClass("shown");
+    })
 
     window.addEventListener("scroll", () => {
         if (E.getDocumentScrollTop() <= 100) {

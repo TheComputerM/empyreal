@@ -4327,21 +4327,17 @@ var empy = (function () {
     cash_min(document).on("click", ".chip .close", function (e) {
       cash_min(e.target).closest(".chip").remove();
     });
-    document.querySelectorAll(".smoothscroll").forEach(function (i) {
-      i.addEventListener("click", function (e) {
-        e.preventDefault();
-        var target = i.getAttribute("data-scrollto") || i.getAttribute("href");
-        singleton(target, {
-          duration: 800
-        });
+    cash_min(document).on("click", ".smoothscroll", function (e) {
+      e.preventDefault();
+      var target = this.getAttribute("data-scrollto") || this.getAttribute("href");
+      singleton(target, {
+        duration: 800
       });
     });
-    document.querySelectorAll(".navbar-toggler").forEach(function (i) {
-      i.addEventListener("click", function (e) {
-        var targetSelector = i.getAttribute("data-target") || i.getAttribute("href");
-        var target = cash_min(document.querySelector(targetSelector));
-        if (target.hasClass("shown")) target.removeClass("shown");else target.addClass("shown");
-      });
+    cash_min(document).on("click", ".navbar-toggler", function (e) {
+      var targetSelector = this.getAttribute("data-target") || this.getAttribute("href");
+      var target = cash_min(document.querySelector(targetSelector));
+      if (target.hasClass("shown")) target.removeClass("shown");else target.addClass("shown");
     });
     window.addEventListener("scroll", function () {
       if (E.getDocumentScrollTop() <= 100) {
@@ -4533,17 +4529,19 @@ var empy = (function () {
     }, {
       key: "_setupEventHandlers",
       value: function _setupEventHandlers() {
-        this.$trigger.on("click touchstart", this._handleModalOpen.bind(this));
-        this.$closeModalBtn.on("click touchstart", this._handleModalClose.bind(this));
+        this.$trigger.on("click", this._handleModalOpen.bind(this));
+        this.$closeModalBtn.on("click", this._handleModalClose.bind(this));
         document.addEventListener("click", this.listeners[0] = this._handleOverlayClick.bind(this));
-        document.addEventListener("touchstart", this.listeners[1] = this._handleOverlayClick.bind(this));
+        document.addEventListener("touchstart", this.listeners[1] = this._handleOverlayClick.bind(this), {
+          passive: true
+        });
         document.addEventListener("keydown", this.listeners[2] = this._handleKeyDown.bind(this));
       }
     }, {
       key: "_removeEventHandlers",
       value: function _removeEventHandlers() {
-        this.$trigger.off("click touchstart");
-        this.$closeModalBtn.off("click touchstart");
+        this.$trigger.off("click");
+        this.$closeModalBtn.off("click");
         document.removeEventListener("click", this.listeners[0]);
         document.removeEventListener("touchstart", this.listeners[1]);
         document.removeEventListener("keydown", this.listeners[2]);
@@ -4629,52 +4627,54 @@ var empy = (function () {
       }
     }, {
       key: "_handleTabOpen",
-      value: function _handleTabOpen(e) {
-        if (typeof this.settings.onTabOpen === "function") {
-          this.settings.onTabOpen.call(this, e, this.$el);
-        }
-
-        var $tabPressed = cash_min(e);
-        var id = $tabPressed.attr("data-target") || $tabPressed.attr("href");
+      value: function _handleTabOpen(elem) {
+        var $activeTab = cash_min(elem);
+        var id = $activeTab.attr("data-target") || $activeTab.attr("href");
         var $previousActiveTabContent = this.$tabContents.filter(".active");
         var $activeTabContent = this.$tabContents.filter(id); // Tab active color
 
         this.$tabs.removeClass("active");
         this.$tabs.removeClass(this.settings.activeTabClass);
-        $tabPressed.addClass("active");
-        $tabPressed.addClass(this.settings.activeTabClass); // Hiding and showing tab content
+        $activeTab.addClass("active");
+        $activeTab.addClass(this.settings.activeTabClass); // Hiding and showing tab content
 
         $previousActiveTabContent.removeClass("active");
         $activeTabContent.addClass("active"); // Moving Tab Indicator
 
-        this._handleResizeIndicator($tabPressed);
+        this.resizeIndicator();
       }
     }, {
-      key: "_handleResizeIndicator",
-      value: function _handleResizeIndicator($tabPressed) {
-        var tabSize = $tabPressed.size();
+      key: "_handleTabClick",
+      value: function _handleTabClick(e) {
+        e.preventDefault();
+
+        if (typeof this.settings.onTabOpen === "function") {
+          this.settings.onTabOpen.call(this, e, this.$el);
+        }
+
+        this._handleTabOpen(e.target);
+      }
+    }, {
+      key: "resizeIndicator",
+      value: function resizeIndicator() {
+        var $active = this.$tabs.filter(".active");
+        var tabSize = $active.size();
         this.$tabIndicator.css({
           top: tabSize.height - 2 + "px",
           left: tabSize.left - this.$el.size().left + "px",
-          width: $tabPressed.outerWidth(true) + "px"
+          width: $active.outerWidth(true) + "px"
         });
       }
     }, {
       key: "_setupEventHandlers",
       value: function _setupEventHandlers() {
-        var _this2 = this;
-
-        this.$tabs.on("click touchstart", function (e) {
-          e.preventDefault();
-
-          _this2._handleTabOpen(e.target);
-        });
-        window.addEventListener("resize", this.listeners[0] = this._handleResizeIndicator.bind(this));
+        this.$tabs.on("click", this._handleTabClick.bind(this));
+        window.addEventListener("resize", this.listeners[0] = this.resizeIndicator.bind(this));
       }
     }, {
       key: "_removeEventHandlers",
       value: function _removeEventHandlers() {
-        this.$tabs.off("click touchstart");
+        this.$tabs.off("click");
         window.removeEventListener("resize", this.listeners[0]);
       }
     }, {
@@ -6129,6 +6129,7 @@ var empy = (function () {
 
       _this._init();
 
+      _this.listeners = [];
       return _this;
     }
 
@@ -6137,7 +6138,7 @@ var empy = (function () {
       value: function _init() {
         this.$list = cash_min("<ul class=dropdown id=".concat("dropdown-" + this.id, "></ul>"));
         this.$el.parent().append(this.$list);
-        this.renderAutocompleteItems('');
+        this.renderAutocompleteItems("");
         this.dropdown = new Dropdown("#dropdown-" + this.id, _objectSpread2({
           isRelative: true
         }, this.settings.dropdown));
@@ -6251,13 +6252,13 @@ var empy = (function () {
       key: "_setupEventHandlers",
       value: function _setupEventHandlers() {
         this.$el.on("keyup change paste", this._handleKeyPress.bind(this));
-        this.$list.on("click touchstart", this._handleDropdownClick.bind(this));
+        this.$list.on("click", this._handleDropdownClick.bind(this));
       }
     }, {
       key: "_removeEventHandlers",
       value: function _removeEventHandlers() {
         this.$el.off("keyup change paste");
-        this.$list.off("click touchstart");
+        this.$list.off("click");
       }
     }, {
       key: "destroy",
