@@ -5,7 +5,7 @@ module.exports = function (plop) {
         prompts: [{
             type: 'input',
             name: 'name',
-            message: 'Enter Component Name'
+            message: 'Component Name'
         }, {
             type: "confirm",
             name: "css",
@@ -15,7 +15,7 @@ module.exports = function (plop) {
             var actions = [{
                 type: 'add',
                 path: 'js/components/{{lowerCase name}}.js',
-                templateFile: 'dev_only/templates/component.hbs'
+                templateFile: 'utils/templates/component.hbs'
             }];
             if (data.css) {
                 actions.push({
@@ -28,7 +28,7 @@ module.exports = function (plop) {
     });
 
     plop.setGenerator("webpage", {
-        description: "Generates a .njk file",
+        description: "Generates a docs file",
         prompts: [{
             type: "input",
             name: "name",
@@ -37,7 +37,7 @@ module.exports = function (plop) {
         actions: [{
             type: 'add',
             path: 'nunjucks/{{lowerCase name}}.njk',
-            templateFile: 'dev_only/templates/webpage.hbs'
+            templateFile: 'utils/templates/webpage.hbs'
         }]
     })
 };
