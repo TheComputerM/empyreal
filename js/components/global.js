@@ -5,7 +5,7 @@ import AOS from "aos";
 AOS.init();
 
 import Waves from "node-waves";
-Waves.attach(".chip")
+Waves.attach(".chip");
 Waves.init();
 window.Waves = Waves;
 
@@ -127,14 +127,14 @@ window.addEventListener("DOMContentLoaded", () => {
         jump(target, {
             duration: 800,
         });
-    })
+    });
 
-    c(document).on("click", ".navbar-toggler", function(e) {
+    c(document).on("click", ".navbar-toggler", function() {
         let targetSelector = this.getAttribute("data-target") || this.getAttribute("href");
         let target = c(document.querySelector(targetSelector));
         if (target.hasClass("shown")) target.removeClass("shown");
         else target.addClass("shown");
-    })
+    });
 
     window.addEventListener("scroll", () => {
         if (E.getDocumentScrollTop() <= 100) {

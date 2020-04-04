@@ -1,185 +1,184 @@
 @keyframes indeterminateLong {
-    0% {
-        left: -35%;
-        right: 100%;
-    }
-    60% {
-        left: 100%;
-        right: -90%;
-    }
-    100% {
-        left: 100%;
-        right: -90%;
-    }
+	0% {
+		left: -35%;
+		right: 100%;
+	}
+	60% {
+		left: 100%;
+		right: -90%;
+	}
+	100% {
+		left: 100%;
+		right: -90%;
+	}
 }
 
 @keyframes indeterminateShort {
-    0% {
-        left: -200%;
-        right: 100%;
-    }
-    60% {
-        left: 107%;
-        right: -8%;
-    }
-    100% {
-        left: 107%;
-        right: -8%;
-    }
+	0% {
+		left: -200%;
+		right: 100%;
+	}
+	60% {
+		left: 107%;
+		right: -8%;
+	}
+	100% {
+		left: 107%;
+		right: -8%;
+	}
 }
 
 .progress-bar {
-    height: 4px;
-    width: 100%;
-    position: relative;
-    transition: 0.25s cubic-bezier(0.4, 0, 0.6, 1) 0ms;
-    background-color: rgba($secondary-color, 0.25);
-    overflow: hidden;
-    .determinate {
-        position: absolute;
-        height: 100%;
-        background-color: $secondary-color;
-    }
-    .indeterminate {
-        background-color: $secondary-color;
-        &::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            will-change: left, right;
-            background-color: inherit;
-            animation: indeterminateLong 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
-        }
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            will-change: left, right;
-            background-color: inherit;
-            animation: indeterminateShort 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-            animation-delay: 1.15s;
-        }
-    }
+	height: 4px;
+	width: 100%;
+	position: relative;
+	transition: 0.25s cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+	background-color: rgba($secondary-color, 0.25);
+	overflow: hidden;
+	.determinate {
+		position: absolute;
+		height: 100%;
+		background-color: $secondary-color;
+	}
+	.indeterminate {
+		background-color: $secondary-color;
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			will-change: left, right;
+			background-color: inherit;
+			animation: indeterminateLong 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+		}
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			will-change: left, right;
+			background-color: inherit;
+			animation: indeterminateShort 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+			animation-delay: 1.15s;
+		}
+	}
 }
 
 // Thanks to finnhvman for the spinner code https://codepen.io/finnhvman/pen/bmNdNr
 .spinner {
-    appearance: none;
-    box-sizing: border-box;
-    border: none;
-    border-radius: 50%;
-    padding: 0.25em;
-    width: 4rem;
-    height: 4rem;
-    &.small {
-        width: 3rem;
-        height: 3rem;
-    }
-    &.big {
-        width: 6rem;
-        height: 6rem;
-    }
-    color: $primary-color;
-    background-color: transparent;
-    font-size: 16px;
-    overflow: hidden;
-    &::-webkit-progress-bar {
-        background-color: transparent;
-    }
-    -webkit-mask-image: linear-gradient(transparent 50%, black 50%),
-        linear-gradient(to right, transparent 50%, black 50%);
+	appearance: none;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 50%;
+	padding: 0.25em;
+	width: 4rem;
+	height: 4rem;
+	&.small {
+		width: 3rem;
+		height: 3rem;
+	}
+	&.big {
+		width: 6rem;
+		height: 6rem;
+	}
+	color: $primary-color;
+	background-color: transparent;
+	font-size: 16px;
+	overflow: hidden;
+	&::-webkit-progress-bar {
+		background-color: transparent;
+	}
+	-webkit-mask-image: linear-gradient(transparent 50%, black 50%),
+		linear-gradient(to right, transparent 50%, black 50%);
     
-    mask-image: linear-gradient(transparent 50%, black 50%),
-        linear-gradient(to right, transparent 50%, black 50%);
+	mask-image: linear-gradient(transparent 50%, black 50%),
+		linear-gradient(to right, transparent 50%, black 50%);
     
-    animation: circular 6s infinite cubic-bezier(0.3, 0.6, 1, 1);
+	animation: circular 6s infinite cubic-bezier(0.3, 0.6, 1, 1);
 
-    &::before,
-    &::-webkit-progress-value {
-        content: "";
-        display: block;
-        box-sizing: border-box;
-        margin-bottom: 0.25em;
-        border: solid 0.25em transparent;
-        border-top-color: currentColor;
-        border-radius: 50%;
-        width: 100% !important;
-        height: 100%;
-        background-color: transparent;
-        animation: circular-pseudo 0.75s infinite linear alternate;
-    }
-    &::-moz-progress-bar {
-        box-sizing: border-box;
-        border: solid 0.25em transparent;
-        border-top-color: currentColor;
-        border-radius: 50%;
-        width: 100%;
-        height: 100%;
-        background-color: transparent;
-        animation: circular-pseudo 0.75s infinite linear alternate;
-    }
-    &::-ms-fill {
-        animation-name: -ms-ring;
-    }
+	&::before, &::-webkit-progress-value {
+		content: "";
+		display: block;
+		box-sizing: border-box;
+		margin-bottom: 0.25em;
+		border: solid 0.25em transparent;
+		border-top-color: currentColor;
+		border-radius: 50%;
+		width: 100% !important;
+		height: 100%;
+		background-color: transparent;
+		animation: circular-pseudo 0.75s infinite linear alternate;
+	}
+	&::-moz-progress-bar {
+		box-sizing: border-box;
+		border: solid 0.25em transparent;
+		border-top-color: currentColor;
+		border-radius: 50%;
+		width: 100%;
+		height: 100%;
+		background-color: transparent;
+		animation: circular-pseudo 0.75s infinite linear alternate;
+	}
+	&::-ms-fill {
+		animation-name: -ms-ring;
+	}
 }
 
 @keyframes circular {
-    0% {
-        transform: rotate(0deg);
-    }
-    12.5% {
-        transform: rotate(180deg);
-        animation-timing-function: linear;
-    }
-    25% {
-        transform: rotate(630deg);
-    }
-    37.5% {
-        transform: rotate(810deg);
-        animation-timing-function: linear;
-    }
-    50% {
-        transform: rotate(1260deg);
-    }
-    62.5% {
-        transform: rotate(1440deg);
-        animation-timing-function: linear;
-    }
-    75% {
-        transform: rotate(1890deg);
-    }
-    87.5% {
-        transform: rotate(2070deg);
-        animation-timing-function: linear;
-    }
-    100% {
-        transform: rotate(2520deg);
-    }
+	0% {
+		transform: rotate(0deg);
+	}
+	12.5% {
+		transform: rotate(180deg);
+		animation-timing-function: linear;
+	}
+	25% {
+		transform: rotate(630deg);
+	}
+	37.5% {
+		transform: rotate(810deg);
+		animation-timing-function: linear;
+	}
+	50% {
+		transform: rotate(1260deg);
+	}
+	62.5% {
+		transform: rotate(1440deg);
+		animation-timing-function: linear;
+	}
+	75% {
+		transform: rotate(1890deg);
+	}
+	87.5% {
+		transform: rotate(2070deg);
+		animation-timing-function: linear;
+	}
+	100% {
+		transform: rotate(2520deg);
+	}
 }
 
 @keyframes circular-pseudo {
-    0% {
-        transform: rotate(-30deg);
-    }
-    29.4% {
-        border-left-color: transparent;
-    }
-    29.41% {
-        border-left-color: currentColor;
-    }
-    64.7% {
-        border-bottom-color: transparent;
-    }
-    64.71% {
-        border-bottom-color: currentColor;
-    }
-    100% {
-        border-left-color: currentColor;
-        border-bottom-color: currentColor;
-        transform: rotate(225deg);
-    }
+	0% {
+		transform: rotate(-30deg);
+	}
+	29.4% {
+		border-left-color: transparent;
+	}
+	29.41% {
+		border-left-color: currentColor;
+	}
+	64.7% {
+		border-bottom-color: transparent;
+	}
+	64.71% {
+		border-bottom-color: currentColor;
+	}
+	100% {
+		border-left-color: currentColor;
+		border-bottom-color: currentColor;
+		transform: rotate(225deg);
+	}
 }

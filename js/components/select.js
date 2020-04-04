@@ -58,10 +58,10 @@ export default class Select extends EmpyrealComponent {
         this.dropdown = new Dropdown(this.$list[0], {
             isRelative: true,
             onOpenStart: () => {
-                this.$el.siblings(".caret").addClass("active")
+                this.$el.siblings(".caret").addClass("active");
             },
             onCloseStart: () => {
-                this.$el.siblings(".caret").removeClass("active")
+                this.$el.siblings(".caret").removeClass("active");
             },
             ...this.settings.dropdown
         });

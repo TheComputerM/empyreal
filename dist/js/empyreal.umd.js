@@ -4453,14 +4453,14 @@
             _this2.isOpen = true;
             _this2.el.style.display = "block";
 
-            if (typeof _this2.settings.onOpenStart === 'function') {
+            if (typeof _this2.settings.onOpenStart === "function") {
               _this2.settings.onOpenStart.call(_this2, _this2.el, e.target);
             }
           },
           complete: function complete() {
             _this2.isAnimationDone = true;
 
-            if (typeof _this2.settings.onOpenEnd === 'function') {
+            if (typeof _this2.settings.onOpenEnd === "function") {
               _this2.settings.onOpenEnd.call(_this2, _this2.el, e.target);
             }
           }
@@ -4493,7 +4493,7 @@
             _this3.isAnimationDone = false;
             _this3.isOpen = false;
 
-            if (typeof _this3.settings.onCloseStart === 'function') {
+            if (typeof _this3.settings.onCloseStart === "function") {
               _this3.settings.onCloseStart.call(_this3, _this3.el, e.target);
             }
           },
@@ -4501,7 +4501,7 @@
             _this3.isAnimationDone = true;
             _this3.el.style.display = "none";
 
-            if (typeof _this3.settings.onCloseEnd === 'function') {
+            if (typeof _this3.settings.onCloseEnd === "function") {
               _this3.settings.onCloseEnd.call(_this3, _this3.el, e.target);
             }
           }
@@ -4821,7 +4821,7 @@
       value: function _handleDropdownOpen() {
         var _this2 = this;
 
-        var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'none';
+        var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "none";
         this.focusedIndex = -1;
         this.isOpen = true;
         this.isAnimationDone = false;
@@ -4851,7 +4851,7 @@
       value: function _handleDropdownClose() {
         var _this3 = this;
 
-        var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'none';
+        var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "none";
         this.isOpen = false;
         this.isAnimationDone = false;
         anime({

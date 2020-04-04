@@ -77,7 +77,7 @@ export default class Tabs extends EmpyrealComponent {
     _handleTabClick(e) {
         e.preventDefault();
         if (typeof this.settings.onTabOpen === "function") {
-            this.settings.onTabOpen.call(this, e, this.$el)
+            this.settings.onTabOpen.call(this, e, this.$el);
         }
         this._handleTabOpen(e.target);
     }

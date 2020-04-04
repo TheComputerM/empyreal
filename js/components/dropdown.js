@@ -110,7 +110,7 @@ export default class Dropdown extends EmpyrealComponent {
         }
     }
 
-    _handleDropdownOpen(e = 'none') {
+    _handleDropdownOpen(e = "none") {
         this.focusedIndex = -1;
         this.isOpen = true;
         this.isAnimationDone = false;
@@ -135,7 +135,7 @@ export default class Dropdown extends EmpyrealComponent {
         });
     }
 
-    _handleDropdownClose(e = 'none') {
+    _handleDropdownClose(e = "none") {
         this.isOpen = false;
         this.isAnimationDone = false;
         anime({
@@ -187,7 +187,7 @@ export default class Dropdown extends EmpyrealComponent {
     _handleDropdownKeyPress(e) {
         if (this.isOpen) {
             if (e.keyCode == E.keys.TAB) {
-                this._handleDropdownClose()
+                this._handleDropdownClose();
                 e.preventDefault();
             } else if (e.keyCode == E.keys.ENTER && this.focusedIndex != -1) {
                 this.$items.filter(".focused").trigger("click");

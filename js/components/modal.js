@@ -100,14 +100,14 @@ export default class Modal extends EmpyrealComponent {
                 this.isAnimationDone = false;
                 this.isOpen = true;
                 this.el.style.display = "block";
-                if (typeof this.settings.onOpenStart === 'function') {
-                    this.settings.onOpenStart.call(this, this.el, e.target)
+                if (typeof this.settings.onOpenStart === "function") {
+                    this.settings.onOpenStart.call(this, this.el, e.target);
                 }
             },
             complete: () => {
                 this.isAnimationDone = true;
-                if (typeof this.settings.onOpenEnd === 'function') {
-                    this.settings.onOpenEnd.call(this, this.el, e.target)
+                if (typeof this.settings.onOpenEnd === "function") {
+                    this.settings.onOpenEnd.call(this, this.el, e.target);
                 }
             },
         });
@@ -135,15 +135,15 @@ export default class Modal extends EmpyrealComponent {
             begin: () => {
                 this.isAnimationDone = false;
                 this.isOpen = false;
-                if (typeof this.settings.onCloseStart === 'function') {
-                    this.settings.onCloseStart.call(this, this.el, e.target)
+                if (typeof this.settings.onCloseStart === "function") {
+                    this.settings.onCloseStart.call(this, this.el, e.target);
                 }
             },
             complete: () => {
                 this.isAnimationDone = true;
                 this.el.style.display = "none";
-                if (typeof this.settings.onCloseEnd === 'function') {
-                    this.settings.onCloseEnd.call(this, this.el, e.target)
+                if (typeof this.settings.onCloseEnd === "function") {
+                    this.settings.onCloseEnd.call(this, this.el, e.target);
                 }
             },
         });

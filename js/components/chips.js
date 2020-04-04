@@ -57,7 +57,7 @@ export default class Chips extends EmpyrealComponent {
         if (image) chip.append(`<img src=${image} />`);
         
         this.value.push(tag);
-        chip.insertBefore(this.$input)
+        chip.insertBefore(this.$input);
         if (typeof this.settings.onChipAdd === "function")
             this.settings.onChipAdd.call(this, tag, this.el);
 
@@ -70,7 +70,7 @@ export default class Chips extends EmpyrealComponent {
         if (e.keyCode == E.keys.ENTER) {
             let val = this.$input.val();
             if (val != "" && this.value.indexOf(val) == -1) {
-                this.add({tag: val})
+                this.add({tag: val});
                 this.$input.val("");
             }
         }
@@ -99,7 +99,7 @@ export default class Chips extends EmpyrealComponent {
             this.settings.onChipDelete.call(this, e.target, this.el);
     }
 
-    _handleInputBlur() {this.$el.removeClass("focused")}
+    _handleInputBlur() {this.$el.removeClass("focused");}
 
     _setupEventHandlers() {
         this.$input.on("keyup", this._handleInputKeypress.bind(this));

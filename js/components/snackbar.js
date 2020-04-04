@@ -1,4 +1,4 @@
-import {c, E} from "./global";
+import {c} from "./global";
 
 export default function Snackbar({html = "", classes = "", dismiss = 5000, complete = ()=>{}}) {
     let $snackbar = c(`<div class="snackbar ${classes}" />`);

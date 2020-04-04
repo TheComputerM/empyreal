@@ -77,7 +77,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 abbr {cursor: help;}
-mark {background-color: color("yellow", "lighten-1");
+mark {
+	background-color: color("yellow", "lighten-1");
 	padding: 2px 6px;}
 blockquote {
 	background-color: color("grey", "lighten-3");

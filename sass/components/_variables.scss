@@ -4,11 +4,11 @@ $primary-color: color("deep-purple", "accent-3") !default;
 $secondary-color: color("blue", "base") !default;
 $link-color: color("light-blue", "accent-3") !default;
 $disabled-color: rgba(0, 0, 0, 0.3) !default;
-$surface-background: #ffffff;
+$surface-background: #FFFFFF;
 $surface-foreground: #000000;
 :root {
-    --primary-color: $primary-color;
-    --secondary-color: $secondary-color;
+	--primary-color: $primary-color;
+	--secondary-color: $secondary-color;
 }
 
 // Global
@@ -19,7 +19,7 @@ $spacer-y: 2px !default;
 // Navbar
 // --------------------------------------------------------
 $navbar-bg-color: $primary-color !default;
-$navbar-text-color: #ffffff !default;
+$navbar-text-color: #FFFFFF !default;
 $navbar-padding: 0.5rem 1rem !default;
 $navbar-brand-font-size: 1.25rem !default;
 $navbar-brand-margin: 2rem !default;
@@ -33,7 +33,7 @@ $card-body-padding: 1.5rem 1.25rem !default;
 $card-border-radius: 0.25rem !default;
 $card-cascade-margin: 4% !default;
 $card-banner-height: 120px !default;
-$card-bg-color: #ffffff !default;
+$card-bg-color: #FFFFFF !default;
 $card-avatar-width: 120px !default;
 $card-panel-padding: 24px !default;
 
@@ -104,13 +104,13 @@ $pagination-item-color: #444444 !default;
 $pagination-item-font-size: 1.2rem !default;
 $pagination-item-padding-x: 12px !default;
 $pagination-item-active-bg-color: $primary-color !default;
-$pagination-item-active-color: #ffffff !default;
+$pagination-item-active-color: #FFFFFF !default;
 
 // Snackbar
 // ---------------------------------------------------------------------
 $snackbar-padding: 16px 24px !default;
 $snackbar-bg-color: rgba(0, 0, 0, 0.8) !default;
-$snackbar-color: #ffffff !default;
+$snackbar-color: #FFFFFF !default;
 $snackbar-border-radius: 2px !default;
 $snackbar-font-weight: 300 !default;
 
@@ -129,7 +129,7 @@ $collection-item-icon-size: 1.6rem !default;
 // ---------------------------------------------------------------------
 $collapsible-border-color: color("grey", "lighten-2") !default;
 $collapsible-color: rgba(0, 0, 0, 0.85) !default;
-$collapsible-header-bg-color: #ffffff !default;
+$collapsible-header-bg-color: #FFFFFF !default;
 $collapsible-header-bg-hover-color: rgba(0, 0, 0, 0.075) !default;
 $collapsible-padding: 1rem !default;
 $collapsible-body-padding: 1.2rem 1.4rem !default;
@@ -156,7 +156,7 @@ $modal-med-max-width: 500px !default;
 $modal-small-max-width: 300px !default;
 $modal-large-max-width: 800px !default;
 $modal-responsive-max-width: 75% !default;
-$modal-bg-color: #ffffff !default;
+$modal-bg-color: #FFFFFF !default;
 
 // Lightbox
 // ---------------------------------------------------------------------
@@ -242,7 +242,7 @@ $input-border-color: rgba(0, 0, 0, 0.42) !default;
 $input-border: 1px solid $input-border-color !default;
 $input-hover-border-color: rgba(0, 0, 0, 0.87) !default;
 $input-filled-padding: 12px 16px 0px !default;
-$input-filled-bg-color: #f5f5f5 !default;
+$input-filled-bg-color: #F5F5F5 !default;
 $input-outline-border-color: rgba(0, 0, 0, 0.24) !default;
 $input-outline-padding: 12px 16px 14px !default;
 
@@ -250,10 +250,10 @@ $input-outline-padding: 12px 16px 14px !default;
 // ---------------------------------------------------------------------
 $slider-height: 6px !default;
 $slider-thumb-size: 20px !default;
-$slider-bg-color: #d3d3d3 !default;
+$slider-bg-color: #D3D3D3 !default;
 $slider-line-color: $secondary-color !default;
 $slider-thumb-color: $secondary-color !default;
-$slider-tooltip-color: #ffffff !default;
+$slider-tooltip-color: #FFFFFF !default;
 $slider-tooltip-bg-color: $secondary-color !default;
 
 // Select
