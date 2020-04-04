@@ -188,7 +188,7 @@ function documentation() {
 
 }
 
-
+exports.test = test;
 exports.css = css;
 exports.js = js;
 exports.bundleJs = rollupBundle;

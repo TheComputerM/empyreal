@@ -8,11 +8,8 @@
     "dev": "gulp server",
     "generate": "plop",
     "lint": "npm-run-all lint:*",
-    "lint:fix": "npm-run-all lint:fix:*",
-    "lint:js": "eslint js/**",
-    "lint:fix:js": "eslint js/** --fix",
-    "lint:css": "stylelint \"**/*.{scss,css}\"",
-    "lint:fix:css": "stylelint \"**/*.{scss,css}\" --fix"
+    "lint:js": "eslint js/** --fix",
+    "lint:css": "stylelint \"**/*.scss\" --fix"
   },
   "repository": {
     "type": "git",
@@ -69,7 +66,6 @@
     "rollup": "^1.32.1",
     "rollup-plugin-babel": "^4.4.0",
     "stylelint": "^12.0.1",
-    "stylelint-prettier": "^1.1.2",
-    "stylelint-scss": "^3.16.0"
+    "stylelint-prettier": "^1.1.2"
   }
 }

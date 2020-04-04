@@ -1,6 +1,5 @@
 {
     "plugins": [
-        "stylelint-scss",
         "stylelint-prettier"
     ],
     "rules": {
@@ -34,7 +33,5 @@
         "string-quotes": "double",
         "selector-list-comma-space-after": "always",
         "font-family-name-quotes": "always-where-required",
-
-        "scss/dollar-variable-default": true
     }
 }
