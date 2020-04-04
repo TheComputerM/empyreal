@@ -45,10 +45,10 @@
 			}
 		}
 		&:hover:not(.disabled) {
-			background-color: $dropdown-hover-item-bg-color;
+			background-color: $dropdown-item-hover-bg-color;
 		}
 		&.focused:not(.disabled) {
-			background-color: $dropdown-focus-item-bg-color;
+			background-color: $dropdown-item-focus-bg-color;
 			color: $primary-color;
 		}
 		a {

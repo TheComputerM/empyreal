@@ -40,7 +40,7 @@
 			transition: 0.2s;
 			&:hover {
 				cursor: pointer;
-				background: $collection-hover-color;
+				background: $collection-item-hover-bg-color;
 			}
 			a {
 				color: $collection-color;

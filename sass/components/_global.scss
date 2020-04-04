@@ -191,7 +191,7 @@ img.thumbnail {
 			border-bottom: 0px transparent solid;
 		}
 		&:hover:not(.active) {
-			background: $collection-hover-color;
+			background: $collection-item-hover-bg-color;
 		}
 		i {
 			color: $collection-icon-color;

@@ -53,7 +53,7 @@
 				cursor: default;
 			}
 			&:hover:not(.disabled):not(.optgroup) {
-				background-color: $select-hover-item-color;
+				background-color: $select-item-hover-color;
 			}
 			&.optgroup {
 				padding: $select-item-padding;

@@ -2280,7 +2280,7 @@ img.thumbnail {
     .pagination li.active {
       background-color: #651FFF; }
       .pagination li.active a {
-        color: #ffffff; }
+        color: #FFFFFF; }
     .pagination li.disabled a {
       cursor: default;
       color: rgba(0, 0, 0, 0.3); }
@@ -2302,7 +2302,7 @@ img.thumbnail {
 
 .snackbar {
   padding: 16px 24px;
-  color: #ffffff;
+  color: #FFFFFF;
   background-color: rgba(0, 0, 0, 0.8);
   display: inline-block;
   position: fixed;
@@ -3914,7 +3914,7 @@ a.waves-effect, a.waves-light {
     padding: 1.5rem 1.25rem;
     flex: 1 1 auto;
     position: relative;
-    background-color: #ffffff; }
+    background-color: #FFFFFF; }
   .card .card-title {
     margin: 0.75rem 0rem; }
   .card .card-avatar {
@@ -3996,7 +3996,7 @@ a.waves-effect, a.waves-light {
     -webkit-tap-highlight-color: transparent;
     line-height: 1.5;
     padding: 1rem;
-    background-color: #ffffff;
+    background-color: #FFFFFF;
     color: rgba(0, 0, 0, 0.85);
     transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
     font-size: 1rem; }
@@ -4355,7 +4355,7 @@ p {
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); }
   .navbar-wrapper .brand-name {
-    color: #ffffff;
+    color: #FFFFFF;
     display: inline-block;
     padding-top: 0.3125rem;
     padding-bottom: 0.3125rem;
@@ -4403,7 +4403,7 @@ p {
           flex-direction: column;
           width: 100%; } }
       .navbar-wrapper .navbar .navbar-left .nav-item, .navbar-wrapper .navbar .navbar-right .nav-item {
-        color: #ffffff;
+        color: #FFFFFF;
         transition: 0.35s;
         text-decoration: none;
         padding-right: 0.75rem;
@@ -4413,7 +4413,7 @@ p {
         .navbar-wrapper .navbar .navbar-left .nav-item.active, .navbar-wrapper .navbar .navbar-right .nav-item.active {
           background-color: rgba(255, 255, 255, 0.1); }
         .navbar-wrapper .navbar .navbar-left .nav-item a, .navbar-wrapper .navbar .navbar-right .nav-item a {
-          color: #ffffff;
+          color: #FFFFFF;
           transition: 0.35s;
           text-decoration: none;
           outline: none;
@@ -4613,7 +4613,7 @@ p {
   position: absolute; }
 
 .modal-dialog {
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   overflow: auto;
   margin-left: auto;
   margin-right: auto;
@@ -4975,22 +4975,7 @@ p {
     border-color: #2196F3;
     border-width: 2px; }
 
-.text-field input.valid:not([type]) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=text]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=password]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=email]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=url]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=time]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=date]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=datetime]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=datetime-local]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=tel]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=number]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=search]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field textarea.valid ~ .bottom-text > .helper-text[data-success],
-.text-field textarea:focus.valid ~ .bottom-text > .helper-text[data-success],
-.text-field input.invalid:not([type]) ~ .bottom-text > .helper-text[data-error],
-.text-field input.invalid[type=text]:not(.browser-default) ~ .bottom-text > .helper-text[data-error],
-.text-field input.invalid[type=password]:not(.browser-default) ~ .bottom-text > .helper-text[data-error],
-.text-field input.invalid[type=email]:not(.browser-default) ~ .bottom-text > .helper-text[data-error],
-.text-field input.invalid[type=url]:not(.browser-default) ~ .bottom-text > .helper-text[data-error],
-.text-field input.invalid[type=time]:not(.browser-default) ~ .bottom-text > .helper-text[data-error],
-.text-field input.invalid[type=date]:not(.browser-default) ~ .bottom-text > .helper-text[data-error],
-.text-field input.invalid[type=datetime]:not(.browser-default) ~ .bottom-text > .helper-text[data-error],
-.text-field input.invalid[type=datetime-local]:not(.browser-default) ~ .bottom-text > .helper-text[data-error],
-.text-field input.invalid[type=tel]:not(.browser-default) ~ .bottom-text > .helper-text[data-error],
-.text-field input.invalid[type=number]:not(.browser-default) ~ .bottom-text > .helper-text[data-error],
-.text-field input.invalid[type=search]:not(.browser-default) ~ .bottom-text > .helper-text[data-error],
-.text-field textarea.invalid ~ .bottom-text > .helper-text[data-error],
-.text-field textarea:focus.invalid ~ .bottom-text > .helper-text[data-error] {
+.text-field input.valid:not([type]) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=text]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=password]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=email]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=url]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=time]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=date]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=datetime]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=datetime-local]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=tel]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=number]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field input.valid[type=search]:not(.browser-default) ~ .bottom-text > .helper-text[data-success], .text-field textarea.valid ~ .bottom-text > .helper-text[data-success], .text-field textarea:focus.valid ~ .bottom-text > .helper-text[data-success], .text-field input.invalid:not([type]) ~ .bottom-text > .helper-text[data-error], .text-field input.invalid[type=text]:not(.browser-default) ~ .bottom-text > .helper-text[data-error], .text-field input.invalid[type=password]:not(.browser-default) ~ .bottom-text > .helper-text[data-error], .text-field input.invalid[type=email]:not(.browser-default) ~ .bottom-text > .helper-text[data-error], .text-field input.invalid[type=url]:not(.browser-default) ~ .bottom-text > .helper-text[data-error], .text-field input.invalid[type=time]:not(.browser-default) ~ .bottom-text > .helper-text[data-error], .text-field input.invalid[type=date]:not(.browser-default) ~ .bottom-text > .helper-text[data-error], .text-field input.invalid[type=datetime]:not(.browser-default) ~ .bottom-text > .helper-text[data-error], .text-field input.invalid[type=datetime-local]:not(.browser-default) ~ .bottom-text > .helper-text[data-error], .text-field input.invalid[type=tel]:not(.browser-default) ~ .bottom-text > .helper-text[data-error], .text-field input.invalid[type=number]:not(.browser-default) ~ .bottom-text > .helper-text[data-error], .text-field input.invalid[type=search]:not(.browser-default) ~ .bottom-text > .helper-text[data-error], .text-field textarea.invalid ~ .bottom-text > .helper-text[data-error], .text-field textarea:focus.invalid ~ .bottom-text > .helper-text[data-error] {
   color: transparent;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -5112,7 +5097,7 @@ p {
     left: 0; }
   .text-field.filled input:not([type]), .text-field.filled input[type=text]:not(.browser-default), .text-field.filled input[type=password]:not(.browser-default), .text-field.filled input[type=email]:not(.browser-default), .text-field.filled input[type=url]:not(.browser-default), .text-field.filled input[type=time]:not(.browser-default), .text-field.filled input[type=date]:not(.browser-default), .text-field.filled input[type=datetime]:not(.browser-default), .text-field.filled input[type=datetime-local]:not(.browser-default), .text-field.filled input[type=tel]:not(.browser-default), .text-field.filled input[type=number]:not(.browser-default), .text-field.filled input[type=search]:not(.browser-default), .text-field.filled textarea {
     padding: 12px 16px 0px;
-    background-color: #f5f5f5; }
+    background-color: #F5F5F5; }
     .text-field.filled input:not([type]):hover, .text-field.filled input[type=text]:not(.browser-default):hover, .text-field.filled input[type=password]:not(.browser-default):hover, .text-field.filled input[type=email]:not(.browser-default):hover, .text-field.filled input[type=url]:not(.browser-default):hover, .text-field.filled input[type=time]:not(.browser-default):hover, .text-field.filled input[type=date]:not(.browser-default):hover, .text-field.filled input[type=datetime]:not(.browser-default):hover, .text-field.filled input[type=datetime-local]:not(.browser-default):hover, .text-field.filled input[type=tel]:not(.browser-default):hover, .text-field.filled input[type=number]:not(.browser-default):hover, .text-field.filled input[type=search]:not(.browser-default):hover, .text-field.filled textarea:hover {
       background-color: #e8e8e8; }
     .text-field.filled input:not([type]).invalid, .text-field.filled input[type=text]:not(.browser-default).invalid, .text-field.filled input[type=password]:not(.browser-default).invalid, .text-field.filled input[type=email]:not(.browser-default).invalid, .text-field.filled input[type=url]:not(.browser-default).invalid, .text-field.filled input[type=time]:not(.browser-default).invalid, .text-field.filled input[type=date]:not(.browser-default).invalid, .text-field.filled input[type=datetime]:not(.browser-default).invalid, .text-field.filled input[type=datetime-local]:not(.browser-default).invalid, .text-field.filled input[type=tel]:not(.browser-default).invalid, .text-field.filled input[type=number]:not(.browser-default).invalid, .text-field.filled input[type=search]:not(.browser-default).invalid, .text-field.filled textarea.invalid {
@@ -5140,7 +5125,7 @@ p {
     .text-field.outline > label.active {
       padding: 0 6px;
       transform: translateY(-130%) scale(0.75);
-      background-color: #ffffff; }
+      background-color: #FFFFFF; }
   .text-field.outline.rounded input:not([type]), .text-field.outline.rounded input[type=text]:not(.browser-default), .text-field.outline.rounded input[type=password]:not(.browser-default), .text-field.outline.rounded input[type=email]:not(.browser-default), .text-field.outline.rounded input[type=url]:not(.browser-default), .text-field.outline.rounded input[type=time]:not(.browser-default), .text-field.outline.rounded input[type=date]:not(.browser-default), .text-field.outline.rounded input[type=datetime]:not(.browser-default), .text-field.outline.rounded input[type=datetime-local]:not(.browser-default), .text-field.outline.rounded input[type=tel]:not(.browser-default), .text-field.outline.rounded input[type=number]:not(.browser-default), .text-field.outline.rounded input[type=search]:not(.browser-default), .text-field.outline.rounded textarea {
     border-radius: 10em; }
   .text-field.with-icon-left i {
@@ -5317,8 +5302,7 @@ p {
       transform-origin: 100% 100%; }
     .checkbox-field input[type="checkbox"]:not(:disabled):hover ~ span::after {
       opacity: 0.18; }
-    .checkbox-field input[type="checkbox"]:not(:disabled):focus ~ span::after,
-    .checkbox-field input[type="checkbox"]:not(:disabled):active ~ span::after {
+    .checkbox-field input[type="checkbox"]:not(:disabled):focus ~ span::after, .checkbox-field input[type="checkbox"]:not(:disabled):active ~ span::after {
       opacity: 0.24; }
   .checkbox-field input[type="checkbox"]:disabled + span {
     color: rgba(0, 0, 0, 0.3); }
@@ -5434,7 +5418,7 @@ p {
   z-index: 1; }
 
 .noUi-base {
-  background: #d3d3d3; }
+  background: #D3D3D3; }
 
 /* Wrapper for all connect elements.
   */
@@ -5520,7 +5504,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   * Giving the connect element a border radius causes issues with using transform: scale
   */
 .noUi-target {
-  background: #d3d3d3;
+  background: #D3D3D3;
   border-radius: 2px; }
 
 .noUi-connects {
@@ -5645,7 +5629,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   position: absolute;
   border-radius: 1px;
   background-color: #2196F3;
-  color: #ffffff;
+  color: #FFFFFF;
   padding: 4px 6px;
   font-size: 12px;
   text-align: center;
@@ -5673,7 +5657,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     .range-field input[type="range"]:focus::-webkit-slider-runnable-track {
       background: #e0e0e0; }
     .range-field input[type="range"]:focus::-ms-fill-lower {
-      background: #d3d3d3; }
+      background: #D3D3D3; }
     .range-field input[type="range"]:focus::-ms-fill-upper {
       background: #e0e0e0; }
   .range-field input[type="range"]::-webkit-slider-runnable-track {
@@ -5682,7 +5666,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
     width: 100%;
-    background: #d3d3d3;
+    background: #D3D3D3;
     border-radius: 2px; }
   .range-field input[type="range"]::-webkit-slider-thumb {
     background: #2196F3;
@@ -5700,7 +5684,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
     width: 100%;
-    background: #d3d3d3;
+    background: #D3D3D3;
     border-radius: 2px;
     height: 3px; }
   .range-field input[type="range"]::-moz-range-thumb {
@@ -5725,7 +5709,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     background: #c6c6c6;
     border-radius: 4px; }
   .range-field input[type="range"]::-ms-fill-upper {
-    background: #d3d3d3;
+    background: #D3D3D3;
     border-radius: 4px; }
   .range-field input[type="range"]::-ms-thumb {
     background: #2196F3;

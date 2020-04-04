@@ -10,7 +10,7 @@
 	.collapsible-header {
 		&:hover {
 			outline: 0;
-			background-color: $collapsible-header-bg-hover-color;
+			background-color: $collapsible-header-hover-bg-color;
 		}
 		display: flex;
 		cursor: pointer;

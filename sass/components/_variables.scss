@@ -19,13 +19,13 @@ $spacer-y: 2px !default;
 // Navbar
 // --------------------------------------------------------
 $navbar-bg-color: $primary-color !default;
-$navbar-text-color: #FFFFFF !default;
+$navbar-color: #FFFFFF !default;
 $navbar-padding: 0.5rem 1rem !default;
 $navbar-brand-font-size: 1.25rem !default;
 $navbar-brand-margin: 2rem !default;
 $navbar-brand-padding: 0.3125rem !default;
 $navbar-line-height: 2.5 !default;
-$navbar-nav-item-padding-x: 0.75rem !default;
+$navbar-item-padding: 0.75rem !default;
 
 // Cards
 // --------------------------------------------------------
@@ -79,8 +79,8 @@ $dropdown-radius: 0.25rem !default;
 $dropdown-min-width: 11rem !default;
 $dropdown-item-padding: 1rem !default;
 $dropdown-item-color: rgba(0, 0, 0, 0.87) !default;
-$dropdown-hover-item-bg-color: rgba(0, 0, 0, 0.05) !default;
-$dropdown-focus-item-bg-color: rgba(0, 0, 0, 0.12) !default;
+$dropdown-item-hover-bg-color: rgba(0, 0, 0, 0.05) !default;
+$dropdown-item-focus-bg-color: rgba(0, 0, 0, 0.12) !default;
 $dropdown-item-font-size: 0.95rem !default;
 $dropdown-item-icon-font-size: 1.4rem !default;
 
@@ -118,8 +118,8 @@ $snackbar-font-weight: 300 !default;
 // ---------------------------------------------------------------------
 $collection-color: rgba(0, 0, 0, 0.87) !default;
 $collection-line-height: 1.5rem !default;
-$collection-hover-color: rgba(0, 0, 0, 0.075) !default;
 $collection-icon-color: rgba(0, 0, 0, 0.87) !default;
+$collection-item-hover-bg-color: rgba(0, 0, 0, 0.075) !default;
 $collection-item-height: 48px !default;
 $collection-item-padding: 0 16px !default;
 $collection-item-font-size: 1rem !default;
@@ -130,7 +130,7 @@ $collection-item-icon-size: 1.6rem !default;
 $collapsible-border-color: color("grey", "lighten-2") !default;
 $collapsible-color: rgba(0, 0, 0, 0.85) !default;
 $collapsible-header-bg-color: #FFFFFF !default;
-$collapsible-header-bg-hover-color: rgba(0, 0, 0, 0.075) !default;
+$collapsible-header-hover-bg-color: rgba(0, 0, 0, 0.075) !default;
 $collapsible-padding: 1rem !default;
 $collapsible-body-padding: 1.2rem 1.4rem !default;
 $collapsible-margin: 0.5rem 0 1rem 0 !default;
@@ -261,6 +261,6 @@ $slider-tooltip-bg-color: $secondary-color !default;
 $select-radius: 0.25rem !default;
 $select-item-padding: 0.6rem !default;
 $select-item-color: rgba(0, 0, 0, 0.87) !default;
-$select-hover-item-color: rgba(0, 0, 0, 0.1) !default;
+$select-item-hover-color: rgba(0, 0, 0, 0.1) !default;
 $select-item-font-size: 0.9rem !default;
 $select-item-icon-font-size: 1.4rem !default;

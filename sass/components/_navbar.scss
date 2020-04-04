@@ -36,7 +36,7 @@
 		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 	}
 	.brand-name {
-		color: $navbar-text-color;
+		color: $navbar-color;
 		display: inline-block;
 		padding-top: $navbar-brand-padding;
 		padding-bottom: $navbar-brand-padding;
@@ -86,29 +86,29 @@
 				width: 100%;
 			}
 			.nav-item {
-				color: $navbar-text-color;
+				color: $navbar-color;
 				transition: 0.35s;
 				text-decoration: none;
-				padding-right: $navbar-nav-item-padding-x;
-				padding-left: $navbar-nav-item-padding-x;
+				padding-right: $navbar-item-padding;
+				padding-left: $navbar-item-padding;
 				i {
 					vertical-align: middle;
 				}
 				&.active {
-					background-color: rgba($navbar-text-color, 0.1);
+					background-color: rgba($navbar-color, 0.1);
 				}
 				a {
-					color: $navbar-text-color;
+					color: $navbar-color;
 					transition: 0.35s;
 					text-decoration: none;
 					outline: none;
 					cursor: pointer;
 				}
 				&:hover:not(.disabled) {
-					background-color: rgba($navbar-text-color, 0.07);
-					color: rgba($navbar-text-color, 0.75);
+					background-color: rgba($navbar-color, 0.07);
+					color: rgba($navbar-color, 0.75);
 					a {
-						color: rgba($navbar-text-color, .9);
+						color: rgba($navbar-color, .9);
 					}
 				}
 			}
