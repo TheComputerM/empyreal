@@ -90,11 +90,11 @@
 	&::-webkit-progress-bar {
 		background-color: transparent;
 	}
-	-webkit-mask-image: linear-gradient(transparent 50%, black 50%),
-		linear-gradient(to right, transparent 50%, black 50%);
+	-webkit-mask-image: linear-gradient(transparent 50%, #000000 50%),
+		linear-gradient(to right, transparent 50%, #000000 50%);
     
-	mask-image: linear-gradient(transparent 50%, black 50%),
-		linear-gradient(to right, transparent 50%, black 50%);
+	mask-image: linear-gradient(transparent 50%, #000000 50%),
+		linear-gradient(to right, transparent 50%, #000000 50%);
     
 	animation: circular 6s infinite cubic-bezier(0.3, 0.6, 1, 1);
 
