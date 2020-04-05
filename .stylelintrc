@@ -1,7 +1,4 @@
 {
-    "plugins": [
-        "stylelint-prettier"
-    ],
     "rules": {
         "at-rule-name-case": "lower",
         "at-rule-semicolon-newline-after": "always",
