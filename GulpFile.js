@@ -188,6 +188,10 @@ function documentation() {
 
 }
 
+function generate() {
+    
+}
+
 exports.css = css;
 exports.js = js;
 exports.bundleJs = rollupBundle;
