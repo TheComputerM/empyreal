@@ -4334,7 +4334,7 @@ var empy = (function () {
         duration: 800
       });
     });
-    cash_min(document).on("click", ".navbar-toggler", function (e) {
+    cash_min(document).on("click", ".navbar-toggler", function () {
       var targetSelector = this.getAttribute("data-target") || this.getAttribute("href");
       var target = cash_min(document.querySelector(targetSelector));
       if (target.hasClass("shown")) target.removeClass("shown");else target.addClass("shown");
@@ -4348,7 +4348,7 @@ var empy = (function () {
     });
   });
 
-  var EmpyrealComponent = function EmpyrealComponent(el, options) {
+  var EmpyrealComponent = function EmpyrealComponent(el) {
     _classCallCheck(this, EmpyrealComponent);
 
     if (typeof el === "string") {

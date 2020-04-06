@@ -92,7 +92,6 @@ function server() {
 function css() {
     return src("./sass/empyreal.scss")
         .pipe(sourcemaps.init())
-        .pipe(wait(200))
         .pipe(sass().on("error", sass.logError))
         .pipe(autoprefixer())
         .pipe(sourcemaps.write("."))
@@ -103,7 +102,7 @@ function css() {
         .pipe(dest("./dist/css/"));
 }
 
-async function rollupBundle() {
+function rollupBundle() {
     return rollup
         .rollup({
             input: "./js/empyreal.js",
@@ -133,52 +132,45 @@ async function rollupBundle() {
                 name: "empy",
                 sourcemap: true,
             });
-
-            return 1;
         });
 }
 
-async function minifyJs() {
-    return parallel(
-        // Minify ES5 modules such as the iife and UMD
-        function ES5(done) {
-            src(["./dist/js/empyreal.js", "./dist/js/empyreal.umd.js"])
-                .pipe(uglify())
-                .pipe(rename({ suffix: ".min" }))
-                .pipe(dest("./dist/js"));
-            done();
-        },
 
-        // Minify the ES6 modules such as the ESM
-        function ES6(done) {
-            src(["./dist/js/empyreal.esm.js"])
-                .pipe(
-                    minify({
-                        noSource: true,
-                        mangle: false,
-                        ext: { min: ".min.js" },
-                    })
-                )
-                .pipe(dest("./dist/js"));
-            done();
-        }
-    )();
-}
+let minifyJs = parallel(
+    // Minify ES5 modules such as the iife and UMD
+    function ES5() {
+        return src(["./dist/js/empyreal.js", "./dist/js/empyreal.umd.js"])
+            .pipe(uglify())
+            .pipe(rename({ suffix: ".min" }))
+            .pipe(dest("./dist/js"));
+    },
 
-async function js() {
-    return series(rollupBundle, minifyJs)();
-}
+    // Minify the ES6 modules such as the ESM
+    function ES6() {
+        return src(["./dist/js/empyreal.esm.js"])
+            .pipe(
+                minify({
+                    noSource: true,
+                    mangle: false,
+                    ext: { min: ".min.js" },
+                })
+            )
+            .pipe(dest("./dist/js"));
+    }
+);
 
-async function copy() {
-    return parallel(
-        () => {
-            return src("./dist/css/empyreal.min.css").pipe(dest("./docs/dist/css"));
-        },
-        () => {
-            return src("./dist/js/empyreal.js").pipe(dest("./docs/dist/js/"));
-        }
-    )();
-}
+
+let js = series(rollupBundle, minifyJs);
+
+let copy = parallel(
+    function () {
+        return src("./dist/css/empyreal.min.css").pipe(dest("./docs/dist/css"));
+    },
+    function () {
+        return src("./dist/js/empyreal.js").pipe(dest("./docs/dist/js/"));
+    }
+);
+
 
 function documentation() {
     return src("nunjucks/**.njk")
@@ -186,10 +178,6 @@ function documentation() {
         .pipe(rename({ extname: ".html" }))
         .pipe(dest("./docs/"));
 
-}
-
-function generate() {
-    
 }
 
 exports.css = css;
