@@ -6,7 +6,6 @@
   "scripts": {
     "start": "gulp compile",
     "dev": "gulp server",
-    "generate": "plop",
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint js/** --fix",
     "lint:css": "stylelint \"**/*.scss\" --fix"
