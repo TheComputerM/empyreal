@@ -2228,10 +2228,10 @@ img.thumbnail {
 .z-depth-0 {
   box-shadow: none !important; }
 
-.z-depth-1, .pagination li.active, .badge, .btn, .collapsible.popout > li, .navbar-wrapper, .nav .nav-item.active, .switch .lever::after {
+.z-depth-1, .pagination li.active, .badge, .collapsible.popout > li, .navbar-wrapper, .nav .nav-item.active, .switch .lever::after {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
-.z-depth-1-half, .btn:hover, .card, .card.card-cascade.wide .card-body, .card-panel, .select-field ul.select-list, .noUi-handle {
+.z-depth-1-half, .card, .card.card-cascade.wide .card-body, .card-panel, .select-field ul.select-list, .noUi-handle {
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
 
 .z-depth-2, .hoverable:hover, .card.card-cascade .cascade, .collapsible.popout > li.active, .dropdown, .modal-dialog {
@@ -3673,9 +3673,9 @@ a.waves-effect, a.waves-light {
 
 .btn {
   border: 0px solid transparent;
-  border-radius: 0.125rem;
-  padding: 0.78rem 2rem;
-  font-size: 0.81rem;
+  border-radius: 0.24rem;
+  padding: 0.78rem 1.64rem;
+  font-size: 0.875rem;
   margin: 0.375rem;
   background-color: #2196F3;
   text-transform: uppercase;
@@ -3685,23 +3685,31 @@ a.waves-effect, a.waves-light {
   display: inline-block;
   text-align: center;
   vertical-align: middle;
+  letter-spacing: 0.12rem;
   line-height: 1.5;
   cursor: pointer;
-  font-weight: 400;
+  font-weight: 500;
   color: #FFFFFF;
   text-decoration: none;
+  overflow: hidden;
   -webkit-tap-highlight-color: transparent;
   outline: none;
-  transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out; }
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, opacity 0.15s ease-in-out; }
   .btn i {
-    font-size: 1rem;
+    font-size: 1.2rem;
     vertical-align: sub; }
     .btn i.left {
-      margin-right: 0.75rem;
+      margin-right: 0.96rem;
       float: left; }
     .btn i.right {
-      margin-left: 0.75rem;
+      margin-left: 0.96rem;
       float: right; }
+  .btn:hover {
+    opacity: 0.94;
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
+  .btn:focus {
+    opacity: 0.8; }
   .btn.disabled {
     opacity: 0.65;
     cursor: not-allowed;
@@ -3714,35 +3722,35 @@ a.waves-effect, a.waves-light {
     top: -8px;
     z-index: 2;
     right: -10px;
-    color: #FFFFFF;
+    color: #ffffff;
     padding: 1px 8px;
     border-radius: 10em;
     background-color: #F44336; }
 
 .btn-large {
   padding: 1rem 2.4rem;
-  font-size: 0.94rem; }
+  font-size: 0.98rem; }
   .btn-large i {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     vertical-align: sub; }
     .btn-large i.left {
-      margin-right: 0.75rem;
+      margin-right: 0.96rem;
       float: left; }
     .btn-large i.right {
-      margin-left: 0.75rem;
+      margin-left: 0.96rem;
       float: right; }
 
 .btn-small {
-  padding: 0.5rem 1.6rem;
+  padding: 0.5rem 1.4rem;
   font-size: 0.64rem; }
   .btn-small i {
     font-size: 0.9rem;
     vertical-align: sub; }
     .btn-small i.left {
-      margin-right: 0.75rem;
+      margin-right: 0.96rem;
       float: left; }
     .btn-small i.right {
-      margin-left: 0.75rem;
+      margin-left: 0.96rem;
       float: right; }
 
 .btn-rounded {
@@ -3753,7 +3761,7 @@ a.waves-effect, a.waves-light {
   background-color: #FFFFFF;
   color: #000000;
   font-weight: 500;
-  letter-spacing: 0.09rem; }
+  letter-spacing: 0.18rem; }
   .btn-flat:hover {
     box-shadow: none !important;
     background-color: #F5F5F5; }
@@ -6370,5 +6378,3 @@ body[data-aos-easing="ease-in-out-quart"] [data-aos], [data-aos][data-aos][data-
       transform: perspective(2500px) rotateX(100deg); }
       html:not(.no-js) [data-aos="flip-down"].aos-animate {
         transform: perspective(2500px) rotateX(0); } }
-
-/*# sourceMappingURL=empyreal.css.map */

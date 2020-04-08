@@ -4334,7 +4334,7 @@ var empy = (function () {
         duration: 800
       });
     });
-    cash_min(document).on("click", ".navbar-toggler", function (e) {
+    cash_min(document).on("click", ".navbar-toggler", function () {
       var targetSelector = this.getAttribute("data-target") || this.getAttribute("href");
       var target = cash_min(document.querySelector(targetSelector));
       if (target.hasClass("shown")) target.removeClass("shown");else target.addClass("shown");
@@ -4348,7 +4348,7 @@ var empy = (function () {
     });
   });
 
-  var EmpyrealComponent = function EmpyrealComponent(el, options) {
+  var EmpyrealComponent = function EmpyrealComponent(el) {
     _classCallCheck(this, EmpyrealComponent);
 
     if (typeof el === "string") {
@@ -4450,14 +4450,14 @@ var empy = (function () {
             _this2.isOpen = true;
             _this2.el.style.display = "block";
 
-            if (typeof _this2.settings.onOpenStart === 'function') {
+            if (typeof _this2.settings.onOpenStart === "function") {
               _this2.settings.onOpenStart.call(_this2, _this2.el, e.target);
             }
           },
           complete: function complete() {
             _this2.isAnimationDone = true;
 
-            if (typeof _this2.settings.onOpenEnd === 'function') {
+            if (typeof _this2.settings.onOpenEnd === "function") {
               _this2.settings.onOpenEnd.call(_this2, _this2.el, e.target);
             }
           }
@@ -4490,7 +4490,7 @@ var empy = (function () {
             _this3.isAnimationDone = false;
             _this3.isOpen = false;
 
-            if (typeof _this3.settings.onCloseStart === 'function') {
+            if (typeof _this3.settings.onCloseStart === "function") {
               _this3.settings.onCloseStart.call(_this3, _this3.el, e.target);
             }
           },
@@ -4498,7 +4498,7 @@ var empy = (function () {
             _this3.isAnimationDone = true;
             _this3.el.style.display = "none";
 
-            if (typeof _this3.settings.onCloseEnd === 'function') {
+            if (typeof _this3.settings.onCloseEnd === "function") {
               _this3.settings.onCloseEnd.call(_this3, _this3.el, e.target);
             }
           }
@@ -4818,7 +4818,7 @@ var empy = (function () {
       value: function _handleDropdownOpen() {
         var _this2 = this;
 
-        var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'none';
+        var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "none";
         this.focusedIndex = -1;
         this.isOpen = true;
         this.isAnimationDone = false;
@@ -4848,7 +4848,7 @@ var empy = (function () {
       value: function _handleDropdownClose() {
         var _this3 = this;
 
-        var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'none';
+        var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "none";
         this.isOpen = false;
         this.isAnimationDone = false;
         anime({

@@ -91,14 +91,15 @@ function server() {
 
 function css() {
     return src("./sass/empyreal.scss")
-        .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.init())
+        .pipe(wait(200))
         .pipe(sass().on("error", sass.logError))
         .pipe(autoprefixer())
         .pipe(sourcemaps.write("."))
         .pipe(dest("./dist/css/"))
         .pipe(rename("empyreal.min.css"))
         .pipe(cleanCSS({ compatibility: "ie8" }))
-        .pipe(sourcemaps.write("."))
+        // .pipe(sourcemaps.write("."))
         .pipe(dest("./dist/css/"));
 }
 
