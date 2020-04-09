@@ -2228,13 +2228,13 @@ img.thumbnail {
 .z-depth-0 {
   box-shadow: none !important; }
 
-.z-depth-1, .pagination li.active, .badge, .collapsible.popout > li, .navbar-wrapper, .nav .nav-item.active, .switch .lever::after {
+.z-depth-1, .pagination li.active, .collapsible.popout > li, .nav .nav-item.active, .switch .lever::after {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
-.z-depth-1-half, .card, .card.card-cascade.wide .card-body, .card-panel, .select-field ul.select-list, .noUi-handle {
+.z-depth-1-half, .card.card-cascade.wide .card-body, .card-panel, .select-field ul.select-list, .noUi-handle {
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
 
-.z-depth-2, .hoverable:hover, .card.card-cascade .cascade, .collapsible.popout > li.active, .dropdown, .modal-dialog {
+.z-depth-2, .hoverable:hover, .collapsible.popout > li.active, .dropdown, .modal-dialog {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
 .z-depth-3, .snackbar {
@@ -2357,6 +2357,7 @@ img.thumbnail {
   font-weight: 700;
   padding: 0.25em 0.4em;
   font-size: 75%;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   display: inline-block;
   line-height: 1;
   text-align: center;
@@ -3685,7 +3686,7 @@ a.waves-effect, a.waves-light {
   display: inline-block;
   text-align: center;
   vertical-align: middle;
-  letter-spacing: 0.12rem;
+  letter-spacing: 0.08rem;
   line-height: 1.5;
   cursor: pointer;
   font-weight: 500;
@@ -3761,7 +3762,7 @@ a.waves-effect, a.waves-light {
   background-color: #FFFFFF;
   color: #000000;
   font-weight: 500;
-  letter-spacing: 0.18rem; }
+  letter-spacing: 0.12rem; }
   .btn-flat:hover {
     box-shadow: none !important;
     background-color: #F5F5F5; }
@@ -3873,6 +3874,7 @@ a.waves-effect, a.waves-light {
     display: block; }
 
 .card {
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -3883,6 +3885,7 @@ a.waves-effect, a.waves-light {
   margin-bottom: 12px; }
   .card.card-cascade .cascade {
     z-index: 2;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 0.5rem;
     overflow: hidden; }
   .card.card-cascade.wide {
@@ -4330,6 +4333,9 @@ p {
   .responsive-text {
     font-size: 1.1rem; } }
 
+.material-icons {
+  vertical-align: middle; }
+
 .navbar-wrapper {
   padding: 0.5rem 1rem;
   background-color: #651FFF;
@@ -4337,6 +4343,7 @@ p {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   z-index: 25;
   transition: 0.4s ease-in-out; }
   .navbar-wrapper.tall {
@@ -4416,8 +4423,6 @@ p {
         text-decoration: none;
         padding-right: 0.75rem;
         padding-left: 0.75rem; }
-        .navbar-wrapper .navbar .navbar-left .nav-item i, .navbar-wrapper .navbar .navbar-right .nav-item i {
-          vertical-align: middle; }
         .navbar-wrapper .navbar .navbar-left .nav-item.active, .navbar-wrapper .navbar .navbar-right .nav-item.active {
           background-color: rgba(255, 255, 255, 0.1); }
         .navbar-wrapper .navbar .navbar-left .nav-item a, .navbar-wrapper .navbar .navbar-right .nav-item a {
@@ -5055,11 +5060,11 @@ p {
     border-color: #2196F3;
     border-width: 2px;
     box-shadow: 0 1px #2196F3; }
-    .text-field input:focus:not([type]) + label, .text-field input:focus[type=text]:not(.browser-default) + label, .text-field input:focus[type=password]:not(.browser-default) + label, .text-field input:focus[type=email]:not(.browser-default) + label, .text-field input:focus[type=url]:not(.browser-default) + label, .text-field input:focus[type=time]:not(.browser-default) + label, .text-field input:focus[type=date]:not(.browser-default) + label, .text-field input:focus[type=datetime]:not(.browser-default) + label, .text-field input:focus[type=datetime-local]:not(.browser-default) + label, .text-field input:focus[type=tel]:not(.browser-default) + label, .text-field input:focus[type=number]:not(.browser-default) + label, .text-field input:focus[type=search]:not(.browser-default) + label, .text-field textarea:focus + label {
+    .text-field input:focus:not([type]) ~ label, .text-field input:focus[type=text]:not(.browser-default) ~ label, .text-field input:focus[type=password]:not(.browser-default) ~ label, .text-field input:focus[type=email]:not(.browser-default) ~ label, .text-field input:focus[type=url]:not(.browser-default) ~ label, .text-field input:focus[type=time]:not(.browser-default) ~ label, .text-field input:focus[type=date]:not(.browser-default) ~ label, .text-field input:focus[type=datetime]:not(.browser-default) ~ label, .text-field input:focus[type=datetime-local]:not(.browser-default) ~ label, .text-field input:focus[type=tel]:not(.browser-default) ~ label, .text-field input:focus[type=number]:not(.browser-default) ~ label, .text-field input:focus[type=search]:not(.browser-default) ~ label, .text-field textarea:focus ~ label {
       color: rgba(33, 150, 243, 0.87); }
-    .text-field input:focus.valid:not([type]) + label, .text-field input:focus.valid[type=text]:not(.browser-default) + label, .text-field input:focus.valid[type=password]:not(.browser-default) + label, .text-field input:focus.valid[type=email]:not(.browser-default) + label, .text-field input:focus.valid[type=url]:not(.browser-default) + label, .text-field input:focus.valid[type=time]:not(.browser-default) + label, .text-field input:focus.valid[type=date]:not(.browser-default) + label, .text-field input:focus.valid[type=datetime]:not(.browser-default) + label, .text-field input:focus.valid[type=datetime-local]:not(.browser-default) + label, .text-field input:focus.valid[type=tel]:not(.browser-default) + label, .text-field input:focus.valid[type=number]:not(.browser-default) + label, .text-field input:focus.valid[type=search]:not(.browser-default) + label, .text-field textarea:focus.valid + label, .text-field.filled input:focus.valid:not([type]) + label, .text-field.filled input:focus.valid[type=text]:not(.browser-default) + label, .text-field.filled input:focus.valid[type=password]:not(.browser-default) + label, .text-field.filled input:focus.valid[type=email]:not(.browser-default) + label, .text-field.filled input:focus.valid[type=url]:not(.browser-default) + label, .text-field.filled input:focus.valid[type=time]:not(.browser-default) + label, .text-field.filled input:focus.valid[type=date]:not(.browser-default) + label, .text-field.filled input:focus.valid[type=datetime]:not(.browser-default) + label, .text-field.filled input:focus.valid[type=datetime-local]:not(.browser-default) + label, .text-field.filled input:focus.valid[type=tel]:not(.browser-default) + label, .text-field.filled input:focus.valid[type=number]:not(.browser-default) + label, .text-field.filled input:focus.valid[type=search]:not(.browser-default) + label, .text-field.filled textarea:focus.valid + label, .text-field.outline input:focus.valid:not([type]) + label, .text-field.outline input:focus.valid[type=text]:not(.browser-default) + label, .text-field.outline input:focus.valid[type=password]:not(.browser-default) + label, .text-field.outline input:focus.valid[type=email]:not(.browser-default) + label, .text-field.outline input:focus.valid[type=url]:not(.browser-default) + label, .text-field.outline input:focus.valid[type=time]:not(.browser-default) + label, .text-field.outline input:focus.valid[type=date]:not(.browser-default) + label, .text-field.outline input:focus.valid[type=datetime]:not(.browser-default) + label, .text-field.outline input:focus.valid[type=datetime-local]:not(.browser-default) + label, .text-field.outline input:focus.valid[type=tel]:not(.browser-default) + label, .text-field.outline input:focus.valid[type=number]:not(.browser-default) + label, .text-field.outline input:focus.valid[type=search]:not(.browser-default) + label, .text-field.outline textarea:focus.valid + label {
+    .text-field input:focus.valid:not([type]) ~ label, .text-field input:focus.valid[type=text]:not(.browser-default) ~ label, .text-field input:focus.valid[type=password]:not(.browser-default) ~ label, .text-field input:focus.valid[type=email]:not(.browser-default) ~ label, .text-field input:focus.valid[type=url]:not(.browser-default) ~ label, .text-field input:focus.valid[type=time]:not(.browser-default) ~ label, .text-field input:focus.valid[type=date]:not(.browser-default) ~ label, .text-field input:focus.valid[type=datetime]:not(.browser-default) ~ label, .text-field input:focus.valid[type=datetime-local]:not(.browser-default) ~ label, .text-field input:focus.valid[type=tel]:not(.browser-default) ~ label, .text-field input:focus.valid[type=number]:not(.browser-default) ~ label, .text-field input:focus.valid[type=search]:not(.browser-default) ~ label, .text-field textarea:focus.valid ~ label, .text-field.filled input:focus.valid:not([type]) ~ label, .text-field.filled input:focus.valid[type=text]:not(.browser-default) ~ label, .text-field.filled input:focus.valid[type=password]:not(.browser-default) ~ label, .text-field.filled input:focus.valid[type=email]:not(.browser-default) ~ label, .text-field.filled input:focus.valid[type=url]:not(.browser-default) ~ label, .text-field.filled input:focus.valid[type=time]:not(.browser-default) ~ label, .text-field.filled input:focus.valid[type=date]:not(.browser-default) ~ label, .text-field.filled input:focus.valid[type=datetime]:not(.browser-default) ~ label, .text-field.filled input:focus.valid[type=datetime-local]:not(.browser-default) ~ label, .text-field.filled input:focus.valid[type=tel]:not(.browser-default) ~ label, .text-field.filled input:focus.valid[type=number]:not(.browser-default) ~ label, .text-field.filled input:focus.valid[type=search]:not(.browser-default) ~ label, .text-field.filled textarea:focus.valid ~ label, .text-field.outline input:focus.valid:not([type]) ~ label, .text-field.outline input:focus.valid[type=text]:not(.browser-default) ~ label, .text-field.outline input:focus.valid[type=password]:not(.browser-default) ~ label, .text-field.outline input:focus.valid[type=email]:not(.browser-default) ~ label, .text-field.outline input:focus.valid[type=url]:not(.browser-default) ~ label, .text-field.outline input:focus.valid[type=time]:not(.browser-default) ~ label, .text-field.outline input:focus.valid[type=date]:not(.browser-default) ~ label, .text-field.outline input:focus.valid[type=datetime]:not(.browser-default) ~ label, .text-field.outline input:focus.valid[type=datetime-local]:not(.browser-default) ~ label, .text-field.outline input:focus.valid[type=tel]:not(.browser-default) ~ label, .text-field.outline input:focus.valid[type=number]:not(.browser-default) ~ label, .text-field.outline input:focus.valid[type=search]:not(.browser-default) ~ label, .text-field.outline textarea:focus.valid ~ label {
       color: #4CAF50; }
-    .text-field input:focus.invalid:not([type]) + label, .text-field input:focus.invalid[type=text]:not(.browser-default) + label, .text-field input:focus.invalid[type=password]:not(.browser-default) + label, .text-field input:focus.invalid[type=email]:not(.browser-default) + label, .text-field input:focus.invalid[type=url]:not(.browser-default) + label, .text-field input:focus.invalid[type=time]:not(.browser-default) + label, .text-field input:focus.invalid[type=date]:not(.browser-default) + label, .text-field input:focus.invalid[type=datetime]:not(.browser-default) + label, .text-field input:focus.invalid[type=datetime-local]:not(.browser-default) + label, .text-field input:focus.invalid[type=tel]:not(.browser-default) + label, .text-field input:focus.invalid[type=number]:not(.browser-default) + label, .text-field input:focus.invalid[type=search]:not(.browser-default) + label, .text-field textarea:focus.invalid + label, .text-field.filled input:focus.invalid:not([type]) + label, .text-field.filled input:focus.invalid[type=text]:not(.browser-default) + label, .text-field.filled input:focus.invalid[type=password]:not(.browser-default) + label, .text-field.filled input:focus.invalid[type=email]:not(.browser-default) + label, .text-field.filled input:focus.invalid[type=url]:not(.browser-default) + label, .text-field.filled input:focus.invalid[type=time]:not(.browser-default) + label, .text-field.filled input:focus.invalid[type=date]:not(.browser-default) + label, .text-field.filled input:focus.invalid[type=datetime]:not(.browser-default) + label, .text-field.filled input:focus.invalid[type=datetime-local]:not(.browser-default) + label, .text-field.filled input:focus.invalid[type=tel]:not(.browser-default) + label, .text-field.filled input:focus.invalid[type=number]:not(.browser-default) + label, .text-field.filled input:focus.invalid[type=search]:not(.browser-default) + label, .text-field.filled textarea:focus.invalid + label, .text-field.outline input:focus.invalid:not([type]) + label, .text-field.outline input:focus.invalid[type=text]:not(.browser-default) + label, .text-field.outline input:focus.invalid[type=password]:not(.browser-default) + label, .text-field.outline input:focus.invalid[type=email]:not(.browser-default) + label, .text-field.outline input:focus.invalid[type=url]:not(.browser-default) + label, .text-field.outline input:focus.invalid[type=time]:not(.browser-default) + label, .text-field.outline input:focus.invalid[type=date]:not(.browser-default) + label, .text-field.outline input:focus.invalid[type=datetime]:not(.browser-default) + label, .text-field.outline input:focus.invalid[type=datetime-local]:not(.browser-default) + label, .text-field.outline input:focus.invalid[type=tel]:not(.browser-default) + label, .text-field.outline input:focus.invalid[type=number]:not(.browser-default) + label, .text-field.outline input:focus.invalid[type=search]:not(.browser-default) + label, .text-field.outline textarea:focus.invalid + label {
+    .text-field input:focus.invalid:not([type]) ~ label, .text-field input:focus.invalid[type=text]:not(.browser-default) ~ label, .text-field input:focus.invalid[type=password]:not(.browser-default) ~ label, .text-field input:focus.invalid[type=email]:not(.browser-default) ~ label, .text-field input:focus.invalid[type=url]:not(.browser-default) ~ label, .text-field input:focus.invalid[type=time]:not(.browser-default) ~ label, .text-field input:focus.invalid[type=date]:not(.browser-default) ~ label, .text-field input:focus.invalid[type=datetime]:not(.browser-default) ~ label, .text-field input:focus.invalid[type=datetime-local]:not(.browser-default) ~ label, .text-field input:focus.invalid[type=tel]:not(.browser-default) ~ label, .text-field input:focus.invalid[type=number]:not(.browser-default) ~ label, .text-field input:focus.invalid[type=search]:not(.browser-default) ~ label, .text-field textarea:focus.invalid ~ label, .text-field.filled input:focus.invalid:not([type]) ~ label, .text-field.filled input:focus.invalid[type=text]:not(.browser-default) ~ label, .text-field.filled input:focus.invalid[type=password]:not(.browser-default) ~ label, .text-field.filled input:focus.invalid[type=email]:not(.browser-default) ~ label, .text-field.filled input:focus.invalid[type=url]:not(.browser-default) ~ label, .text-field.filled input:focus.invalid[type=time]:not(.browser-default) ~ label, .text-field.filled input:focus.invalid[type=date]:not(.browser-default) ~ label, .text-field.filled input:focus.invalid[type=datetime]:not(.browser-default) ~ label, .text-field.filled input:focus.invalid[type=datetime-local]:not(.browser-default) ~ label, .text-field.filled input:focus.invalid[type=tel]:not(.browser-default) ~ label, .text-field.filled input:focus.invalid[type=number]:not(.browser-default) ~ label, .text-field.filled input:focus.invalid[type=search]:not(.browser-default) ~ label, .text-field.filled textarea:focus.invalid ~ label, .text-field.outline input:focus.invalid:not([type]) ~ label, .text-field.outline input:focus.invalid[type=text]:not(.browser-default) ~ label, .text-field.outline input:focus.invalid[type=password]:not(.browser-default) ~ label, .text-field.outline input:focus.invalid[type=email]:not(.browser-default) ~ label, .text-field.outline input:focus.invalid[type=url]:not(.browser-default) ~ label, .text-field.outline input:focus.invalid[type=time]:not(.browser-default) ~ label, .text-field.outline input:focus.invalid[type=date]:not(.browser-default) ~ label, .text-field.outline input:focus.invalid[type=datetime]:not(.browser-default) ~ label, .text-field.outline input:focus.invalid[type=datetime-local]:not(.browser-default) ~ label, .text-field.outline input:focus.invalid[type=tel]:not(.browser-default) ~ label, .text-field.outline input:focus.invalid[type=number]:not(.browser-default) ~ label, .text-field.outline input:focus.invalid[type=search]:not(.browser-default) ~ label, .text-field.outline textarea:focus.invalid ~ label {
       color: #F44336; }
 
 .text-field {

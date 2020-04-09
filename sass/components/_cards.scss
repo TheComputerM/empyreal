@@ -1,5 +1,5 @@
 .card {
-	@extend .z-depth-1-half;
+	box-shadow: $z-depth-1-half;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -11,7 +11,7 @@
 	&.card-cascade {
 		.cascade {
 			z-index: 2;
-			@extend .z-depth-2;
+			box-shadow: $z-depth-2;
 			border-radius: $card-border-radius * 2;
 			overflow: hidden;
 		}

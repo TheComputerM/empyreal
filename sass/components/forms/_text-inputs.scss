@@ -74,16 +74,16 @@
 		border-color: $secondary-color;
 		border-width: 2px;
 		box-shadow: 0 1px $secondary-color;
-		& + label {
+		& ~ label {
 			color: rgba($secondary-color, 0.87);
 		}
 		&.valid {
-			& + label {
+			& ~ label {
 				color: color("green", "base");
 			}
 		}
 		&.invalid {
-			& + label {
+			& ~ label {
 				color: color("red", "base");
 			}
 		}

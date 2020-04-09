@@ -210,7 +210,7 @@ img.thumbnail {
 	font-weight: 700;
 	padding: 0.25em 0.4em;
 	font-size: 75%;
-	@extend .z-depth-1;
+	box-shadow: $z-depth-1;
 	display: inline-block;
 	line-height: 1;
 	text-align: center;

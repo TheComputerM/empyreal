@@ -5,7 +5,7 @@
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
-	@extend .z-depth-1;
+	box-shadow: $z-depth-1;
 	z-index: $z-index-navbar;
 	transition: 0.4s ease-in-out;
 	&.tall {
@@ -91,9 +91,6 @@
 				text-decoration: none;
 				padding-right: $navbar-item-padding;
 				padding-left: $navbar-item-padding;
-				i {
-					vertical-align: middle;
-				}
 				&.active {
 					background-color: rgba($navbar-color, 0.1);
 				}
