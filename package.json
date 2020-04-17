@@ -25,9 +25,7 @@
   ],
   "author": "TheComputerM",
   "license": "MIT",
-  "np": {
-    "yarn": false
-  },
+  "np": {},
   "bugs": {
     "url": "https://github.com/TheComputerM/empyreal/issues"
   },
@@ -46,17 +44,11 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^7.0.1",
-    "gulp-clean-css": "^4.3.0",
     "gulp-minify": "^3.1.0",
     "gulp-nunjucks": "^5.0.1",
-    "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.5",
+    "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
-    "gulp-wait": "0.0.2",
     "jump.js": "^1.0.2",
-    "node-sass": "^4.13.1",
     "node-waves": "^0.7.6",
     "np": "^5.2.1",
     "npm-run-all": "^4.1.5",
@@ -95,5 +87,20 @@
       "browser": true,
       "es6": true
     }
+  },
+  "dependencies": {
+    "autoprefixer": "^9.7.6",
+    "cosmiconfig": "^6.0.0",
+    "postcss": "^7.0.27",
+    "postcss-calc": "^7.0.2",
+    "postcss-color-mod-function": "^3.0.3",
+    "postcss-custom-media": "^7.0.8",
+    "postcss-custom-properties": "^9.1.1",
+    "postcss-extend-rule": "^3.0.0",
+    "postcss-for": "^2.1.1",
+    "postcss-functions": "^3.0.0",
+    "postcss-import": "^12.0.1",
+    "postcss-js": "^2.0.3",
+    "postcss-nested": "^4.2.1"
   }
 }
