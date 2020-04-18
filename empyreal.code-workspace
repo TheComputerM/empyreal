@@ -12,6 +12,9 @@
 			"node_modules/": true,
 			"package-lock.json": true,
 		},
+		"files.associations": {
+			"*.css": "postcss"
+		},
 		"emmet.includeLanguages": {
 			"njk": "html"
 		},
