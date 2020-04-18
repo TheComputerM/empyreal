@@ -1,0 +1,73 @@
+.container {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 95%;
+    @media (--medium-and-up) {
+        width: 90%;
+    }
+    @media (--large-and-up) {
+        width: 80%;
+    }
+}
+
+.divider {
+    height: 1px;
+    overflow: hidden;
+    background-color: pallete("grey", "lighten-2");
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0 var(--row-padding);
+}
+
+.col {
+    flex-basis: 100%;
+    padding: 0 var(--gutter-width);
+    @for $i from 1 to 12 {
+        &.s$(i) {
+            flex-basis: calc((100% / 12) * $i);
+            width: calc((100% / 12) * $i);
+        }
+        &.offset-s$(i) {
+            margin-left: calc((100% / 12) * $i);
+        }
+    }
+    @media (--medium-and-up) {
+        @for $i from 1 to 12 {
+            &.m$(i) {
+                flex-basis: calc((100% / 12) * $i);
+                width: calc((100% / 12) * $i);
+            }
+            &.offset-m$(i) {
+                margin-left: calc((100% / 12) * $i);
+            }
+        }
+    }
+    @media (--large-and-up) {
+        @for $i from 1 to 12 {
+            &.l$(i) {
+                flex-basis: calc((100% / 12) * $i);
+                width: calc((100% / 12) * $i);
+            }
+            &.offset-l$(i) {
+                margin-left: calc((100% / 12) * $i);
+            }
+        }
+    }
+    @media (--extra-large-and-up) {
+        @for $i from 1 to 12 {
+            &.xl$(i) {
+                flex-basis: calc((100% / 12) * $i);
+                width: calc((100% / 12) * $i);
+            }
+            &.offset-xl$(i) {
+                margin-left: calc((100% / 12) * $i);
+            }
+        }
+    }
+}

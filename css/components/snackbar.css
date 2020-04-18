@@ -1,0 +1,15 @@
+.snackbar {
+	padding: var(--snackbar-padding);
+	color: #FFF;
+	background-color: var(--snackbar-bg-color);
+	display: inline-block;
+	position: fixed;
+	top: -100px;
+	right: var(--snackbar-right-offset);
+	opacity: 0;
+	transition: all 200ms ease-out;
+	border-radius: var(--snackbar-border-radius);
+	font-weight: var(--snackbar-font-weight);
+	box-shadow: var(--z-depth-three);
+	z-index: var(--z-index-snackbar);
+}

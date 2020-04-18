@@ -235,8 +235,8 @@ function _createForOfIteratorHelper(o) {
 }
 
 /*
- * anime.js v3.1.0
- * (c) 2019 Julian Garnier
+ * anime.js v3.2.0
+ * (c) 2020 Julian Garnier
  * Released under the MIT license
  * animejs.com
  */
@@ -262,7 +262,7 @@ var defaultTweenSettings = {
   easing: 'easeOutElastic(1, .5)',
   round: 0
 };
-var validTransforms = ['translateX', 'translateY', 'translateZ', 'rotate', 'rotateX', 'rotateY', 'rotateZ', 'scale', 'scaleX', 'scaleY', 'scaleZ', 'skew', 'skewX', 'skewY', 'perspective']; // Caching
+var validTransforms = ['translateX', 'translateY', 'translateZ', 'rotate', 'rotateX', 'rotateY', 'rotateZ', 'scale', 'scaleX', 'scaleY', 'scaleZ', 'skew', 'skewX', 'skewY', 'perspective', 'matrix', 'matrix3d']; // Caching
 
 var cache = {
   CSS: {},
@@ -399,7 +399,7 @@ function spring(string, duration) {
 function steps(steps) {
   if (steps === void 0) steps = 10;
   return function (t) {
-    return Math.round(t * steps) * (1 / steps);
+    return Math.ceil(minMax(t, 0.000001, 1) * steps) * (1 / steps);
   };
 } // BezierEasing https://github.com/gre/bezier-easing
 
@@ -1768,6 +1768,7 @@ function anime(params) {
 
   instance.reverse = function () {
     toggleInstanceDirection();
+    instance.completed = instance.reversed ? false : true;
     resetTime();
   };
 
@@ -1945,7 +1946,7 @@ function timeline(params) {
   return tl;
 }
 
-anime.version = '3.1.0';
+anime.version = '3.2.0';
 anime.speed = 1;
 anime.running = activeInstances;
 anime.remove = removeTargets;
@@ -4436,6 +4437,7 @@ var Modal = /*#__PURE__*/function (_EmpyrealComponent) {
     value: function _handleModalOpen(e) {
       var _this2 = this;
 
+      window.history.pushState(null, null, window.location.href);
       if (this.settings.blur) cash_min(document.body).children().not(".modal").addClass("blurred");
       anime({
         targets: this.el,
@@ -5667,8 +5669,6 @@ var Pushpin = /*#__PURE__*/function (_EmpyrealComponent) {
   _createClass(Pushpin, [{
     key: "_init",
     value: function _init() {
-      this._calculateElementDimensions();
-
       this._setupEventHandlers();
     }
   }, {
@@ -5682,12 +5682,13 @@ var Pushpin = /*#__PURE__*/function (_EmpyrealComponent) {
         height: ""
       });
       this.initialY = this.$el.offset().top;
-      this.width = this.$el.outerWidth(true);
-      this.height = this.$el.outerHeight(true);
+      var size = this.$el.size();
+      this.width = size.width;
+      this.height = size.height;
 
       if (this.settings.stopperElement) {
         var stopperSize = cash_min(this.settings.stopperElement).offset();
-        this.stop = stopperSize.top - this.height;
+        this.stop = stopperSize.top - this.$el.outerHeight() - 10;
       }
     }
   }, {

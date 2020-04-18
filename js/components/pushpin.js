@@ -39,7 +39,6 @@ export default class Pushpin extends EmpyrealComponent{
     }
 
     _init() {
-        this._calculateElementDimensions();
         this._setupEventHandlers();
     }
 
@@ -52,11 +51,12 @@ export default class Pushpin extends EmpyrealComponent{
             height: "",
         });
         this.initialY = this.$el.offset().top;
-        this.width = this.$el.outerWidth(true);
-        this.height = this.$el.outerHeight(true);
+        let size = this.$el.size();
+        this.width = size.width;
+        this.height = size.height;
         if (this.settings.stopperElement) {
             let stopperSize = c(this.settings.stopperElement).offset();
-            this.stop = stopperSize.top - this.height;
+            this.stop = stopperSize.top - this.$el.outerHeight() - 10;
         }
     }
 

@@ -1,0 +1,165 @@
+.checkbox-field {
+    position: relative;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    font-weight: 400;
+    user-select: none;
+    input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+        padding: 0;
+        &:checked ~ span {
+            &::before {
+                top: -4px;
+                left: -5px;
+                width: 12px;
+                height: 22px;
+                border-top: 2px solid transparent;
+                border-left: 2px solid transparent;
+                border-right: 2px solid var(--secondary-color);
+                border-bottom: 2px solid var(--secondary-color);
+                transform: rotate(40deg);
+                transform-origin: 100% 100%;
+            }
+            &::after {
+                background-color: var(--secondary-color);
+            }
+        }
+        &:indeterminate ~ span::before {
+            top: -11px;
+            left: -12px;
+            width: 10px;
+            height: 22px;
+            border-top: none;
+            border-left: none;
+            border-right: 2px solid var(--secondary-color);
+            border-bottom: none;
+            transform: rotate(90deg);
+            backface-visibility: hidden;
+            transform-origin: 100% 100%;
+        }
+        &:not(:disabled) {
+            &:hover ~ span {
+                &::after {
+                    opacity: 0.18;
+                }
+            }
+            &:focus ~ span,
+            &:active ~ span {
+                &::after {
+                    opacity: 0.24;
+                }
+            }
+        }
+    }
+    input[type="checkbox"]:disabled {
+        & + span {
+            color: var(--disabled-color);
+            &::before {
+                border: 2px solid var(--disabled-color);
+            }
+        }
+    }
+    span {
+        position: relative;
+        padding-left: 35px;
+        display: inline-block;
+        height: 25px;
+        font-size: 1rem;
+        color: var(--input-label-color);
+        line-height: 26px;
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 4px;
+        }
+        &::before {
+            width: 18px;
+            height: 18px;
+            border-radius: 1px;
+            border: 2px solid rgba(0, 0, 0, 0.42);
+            transition: 0.2s ease;
+        }
+        &::after {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            opacity: 0;
+            background-color: pallete("grey", "lighten-1");
+            transform: translate(-25%, -25%);
+            transition: 0.2s;
+        }
+    }
+}
+
+
+.switch {
+	display: inline-flex;
+	user-select: none;
+	input[type="checkbox"] {
+		display: none;
+	}
+	.lever {
+		top: 2px;
+		width: 34px;
+		height: 14px;
+		background-color: pallete("grey", "base");
+		border-radius: 8px;
+		display: inline-block;
+		position: relative;
+		margin: 0 12px;
+		transition: background-color .2s ease;
+		&::after, &::before {
+			content: "";
+			position: absolute;
+			margin: 0;
+			outline: 0;
+			top: 50%;
+			transition: all 0.2s ease;
+		}
+		&::before {
+			left: 0;
+			width: 42px;
+			height: 42px;
+			background-color: pallete("grey", "base");
+			border-radius: 50%;
+			opacity: 0;
+			transform: translate(-25%, -50%);
+		}
+		&::after {
+			left: 0;
+			width: 20px;
+			height: 20px;
+			background-color: pallete("grey", "lighten-5");
+			transform: translate(0, -50%);
+			border-radius: 50%;
+			box-shadow: var(--z-depth-one);
+		}
+	}
+	.lever:hover {
+		&::before {
+			opacity: .24;
+		}
+	}
+	input[type="checkbox"]:disabled ~ .lever {
+		background-color: pallete("grey", "lighten-2");
+		&::after {
+			background-color: pallete("grey", "base");
+		}
+	}
+	input[type="checkbox"]:checked ~ .lever {
+		background-color: color-mod(var(--secondary-color) tint(25%));
+		&::after {
+			background-color: var(--secondary-color);
+			transform: translate(80%, -50%);
+		}
+		&::before {
+			background-color: var(--secondary-color);
+			transform: translate(10%, -50%);
+		}
+	}
+}

@@ -1,0 +1,108 @@
+.card {
+    box-shadow: var(--z-depth-one-half);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--card-border-radius);
+    line-height: 1.5;
+    font-weight: 400;
+    word-wrap: break-word;
+    margin-bottom: 12px;
+    &.card-cascade {
+        .cascade {
+            z-index: 2;
+            box-shadow: var(--z-depth-two);
+            border-radius: calc(var(--card-border-radius) * 2);
+            overflow: hidden;
+        }
+        &.wide {
+            box-shadow: none !important;
+            .card-body {
+                margin-left: var(--card-cascade-margin);
+                margin-right: var(--card-cascade-margin);
+                z-index: 1;
+                box-shadow: var(--z-depth-one-half);
+            }
+        }
+        &.narrow {
+            .cascade {
+                margin-left: var(--card-cascade-margin);
+                margin-right: var(--card-cascade-margin);
+                margin-top: -1.25rem;
+            }
+            .card-body {
+                z-index: 1;
+            }
+        }
+    }
+    .card-image {
+        width: 100%;
+        display: block;
+        position: relative;
+        border-style: none;
+        img {
+            width: 100%;
+        }
+        .card-title {
+            color: #ffffff;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 24px;
+            max-width: 100%;
+            font-weight: 300;
+        }
+    }
+
+    .card-banner {
+        min-height: var(--card-banner-height);
+        border-top-left-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+        padding: 1.6rem 1rem;
+        text-align: center;
+    }
+
+    .card-body {
+        padding: var(--card-body-padding);
+        flex: 1 1 auto;
+        position: relative;
+        background-color: var(--card-bg-color);
+    }
+    .card-title {
+        margin: 0.75rem 0rem;
+    }
+
+    .card-avatar {
+        width: var(--card-avatar-width);
+        margin: auto;
+        margin-top: calc(var(--card-avatar-width) / -2);
+        overflow: hidden;
+        border-radius: 50%;
+        border: 5px solid #ffffff;
+        img {
+            width: 100%;
+            border-style: none;
+            vertical-align: middle;
+        }
+    }
+}
+
+.card-panel {
+    padding: var(--card-panel-padding);
+    margin: 0.5rem 0 1rem 0;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--z-depth-one-half);
+}
+
+.card-grid {
+    columns: 3;
+    column-gap: 1rem;
+    .card {
+        display: inline-block;
+        margin-bottom: 1.2rem;
+    }
+    @media (--small-and-down) {
+        columns: 1;
+        column-gap: 0.5rem;
+    }
+}

@@ -90,6 +90,7 @@ export default class Modal extends EmpyrealComponent {
     }
 
     _handleModalOpen(e) {
+        window.history.pushState(null, null, window.location.href);
         if (this.settings.blur) c(document.body).children().not(".modal").addClass("blurred");
         anime({
             targets: this.el,

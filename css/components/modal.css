@@ -1,0 +1,96 @@
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    opacity: 0;
+    z-index: calc(var(--z-index-modal) - 1);
+}
+
+.modal-dialog {
+    background-color: #fff;
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    max-width: var(--modal-medium-max-width);
+    max-height: 70%;
+    box-shadow: var(--z-depth-two);
+    border-radius: var(--modal-border-radius);
+    z-index: var(--z-index-modal);
+    &.modal-sheet {
+        max-width: unset;
+        max-height: unset;
+        margin: 0 !important;
+        position: absolute;
+    }
+    &.modal-top-sheet {
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+    &.modal-left-sheet {
+        height: 100%;
+        max-width: 40%;
+        left: 0;
+        top: 0;
+    }
+    &.modal-right-sheet {
+        height: 100%;
+        max-width: 40%;
+        top: 0;
+        right: 0;
+    }
+    &.modal-bottom-sheet {
+        width: 100%;
+        bottom: 0;
+        left: 0;
+    }
+
+    &.modal-side {
+        margin: 0 !important;
+        position: absolute;
+    }
+    &.modal-top-left {
+        top: var(--modal-not-center-offset);
+        left: var(--modal-not-center-offset);
+    }
+    &.modal-top-right {
+        top: var(--modal-not-center-offset);
+        right: var(--modal-not-center-offset);
+    }
+    &.modal-bottom-left {
+        bottom: var(--modal-not-center-offset);
+        left: var(--modal-not-center-offset);
+    }
+    &.modal-bottom-right {
+        bottom: var(--modal-not-center-offset);
+        right: var(--modal-not-center-offset);
+    }
+
+    &.small {
+        max-width: var(--modal-small-max-width);
+    }
+    &.medium {
+        max-width: var(--modal-medium-max-width);
+    }
+    &.large {
+        max-width: var(--modal-large-max-width);
+    }
+    &.responsive {
+        max-width: var(--modal-responsive-max-width);
+    }
+    .modal-content {
+        padding: var(--modal-padding);
+        line-height: var(--modal-line-height);
+    }
+    .modal-footer {
+        padding: 8px 12px;
+        width: 100%;
+        text-align: right;
+    }
+}

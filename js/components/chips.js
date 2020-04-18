@@ -36,14 +36,13 @@ export default class Chips extends EmpyrealComponent {
 
     _init() {
         this.$input.attr("placeholder", this.settings.placeholder);
-        for (let i of this.settings.data) {
-            this.add(i);
-        }
+        for (let i of this.settings.data) this.add(i);
         if (this.settings.autocomplete) {
             this.autocomplete = new Autocomplete(this.$input[0], {
                 ...this.settings.autocomplete
             });
         }
+        
         this._setupEventHandlers();
     }
 

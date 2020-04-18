@@ -1,0 +1,237 @@
+%hidden-text {
+    color: transparent;
+    user-select: none;
+    pointer-events: none;
+}
+
+%label {
+    font-size: var(--input-label-font-size);
+    position: absolute;
+    font-weight: 400;
+    text-decoration: none;
+    transform-origin: left top;
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    line-height: 1.15rem;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: text;
+    will-change: transform;
+    white-space: nowrap;
+    left: 16px;
+    top: 18px;
+    right: auto;
+    pointer-events: none;
+    color: var(--input-label-color);
+    &.active {
+        transform: translateY(-50%) scale(0.75);
+    }
+}
+
+%input {
+    border: none;
+    border-bottom: var(--input-border);
+    color: var(--input-color);
+    line-height: var(--input-line-height);
+    font-size: var(--input-font-size);
+    transition: 0.15s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.15s ease-in-out;
+    width: 100%;
+    height: 100%;
+    padding: var(--input-padding);
+    letter-spacing: 0.025rem;
+    font-family: var(--font-stack);
+    font-weight: 400;
+    &::placeholder {
+        color: pallete("grey", "lighten-1");
+    }
+    &:invalid {
+        box-shadow: 0 0 0 0;
+    }
+    &.valid ~ .bottom-text > .helper-text[data-success],
+    &:focus.valid ~ .bottom-text > .helper-text[data-success],
+    &.invalid ~ .bottom-text > .helper-text[data-error],
+    &:focus.invalid ~ .bottom-text > .helper-text[data-error] {
+        @extend %hidden-text;
+    }
+
+    &.valid ~ .bottom-text > .helper-text[data-success]::after {
+        content: attr(data-success);
+        color: color("green", "base");
+    }
+    &.invalid ~ .bottom-text > .helper-text[data-error]::after {
+        content: attr(data-error);
+        color: color("red", "base");
+    }
+
+    & ~ .bottom-text > .helper-text::after {
+        opacity: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    &:hover {
+        border-color: var(--input-hover-border-color);
+    }
+    &:focus {
+        border-color: var(--secondary-color);
+        border-width: 2px;
+        box-shadow: 0 1px var(--secondary-color);
+        & ~ label {
+            color: color-mod(var(--secondary-color) a(87%));
+        }
+        &.valid {
+            & ~ label {
+                color: pallete("green", "base");
+            }
+        }
+        &.invalid {
+            & ~ label {
+                color: pallete("red", "base");
+            }
+        }
+    }
+}
+
+.text-field {
+    display: flex;
+    position: relative;
+    will-change: opacity, transform, color;
+    height: 56px;
+    flex-direction: column;
+    .bottom-text {
+        display: flex;
+        position: absolute;
+        top: 3.6rem;
+        color: var(--input-label-color);
+        font-size: 0.75rem;
+        flex-grow: 1;
+        width: 100%;
+        .helper-text {
+            display: block;
+            justify-content: flex-start;
+        }
+        .character-counter {
+            display: block;
+            justify-content: flex-end;
+            margin-left: auto;
+        }
+    }
+    &.disabled {
+        input,
+        textarea {
+            border-bottom-style: dotted;
+            pointer-events: none;
+            color: color-mod(var(--input-color) l(40%));
+            border-color: var(--disabled-color);
+        }
+        & > label {
+            color: var(--disabled-color);
+        }
+    }
+    input,
+    textarea {
+        @extend %input;
+        &.invalid {
+            border-color: pallete("red", "base");
+        }
+        &.valid {
+            border-color: pallete("green", "base");
+        }
+    }
+    textarea {
+        overflow-y: auto;
+        min-height: 120px;
+        transition: overflow-y 0s;
+        resize: vertical;
+    }
+    & > label {
+        @extend %label;
+        left: 0;
+    }
+    &.filled {
+        input,
+        textarea {
+            @extend %input;
+            padding: var(--input-filled-padding);
+            background-color: var(--input-filled-bg-color);
+            &:hover {
+                background-color: color-mod(var(--input-filled-bg-color) shade(5%));
+            }
+        }
+        & > label {
+            left: 16px;
+        }
+        textarea {
+            padding-top: 18px;
+        }
+    }
+
+    &.outline {
+        input,
+        textarea {
+            padding: var(--input-outline-padding);
+            border: 1px solid var(--input-outline-border-color);
+            border-radius: 2px;
+            transition: 0.15s;
+            &:hover {
+                border-color: var(--input-hover-border-color);
+            }
+            &:focus {
+                border-width: 2px;
+                border-color: var(--secondary-color);
+            }
+        }
+        & > label {
+            left: 16px;
+            transition: padding 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            &.active {
+                padding: 0 6px;
+                transform: translateY(-130%) scale(0.75);
+                background-color: #ffffff;
+            }
+        }
+        &.rounded {
+            input,
+            textarea {
+                border-radius: 10em;
+            }
+        }
+    }
+    &.with-icon-left {
+        i {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            right: auto;
+            &.active {
+                color: var(--secondary-color);
+            }
+        }
+        input,
+        textarea {
+            padding-left: 48px;
+            padding-right: 16px;
+        }
+        & > label {
+            left: 48px;
+            right: auto;
+        }
+    }
+    &.with-icon-right {
+        i {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            &.active {
+                color: var(--secondary-color);
+            }
+        }
+        input,
+        textarea {
+            padding-right: 48px;
+        }
+    }
+}

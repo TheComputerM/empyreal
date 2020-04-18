@@ -1,0 +1,23 @@
+.sidenav {
+    height: 100%;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    overflow-y: auto;
+    display: none;
+    z-index: var(--z-index-sidenav);
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.sidenav-overlay {
+    opacity: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: calc(var(--z-index-sidenav) - 1);
+    display: none;
+}
