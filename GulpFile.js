@@ -1,11 +1,5 @@
 const { src, dest, series, parallel, watch } = require("gulp");
-// const sass = require("gulp-sass");
-// sass.compiler = require("node-sass");
-// const sourcemaps = require("gulp-sourcemaps");
-// const autoprefixer = require("gulp-autoprefixer");
-// const cleanCSS = require("gulp-clean-css");
 const rename = require("gulp-rename");
-// const wait = require("gulp-wait");
 const {renderCSS} = require("./utils/render"); 
 
 const browserSync = require("browser-sync").create();

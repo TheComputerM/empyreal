@@ -1,9 +1,9 @@
 const path = require("path");
 const css = require("./css");
-const {css: cssConfig, configPath} = require("./getConfig");
+const {config, configPath} = require("./getConfig");
 
 async function renderCSS() {
-    css(cssConfig, configPath);
+    css(config, configPath);
 }
 
 exports.renderCSS = renderCSS;

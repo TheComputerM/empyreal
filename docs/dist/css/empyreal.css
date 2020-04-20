@@ -795,7 +795,7 @@ input:focus, select:focus, textarea:focus, button:focus {
 	display: inline-block;
 	position: fixed;
 	top: -100px;
-	right: var(--snackbar-right-offset);
+	right: 40px;
 	opacity: 0;
 	transition: all 200ms ease-out;
 	border-radius: 2px;
@@ -3762,119 +3762,124 @@ rgba(0, 0, 0, 0.19);
 }
 
 .carousel {
-	position: relative;
+    position: relative;
 }
 
-.carousel .carousel-controls .carousel-prev, .carousel .carousel-controls .carousel-next {
-	z-index: 9;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	display: flex;
-	width: 10%;
-	transition: 0.4s cubic-bezier(0.4, 0, 0.6, 1);
-	cursor: pointer;
-	color: rgba(255, 255, 255, 0.6);
-	font-size: 2.4rem;
-	user-select: none;
-		}
+.carousel .carousel-controls .carousel-prev,
+        .carousel .carousel-controls .carousel-next {
+            z-index: 9;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            display: flex;
+            width: 10%;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.6, 1);
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 2.4rem;
+            user-select: none;
+        }
 
 .carousel .carousel-controls .carousel-prev:hover, .carousel .carousel-controls .carousel-next:hover {
-		color: rgba(255, 255, 255, 0.95);
-		}
+                color: rgba(255, 255, 255, 0.95);
+            }
 
 .carousel .carousel-controls .carousel-next {
-			right: 0;
-		}
+            right: 0;
+        }
 
 .carousel .carousel-indicators {
-		position: absolute;
-		display: flex;
-		right: 0;
-		bottom: 8px;
-		left: 0;
-		z-index: 10;
-		justify-content: center;
-		margin-right: 10%;
-		margin-left: 10%;
-		list-style: none;
-		padding-left: 0;
-	}
+        position: absolute;
+        display: flex;
+        right: 0;
+        bottom: 8px;
+        left: 0;
+        z-index: 10;
+        justify-content: center;
+        margin-right: 10%;
+        margin-left: 10%;
+        list-style: none;
+        padding-left: 0;
+    }
 
 .carousel .carousel-indicators li {
-			box-sizing: content-box;
-			width: 0.55rem;
-			height: 0.55rem;
-			border-radius: 50%;
-			margin-left: 4px;
-			margin-right: 4px;
-			transition: 0.3s cubic-bezier(0.4, 0, 0.6, 1);
-			cursor: pointer;
-			flex: 0 1 auto;
-			background-clip: padding-box;
-			background-color: rgba(255, 255, 255, 0.4);
-			user-select: none;
-		}
+            box-sizing: content-box;
+            width: 0.55rem;
+            height: 0.55rem;
+            border-radius: 50%;
+            margin-left: 4px;
+            margin-right: 4px;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.6, 1);
+            cursor: pointer;
+            flex: 0 1 auto;
+            background-clip: padding-box;
+            background-color: rgba(255, 255, 255, 0.4);
+            user-select: none;
+        }
 
 .carousel .carousel-indicators li.active {
-				background-color: rgba(255, 255, 255, 1);
-			}
+                background-color: rgba(255, 255, 255, 1);
+            }
 
 .carousel .carousel-caption {
-		position: absolute;
-		display: flex;
-		flex-direction: column;
-		color: #FFFFFF;
-		z-index: $z-index-carousel;
-		bottom: 42px;
-		left: 0;
-		right: 0;
-		justify-content: center;
-		text-align: center;
-		flex: 0 1 auto;
-		left: 10%;
-		right: 10%;
-	}
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        color: #ffffff;
+        z-index: 10;
+        bottom: 42px;
+        left: 0;
+        right: 0;
+        justify-content: center;
+        text-align: center;
+        flex: 0 1 auto;
+        left: 10%;
+        right: 10%;
+    }
 
-.carousel .carousel-caption h1, .carousel .carousel-caption h2, .carousel .carousel-caption h3, .carousel .carousel-caption h4, .carousel .carousel-caption h5 {
-			margin: 0;
-		}
+.carousel .carousel-caption h1,
+        .carousel .carousel-caption h2,
+        .carousel .carousel-caption h3,
+        .carousel .carousel-caption h4,
+        .carousel .carousel-caption h5 {
+            margin: 0;
+        }
 
 .carousel .carousel-inner {
-		position: relative;
-		width: 100%;
-		overflow: hidden;
-	}
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
 
 .carousel .carousel-inner .carousel-item {
-			position: relative;
-			float: left;
-			width: 100%;
-			margin-right: -100%;
-			transition: 0.8s cubic-bezier(0.4, 0, 0.6, 1);
-			backface-visibility: hidden;
-			opacity: 0;
-		}
+            position: relative;
+            float: left;
+            width: 100%;
+            margin-right: -100%;
+            transition: 0.8s cubic-bezier(0.4, 0, 0.6, 1);
+            backface-visibility: hidden;
+            opacity: 0;
+        }
 
 .carousel .carousel-inner .carousel-item img {
-				width: 100%;
-				display: block;
-			}
+                width: 100%;
+                display: block;
+            }
 
 .carousel .carousel-inner .carousel-item.active {
-				transform: translate3d(0, 0, 0);
-				z-index: 1;
-				opacity: 1;
-			}
+                transform: translate3d(0, 0, 0);
+                z-index: 1;
+                opacity: 1;
+            }
 
 .carousel .carousel-inner::after {
-			display: block;
-			clear: both;
-			content: "";
-		}
+            display: block;
+            clear: both;
+            content: "";
+        }
 
 /* @import "./components/lightbox.css"; */
 
@@ -7180,100 +7185,6 @@ sans-serif;
 .text-field > label {
         left: 0;
     }
-
-.text-field.filled input,
-        .text-field.filled textarea {
-    border: none;
-    border-bottom: 1px
-solid
-rgba(0, 0, 0, 0.42);
-    color: rgba(0,0,0,.87);
-    line-height: 1.75rem;
-    font-size: 1rem;
-    transition: 0.15s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.15s ease-in-out;
-    width: 100%;
-    height: 100%;
-    padding: 20px
-0px
-6px;
-    letter-spacing: 0.025rem;
-    font-family: Roboto
-,
-"Segoe UI"
-,
-sans-serif;
-    font-weight: 400;
-        }
-
-.text-field.filled input::placeholder,
-        .text-field.filled textarea::placeholder {
-        color: #bdbdbd;
-        }
-
-.text-field.filled input:invalid,
-        .text-field.filled textarea:invalid {
-        box-shadow: 0 0 0 0;
-        }
-
-.text-field.filled input.valid ~ .bottom-text > .helper-text[data-success],
-        .text-field.filled input:focus.valid ~ .bottom-text > .helper-text[data-success],
-        .text-field.filled input.invalid ~ .bottom-text > .helper-text[data-error],
-        .text-field.filled input:focus.invalid ~ .bottom-text > .helper-text[data-error],
-        .text-field.filled textarea.valid ~ .bottom-text > .helper-text[data-success],
-        .text-field.filled textarea:focus.valid ~ .bottom-text > .helper-text[data-success],
-        .text-field.filled textarea.invalid ~ .bottom-text > .helper-text[data-error],
-        .text-field.filled textarea:focus.invalid ~ .bottom-text > .helper-text[data-error] {
-    color: transparent;
-    user-select: none;
-    pointer-events: none;
-        }
-
-.text-field.filled input.valid ~ .bottom-text > .helper-text[data-success]::after,
-        .text-field.filled textarea.valid ~ .bottom-text > .helper-text[data-success]::after {
-        content: attr(data-success);
-        color: color("green", "base");
-        }
-
-.text-field.filled input.invalid ~ .bottom-text > .helper-text[data-error]::after,
-        .text-field.filled textarea.invalid ~ .bottom-text > .helper-text[data-error]::after {
-        content: attr(data-error);
-        color: color("red", "base");
-        }
-
-.text-field.filled input ~ .bottom-text > .helper-text::after,
-        .text-field.filled textarea ~ .bottom-text > .helper-text::after {
-        opacity: 1;
-        position: absolute;
-        top: 0;
-        left: 0;
-        }
-
-.text-field.filled input:hover,
-        .text-field.filled textarea:hover {
-        border-color: rgba(0, 0, 0, 0.87);
-        }
-
-.text-field.filled input:focus,
-        .text-field.filled textarea:focus {
-        border-color: #2196F3;
-        border-width: 2px;
-        box-shadow: 0 1px #2196F3;
-        }
-
-.text-field.filled input:focus ~ label,
-        .text-field.filled textarea:focus ~ label {
-            color: rgba(33, 150, 243, 0.87);
-        }
-
-.text-field.filled input:focus.valid ~ label,
-        .text-field.filled textarea:focus.valid ~ label {
-                color: #4caf50;
-        }
-
-.text-field.filled input:focus.invalid ~ label,
-        .text-field.filled textarea:focus.invalid ~ label {
-                color: #f44336;
-        }
 
 .text-field.filled input,
         .text-field.filled textarea {

@@ -1,5 +1,3 @@
 module.exports = {
-    css: {
-        out: "./dist/css/",
-    }
+    out: "./dist/css/",
 }

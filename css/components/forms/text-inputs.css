@@ -152,7 +152,6 @@
     &.filled {
         input,
         textarea {
-            @extend %input;
             padding: var(--input-filled-padding);
             background-color: var(--input-filled-bg-color);
             &:hover {

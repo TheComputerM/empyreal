@@ -1,12 +1,10 @@
 const { cosmiconfigSync } = require("cosmiconfig");
-
+const flat = require("flat");
 let searched = cosmiconfigSync("empyreal").search();
-let cssDefault = require("./defaults/css.config");
-let jsDefault = require("./defaults/js.config");
+let custom = searched.config;
+let defaultConfig = require("./defaultConfig.js");
 
-let css = {...cssDefault, ...searched.config.css};
-let js = {...jsDefault, ...searched.config.js};
+let config = flat.unflatten({ ...flat(defaultConfig), ...flat(custom) });
 
-exports.css = css;
-exports.js = js;
+exports.config = config;
 exports.configPath = searched.filepath;

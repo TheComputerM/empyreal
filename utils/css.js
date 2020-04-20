@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const postcss = require("postcss");
 
+const conditionals = require('postcss-conditionals');
 const importcss = require("postcss-import");
 const extendRule = require("postcss-extend-rule");
 const postJs = require("postcss-js");
@@ -43,8 +44,10 @@ async function render(config, configPath) {
     let empyrealPath = path.join(__dirname, "../css/empyreal.css")
     let empyreal = fs.readFileSync(empyrealPath);
     postcss()
+        .use(conditionals())
         .use(importcss({
             plugins: [
+                conditionals(),
                 functions({
                     functions: cssFunctions(config)
                 }),
