@@ -95,7 +95,6 @@
     "postcss": "^7.0.27",
     "postcss-calc": "^7.0.2",
     "postcss-color-mod-function": "^3.0.3",
-    "postcss-conditionals": "^2.1.0",
     "postcss-custom-media": "^7.0.8",
     "postcss-custom-properties": "^9.1.1",
     "postcss-extend-rule": "^3.0.0",

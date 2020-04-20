@@ -2,7 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const postcss = require("postcss");
 
-const conditionals = require('postcss-conditionals');
 const importcss = require("postcss-import");
 const extendRule = require("postcss-extend-rule");
 const postJs = require("postcss-js");
@@ -43,25 +42,33 @@ async function render(config, configPath) {
     let configFolder = path.dirname(configPath);
     let empyrealPath = path.join(__dirname, "../css/empyreal.css")
     let empyreal = fs.readFileSync(empyrealPath);
+    let components = ["Normalize", "Global", ...config.components].map(i => {
+        return i.toLowerCase().replace(/ /g, '-');
+    });
+
     postcss()
-        .use(conditionals())
         .use(importcss({
             plugins: [
-                conditionals(),
                 functions({
                     functions: cssFunctions(config)
                 }),
                 forLoop()
             ],
-            load: function (filename, options) {
-                if (path.extname(filename) == '.js') {
-                    let content = require(filename)(config);
-                    let parsed = postJs.parse(content).toString();
-                    return parsed;
+            load: function (filepath, options) {
+                let ext = path.extname(filepath);
+                let filename = path.basename(filepath, ext);
+                if (components.includes(filename)) {
+                    if (ext == '.js') {
+                        let content = require(filepath)(config);
+                        let parsed = postJs.parse(content).toString();
+                        return parsed;
+                    } else {
+                        let content = fs.readFileSync(filepath);
+                        let parsed = content.toString();
+                        return parsed;
+                    }
                 } else {
-                    let content = fs.readFileSync(filename);
-                    let parsed = content.toString();
-                    return parsed;
+                    return '';
                 }
             }
         }))

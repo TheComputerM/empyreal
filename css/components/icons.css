@@ -1,3 +1,19 @@
 .material-icons {
     vertical-align: middle;
 }
+
+.icon-64 {
+    font-size: 64px !important;
+}
+.icon-48 {
+    font-size: 48px !important;
+}
+.icon-32 {
+    font-size: 32px !important;
+}
+.icon-24 {
+    font-size: 24px !important;
+}
+.icon-16 {
+    font-size: 16px !important;
+}
