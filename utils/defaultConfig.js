@@ -1,6 +1,19 @@
 module.exports = {
-    out: "./empyreal/css/",
+    out: {
+        css: "./dist/css/empyreal.css",
+        js: "./dist/js/empyreal.js"
+    },
     sourcemaps: true,
+    css: "./css/empyreal.css",
+    minify: {
+        css: true,
+        js: true
+    },
+    modules: {
+        iife: true,
+        esm: true,
+        umd: true,
+    },
     components: [
         "Snackbar",
         "Progress",

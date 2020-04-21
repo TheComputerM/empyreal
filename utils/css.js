@@ -12,7 +12,7 @@ const functions = require("postcss-functions");
 const calc = require("postcss-calc");
 const customMedia = require("postcss-custom-media");
 const colorMod = require("postcss-color-mod-function");
-
+const clean = require("postcss-clean");
 
 function cssFunctions(config) {
     return {
@@ -38,15 +38,14 @@ function toCSSVariable(input) {
 }
 
 
-async function render(config, configPath) {
-    let configFolder = path.dirname(configPath);
+async function css(config) {
     let empyrealPath = path.join(__dirname, "../css/empyreal.css")
     let empyreal = fs.readFileSync(empyrealPath);
     let components = ["Normalize", "Global", ...config.components].map(i => {
         return i.toLowerCase().replace(/ /g, '-');
     });
 
-    postcss()
+    let compiler = postcss()
         .use(importcss({
             plugins: [
                 functions({
@@ -88,10 +87,10 @@ async function render(config, configPath) {
         .use(colorMod())
         .use(nested())
         .use(extendRule())
-        .process(empyreal, { from: empyrealPath })
-        .then(function (result) {
-            fs.writeFile(path.join(configFolder, config.out, './empyreal.css'), result.css, () => true)
-        });
+
+        if (config.minify.css) compiler.use(clean())
+        
+        return compiler.process(empyreal, { from: empyrealPath })
 }
 
-module.exports = render;
+module.exports = css;
