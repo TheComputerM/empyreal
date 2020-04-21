@@ -1,17 +1,17 @@
-import anime from "animejs";
+import anime from "../vendor/anime";
 window.anime = anime;
 
-import AOS from "aos";
+import AOS from "../vendor/aos";
 AOS.init();
 
-import Waves from "node-waves";
+import Waves from "../vendor/node-waves";
 Waves.attach(".chip");
 Waves.init();
 window.Waves = Waves;
 
-import c from "cash-dom/dist/cash.min";
+import c from "../vendor/cash";
 window.cash = c;
-import jump from "jump.js";
+import jump from "../vendor/jump";
 
 c.fn.size = function () {
     return this[0].getClientRects()[0];
