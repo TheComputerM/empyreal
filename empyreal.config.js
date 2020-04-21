@@ -1,3 +1,9 @@
 module.exports = {
-    out: "./dist/css/",
+    out: {
+        css: "./dist/css/empyreal.css"
+    },
+    minify: {
+        js: false,
+        css: false,
+    }
 }

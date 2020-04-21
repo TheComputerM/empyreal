@@ -1,16 +1,9 @@
 const { src, dest, series, parallel, watch } = require("gulp");
 const rename = require("gulp-rename");
-const {renderCSS} = require("./utils/render"); 
+const render = require("./utils/render"); 
 
 const browserSync = require("browser-sync").create();
 let reload = browserSync.reload;
-
-const minify = require("gulp-minify");
-const uglify = require("gulp-uglify");
-const rollup = require("rollup");
-const resolve = require("@rollup/plugin-node-resolve");
-const commmonjs = require("@rollup/plugin-commonjs");
-const babel = require("rollup-plugin-babel");
 
 const nunjucks = require("gulp-nunjucks");
 
@@ -85,67 +78,9 @@ function server() {
     watch("./nunjucks/**/*.html").on("change", series(documentation, reload));
 }
 
-let css = renderCSS;
+let css = render.css;
 
-function rollupBundle() {
-    return rollup
-        .rollup({
-            input: "./js/empyreal.js",
-            plugins: [resolve(), commmonjs(), babel()],
-        })
-        .then((bundle) => {
-            // IIFE bundle
-            bundle.write({
-                file: "./dist/js/empyreal.js",
-                format: "iife",
-                name: "empy",
-                sourcemap: true,
-            });
-
-            // ESM bundle
-            bundle.write({
-                file: "./dist/js/empyreal.esm.js",
-                format: "esm",
-                name: "empy",
-                sourcemap: true,
-            });
-
-            // UMD bundle
-            bundle.write({
-                file: "./dist/js/empyreal.umd.js",
-                format: "umd",
-                name: "empy",
-                sourcemap: true,
-            });
-        });
-}
-
-
-let minifyJs = parallel(
-    // Minify ES5 modules such as the iife and UMD
-    function ES5() {
-        return src(["./dist/js/empyreal.js", "./dist/js/empyreal.umd.js"])
-            .pipe(uglify())
-            .pipe(rename({ suffix: ".min" }))
-            .pipe(dest("./dist/js"));
-    },
-
-    // Minify the ES6 modules such as the ESM
-    function ES6() {
-        return src(["./dist/js/empyreal.esm.js"])
-            .pipe(
-                minify({
-                    noSource: true,
-                    mangle: false,
-                    ext: { min: ".min.js" },
-                })
-            )
-            .pipe(dest("./dist/js"));
-    }
-);
-
-
-let js = series(rollupBundle, minifyJs);
+let js = render.js;
 
 let copy = parallel(
     function () {
@@ -167,8 +102,6 @@ function documentation() {
 
 exports.css = css;
 exports.js = js;
-exports.bundleJs = rollupBundle;
-exports.minifyJs = minifyJs;
 exports.documentation = documentation;
 exports.copy = copy;
 exports.compile = parallel(css, js);

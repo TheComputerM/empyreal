@@ -10,6 +10,12 @@
     "lint:js": "eslint js/** --fix",
     "lint:css": "stylelint \"**/*.scss\" --fix"
   },
+  "files": [
+    "./dist/**/*",
+    "./js/**/*",
+    "./css/**/*",
+    "./utils/**/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TheComputerM/empyreal.git"
@@ -25,36 +31,24 @@
   ],
   "author": "TheComputerM",
   "license": "MIT",
-  "np": {},
+  "np": {
+    "yolo": true
+  },
   "bugs": {
     "url": "https://github.com/TheComputerM/empyreal/issues"
   },
   "homepage": "https://github.com/TheComputerM/empyreal#readme",
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-transform-classes": "^7.9.2",
-    "@babel/preset-env": "^7.9.0",
-    "@rollup/plugin-commonjs": "^11.0.1",
-    "@rollup/plugin-node-resolve": "^7.1.1",
-    "animejs": "^3.1.0",
-    "aos": "^2.3.4",
     "babel-eslint": "^10.1.0",
     "browser-sync": "^2.26.7",
-    "cash-dom": "^6.0.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "gulp": "^4.0.2",
-    "gulp-minify": "^3.1.0",
     "gulp-nunjucks": "^5.0.1",
     "gulp-rename": "^2.0.0",
-    "gulp-uglify": "^3.0.2",
-    "jump.js": "^1.0.2",
-    "node-waves": "^0.7.6",
     "np": "^5.2.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
-    "rollup": "^1.32.1",
-    "rollup-plugin-babel": "^4.4.0",
     "stylelint": "^12.0.1"
   },
   "eslintConfig": {
@@ -89,11 +83,19 @@
     }
   },
   "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-arrow-functions": "^7.8.3",
+    "@babel/plugin-transform-block-scoping": "^7.8.3",
+    "@babel/plugin-transform-classes": "^7.9.5",
+    "@babel/plugin-transform-for-of": "^7.9.0",
+    "@babel/plugin-transform-template-literals": "^7.8.3",
+    "@rollup/plugin-commonjs": "^11.1.0",
     "autoprefixer": "^9.7.6",
     "cosmiconfig": "^6.0.0",
     "flat": "^5.0.0",
     "postcss": "^7.0.27",
     "postcss-calc": "^7.0.2",
+    "postcss-clean": "^1.1.0",
     "postcss-color-mod-function": "^3.0.3",
     "postcss-custom-media": "^7.0.8",
     "postcss-custom-properties": "^9.1.1",
@@ -102,6 +104,9 @@
     "postcss-functions": "^3.0.0",
     "postcss-import": "^12.0.1",
     "postcss-js": "^2.0.3",
-    "postcss-nested": "^4.2.1"
+    "postcss-nested": "^4.2.1",
+    "rollup": "^2.6.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-terser": "^5.3.0"
   }
 }

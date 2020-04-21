@@ -1,19 +1,3 @@
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function (obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function (obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -34,55 +18,6 @@ function _createClass(Constructor, protoProps, staticProps) {
   if (protoProps) _defineProperties(Constructor.prototype, protoProps);
   if (staticProps) _defineProperties(Constructor, staticProps);
   return Constructor;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
 }
 
 function _inherits(subClass, superClass) {
@@ -240,7 +175,7 @@ function _createForOfIteratorHelper(o) {
  * Released under the MIT license
  * animejs.com
  */
-// Defaults
+
 var defaultInstanceSettings = {
   update: null,
   begin: null,
@@ -1209,7 +1144,9 @@ function flattenKeyframes(keyframes) {
     });
   };
 
-  for (var i = 0; i < propertyNames.length; i++) loop(i);
+  for (var i = 0; i < propertyNames.length; i++) {
+    loop(i);
+  }
 
   return properties;
 }
@@ -1964,6 +1901,8 @@ anime.random = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+var anime_1 = anime;
+
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function unwrapExports (x) {
@@ -2003,7 +1942,9 @@ var aos = createCommonjsModule(function (module, exports) {
         for (var t = 1; t < arguments.length; t++) {
           var n = arguments[t];
 
-          for (var o in n) Object.prototype.hasOwnProperty.call(n, o) && (e[o] = n[o]);
+          for (var o in n) {
+            Object.prototype.hasOwnProperty.call(n, o) && (e[o] = n[o]);
+          }
         }
 
         return e;
@@ -2554,7 +2495,9 @@ var aos = createCommonjsModule(function (module, exports) {
       });
 
       var n = function (e) {
-        for (var t = 0, n = 0; e && !isNaN(e.offsetLeft) && !isNaN(e.offsetTop);) t += e.offsetLeft - ("BODY" != e.tagName ? e.scrollLeft : 0), n += e.offsetTop - ("BODY" != e.tagName ? e.scrollTop : 0), e = e.offsetParent;
+        for (var t = 0, n = 0; e && !isNaN(e.offsetLeft) && !isNaN(e.offsetTop);) {
+          t += e.offsetLeft - ("BODY" != e.tagName ? e.scrollLeft : 0), n += e.offsetTop - ("BODY" != e.tagName ? e.scrollTop : 0), e = e.offsetParent;
+        }
 
         return {
           top: n,
@@ -2584,8 +2527,15 @@ var aos = createCommonjsModule(function (module, exports) {
 var AOS = unwrapExports(aos);
 var aos_1 = aos.AOS;
 
-var waves = createCommonjsModule(function (module, exports) {
-
+var nodeWaves = createCommonjsModule(function (module, exports) {
+  /*!
+   * Waves v0.7.6
+   * http://fian.my.id/Waves
+   *
+   * Copyright 2014-2018 Alfiana E. Sibuea and other contributors
+   * Released under the MIT license
+   * https://github.com/fians/Waves/blob/master/LICENSE
+   */
   (function (window, factory) {
     // to root via `this`.
 
@@ -3114,7 +3064,7 @@ var waves = createCommonjsModule(function (module, exports) {
   });
 });
 
-var cash_min = createCommonjsModule(function (module, exports) {
+var cash = createCommonjsModule(function (module, exports) {
   /* MIT https://github.com/kenwheeler/cash */
   (function () {
 
@@ -3140,29 +3090,29 @@ var cash_min = createCommonjsModule(function (module, exports) {
 
     var m = document,
         n = window,
-        p = m.documentElement,
-        r = m.createElement.bind(m),
-        aa = r("div"),
-        t = r("table"),
-        ba = r("tbody"),
-        ca = r("tr"),
-        u = Array.isArray,
-        v = Array.prototype,
-        da = v.concat,
-        w = v.filter,
-        ea = v.indexOf,
-        fa = v.map,
-        ha = v.push,
-        ia = v.slice,
-        x = v.some,
-        ja = v.splice,
-        ka = /^#[\w-]*$/,
-        la = /^\.[\w-]*$/,
-        ma = /<.+>/,
-        na = /^\w+$/;
+        aa = m.documentElement,
+        p = m.createElement.bind(m),
+        ba = p("div"),
+        r = p("table"),
+        ca = p("tbody"),
+        da = p("tr"),
+        t = Array.isArray,
+        u = Array.prototype,
+        ea = u.concat,
+        v = u.filter,
+        fa = u.indexOf,
+        ha = u.map,
+        ia = u.push,
+        ja = u.slice,
+        w = u.some,
+        ka = u.splice,
+        la = /^#[\w-]*$/,
+        ma = /^\.[\w-]*$/,
+        na = /<.+>/,
+        oa = /^\w+$/;
 
-    function y(a, b) {
-      return a && (A(b) || B(b)) ? la.test(a) ? b.getElementsByClassName(a.slice(1)) : na.test(a) ? b.getElementsByTagName(a) : b.querySelectorAll(a) : [];
+    function x(a, b) {
+      return a && (y(b) || B(b)) ? ma.test(a) ? b.getElementsByClassName(a.slice(1)) : oa.test(a) ? b.getElementsByTagName(a) : b.querySelectorAll(a) : [];
     }
 
     var C = function () {
@@ -3172,14 +3122,16 @@ var cash_min = createCommonjsModule(function (module, exports) {
           var b = a;
 
           if (D(a)) {
-            if (b = (c instanceof C ? c[0] : c) || m, b = ka.test(a) ? b.getElementById(a.slice(1)) : ma.test(a) ? oa(a) : y(a, b), !b) return;
+            if (b = (c instanceof C ? c[0] : c) || m, b = la.test(a) ? b.getElementById(a.slice(1)) : na.test(a) ? pa(a) : x(a, b), !b) return;
           } else if (E(a)) return this.ready(a);
 
           if (b.nodeType || b === n) b = [b];
           this.length = b.length;
           a = 0;
 
-          for (c = this.length; a < c; a++) this[a] = b[a];
+          for (c = this.length; a < c; a++) {
+            this[a] = b[a];
+          }
         }
       }
 
@@ -3194,32 +3146,34 @@ var cash_min = createCommonjsModule(function (module, exports) {
 
     G.fn = G.prototype = F;
     F.length = 0;
-    F.splice = ja;
-    "function" === typeof Symbol && (F[Symbol.iterator] = v[Symbol.iterator]);
+    F.splice = ka;
+    "function" === typeof Symbol && (F[Symbol.iterator] = u[Symbol.iterator]);
 
     F.map = function (a) {
-      return G(da.apply([], fa.call(this, function (b, c) {
+      return G(ea.apply([], ha.call(this, function (b, c) {
         return a.call(b, c, b);
       })));
     };
 
     F.slice = function (a, b) {
-      return G(ia.call(this, a, b));
+      return G(ja.call(this, a, b));
     };
 
-    var pa = /-([a-z])/g;
+    var ra = /-([a-z])/g;
 
     function H(a) {
-      return a.replace(pa, function (a, c) {
+      return a.replace(ra, function (a, c) {
         return c.toUpperCase();
       });
     }
 
     function I(a, b, c) {
-      if (c) for (c = a.length; c-- && !1 !== b.call(a[c], c, a[c]););else {
+      if (c) for (c = a.length; c-- && !1 !== b.call(a[c], c, a[c]);) {
+      } else {
         c = 0;
 
-        for (var d = a.length; c < d && !1 !== b.call(a[c], c, a[c]); c++);
+        for (var d = a.length; c < d && !1 !== b.call(a[c], c, a[c]); c++) {
+        }
       }
       return a;
     }
@@ -3237,13 +3191,18 @@ var cash_min = createCommonjsModule(function (module, exports) {
     };
 
     function J(a) {
-      for (var b = 1; b < arguments.length; b++);
+      for (var b = 1; b < arguments.length; b++) {
+      }
 
       b = arguments.length;
       if (!b) return {};
       if (1 === b) return J(G, a);
 
-      for (var c = 1; c < b; c++) for (var d in arguments[c]) a[d] = arguments[c][d];
+      for (var c = 1; c < b; c++) {
+        for (var d in arguments[c]) {
+          a[d] = arguments[c][d];
+        }
+      }
 
       return a;
     }
@@ -3256,7 +3215,7 @@ var cash_min = createCommonjsModule(function (module, exports) {
 
     G.guid = 1;
 
-    function qa(a, b) {
+    function sa(a, b) {
       var c = a && (a.matches || a.webkitMatchesSelector || a.msMatchesSelector);
       return !!c && !!b && c.call(a, b);
     }
@@ -3265,7 +3224,7 @@ var cash_min = createCommonjsModule(function (module, exports) {
       return !!a && a === a.window;
     }
 
-    function A(a) {
+    function y(a) {
       return !!a && 9 === a.nodeType;
     }
 
@@ -3281,14 +3240,14 @@ var cash_min = createCommonjsModule(function (module, exports) {
       return "string" === typeof a;
     }
 
-    function ra(a) {
+    function ta(a) {
       return !isNaN(parseFloat(a)) && isFinite(a);
     }
 
     G.isWindow = K;
     G.isFunction = E;
-    G.isNumeric = ra;
-    G.isArray = u;
+    G.isNumeric = ta;
+    G.isArray = t;
 
     F.prop = function (a, b) {
       if (a) {
@@ -3296,14 +3255,16 @@ var cash_min = createCommonjsModule(function (module, exports) {
           h[a] = b;
         });
 
-        for (var c in a) this.prop(c, a[c]);
+        for (var c in a) {
+          this.prop(c, a[c]);
+        }
 
         return this;
       }
     };
 
     F.get = function (a) {
-      if (void 0 === a) return ia.call(this);
+      if (void 0 === a) return ja.call(this);
       a = Number(a);
       return this[0 > a ? a + this.length : a];
     };
@@ -3322,7 +3283,7 @@ var cash_min = createCommonjsModule(function (module, exports) {
 
     function L(a) {
       return D(a) ? function (b, c) {
-        return qa(c, a);
+        return sa(c, a);
       } : E(a) ? a : a instanceof C ? function (b, c) {
         return a.is(c);
       } : a ? function (b, c) {
@@ -3334,7 +3295,7 @@ var cash_min = createCommonjsModule(function (module, exports) {
 
     F.filter = function (a) {
       var b = L(a);
-      return G(w.call(this, function (a, d) {
+      return G(v.call(this, function (a, d) {
         return b.call(a, d, a);
       }));
     };
@@ -3343,14 +3304,14 @@ var cash_min = createCommonjsModule(function (module, exports) {
       return b ? a.filter(b) : a;
     }
 
-    var sa = /\S+/g;
+    var ua = /\S+/g;
 
     function N(a) {
-      return D(a) ? a.match(sa) || [] : [];
+      return D(a) ? a.match(ua) || [] : [];
     }
 
     F.hasClass = function (a) {
-      return !!a && x.call(this, function (b) {
+      return !!a && w.call(this, function (b) {
         return B(b) && b.classList.contains(a);
       });
     };
@@ -3378,7 +3339,9 @@ var cash_min = createCommonjsModule(function (module, exports) {
           });
         }
 
-        for (c in a) this.attr(c, a[c]);
+        for (c in a) {
+          this.attr(c, a[c]);
+        }
 
         return this;
       }
@@ -3403,17 +3366,21 @@ var cash_min = createCommonjsModule(function (module, exports) {
     };
 
     function O(a, b, c, d) {
-      for (var h = [], f = E(b), k = d && L(d), q = 0, R = a.length; q < R; q++) if (f) {
-        var l = b(a[q]);
-        l.length && ha.apply(h, l);
-      } else for (l = a[q][b]; !(null == l || d && k(-1, l));) h.push(l), l = c ? l[b] : null;
+      for (var h = [], f = E(b), l = d && L(d), q = 0, z = a.length; q < z; q++) {
+        if (f) {
+          var k = b(a[q]);
+          k.length && ia.apply(h, k);
+        } else for (k = a[q][b]; !(null == k || d && l(-1, k));) {
+          h.push(k), k = c ? k[b] : null;
+        }
+      }
 
       return h;
     }
 
     function P(a) {
-      return 1 < a.length ? w.call(a, function (a, c, d) {
-        return ea.call(d, a) === c;
+      return 1 < a.length ? v.call(a, function (a, c, d) {
+        return fa.call(d, a) === c;
       }) : a;
     }
 
@@ -3424,35 +3391,38 @@ var cash_min = createCommonjsModule(function (module, exports) {
     };
 
     function Q(a, b, c) {
-      if (B(a)) return a = n.getComputedStyle(a, null), c ? a.getPropertyValue(b) || void 0 : a[b];
+      if (B(a)) {
+        var d = n.getComputedStyle(a, null);
+        return c ? d.getPropertyValue(b) || void 0 : d[b] || a.style[b];
+      }
     }
 
-    function S(a, b) {
+    function R(a, b) {
       return parseInt(Q(a, b), 10) || 0;
     }
 
-    var T = /^--/,
-        U = {},
-        ta = aa.style,
-        ua = ["webkit", "moz", "ms"];
+    var S = /^--/,
+        T = {},
+        va = ba.style,
+        wa = ["webkit", "moz", "ms"];
 
-    function va(a, b) {
-      void 0 === b && (b = T.test(a));
+    function xa(a, b) {
+      void 0 === b && (b = S.test(a));
       if (b) return a;
 
-      if (!U[a]) {
+      if (!T[a]) {
         b = H(a);
         var c = "" + b[0].toUpperCase() + b.slice(1);
-        b = (b + " " + ua.join(c + " ") + c).split(" ");
+        b = (b + " " + wa.join(c + " ") + c).split(" ");
         I(b, function (b, c) {
-          if (c in ta) return U[a] = c, !1;
+          if (c in va) return T[a] = c, !1;
         });
       }
 
-      return U[a];
+      return T[a];
     }
 
-    var wa = {
+    var ya = {
       animationIterationCount: !0,
       columnCount: !0,
       flexGrow: !0,
@@ -3473,33 +3443,35 @@ var cash_min = createCommonjsModule(function (module, exports) {
       zIndex: !0
     };
 
-    function xa(a, b, c) {
-      void 0 === c && (c = T.test(a));
-      return c || wa[a] || !ra(b) ? b : b + "px";
+    function za(a, b, c) {
+      void 0 === c && (c = S.test(a));
+      return c || ya[a] || !ta(b) ? b : b + "px";
     }
 
     F.css = function (a, b) {
       if (D(a)) {
-        var c = T.test(a);
-        a = va(a, c);
+        var c = S.test(a);
+        a = xa(a, c);
         if (2 > arguments.length) return this[0] && Q(this[0], a, c);
         if (!a) return this;
-        b = xa(a, b, c);
+        b = za(a, b, c);
         return this.each(function (d, f) {
           B(f) && (c ? f.style.setProperty(a, b) : f.style[a] = b);
         });
       }
 
-      for (var d in a) this.css(d, a[d]);
+      for (var d in a) {
+        this.css(d, a[d]);
+      }
 
       return this;
     };
 
-    var ya = /^\s+|\s+$/;
+    var Aa = /^\s+|\s+$/;
 
-    function za(a, b) {
+    function Ba(a, b) {
       a = a.dataset[b] || a.dataset[H(b)];
-      return ya.test(a) ? a : g(JSON.parse, a);
+      return Aa.test(a) ? a : g(JSON.parse, a);
     }
 
     F.data = function (a, b) {
@@ -3508,35 +3480,39 @@ var cash_min = createCommonjsModule(function (module, exports) {
         var c = {},
             d;
 
-        for (d in this[0].dataset) c[d] = za(this[0], d);
+        for (d in this[0].dataset) {
+          c[d] = Ba(this[0], d);
+        }
 
         return c;
       }
 
-      if (D(a)) return 2 > arguments.length ? this[0] && za(this[0], a) : void 0 === b ? this : this.each(function (c, d) {
+      if (D(a)) return 2 > arguments.length ? this[0] && Ba(this[0], a) : void 0 === b ? this : this.each(function (c, d) {
         c = b;
         c = g(JSON.stringify, c);
         d.dataset[H(a)] = c;
       });
 
-      for (d in a) this.data(d, a[d]);
+      for (d in a) {
+        this.data(d, a[d]);
+      }
 
       return this;
     };
 
-    function Aa(a, b) {
+    function Ca(a, b) {
       var c = a.documentElement;
       return Math.max(a.body["scroll" + b], c["scroll" + b], a.body["offset" + b], c["offset" + b], c["client" + b]);
     }
 
-    function Ba(a, b) {
-      return S(a, "border" + (b ? "Left" : "Top") + "Width") + S(a, "padding" + (b ? "Left" : "Top")) + S(a, "padding" + (b ? "Right" : "Bottom")) + S(a, "border" + (b ? "Right" : "Bottom") + "Width");
+    function Da(a, b) {
+      return R(a, "border" + (b ? "Left" : "Top") + "Width") + R(a, "padding" + (b ? "Left" : "Top")) + R(a, "padding" + (b ? "Right" : "Bottom")) + R(a, "border" + (b ? "Right" : "Bottom") + "Width");
     }
 
     I([!0, !1], function (a, b) {
       I(["Width", "Height"], function (a, d) {
         F[(b ? "outer" : "inner") + d] = function (c) {
-          if (this[0]) return K(this[0]) ? b ? this[0]["inner" + d] : this[0].document.documentElement["client" + d] : A(this[0]) ? Aa(this[0], d) : this[0][(b ? "offset" : "client") + d] + (c && b ? S(this[0], "margin" + (a ? "Top" : "Left")) + S(this[0], "margin" + (a ? "Bottom" : "Right")) : 0);
+          if (this[0]) return K(this[0]) ? b ? this[0]["inner" + d] : this[0].document.documentElement["client" + d] : y(this[0]) ? Ca(this[0], d) : this[0][(b ? "offset" : "client") + d] + (c && b ? R(this[0], "margin" + (a ? "Top" : "Left")) + R(this[0], "margin" + (a ? "Bottom" : "Right")) : 0);
         };
       });
     });
@@ -3545,14 +3521,14 @@ var cash_min = createCommonjsModule(function (module, exports) {
 
       F[c] = function (d) {
         if (!this[0]) return void 0 === d ? void 0 : this;
-        if (!arguments.length) return K(this[0]) ? this[0].document.documentElement["client" + b] : A(this[0]) ? Aa(this[0], b) : this[0].getBoundingClientRect()[c] - Ba(this[0], !a);
+        if (!arguments.length) return K(this[0]) ? this[0].document.documentElement["client" + b] : y(this[0]) ? Ca(this[0], b) : this[0].getBoundingClientRect()[c] - Da(this[0], !a);
         var h = parseInt(d, 10);
         return this.each(function (b, d) {
-          B(d) && (b = Q(d, "boxSizing"), d.style[c] = xa(c, h + ("border-box" === b ? Ba(d, !a) : 0)));
+          B(d) && (b = Q(d, "boxSizing"), d.style[c] = za(c, h + ("border-box" === b ? Da(d, !a) : 0)));
         });
       };
     });
-    var V = {};
+    var U = {};
 
     F.toggle = function (a) {
       return this.each(function (b, c) {
@@ -3560,12 +3536,12 @@ var cash_min = createCommonjsModule(function (module, exports) {
           if (c.style.display = c.___cd || "", "none" === Q(c, "display")) {
             b = c.style;
             c = c.tagName;
-            if (V[c]) c = V[c];else {
-              var d = r(c);
+            if (U[c]) c = U[c];else {
+              var d = p(c);
               m.body.insertBefore(d, null);
               var h = Q(d, "display");
               m.body.removeChild(d);
-              c = V[c] = "none" !== h ? h : "block";
+              c = U[c] = "none" !== h ? h : "block";
             }
             b.display = c;
           }
@@ -3581,23 +3557,23 @@ var cash_min = createCommonjsModule(function (module, exports) {
       return this.toggle(!0);
     };
 
-    function Ca(a, b) {
-      return !b || !x.call(b, function (b) {
+    function Ea(a, b) {
+      return !b || !w.call(b, function (b) {
         return 0 > a.indexOf(b);
       });
     }
 
-    var W = {
+    var V = {
       focus: "focusin",
       blur: "focusout"
     },
-        Da = {
+        W = {
       mouseenter: "mouseover",
       mouseleave: "mouseout"
     },
-        Ea = /^(mouse|pointer|contextmenu|drag|drop|click|dblclick)/i;
+        Fa = /^(mouse|pointer|contextmenu|drag|drop|click|dblclick)/i;
 
-    function Fa(a, b, c, d, h) {
+    function Ga(a, b, c, d, h) {
       var f = a.___ce = a.___ce || {};
       f[b] = f[b] || [];
       f[b].push([c, d, h]);
@@ -3612,26 +3588,32 @@ var cash_min = createCommonjsModule(function (module, exports) {
     function Y(a, b, c, d, h) {
       var f = a.___ce = a.___ce || {};
       if (b) f[b] && (f[b] = f[b].filter(function (f) {
-        var k = f[0],
-            R = f[1];
+        var l = f[0],
+            z = f[1];
         f = f[2];
-        if (h && f.guid !== h.guid || !Ca(k, c) || d && d !== R) return !0;
+        if (h && f.guid !== h.guid || !Ea(l, c) || d && d !== z) return !0;
         a.removeEventListener(b, f);
-      }));else for (b in f) Y(a, b, c, d, h);
+      }));else for (b in f) {
+        Y(a, b, c, d, h);
+      }
     }
 
     F.off = function (a, b, c) {
       var d = this;
       if (void 0 === a) this.each(function (a, b) {
-        (B(b) || A(b) || K(b)) && Y(b);
+        (B(b) || y(b) || K(b)) && Y(b);
       });else if (D(a)) E(b) && (c = b, b = ""), I(N(a), function (a, h) {
-        a = X(Da[h] || W[h] || h);
+        a = X(h);
         var f = a[0],
-            k = a[1];
+            l = a[1],
+            k = W[f] || V[f] || f,
+            Ka = f !== k;
         d.each(function (a, d) {
-          (B(d) || A(d) || K(d)) && Y(d, f, k, b, c);
+          if (B(d) || y(d) || K(d)) Y(d, k, l, b, c), Ka && Y(d, f, l, b, c);
         });
-      });else for (var h in a) this.off(h, a[h]);
+      });else for (var h in a) {
+        this.off(h, a[h]);
+      }
       return this;
     };
 
@@ -3639,7 +3621,9 @@ var cash_min = createCommonjsModule(function (module, exports) {
       var f = this;
 
       if (!D(a)) {
-        for (var k in a) this.on(k, b, c, a[k], h);
+        for (var l in a) {
+          this.on(l, b, c, a[l], h);
+        }
 
         return this;
       }
@@ -3647,30 +3631,33 @@ var cash_min = createCommonjsModule(function (module, exports) {
       D(b) || (void 0 !== b && null !== b && (void 0 !== c && (d = c), c = b), b = "");
       E(d) || (d = c, c = void 0);
       if (!d) return this;
-      I(N(a), function (a, k) {
-        a = X(Da[k] || W[k] || k);
-        var l = a[0],
-            q = a[1];
-        l && f.each(function (a, f) {
-          if (B(f) || A(f) || K(f)) a = function Ja(a) {
-            if (!a.namespace || Ca(q, a.namespace.split("."))) {
-              var k = f;
+      I(N(a), function (a, l) {
+        a = X(l);
+        var k = a[0],
+            z = a[1],
+            q = W[k] || V[k] || k,
+            qa = k !== q,
+            La = (k in V);
+        q && f.each(function (a, f) {
+          if (B(f) || y(f) || K(f)) a = function Ma(a) {
+            if (!(qa && (a.___ot ? a.___ot !== k : a.type !== k || a.target["___i" + k] && (delete a.target["___i" + k], a.stopImmediatePropagation(), !0)) || a.namespace && !Ea(z, a.namespace.split(".")))) {
+              var l = f;
 
               if (b) {
-                for (var z = a.target; !qa(z, b);) {
-                  if (z === f) return;
-                  z = z.parentNode;
-                  if (!z) return;
+                for (var A = a.target; !sa(A, b);) {
+                  if (A === f) return;
+                  A = A.parentNode;
+                  if (!A) return;
                 }
 
-                k = z;
+                l = A;
                 a.___cd = !0;
-              }
+              } else if (La && a.___ot === k && f !== a.target && f.contains(a.target)) return;
 
               a.___cd && Object.defineProperty(a, "currentTarget", {
                 configurable: !0,
                 get: function () {
-                  return k;
+                  return l;
                 }
               });
               Object.defineProperty(a, "data", {
@@ -3679,11 +3666,11 @@ var cash_min = createCommonjsModule(function (module, exports) {
                   return c;
                 }
               });
-              z = d.call(k, a, a.___td);
-              h && Y(f, l, q, b, Ja);
-              !1 === z && (a.preventDefault(), a.stopPropagation());
+              A = d.call(l, a, a.___td);
+              h && Y(f, q, z, b, Ma);
+              !1 === A && (a.preventDefault(), a.stopPropagation());
             }
-          }, a.guid = d.guid = d.guid || G.guid++, Fa(f, l, q, b, a);
+          }, a.guid = d.guid = d.guid || G.guid++, Ga(f, q, z, b, a), qa && Ga(f, k, z, b, a);
         });
       });
       return this;
@@ -3707,38 +3694,41 @@ var cash_min = createCommonjsModule(function (module, exports) {
         var c = X(a),
             d = c[0];
         c = c[1];
-        if (!d) return this;
-        var h = Ea.test(d) ? "MouseEvents" : "HTMLEvents";
-        a = m.createEvent(h);
-        a.initEvent(d, !0, !0);
+        var h = W[d] || V[d] || d;
+        if (!h) return this;
+        var f = Fa.test(h) ? "MouseEvents" : "HTMLEvents";
+        a = m.createEvent(f);
+        a.initEvent(h, !0, !0);
         a.namespace = c.join(".");
+        a.___ot = d;
       }
 
       a.___td = b;
-      var f = (a.type in W);
+      var l = (a.___ot in V);
       return this.each(function (b, c) {
-        if (f && E(c[a.type])) c[a.type]();else c.dispatchEvent(a);
+        l && E(c[a.___ot]) && (c["___i" + a.___ot] = !0, c[a.___ot]());
+        c.dispatchEvent(a);
       });
     };
 
-    function Ga(a) {
-      return a.multiple && a.options ? O(w.call(a.options, function (a) {
+    function Ha(a) {
+      return a.multiple && a.options ? O(v.call(a.options, function (a) {
         return a.selected && !a.disabled && !a.parentNode.disabled;
       }), "value") : a.value || "";
     }
 
-    var Ha = /%20/g,
-        Ia = /\r?\n/g,
-        Ka = /file|reset|submit|button|image/i,
-        La = /radio|checkbox/i;
+    var Ia = /%20/g,
+        Ja = /\r?\n/g,
+        Na = /file|reset|submit|button|image/i,
+        Oa = /radio|checkbox/i;
 
     F.serialize = function () {
       var a = "";
       this.each(function (b, c) {
         I(c.elements || [c], function (b, c) {
-          c.disabled || !c.name || "FIELDSET" === c.tagName || Ka.test(c.type) || La.test(c.type) && !c.checked || (b = Ga(c), void 0 !== b && (b = u(b) ? b : [b], I(b, function (b, d) {
+          c.disabled || !c.name || "FIELDSET" === c.tagName || Na.test(c.type) || Oa.test(c.type) && !c.checked || (b = Ha(c), void 0 !== b && (b = t(b) ? b : [b], I(b, function (b, d) {
             b = a;
-            d = "&" + encodeURIComponent(c.name) + "=" + encodeURIComponent(d.replace(Ia, "\r\n")).replace(Ha, "+");
+            d = "&" + encodeURIComponent(c.name) + "=" + encodeURIComponent(d.replace(Ja, "\r\n")).replace(Ia, "+");
             a = b + d;
           })));
         });
@@ -3748,13 +3738,13 @@ var cash_min = createCommonjsModule(function (module, exports) {
 
     F.val = function (a) {
       return arguments.length ? this.each(function (b, c) {
-        if ((b = c.multiple && c.options) || La.test(c.type)) {
-          var d = u(a) ? fa.call(a, String) : null === a ? [] : [String(a)];
+        if ((b = c.multiple && c.options) || Oa.test(c.type)) {
+          var d = t(a) ? ha.call(a, String) : null === a ? [] : [String(a)];
           b ? I(c.options, function (a, b) {
             b.selected = 0 <= d.indexOf(b.value);
           }, !0) : c.checked = 0 <= d.indexOf(c.value);
         } else c.value = void 0 === a || null === a ? "" : a;
-      }) : this[0] && Ga(this[0]);
+      }) : this[0] && Ha(this[0]);
     };
 
     F.clone = function () {
@@ -3770,32 +3760,34 @@ var cash_min = createCommonjsModule(function (module, exports) {
       return this;
     };
 
-    var Ma = /^\s*<(\w+)[^>]*>/,
-        Na = /^<(\w+)\s*\/?>(?:<\/\1>)?$/,
-        Oa = {
-      "*": aa,
-      tr: ba,
-      td: ca,
-      th: ca,
-      thead: t,
-      tbody: t,
-      tfoot: t
+    var Pa = /^\s*<(\w+)[^>]*>/,
+        Qa = /^<(\w+)\s*\/?>(?:<\/\1>)?$/,
+        Ra = {
+      "*": ba,
+      tr: ca,
+      td: da,
+      th: da,
+      thead: r,
+      tbody: r,
+      tfoot: r
     };
 
-    function oa(a) {
+    function pa(a) {
       if (!D(a)) return [];
-      if (Na.test(a)) return [r(RegExp.$1)];
-      var b = Ma.test(a) && RegExp.$1;
-      b = Oa[b] || Oa["*"];
+      if (Qa.test(a)) return [p(RegExp.$1)];
+      var b = Pa.test(a) && RegExp.$1;
+      b = Ra[b] || Ra["*"];
       b.innerHTML = a;
       return G(b.childNodes).detach().get();
     }
 
-    G.parseHTML = oa;
+    G.parseHTML = pa;
 
     F.empty = function () {
       return this.each(function (a, b) {
-        for (; b.firstChild;) b.removeChild(b.firstChild);
+        for (; b.firstChild;) {
+          b.removeChild(b.firstChild);
+        }
       });
     };
 
@@ -3833,9 +3825,11 @@ var cash_min = createCommonjsModule(function (module, exports) {
 
     F.offsetParent = function () {
       return this.map(function (a, b) {
-        for (a = b.offsetParent; a && "static" === Q(a, "position");) a = a.offsetParent;
+        for (a = b.offsetParent; a && "static" === Q(a, "position");) {
+          a = a.offsetParent;
+        }
 
-        return a || p;
+        return a || aa;
       });
     };
 
@@ -3849,14 +3843,16 @@ var cash_min = createCommonjsModule(function (module, exports) {
         if (!b) {
           var d = a.ownerDocument;
 
-          for (b = a.offsetParent || d.documentElement; (b === d.body || b === d.documentElement) && "static" === Q(b, "position");) b = b.parentNode;
+          for (b = a.offsetParent || d.documentElement; (b === d.body || b === d.documentElement) && "static" === Q(b, "position");) {
+            b = b.parentNode;
+          }
 
-          b !== a && B(b) && (d = G(b).offset(), c.top -= d.top + S(b, "borderTopWidth"), c.left -= d.left + S(b, "borderLeftWidth"));
+          b !== a && B(b) && (d = G(b).offset(), c.top -= d.top + R(b, "borderTopWidth"), c.left -= d.left + R(b, "borderLeftWidth"));
         }
 
         return {
-          top: c.top - S(a, "marginTop"),
-          left: c.left - S(a, "marginLeft")
+          top: c.top - R(a, "marginTop"),
+          left: c.left - R(a, "marginLeft")
         };
       }
     };
@@ -3875,21 +3871,21 @@ var cash_min = createCommonjsModule(function (module, exports) {
 
     F.find = function (a) {
       return G(P(O(this, function (b) {
-        return y(a, b);
+        return x(a, b);
       })));
     };
 
-    var Pa = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g,
-        Qa = /^$|^module$|\/(java|ecma)script/i,
-        Ra = ["type", "src", "nonce", "noModule"];
+    var Sa = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g,
+        Ta = /^$|^module$|\/(java|ecma)script/i,
+        Ua = ["type", "src", "nonce", "noModule"];
 
-    function Sa(a, b) {
+    function Va(a, b) {
       a = G(a);
       a.filter("script").add(a.find("script")).each(function (a, d) {
-        if (Qa.test(d.type) && p.contains(d)) {
-          var c = r("script");
-          c.text = d.textContent.replace(Pa, "");
-          I(Ra, function (a, b) {
+        if (Ta.test(d.type) && aa.contains(d)) {
+          var c = p("script");
+          c.text = d.textContent.replace(Sa, "");
+          I(Ua, function (a, b) {
             d[b] && (c[b] = d[b]);
           });
           b.head.insertBefore(c, null);
@@ -3898,7 +3894,7 @@ var cash_min = createCommonjsModule(function (module, exports) {
       });
     }
 
-    function Z(a, b, c, d, h, f, k, q) {
+    function Z(a, b, c, d, h, f, l, q) {
       I(a, function (a, f) {
         I(G(f), function (a, f) {
           I(G(b), function (b, k) {
@@ -3908,9 +3904,9 @@ var cash_min = createCommonjsModule(function (module, exports) {
             l = b ? l.cloneNode(!0) : l;
             b = !b;
             h ? k.insertBefore(l, d ? k.firstChild : null) : k.parentNode.insertBefore(l, d ? k : k.nextSibling);
-            b && Sa(l, k.ownerDocument);
+            b && Va(l, k.ownerDocument);
           }, q);
-        }, k);
+        }, l);
       }, f);
       return b;
     }
@@ -3959,7 +3955,9 @@ var cash_min = createCommonjsModule(function (module, exports) {
     F.wrapAll = function (a) {
       a = G(a);
 
-      for (var b = a[0]; b.children.length;) b = b.firstElementChild;
+      for (var b = a[0]; b.children.length;) {
+        b = b.firstElementChild;
+      }
 
       this.first().before(a);
       return this.appendTo(b);
@@ -3982,7 +3980,7 @@ var cash_min = createCommonjsModule(function (module, exports) {
 
     F.has = function (a) {
       var b = D(a) ? function (b, d) {
-        return y(a, d).length;
+        return x(a, d).length;
       } : function (b, d) {
         return d.contains(a);
       };
@@ -3991,7 +3989,7 @@ var cash_min = createCommonjsModule(function (module, exports) {
 
     F.is = function (a) {
       var b = L(a);
-      return x.call(this, function (a, d) {
+      return w.call(this, function (a, d) {
         return b.call(a, d, a);
       });
     };
@@ -4022,7 +4020,7 @@ var cash_min = createCommonjsModule(function (module, exports) {
     F.index = function (a) {
       var b = a ? G(a)[0] : this[0];
       a = a ? this : G(b).parent().children();
-      return ea.call(a, b);
+      return fa.call(a, b);
     };
 
     F.closest = function (a) {
@@ -4062,174 +4060,181 @@ var cash_min = createCommonjsModule(function (module, exports) {
   })();
 });
 
-// Robert Penner's easeInOutQuad
-// find the rest of his easing functions here: http://robertpenner.com/easing/
-// find them exported for ES6 consumption here: https://github.com/jaxgeller/ez.js
-var easeInOutQuad = function easeInOutQuad(t, b, c, d) {
-  t /= d / 2;
-  if (t < 1) return c / 2 * t * t + b;
-  t--;
-  return -c / 2 * (t * (t - 2) - 1) + b;
-};
+var jump = createCommonjsModule(function (module, exports) {
+  (function (global, factory) {
+     module.exports = factory() ;
+  })(commonjsGlobal, function () {
+    // find the rest of his easing functions here: http://robertpenner.com/easing/
+    // find them exported for ES6 consumption here: https://github.com/jaxgeller/ez.js
 
-var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-  return typeof obj;
-} : function (obj) {
-  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-};
+    var easeInOutQuad = function easeInOutQuad(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t + b;
+      t--;
+      return -c / 2 * (t * (t - 2) - 1) + b;
+    };
 
-var jumper = function jumper() {
-  // private variable cache
-  // no variables are created during a jump, preventing memory leaks
-  var element = void 0; // element to scroll to                   (node)
+    var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+      return typeof obj;
+    } : function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
 
-  var start = void 0; // where scroll starts                    (px)
+    var jumper = function jumper() {
+      // private variable cache
+      // no variables are created during a jump, preventing memory leaks
+      var element = void 0; // element to scroll to                   (node)
 
-  var stop = void 0; // where scroll stops                     (px)
+      var start = void 0; // where scroll starts                    (px)
 
-  var offset = void 0; // adjustment from the stop position      (px)
+      var stop = void 0; // where scroll stops                     (px)
 
-  var easing = void 0; // easing function                        (function)
+      var offset = void 0; // adjustment from the stop position      (px)
 
-  var a11y = void 0; // accessibility support flag             (boolean)
+      var easing = void 0; // easing function                        (function)
 
-  var distance = void 0; // distance of scroll                     (px)
+      var a11y = void 0; // accessibility support flag             (boolean)
 
-  var duration = void 0; // scroll duration                        (ms)
+      var distance = void 0; // distance of scroll                     (px)
 
-  var timeStart = void 0; // time scroll started                    (ms)
+      var duration = void 0; // scroll duration                        (ms)
 
-  var timeElapsed = void 0; // time spent scrolling thus far          (ms)
+      var timeStart = void 0; // time scroll started                    (ms)
 
-  var next = void 0; // next scroll position                   (px)
+      var timeElapsed = void 0; // time spent scrolling thus far          (ms)
 
-  var callback = void 0; // to call when done scrolling            (function)
-  // scroll position helper
+      var next = void 0; // next scroll position                   (px)
 
-  function location() {
-    return window.scrollY || window.pageYOffset;
-  } // element offset helper
+      var callback = void 0; // to call when done scrolling            (function)
+      // scroll position helper
 
-
-  function top(element) {
-    return element.getBoundingClientRect().top + start;
-  } // rAF loop helper
-
-
-  function loop(timeCurrent) {
-    // store time scroll started, if not started already
-    if (!timeStart) {
-      timeStart = timeCurrent;
-    } // determine time spent scrolling so far
+      function location() {
+        return window.scrollY || window.pageYOffset;
+      } // element offset helper
 
 
-    timeElapsed = timeCurrent - timeStart; // calculate next scroll position
-
-    next = easing(timeElapsed, start, distance, duration); // scroll to it
-
-    window.scrollTo(0, next); // check progress
-
-    timeElapsed < duration ? window.requestAnimationFrame(loop) // continue scroll loop
-    : done(); // scrolling is done
-  } // scroll finished helper
+      function top(element) {
+        return element.getBoundingClientRect().top + start;
+      } // rAF loop helper
 
 
-  function done() {
-    // account for rAF time rounding inaccuracies
-    window.scrollTo(0, start + distance); // if scrolling to an element, and accessibility is enabled
-
-    if (element && a11y) {
-      // add tabindex indicating programmatic focus
-      element.setAttribute('tabindex', '-1'); // focus the element
-
-      element.focus();
-    } // if it exists, fire the callback
+      function loop(timeCurrent) {
+        // store time scroll started, if not started already
+        if (!timeStart) {
+          timeStart = timeCurrent;
+        } // determine time spent scrolling so far
 
 
-    if (typeof callback === 'function') {
-      callback();
-    } // reset time for next jump
+        timeElapsed = timeCurrent - timeStart; // calculate next scroll position
+
+        next = easing(timeElapsed, start, distance, duration); // scroll to it
+
+        window.scrollTo(0, next); // check progress
+
+        timeElapsed < duration ? window.requestAnimationFrame(loop) // continue scroll loop
+        : done(); // scrolling is done
+      } // scroll finished helper
 
 
-    timeStart = false;
-  } // API
+      function done() {
+        // account for rAF time rounding inaccuracies
+        window.scrollTo(0, start + distance); // if scrolling to an element, and accessibility is enabled
+
+        if (element && a11y) {
+          // add tabindex indicating programmatic focus
+          element.setAttribute('tabindex', '-1'); // focus the element
+
+          element.focus();
+        } // if it exists, fire the callback
 
 
-  function jump(target) {
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {}; // resolve options, or use defaults
-
-    duration = options.duration || 1000;
-    offset = options.offset || 0;
-    callback = options.callback; // "undefined" is a suitable default, and won't be called
-
-    easing = options.easing || easeInOutQuad;
-    a11y = options.a11y || false; // cache starting position
-
-    start = location(); // resolve target
-
-    switch (typeof target === 'undefined' ? 'undefined' : _typeof$1(target)) {
-      // scroll from current position
-      case 'number':
-        element = undefined; // no element to scroll to
-
-        a11y = false; // make sure accessibility is off
-
-        stop = start + target;
-        break;
-      // scroll to element (node)
-      // bounding rect is relative to the viewport
-
-      case 'object':
-        element = target;
-        stop = top(element);
-        break;
-      // scroll to element (selector)
-      // bounding rect is relative to the viewport
-
-      case 'string':
-        element = document.querySelector(target);
-        stop = top(element);
-        break;
-    } // resolve scroll distance, accounting for offset
+        if (typeof callback === 'function') {
+          callback();
+        } // reset time for next jump
 
 
-    distance = stop - start + offset; // resolve duration
-
-    switch (_typeof$1(options.duration)) {
-      // number in ms
-      case 'number':
-        duration = options.duration;
-        break;
-      // function passed the distance of the scroll
-
-      case 'function':
-        duration = options.duration(distance);
-        break;
-    } // start the loop
+        timeStart = false;
+      } // API
 
 
-    window.requestAnimationFrame(loop);
-  } // expose only the jump method
+      function jump(target) {
+        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {}; // resolve options, or use defaults
+
+        duration = options.duration || 1000;
+        offset = options.offset || 0;
+        callback = options.callback; // "undefined" is a suitable default, and won't be called
+
+        easing = options.easing || easeInOutQuad;
+        a11y = options.a11y || false; // cache starting position
+
+        start = location(); // resolve target
+
+        switch (typeof target === 'undefined' ? 'undefined' : _typeof(target)) {
+          // scroll from current position
+          case 'number':
+            element = undefined; // no element to scroll to
+
+            a11y = false; // make sure accessibility is off
+
+            stop = start + target;
+            break;
+          // scroll to element (node)
+          // bounding rect is relative to the viewport
+
+          case 'object':
+            element = target;
+            stop = top(element);
+            break;
+          // scroll to element (selector)
+          // bounding rect is relative to the viewport
+
+          case 'string':
+            element = document.querySelector(target);
+            stop = top(element);
+            break;
+        } // resolve scroll distance, accounting for offset
 
 
-  return jump;
-}; // export singleton
+        distance = stop - start + offset; // resolve duration
+
+        switch (_typeof(options.duration)) {
+          // number in ms
+          case 'number':
+            duration = options.duration;
+            break;
+          // function passed the distance of the scroll
+
+          case 'function':
+            duration = options.duration(distance);
+            break;
+        } // start the loop
 
 
-var singleton = jumper();
+        window.requestAnimationFrame(loop);
+      } // expose only the jump method
 
-window.anime = anime;
+
+      return jump;
+    }; // export singleton
+
+
+    var singleton = jumper();
+    return singleton;
+  });
+});
+
+window.anime = anime_1;
 AOS.init();
-waves.attach(".chip");
-waves.init();
-window.Waves = waves;
-window.cash = cash_min;
+nodeWaves.attach(".chip");
+nodeWaves.init();
+window.Waves = nodeWaves;
+window.cash = cash;
 
-cash_min.fn.size = function () {
+cash.fn.size = function () {
   return this[0].getClientRects()[0];
 };
 
-cash_min.fn.offset = function () {
+cash.fn.offset = function () {
   return {
     top: this[0].offsetTop,
     left: this[0].offsetLeft
@@ -4237,7 +4242,7 @@ cash_min.fn.offset = function () {
 };
 
 var E = {
-  jump: singleton
+  jump
 };
 E.keys = {
   TAB: 9,
@@ -4272,7 +4277,7 @@ E.getTrigger = function (QueryObj) {
       ElementQueryStrings.push("".concat(requiredParameters, "[").concat(OptionalAttr, "='").concat(OptionalAttrObj, "']"));
     }
 
-    QueryElements.push.apply(QueryElements, ElementQueryStrings);
+    QueryElements.push(...ElementQueryStrings);
   }
 
   return document.querySelectorAll(QueryElements.join(", "));
@@ -4283,7 +4288,7 @@ E.getTrigger = function (QueryObj) {
  */
 
 
-E.generateUUID = function () {
+E.generateUUID = () => {
   function uuid() {
     return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
   }
@@ -4310,38 +4315,38 @@ E.getDocumentScrollLeft = function () {
 };
 
 E.updateTextFields = function () {
-  cash_min(".text-field input[placeholder], .text-field textarea[placeholder]").siblings("label").addClass("active");
-  cash_min(".text-field input, .text-field textarea").not("[placeholder]").on("focus", function (i) {
-    cash_min(i.target).siblings("label, i").addClass("active");
-  }).on("blur", function (i) {
-    if (cash_min(i.target).val() == "") cash_min(i.target).siblings("label, i").removeClass("active");
-  }).on("change", function (i) {
-    if (cash_min(i.target).val() == "") cash_min(i.target).siblings("label, i").removeClass("active");
+  cash(".text-field input[placeholder], .text-field textarea[placeholder]").siblings("label").addClass("active");
+  cash(".text-field input, .text-field textarea").not("[placeholder]").on("focus", i => {
+    cash(i.target).siblings("label, i").addClass("active");
+  }).on("blur", i => {
+    if (cash(i.target).val() == "") cash(i.target).siblings("label, i").removeClass("active");
+  }).on("change", i => {
+    if (cash(i.target).val() == "") cash(i.target).siblings("label, i").removeClass("active");
   });
 };
 
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", () => {
   E.updateTextFields();
-  cash_min(document).on("click", ".chip .close", function (e) {
-    cash_min(e.target).closest(".chip").remove();
+  cash(document).on("click", ".chip .close", function (e) {
+    cash(e.target).closest(".chip").remove();
   });
-  cash_min(document).on("click", ".smoothscroll", function (e) {
+  cash(document).on("click", ".smoothscroll", function (e) {
     e.preventDefault();
     var target = this.getAttribute("data-scrollto") || this.getAttribute("href");
-    singleton(target, {
+    jump(target, {
       duration: 800
     });
   });
-  cash_min(document).on("click", ".navbar-toggler", function () {
+  cash(document).on("click", ".navbar-toggler", function () {
     var targetSelector = this.getAttribute("data-target") || this.getAttribute("href");
-    var target = cash_min(document.querySelector(targetSelector));
+    var target = cash(document.querySelector(targetSelector));
     if (target.hasClass("shown")) target.removeClass("shown");else target.addClass("shown");
   });
-  window.addEventListener("scroll", function () {
+  window.addEventListener("scroll", () => {
     if (E.getDocumentScrollTop() <= 100) {
-      cash_min(".navbar-wrapper.size-down").addClass("tall");
-    } else if (cash_min(".navbar-wrapper.size-down").hasClass("tall")) {
-      cash_min(".navbar-wrapper.size-down").removeClass("tall");
+      cash(".navbar-wrapper.size-down").addClass("tall");
+    } else if (cash(".navbar-wrapper.size-down").hasClass("tall")) {
+      cash(".navbar-wrapper.size-down").removeClass("tall");
     }
   });
 });
@@ -4389,8 +4394,10 @@ var Modal = /*#__PURE__*/function (_EmpyrealComponent) {
     _classCallCheck(this, Modal);
 
     _this = _super.call(this, el, options);
-    _this.settings = _objectSpread2({}, DEFAULTS, {}, options);
-    _this.$el = cash_min(_this.el);
+    _this.settings = { ...DEFAULTS,
+      ...options
+    };
+    _this.$el = cash(_this.el);
     _this.$dialog = _this.$el.find(".modal-dialog");
     _this.dialog = _this.$dialog[0];
     _this.id = _this.$el.attr("id");
@@ -4409,7 +4416,7 @@ var Modal = /*#__PURE__*/function (_EmpyrealComponent) {
         }
       }
     });
-    _this.$trigger = cash_min(_this.trigger);
+    _this.$trigger = cash(_this.trigger);
     _this.isOpen = false;
     _this.isAnimationDone = true;
     _this.$closeModalBtn = _this.$dialog.find(".modal-close");
@@ -4435,36 +4442,34 @@ var Modal = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "_handleModalOpen",
     value: function _handleModalOpen(e) {
-      var _this2 = this;
-
       window.history.pushState(null, null, window.location.href);
-      if (this.settings.blur) cash_min(document.body).children().not(".modal").addClass("blurred");
-      anime({
+      if (this.settings.blur) cash(document.body).children().not(".modal").addClass("blurred");
+      anime_1({
         targets: this.el,
         opacity: 1,
         easing: REGISTRY.animInEasing,
         duration: this.settings.animInDuration,
-        begin: function begin() {
-          _this2.isAnimationDone = false;
-          _this2.isOpen = true;
-          _this2.el.style.display = "block";
+        begin: () => {
+          this.isAnimationDone = false;
+          this.isOpen = true;
+          this.el.style.display = "block";
 
-          if (typeof _this2.settings.onOpenStart === "function") {
-            _this2.settings.onOpenStart.call(_this2, _this2.el, e.target);
+          if (typeof this.settings.onOpenStart === "function") {
+            this.settings.onOpenStart.call(this, this.el, e.target);
           }
         },
-        complete: function complete() {
-          _this2.isAnimationDone = true;
+        complete: () => {
+          this.isAnimationDone = true;
 
-          if (typeof _this2.settings.onOpenEnd === "function") {
-            _this2.settings.onOpenEnd.call(_this2, _this2.el, e.target);
+          if (typeof this.settings.onOpenEnd === "function") {
+            this.settings.onOpenEnd.call(this, this.el, e.target);
           }
         }
       });
 
       if (!this.isModalSheet && !this.isModalSide) {
         // Modal dialog slide in down
-        anime({
+        anime_1({
           targets: this.dialog,
           translateY: [-REGISTRY.modalDialogSlideOffset, 0],
           easing: REGISTRY.modalDialogSlideOutEasing,
@@ -4477,35 +4482,33 @@ var Modal = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "_handleModalClose",
     value: function _handleModalClose(e) {
-      var _this3 = this;
-
-      if (this.settings.blur) cash_min(document.body).children().not(".modal").removeClass("blurred");
-      anime({
+      if (this.settings.blur) cash(document.body).children().not(".modal").removeClass("blurred");
+      anime_1({
         targets: this.el,
         opacity: 0,
         easing: REGISTRY.animOutEasng,
         duration: this.settings.animOutDuration,
-        begin: function begin() {
-          _this3.isAnimationDone = false;
-          _this3.isOpen = false;
+        begin: () => {
+          this.isAnimationDone = false;
+          this.isOpen = false;
 
-          if (typeof _this3.settings.onCloseStart === "function") {
-            _this3.settings.onCloseStart.call(_this3, _this3.el, e.target);
+          if (typeof this.settings.onCloseStart === "function") {
+            this.settings.onCloseStart.call(this, this.el, e.target);
           }
         },
-        complete: function complete() {
-          _this3.isAnimationDone = true;
-          _this3.el.style.display = "none";
+        complete: () => {
+          this.isAnimationDone = true;
+          this.el.style.display = "none";
 
-          if (typeof _this3.settings.onCloseEnd === "function") {
-            _this3.settings.onCloseEnd.call(_this3, _this3.el, e.target);
+          if (typeof this.settings.onCloseEnd === "function") {
+            this.settings.onCloseEnd.call(this, this.el, e.target);
           }
         }
       });
 
       if (!this.isModalSide && !this.isModalSheet) {
         // Modal dialog slide out up
-        anime({
+        anime_1({
           targets: this.dialog,
           translateY: [0, -REGISTRY.modalDialogSlideOffset],
           easing: REGISTRY.modalDialogSlideOutEasing,
@@ -4518,7 +4521,7 @@ var Modal = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "_handleOverlayClick",
     value: function _handleOverlayClick(e) {
-      if (!cash_min(e.target).closest(".modal-dialog").length && this.isAnimationDone && this.isOpen && this.settings.dismissable) this._handleModalClose();
+      if (!cash(e.target).closest(".modal-dialog").length && this.isAnimationDone && this.isOpen && this.settings.dismissable) this._handleModalClose();
     }
   }, {
     key: "_handleKeyDown",
@@ -4562,12 +4565,12 @@ var Modal = /*#__PURE__*/function (_EmpyrealComponent) {
     }
   }], [{
     key: "version",
-    get: function get() {
+    get: function () {
       return VERSION;
     }
   }, {
     key: "defaults",
-    get: function get() {
+    get: function () {
       return DEFAULTS;
     }
   }]);
@@ -4598,14 +4601,16 @@ var Tabs = /*#__PURE__*/function (_EmpyrealComponent) {
     _classCallCheck(this, Tabs);
 
     _this = _super.call(this, el);
-    _this.settings = _objectSpread2({}, DEFAULTS$1, {}, options);
-    _this.$el = cash_min(_this.el);
+    _this.settings = { ...DEFAULTS$1,
+      ...options
+    };
+    _this.$el = cash(_this.el);
     _this.$tabs = _this.$el.find(".tab");
     _this.$tabContents = _this.$tabs.map(function (i, val) {
       var id = val.getAttribute("data-target") || val.getAttribute("href");
       return document.querySelector("div".concat(id));
     });
-    _this.$tabIndicator = cash_min("<div class='tab-indicator' />");
+    _this.$tabIndicator = cash("<div class='tab-indicator' />");
 
     _this.$el.append(_this.$tabIndicator);
 
@@ -4627,7 +4632,7 @@ var Tabs = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "_handleTabOpen",
     value: function _handleTabOpen(elem) {
-      var $activeTab = cash_min(elem);
+      var $activeTab = cash(elem);
       var id = $activeTab.attr("data-target") || $activeTab.attr("href");
       var $previousActiveTabContent = this.$tabContents.filter(".active");
       var $activeTabContent = this.$tabContents.filter(id); // Tab active color
@@ -4693,12 +4698,12 @@ var Tabs = /*#__PURE__*/function (_EmpyrealComponent) {
     }
   }], [{
     key: "version",
-    get: function get() {
+    get: function () {
       return VERSION$1;
     }
   }, {
     key: "defaults",
-    get: function get() {
+    get: function () {
       return DEFAULTS$1;
     }
   }]);
@@ -4738,8 +4743,10 @@ var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
     _classCallCheck(this, Dropdown);
 
     _this = _super.call(this, el);
-    _this.settings = _objectSpread2({}, DEFAULTS$2, {}, options);
-    _this.$el = cash_min(_this.el);
+    _this.settings = { ...DEFAULTS$2,
+      ...options
+    };
+    _this.$el = cash(_this.el);
     _this.$items = _this.$el.children(".dropdown-item");
     _this.focusedIndex = -1;
     _this.id = _this.$el.attr("id");
@@ -4758,7 +4765,7 @@ var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
         }
       }
     });
-    _this.$trigger = cash_min(_this.trigger);
+    _this.$trigger = cash(_this.trigger);
     _this.initialDropdownDimensions = {
       width: 0,
       height: 0
@@ -4814,59 +4821,52 @@ var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
     }
   }, {
     key: "_handleDropdownOpen",
-    value: function _handleDropdownOpen() {
-      var _this2 = this;
-
-      var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "none";
+    value: function _handleDropdownOpen(e = "none") {
       this.focusedIndex = -1;
       this.isOpen = true;
       this.isAnimationDone = false;
       this.$el.css("display", "block");
       this.positionDropdown();
-      anime({
+      anime_1({
         targets: this.el,
         opacity: [0, 1],
         duration: this.settings.animInDuration,
         easing: REGISTRY$1.animInEasing,
-        begin: function begin() {
-          if (typeof _this2.settings.onOpenStart === "function") {
-            _this2.settings.onOpenStart.call(_this2, _this2.el, e.target);
+        begin: () => {
+          if (typeof this.settings.onOpenStart === "function") {
+            this.settings.onOpenStart.call(this, this.el, e.target);
           }
         },
-        complete: function complete() {
-          _this2.isAnimationDone = true;
+        complete: () => {
+          this.isAnimationDone = true;
 
-          if (typeof _this2.settings.onOpenEnd === "function") {
-            _this2.settings.onOpenEnd.call(_this2, _this2.el, e.target);
+          if (typeof this.settings.onOpenEnd === "function") {
+            this.settings.onOpenEnd.call(this, this.el, e.target);
           }
         }
       });
     }
   }, {
     key: "_handleDropdownClose",
-    value: function _handleDropdownClose() {
-      var _this3 = this;
-
-      var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "none";
+    value: function _handleDropdownClose(e = "none") {
       this.isOpen = false;
       this.isAnimationDone = false;
-      anime({
+      anime_1({
         targets: this.el,
         opacity: [1, 0],
         duration: this.settings.animOutDuration,
         easing: REGISTRY$1.animOutEasing,
-        begin: function begin() {
-          if (typeof _this3.settings.onCloseStart === "function") {
-            _this3.settings.onCloseStart.call(_this3, _this3.el, e.target);
+        begin: () => {
+          if (typeof this.settings.onCloseStart === "function") {
+            this.settings.onCloseStart.call(this, this.el, e.target);
           }
         },
-        complete: function complete() {
-          _this3.isAnimationDone = true;
+        complete: () => {
+          this.isAnimationDone = true;
+          this.$el.css("display", "none");
 
-          _this3.$el.css("display", "none");
-
-          if (typeof _this3.settings.onCloseEnd === "function") {
-            _this3.settings.onCloseEnd.call(_this3, _this3.el, e.target);
+          if (typeof this.settings.onCloseEnd === "function") {
+            this.settings.onCloseEnd.call(this, this.el, e.target);
           }
         }
       });
@@ -4874,7 +4874,7 @@ var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "_handleDocumentClick",
     value: function _handleDocumentClick(e) {
-      var $elemClicked = cash_min(e.target);
+      var $elemClicked = cash(e.target);
 
       if (!$elemClicked.closest(this.el).length && this.isOpen && this.isAnimationDone && !$elemClicked.hasClass("dropdown-trigger")) {
         this._handleDropdownClose();
@@ -4944,8 +4944,7 @@ var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
     }
   }, {
     key: "focusItem",
-    value: function focusItem() {
-      var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    value: function focusItem(index = 0) {
       this.$el.children(".dropdown-item.focused").removeClass("focused");
       var $focused = this.$el.children(".dropdown-item").eq(index);
       $focused.addClass("focused");
@@ -4968,12 +4967,12 @@ var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
     }
   }], [{
     key: "version",
-    get: function get() {
+    get: function () {
       return VERSION$2;
     }
   }, {
     key: "defaults",
-    get: function get() {
+    get: function () {
       return DEFAULTS$2;
     }
   }]);
@@ -5008,8 +5007,10 @@ var Sidenav = /*#__PURE__*/function (_EmpyrealComponent) {
     _classCallCheck(this, Sidenav);
 
     _this = _super.call(this, el);
-    _this.settings = _objectSpread2({}, DEFAULTS$3, {}, options);
-    _this.$el = cash_min(_this.el);
+    _this.settings = { ...DEFAULTS$3,
+      ...options
+    };
+    _this.$el = cash(_this.el);
     _this.id = _this.$el.attr("id");
     _this.trigger = E.getTrigger({
       a: {
@@ -5026,7 +5027,7 @@ var Sidenav = /*#__PURE__*/function (_EmpyrealComponent) {
         }
       }
     });
-    _this.$trigger = cash_min(_this.trigger);
+    _this.$trigger = cash(_this.trigger);
     _this.closeTrigger = E.getTrigger({
       a: {
         class: "sidenav-close",
@@ -5042,11 +5043,11 @@ var Sidenav = /*#__PURE__*/function (_EmpyrealComponent) {
         }
       }
     });
-    _this.$closeTrigger = cash_min(_this.closeTrigger);
+    _this.$closeTrigger = cash(_this.closeTrigger);
     _this.isOpen = false;
     _this.isAnimationDone = false;
     _this.listeners = [];
-    _this.$overlay = cash_min("<div class=\"sidenav-overlay\" />");
+    _this.$overlay = cash("<div class=\"sidenav-overlay\" />");
 
     _this._init();
 
@@ -5067,7 +5068,7 @@ var Sidenav = /*#__PURE__*/function (_EmpyrealComponent) {
     key: "_handleOverlayFadeIn",
     value: function _handleOverlayFadeIn() {
       this.$overlay[0].style.display = "block";
-      anime({
+      anime_1({
         targets: this.$overlay[0],
         opacity: [0, 1],
         duration: this.settings.animInDuration,
@@ -5077,35 +5078,31 @@ var Sidenav = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "_handleOverlayFadeOut",
     value: function _handleOverlayFadeOut() {
-      var _this2 = this;
-
-      anime({
+      anime_1({
         targets: this.$overlay[0],
         opacity: [1, 0],
         duration: this.settings.animOutDuration,
         easing: REGISTRY$2.easingSlideOut,
-        complete: function complete() {
-          _this2.$overlay[0].style.display = "none";
+        complete: () => {
+          this.$overlay[0].style.display = "none";
         }
       });
     }
   }, {
     key: "_handleSidenavOpen",
     value: function _handleSidenavOpen() {
-      var _this3 = this;
-
       this.el.style.display = "block";
-      anime({
+      anime_1({
         targets: this.el,
         left: ["-100%", 0],
         duration: this.settings.animInDuration,
         easing: REGISTRY$2.easingSlideIn,
-        begin: function begin() {
-          _this3.isOpen = true;
-          _this3.isAnimationDone = false;
+        begin: () => {
+          this.isOpen = true;
+          this.isAnimationDone = false;
         },
-        complete: function complete() {
-          _this3.isAnimationDone = true;
+        complete: () => {
+          this.isAnimationDone = true;
         }
       });
 
@@ -5114,20 +5111,18 @@ var Sidenav = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "_handleSidenavClose",
     value: function _handleSidenavClose() {
-      var _this4 = this;
-
-      anime({
+      anime_1({
         targets: this.el,
         left: [0, "-100%"],
         duration: this.settings.animInDuration,
         easing: REGISTRY$2.easingSlideOut,
-        begin: function begin() {
-          _this4.isOpen = false;
-          _this4.isAnimationDone = false;
+        begin: () => {
+          this.isOpen = false;
+          this.isAnimationDone = false;
         },
-        complete: function complete() {
-          _this4.isAnimationDone = true;
-          _this4.el.style.display = "none";
+        complete: () => {
+          this.isAnimationDone = true;
+          this.el.style.display = "none";
         }
       });
 
@@ -5171,12 +5166,12 @@ var Sidenav = /*#__PURE__*/function (_EmpyrealComponent) {
     }
   }], [{
     key: "version",
-    get: function get() {
+    get: function () {
       return VERSION$3;
     }
   }, {
     key: "defaults",
-    get: function get() {
+    get: function () {
       return DEFAULTS$3;
     }
   }]);
@@ -5206,8 +5201,10 @@ var Collapsible = /*#__PURE__*/function (_EmpyrealComponent) {
     _classCallCheck(this, Collapsible);
 
     _this = _super.call(this, el);
-    _this.settings = _objectSpread2({}, DEFAULTS$4, {}, options);
-    _this.$el = cash_min(_this.el);
+    _this.settings = { ...DEFAULTS$4,
+      ...options
+    };
+    _this.$el = cash(_this.el);
     _this.$headers = _this.$el.find(".collapsible-header");
     _this.$bodies = _this.$el.find(".collapsible-body");
     _this.listeners = [];
@@ -5225,10 +5222,10 @@ var Collapsible = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "_handleHeaderOpen",
     value: function _handleHeaderOpen(elem) {
-      var $activeHeader = cash_min(elem);
+      var $activeHeader = cash(elem);
       var $parent = $activeHeader.parent();
       var $activeBody = $activeHeader.siblings(".collapsible-body");
-      anime.remove($activeBody[0]);
+      anime_1.remove($activeBody[0]);
       $activeBody.css({
         display: "block",
         overflow: "hidden",
@@ -5243,14 +5240,14 @@ var Collapsible = /*#__PURE__*/function (_EmpyrealComponent) {
         paddingTop: 0,
         paddingBottom: 0
       });
-      anime({
+      anime_1({
         targets: $activeBody[0],
         height: finalHeight,
         paddingTop: paddTop,
         paddingBottom: paddBottom,
         duration: this.settings.animInDuration,
         easing: "easeInOutCubic",
-        complete: function complete() {
+        complete: () => {
           $activeBody.css({
             overflow: "",
             paddingTop: "",
@@ -5264,19 +5261,19 @@ var Collapsible = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "_handleHeaderClose",
     value: function _handleHeaderClose(elem) {
-      var $activeHeader = cash_min(elem);
+      var $activeHeader = cash(elem);
       var $parent = $activeHeader.parent();
       var $activeBody = $activeHeader.siblings(".collapsible-body");
-      anime.remove($activeBody[0]);
+      anime_1.remove($activeBody[0]);
       $activeBody.css("overflow", "hidden");
-      anime({
+      anime_1({
         targets: $activeBody[0],
         height: 0,
         paddingTop: 0,
         paddingBottom: 0,
         duration: this.settings.animOutDuration,
         easing: "easeInOutCubic",
-        complete: function complete() {
+        complete: () => {
           $activeBody.css({
             height: "",
             overflow: "",
@@ -5290,7 +5287,7 @@ var Collapsible = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "_handleHeaderClick",
     value: function _handleHeaderClick(e) {
-      var $parent = cash_min(e.target).parent();
+      var $parent = cash(e.target).parent();
 
       if ($parent.hasClass("active")) {
         this._handleHeaderClose(e.target);
@@ -5306,7 +5303,7 @@ var Collapsible = /*#__PURE__*/function (_EmpyrealComponent) {
           for (_iterator.s(); !(_step = _iterator.n()).done;) {
             var i = _step.value;
 
-            this._handleHeaderClose(cash_min(i).find(".collapsible-header")[0]);
+            this._handleHeaderClose(cash(i).find(".collapsible-header")[0]);
           }
         } catch (err) {
           _iterator.e(err);
@@ -5331,12 +5328,12 @@ var Collapsible = /*#__PURE__*/function (_EmpyrealComponent) {
     }
   }], [{
     key: "version",
-    get: function get() {
+    get: function () {
       return VERSION$4;
     }
   }, {
     key: "defaults",
-    get: function get() {
+    get: function () {
       return DEFAULTS$4;
     }
   }]);
@@ -5365,9 +5362,11 @@ var Tooltip = /*#__PURE__*/function () {
   function Tooltip(el, options) {
     _classCallCheck(this, Tooltip);
 
-    this.settings = _objectSpread2({}, DEFAULTS$5, {}, options);
+    this.settings = { ...DEFAULTS$5,
+      ...options
+    };
     this.el = el;
-    this.$el = cash_min(this.el);
+    this.$el = cash(this.el);
     this.listeners = [];
     this.position = this.$el.data("position") || this.settings.position;
     this.isOpen = false;
@@ -5378,11 +5377,11 @@ var Tooltip = /*#__PURE__*/function () {
   _createClass(Tooltip, [{
     key: "_init",
     value: function _init() {
-      this.$tooltip = cash_min("<div class=\"empyreal-tooltip\" />");
+      this.$tooltip = cash("<div class=\"empyreal-tooltip\" />");
       this.tooltip = this.$tooltip[0];
       var tooltipContent = this.$el.data("tooltip");
       this.$tooltip.html(tooltipContent);
-      cash_min("body").append(this.$tooltip);
+      cash("body").append(this.$tooltip);
 
       this._setupEventHandlers();
     }
@@ -5425,18 +5424,19 @@ var Tooltip = /*#__PURE__*/function () {
       };else if (this.position == "bottom") translate = {
         translateY: [0, this.settings.offset]
       };
-      anime(_objectSpread2({
+      anime_1({
         targets: this.tooltip,
         duration: this.settings.animInDuration,
         opacity: [0, 1],
-        easing: REGISTRY$3.animInEasing
-      }, translate));
+        easing: REGISTRY$3.animInEasing,
+        ...translate
+      });
     }
   }, {
     key: "_handleTooltipClose",
     value: function _handleTooltipClose() {
       this.isOpen = false;
-      anime({
+      anime_1({
         targets: this.tooltip,
         duration: this.settings.animOutDuration,
         opacity: [1, 0],
@@ -5482,12 +5482,12 @@ var Tooltip = /*#__PURE__*/function () {
     }
   }], [{
     key: "version",
-    get: function get() {
+    get: function () {
       return VERSION$5;
     }
   }, {
     key: "defaults",
-    get: function get() {
+    get: function () {
       return DEFAULTS$5;
     }
   }]);
@@ -5515,8 +5515,10 @@ var Carousel = /*#__PURE__*/function (_EmprealComponent) {
     _classCallCheck(this, Carousel);
 
     _this = _super.call(this, el);
-    _this.settings = _objectSpread2({}, DEFAULTS$6, {}, options);
-    _this.$el = cash_min(_this.el);
+    _this.settings = { ...DEFAULTS$6,
+      ...options
+    };
+    _this.$el = cash(_this.el);
     _this.$nextBtn = _this.$el.find(".carousel-next");
     _this.$prevBtn = _this.$el.find(".carousel-prev");
     _this.$carouselContainer = _this.$el.find(".carousel-inner");
@@ -5540,7 +5542,7 @@ var Carousel = /*#__PURE__*/function (_EmprealComponent) {
   }, {
     key: "_setupIndicators",
     value: function _setupIndicators() {
-      var indicatorContainer = cash_min("<ol class='carousel-indicators'></ol>");
+      var indicatorContainer = cash("<ol class='carousel-indicators'></ol>");
       this.$el.append(indicatorContainer);
 
       for (var i = 0; i < this.$carouselItems.length; i++) {
@@ -5607,9 +5609,7 @@ var Carousel = /*#__PURE__*/function (_EmprealComponent) {
     }
   }, {
     key: "open",
-    value: function open() {
-      var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-
+    value: function open(index = 0) {
       this._handleCarouselItemFadeIn(index);
     }
   }, {
@@ -5619,12 +5619,12 @@ var Carousel = /*#__PURE__*/function (_EmprealComponent) {
     }
   }], [{
     key: "version",
-    get: function get() {
+    get: function () {
       return VERSION$6;
     }
   }, {
     key: "defaults",
-    get: function get() {
+    get: function () {
       return DEFAULTS$6;
     }
   }]);
@@ -5654,8 +5654,10 @@ var Pushpin = /*#__PURE__*/function (_EmpyrealComponent) {
     _classCallCheck(this, Pushpin);
 
     _this = _super.call(this, el);
-    _this.settings = _objectSpread2({}, DEFAULTS$7, {}, options);
-    _this.$el = cash_min(_this.el);
+    _this.settings = { ...DEFAULTS$7,
+      ...options
+    };
+    _this.$el = cash(_this.el);
     _this.listeners = [];
     _this.width = 0;
     _this.height = 0;
@@ -5687,7 +5689,7 @@ var Pushpin = /*#__PURE__*/function (_EmpyrealComponent) {
       this.height = size.height;
 
       if (this.settings.stopperElement) {
-        var stopperSize = cash_min(this.settings.stopperElement).offset();
+        var stopperSize = cash(this.settings.stopperElement).offset();
         this.stop = stopperSize.top - this.$el.outerHeight() - 10;
       }
     }
@@ -5739,12 +5741,12 @@ var Pushpin = /*#__PURE__*/function (_EmpyrealComponent) {
     }
   }], [{
     key: "version",
-    get: function get() {
+    get: function () {
       return VERSION$7;
     }
   }, {
     key: "defaults",
-    get: function get() {
+    get: function () {
       return DEFAULTS$7;
     }
   }]);
@@ -5756,7 +5758,7 @@ var VERSION$8 = "0.0.1";
 var DEFAULTS$8 = {
   offset: 0,
   activeClass: "active",
-  linkNode: function linkNode(node) {
+  linkNode: function (node) {
     return node;
   }
 }; // Do not add `extends EmpyrealComponent` here as this takes a NodeList as input instead of a single Node
@@ -5769,9 +5771,11 @@ var ScrollSpy = /*#__PURE__*/function () {
   function ScrollSpy(el, options) {
     _classCallCheck(this, ScrollSpy);
 
-    this.settings = _objectSpread2({}, DEFAULTS$8, {}, options);
+    this.settings = { ...DEFAULTS$8,
+      ...options
+    };
     this.el = el;
-    this.$el = cash_min(this.el);
+    this.$el = cash(this.el);
     this.activeSection;
     this.listeners = [];
 
@@ -5821,7 +5825,7 @@ var ScrollSpy = /*#__PURE__*/function () {
         }
       });
       var nodeTransformer = this.settings.linkNode.call(this, targetLink);
-      return cash_min(nodeTransformer);
+      return cash(nodeTransformer);
     }
   }, {
     key: "_handleWindowScroll",
@@ -5860,12 +5864,12 @@ var ScrollSpy = /*#__PURE__*/function () {
     }
   }], [{
     key: "version",
-    get: function get() {
+    get: function () {
       return VERSION$8;
     }
   }, {
     key: "defaults",
-    get: function get() {
+    get: function () {
       return DEFAULTS$8;
     }
   }]);
@@ -5894,8 +5898,10 @@ var Lightbox = /*#__PURE__*/function (_EmpyrealComponent) {
     _classCallCheck(this, Lightbox);
 
     _this = _super.call(this, el);
-    _this.settings = _objectSpread2({}, DEFAULTS$9, {}, options);
-    _this.$el = cash_min(_this.el);
+    _this.settings = { ...DEFAULTS$9,
+      ...options
+    };
+    _this.$el = cash(_this.el);
     _this.id = _this.el.id;
 
     if (!_this.id) {
@@ -5916,19 +5922,19 @@ var Lightbox = /*#__PURE__*/function (_EmpyrealComponent) {
   _createClass(Lightbox, [{
     key: "_init",
     value: function _init() {
-      this.$lightbox = cash_min("<div class=\"lightbox-ui\" data-lightbox=".concat(this.id, " />"));
-      this.$imageContainer = cash_min("<div class=\"lightbox-images\" />");
+      this.$lightbox = cash("<div class=\"lightbox-ui\" data-lightbox=".concat(this.id, " />"));
+      this.$imageContainer = cash("<div class=\"lightbox-images\" />");
       this.$lightboxImages = this.$images.clone();
       this.$imageContainer.append(this.$lightboxImages);
-      this.$topbar = cash_min("<div class=\"top-bar\" />");
-      this.$lightboxCounter = cash_min("<span class=\"lightbox-counter\" />");
-      this.$lightboxClose = cash_min("<span class=\"lightbox-close\" />");
-      this.$lightboxFullscreen = cash_min("<span class=\"lightbox-fullscreen\" />");
+      this.$topbar = cash("<div class=\"top-bar\" />");
+      this.$lightboxCounter = cash("<span class=\"lightbox-counter\" />");
+      this.$lightboxClose = cash("<span class=\"lightbox-close\" />");
+      this.$lightboxFullscreen = cash("<span class=\"lightbox-fullscreen\" />");
       this.$topbar.append(this.$lightboxCounter).append(this.$lightboxClose).append(this.$lightboxFullscreen);
-      this.$nextBtn = cash_min("<span class=\"right\" />");
-      this.$prevBtn = cash_min("<span class=\"left\" />");
+      this.$nextBtn = cash("<span class=\"right\" />");
+      this.$prevBtn = cash("<span class=\"left\" />");
       this.$lightbox.append(this.$imageContainer).append(this.$topbar).append(this.$prevBtn).append(this.$nextBtn);
-      cash_min("body").append(this.$lightbox);
+      cash("body").append(this.$lightbox);
 
       this._setupEventHandlers();
     }
@@ -5937,7 +5943,7 @@ var Lightbox = /*#__PURE__*/function (_EmpyrealComponent) {
     value: function _handleLightboxOpen(e) {
       this.open(this.$images.index(e.target));
       this.$lightbox.addClass("active");
-      anime({
+      anime_1({
         targets: this.$lightbox[0],
         opacity: 1,
         duration: this.settings.animInDuration,
@@ -5947,7 +5953,7 @@ var Lightbox = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "_handleLightboxClick",
     value: function _handleLightboxClick(e) {
-      if (cash_min(e.target).hasClass("lightbox-ui") || cash_min(e.target).hasClass("lightbox-images")) this.close();
+      if (cash(e.target).hasClass("lightbox-ui") || cash(e.target).hasClass("lightbox-images")) this.close();
     }
   }, {
     key: "_handleFullscreenButtonClick",
@@ -6023,23 +6029,20 @@ var Lightbox = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "close",
     value: function close() {
-      var _this2 = this;
-
       if (this.$lightbox.hasClass("fullscreen")) this.$lightboxFullscreen.trigger("click");
-      anime({
+      anime_1({
         targets: this.$lightbox[0],
         opacity: 0,
         duration: this.settings.animOutDuration,
         easing: "easeOutCubic",
-        complete: function complete() {
-          _this2.$lightbox.removeClass("active");
+        complete: () => {
+          this.$lightbox.removeClass("active");
         }
       });
     }
   }, {
     key: "open",
-    value: function open() {
-      var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    value: function open(index = 0) {
       var $activeImage = this.$lightboxImages.eq(index);
       this.$lightboxCounter.text(index + 1 + " / " + this.numberOfImages);
       $activeImage.addClass("active").siblings().removeClass("active");
@@ -6051,12 +6054,12 @@ var Lightbox = /*#__PURE__*/function (_EmpyrealComponent) {
     }
   }], [{
     key: "version",
-    get: function get() {
+    get: function () {
       return VERSION$9;
     }
   }, {
     key: "defaults",
-    get: function get() {
+    get: function () {
       return DEFAULTS$9;
     }
   }]);
@@ -6064,38 +6067,35 @@ var Lightbox = /*#__PURE__*/function (_EmpyrealComponent) {
   return Lightbox;
 }(EmpyrealComponent);
 
-function Snackbar(_ref) {
-  var _ref$html = _ref.html,
-      html = _ref$html === void 0 ? "" : _ref$html,
-      _ref$classes = _ref.classes,
-      classes = _ref$classes === void 0 ? "" : _ref$classes,
-      _ref$dismiss = _ref.dismiss,
-      dismiss = _ref$dismiss === void 0 ? 5000 : _ref$dismiss,
-      _ref$complete = _ref.complete,
-      complete = _ref$complete === void 0 ? function () {} : _ref$complete;
-  var $snackbar = cash_min("<div class=\"snackbar ".concat(classes, "\" />"));
+function Snackbar({
+  html = "",
+  classes = "",
+  dismiss = 5000,
+  complete = () => {}
+}) {
+  var $snackbar = cash("<div class=\"snackbar ".concat(classes, "\" />"));
   $snackbar.html(html);
-  cash_min("body").append($snackbar);
+  cash("body").append($snackbar);
   $snackbar.css("opacity", 1);
   var topOffset = 15;
-  var $snackbars = cash_min(".snackbar");
+  var $snackbars = cash(".snackbar");
 
   for (var i = 0; i < $snackbars.length; i++) {
-    var $node = cash_min($snackbars[$snackbars.length - i - 1]);
+    var $node = cash($snackbars[$snackbars.length - i - 1]);
     var height = $node.outerHeight();
     var offset = 15;
     $node.css("top", topOffset + "px");
     topOffset += height + offset;
   }
 
-  setTimeout(function () {
+  setTimeout(() => {
     var width = $snackbar.outerWidth() + 20;
     $snackbar.css({
       right: "-".concat(width, "px"),
       opacity: 0
     });
     complete();
-    setTimeout(function () {
+    setTimeout(() => {
       $snackbar.remove();
     }, 500);
   }, dismiss);
@@ -6120,8 +6120,10 @@ var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
     _classCallCheck(this, Autocomplete);
 
     _this = _super.call(this, el, options);
-    _this.settings = _objectSpread2({}, DEFAULTS$a, {}, options);
-    _this.$el = cash_min(_this.el);
+    _this.settings = { ...DEFAULTS$a,
+      ...options
+    };
+    _this.$el = cash(_this.el);
     _this.id = _this.$el.attr("id") || E.generateUUID();
     _this.isDropdownEmpty = true;
 
@@ -6134,12 +6136,13 @@ var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
   _createClass(Autocomplete, [{
     key: "_init",
     value: function _init() {
-      this.$list = cash_min("<ul class=dropdown id=".concat("dropdown-" + this.id, "></ul>"));
+      this.$list = cash("<ul class=dropdown id=".concat("dropdown-" + this.id, "></ul>"));
       this.$el.parent().append(this.$list);
       this.renderAutocompleteItems("");
-      this.dropdown = new Dropdown("#dropdown-" + this.id, _objectSpread2({
-        isRelative: true
-      }, this.settings.dropdown));
+      this.dropdown = new Dropdown("#dropdown-" + this.id, {
+        isRelative: true,
+        ...this.settings.dropdown
+      });
 
       this.dropdown._removeEventHandlers();
 
@@ -6152,9 +6155,7 @@ var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
     }
   }, {
     key: "_addItem",
-    value: function _addItem(text, input) {
-      var href = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
-      var image = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
+    value: function _addItem(text, input, href = "", image = "") {
       var startIndex = text.toLowerCase().indexOf(input);
       var value = text;
 
@@ -6164,7 +6165,7 @@ var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
         value = text.replace(highlight, highlightElem);
       }
 
-      var $item = cash_min("<a class=dropdown-item>".concat(value, "</a>"));
+      var $item = cash("<a class=dropdown-item>".concat(value, "</a>"));
       if (href) $item.attr("href", href);
       if (image) $item.append("<img src=".concat(image, " />"));
       this.$list.append($item);
@@ -6241,7 +6242,7 @@ var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "_handleDropdownClick",
     value: function _handleDropdownClick(e) {
-      var $item = cash_min(e.target);
+      var $item = cash(e.target);
       this.$el.siblings("label").addClass("active");
       this.$el.val($item.text());
       this.dropdown.close();
@@ -6265,12 +6266,12 @@ var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
     }
   }], [{
     key: "version",
-    get: function get() {
+    get: function () {
       return VERSION$a;
     }
   }, {
     key: "defaults",
-    get: function get() {
+    get: function () {
       return DEFAULTS$a;
     }
   }]);
@@ -6301,8 +6302,10 @@ var Chips = /*#__PURE__*/function (_EmpyrealComponent) {
     _classCallCheck(this, Chips);
 
     _this = _super.call(this, el, options);
-    _this.settings = _objectSpread2({}, DEFAULTS$b, {}, options);
-    _this.$el = cash_min(_this.el);
+    _this.settings = { ...DEFAULTS$b,
+      ...options
+    };
+    _this.$el = cash(_this.el);
     _this.$input = _this.$el.find("input");
     _this.value = [];
 
@@ -6331,17 +6334,19 @@ var Chips = /*#__PURE__*/function (_EmpyrealComponent) {
       }
 
       if (this.settings.autocomplete) {
-        this.autocomplete = new Autocomplete(this.$input[0], _objectSpread2({}, this.settings.autocomplete));
+        this.autocomplete = new Autocomplete(this.$input[0], { ...this.settings.autocomplete
+        });
       }
 
       this._setupEventHandlers();
     }
   }, {
     key: "add",
-    value: function add(_ref) {
-      var tag = _ref.tag,
-          image = _ref.image;
-      var chip = cash_min("\n        <div class=chip tabindex=0 data-value=".concat(tag, ">\n            ").concat(tag, " <i class='material-icons close'>close</i>\n        </div>\n        "));
+    value: function add({
+      tag,
+      image
+    }) {
+      var chip = cash("\n        <div class=chip tabindex=0 data-value=".concat(tag, ">\n            ").concat(tag, " <i class='material-icons close'>close</i>\n        </div>\n        "));
       if (image) chip.append("<img src=".concat(image, " />"));
       this.value.push(tag);
       chip.insertBefore(this.$input);
@@ -6365,9 +6370,9 @@ var Chips = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "_handleInputClick",
     value: function _handleInputClick(e) {
-      if (cash_min(e.target).closest(".chip").length) {
-        if (cash_min(e.target).hasClass("close")) {
-          this.value.splice(this.value.indexOf(cash_min(e.target).closest(".chip").data("value")), 1);
+      if (cash(e.target).closest(".chip").length) {
+        if (cash(e.target).hasClass("close")) {
+          this.value.splice(this.value.indexOf(cash(e.target).closest(".chip").data("value")), 1);
           if (typeof this.settings.onChipDelete === "function") this.settings.onChipDelete.call(this, e.target, this.el);
           if (this.$el.children(".chip").length == 0) this.$input.attr("placeholder", this.settings.placeholder);
         }
@@ -6409,12 +6414,12 @@ var Chips = /*#__PURE__*/function (_EmpyrealComponent) {
     }
   }], [{
     key: "version",
-    get: function get() {
+    get: function () {
       return VERSION$b;
     }
   }, {
     key: "defaults",
-    get: function get() {
+    get: function () {
       return DEFAULTS$b;
     }
   }]);
@@ -6438,15 +6443,17 @@ var Select = /*#__PURE__*/function (_EmpyrealComponent) {
     _classCallCheck(this, Select);
 
     _this = _super.call(this, el, options);
-    _this.settings = _objectSpread2({}, DEFAULTS$c, {}, options);
-    _this.$el = cash_min(_this.el);
+    _this.settings = { ...DEFAULTS$c,
+      ...options
+    };
+    _this.$el = cash(_this.el);
     _this.id = _this.$el.attr("id") || E.generateUUID();
-    _this.$input = cash_min("<input type='text' readonly='true' class=\"select-dropdown\" />");
+    _this.$input = cash("<input type='text' readonly='true' class=\"select-dropdown\" />");
 
     _this.$input.attr("id", _this.id);
 
     _this.isSelectMultiple = _this.el.hasAttribute("multiple");
-    _this.$list = cash_min("<ul class=select-list />");
+    _this.$list = cash("<ul class=select-list />");
     _this.value = [];
     _this.textinput_content = [];
 
@@ -6458,9 +6465,7 @@ var Select = /*#__PURE__*/function (_EmpyrealComponent) {
   _createClass(Select, [{
     key: "_init",
     value: function _init() {
-      var _this2 = this;
-
-      cash_min("<span class='caret' />").insertAfter(this.$el);
+      cash("<span class='caret' />").insertAfter(this.$el);
       this.$list.insertAfter(this.$el);
       this.$input.insertAfter(this.$el);
 
@@ -6476,9 +6481,9 @@ var Select = /*#__PURE__*/function (_EmpyrealComponent) {
 
             this.$list.append($selectItem);
           } else if (elem.nodeName.toLowerCase() == "optgroup") {
-            var $group = cash_min("<li class='optgroup'><p>".concat(cash_min(elem).attr("label"), "</p></li>"));
+            var $group = cash("<li class='optgroup'><p>".concat(cash(elem).attr("label"), "</p></li>"));
 
-            var _iterator2 = _createForOfIteratorHelper(cash_min(elem).children()),
+            var _iterator2 = _createForOfIteratorHelper(cash(elem).children()),
                 _step2;
 
             try {
@@ -6504,15 +6509,16 @@ var Select = /*#__PURE__*/function (_EmpyrealComponent) {
         _iterator.f();
       }
 
-      this.dropdown = new Dropdown(this.$list[0], _objectSpread2({
+      this.dropdown = new Dropdown(this.$list[0], {
         isRelative: true,
-        onOpenStart: function onOpenStart() {
-          _this2.$el.siblings(".caret").addClass("active");
+        onOpenStart: () => {
+          this.$el.siblings(".caret").addClass("active");
         },
-        onCloseStart: function onCloseStart() {
-          _this2.$el.siblings(".caret").removeClass("active");
-        }
-      }, this.settings.dropdown));
+        onCloseStart: () => {
+          this.$el.siblings(".caret").removeClass("active");
+        },
+        ...this.settings.dropdown
+      });
 
       this.dropdown._removeEventHandlers();
 
@@ -6526,11 +6532,11 @@ var Select = /*#__PURE__*/function (_EmpyrealComponent) {
   }, {
     key: "_createSelectOption",
     value: function _createSelectOption(element) {
-      var $element = cash_min(element);
-      var $item = cash_min("<li>".concat($element.html(), "</li>"));
+      var $element = cash(element);
+      var $item = cash("<li>".concat($element.html(), "</li>"));
 
       if (this.isSelectMultiple) {
-        $item = cash_min("<li class=checkbox-field><label><input type=\"checkbox\"><span>".concat($element.html(), "</span></label></li>"));
+        $item = cash("<li class=checkbox-field><label><input type=\"checkbox\"><span>".concat($element.html(), "</span></label></li>"));
       }
 
       var value = $element.attr("value") || $element.text();
@@ -6562,14 +6568,14 @@ var Select = /*#__PURE__*/function (_EmpyrealComponent) {
 
       if (typeof this.textinput_content == "string") {
         this.$input.val(this.textinput_content);
-      } else if (_typeof(this.textinput_content) == "object") {
+      } else if (typeof this.textinput_content == "object") {
         this.$input.val(this.textinput_content.join(", "));
       }
     }
   }, {
     key: "_handleSelectItemClick",
     value: function _handleSelectItemClick(e) {
-      var $item = cash_min(e.target).closest("li");
+      var $item = cash(e.target).closest("li");
 
       if (!$item.hasClass("disabled") && !$item.hasClass("optgroup")) {
         if (!this.isSelectMultiple) {
@@ -6610,12 +6616,12 @@ var Select = /*#__PURE__*/function (_EmpyrealComponent) {
     }
   }], [{
     key: "version",
-    get: function get() {
+    get: function () {
       return VERSION$c;
     }
   }, {
     key: "defaults",
-    get: function get() {
+    get: function () {
       return DEFAULTS$c;
     }
   }]);
@@ -6624,28 +6630,26 @@ var Select = /*#__PURE__*/function (_EmpyrealComponent) {
 }(EmpyrealComponent);
 
 var empyreal = {
-  Modal: Modal,
-  Tabs: Tabs,
-  Dropdown: Dropdown,
-  Sidenav: Sidenav,
-  Collapsible: Collapsible,
-  Tooltip: Tooltip,
-  Carousel: Carousel,
-  Pushpin: Pushpin,
-  ScrollSpy: ScrollSpy,
-  Lightbox: Lightbox,
-  Snackbar: Snackbar,
-  Autocomplete: Autocomplete,
-  Select: Select,
-  Chips: Chips,
+  Modal,
+  Tabs,
+  Dropdown,
+  Sidenav,
+  Collapsible,
+  Tooltip,
+  Carousel,
+  Pushpin,
+  ScrollSpy,
+  Lightbox,
+  Snackbar,
+  Autocomplete,
+  Select,
+  Chips,
   updateTextFields: E.updateTextFields(),
   jump: E.jump
 };
 empyreal.version = "0.0.1";
 
-empyreal.activate = function (selector, component) {
-  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-  var json = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+empyreal.activate = function (selector, component, options = {}, json = false) {
   var elements = NodeList.prototype.isPrototypeOf(selector) ? selector : document.querySelectorAll(selector);
   var components = json ? {} : [];
 
