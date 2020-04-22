@@ -17,6 +17,9 @@
     "./css/**/*",
     "./utils/**/*"
   ],
+  "bin": {
+    "empyreal": "./utils/cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TheComputerM/empyreal.git"
@@ -91,6 +94,7 @@
     "@babel/plugin-transform-template-literals": "^7.8.3",
     "@rollup/plugin-commonjs": "^11.1.0",
     "autoprefixer": "^9.7.6",
+    "chalk": "^4.0.0",
     "cosmiconfig": "^6.0.0",
     "flat": "^5.0.0",
     "postcss": "^7.0.27",

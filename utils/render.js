@@ -7,9 +7,9 @@ let configFolder = path.dirname(configPath);
 
 const css = async function () {
     let result = await processCSS(config);
-    fs.writeFile(path.join(configFolder, config.out.css), result.css, () => true);
+    await fs.writeFile(path.join(configFolder, config.out.css), result.css, () => true);
     if (config.sourcemaps) {
-        fs.writeFile(path.join(configFolder, config.out.css + '.map'), result.map, () => true);
+        await fs.writeFile(path.join(configFolder, config.out.css + '.map'), result.map, () => true);
     }
 }
 

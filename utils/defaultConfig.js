@@ -1,4 +1,6 @@
 module.exports = {
+    js: true,
+    css: true,
     out: {
         css: "./dist/css/empyreal.css",
         js: "./dist/js/empyreal.js"
@@ -29,6 +31,7 @@ module.exports = {
         "Icons",
         "Navbar",
         "Dropdown",
+        "Tooltips",
         "Sidenav",
         "Modal",
         "Pushpin",

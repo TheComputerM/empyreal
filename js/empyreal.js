@@ -1,36 +1,9 @@
-import Modal from "./components/modal";
-import Tabs from "./components/tabs";
-import Dropdown from "./components/dropdown";
-import Sidenav from "./components/sidenav";
-import Collapsible from "./components/collapsible";
-import Tooltip from "./components/tooltips";
-import Carousel from "./components/carousel";
-import Pushpin from "./components/pushpin";
-import ScrollSpy from "./components/scrollspy";
-import Lightbox from "./components/lightbox";
-import Snackbar from "./components/snackbar";
-import Chips from "./components/chips";
-
-import Select from "./components/select";
-import Autocomplete from "./components/autocomplete";
+import components from "./components";
 
 import {E} from "./components/global";
 
 let empyreal = {
-    Modal,
-    Tabs,
-    Dropdown,
-    Sidenav,
-    Collapsible,
-    Tooltip,
-    Carousel,
-    Pushpin,
-    ScrollSpy,
-    Lightbox,
-    Snackbar,
-    Autocomplete,
-    Select,
-    Chips,
+    ...components,
     updateTextFields: E.updateTextFields(),
     jump: E.jump
 };

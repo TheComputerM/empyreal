@@ -4,177 +4,6 @@
   (global = global || self, global.empy = factory());
 }(this, (function () { 'use strict';
 
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    return Constructor;
-  }
-
-  function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-      throw new TypeError("Super expression must either be null or a function");
-    }
-
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-      constructor: {
-        value: subClass,
-        writable: true,
-        configurable: true
-      }
-    });
-    if (superClass) _setPrototypeOf(subClass, superClass);
-  }
-
-  function _getPrototypeOf(o) {
-    _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-      return o.__proto__ || Object.getPrototypeOf(o);
-    };
-    return _getPrototypeOf(o);
-  }
-
-  function _setPrototypeOf(o, p) {
-    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-      o.__proto__ = p;
-      return o;
-    };
-
-    return _setPrototypeOf(o, p);
-  }
-
-  function _isNativeReflectConstruct() {
-    if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-    if (Reflect.construct.sham) return false;
-    if (typeof Proxy === "function") return true;
-
-    try {
-      Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  function _assertThisInitialized(self) {
-    if (self === void 0) {
-      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }
-
-    return self;
-  }
-
-  function _possibleConstructorReturn(self, call) {
-    if (call && (typeof call === "object" || typeof call === "function")) {
-      return call;
-    }
-
-    return _assertThisInitialized(self);
-  }
-
-  function _createSuper(Derived) {
-    return function () {
-      var Super = _getPrototypeOf(Derived),
-          result;
-
-      if (_isNativeReflectConstruct()) {
-        var NewTarget = _getPrototypeOf(this).constructor;
-
-        result = Reflect.construct(Super, arguments, NewTarget);
-      } else {
-        result = Super.apply(this, arguments);
-      }
-
-      return _possibleConstructorReturn(this, result);
-    };
-  }
-
-  function _unsupportedIterableToArray(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(n);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-  }
-
-  function _arrayLikeToArray(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-
-    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-    return arr2;
-  }
-
-  function _createForOfIteratorHelper(o) {
-    if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
-      if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {
-        var i = 0;
-
-        var F = function () {};
-
-        return {
-          s: F,
-          n: function () {
-            if (i >= o.length) return {
-              done: true
-            };
-            return {
-              done: false,
-              value: o[i++]
-            };
-          },
-          e: function (e) {
-            throw e;
-          },
-          f: F
-        };
-      }
-
-      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }
-
-    var it,
-        normalCompletion = true,
-        didErr = false,
-        err;
-    return {
-      s: function () {
-        it = o[Symbol.iterator]();
-      },
-      n: function () {
-        var step = it.next();
-        normalCompletion = step.done;
-        return step;
-      },
-      e: function (e) {
-        didErr = true;
-        err = e;
-      },
-      f: function () {
-        try {
-          if (!normalCompletion && it.return != null) it.return();
-        } finally {
-          if (didErr) throw err;
-        }
-      }
-    };
-  }
-
   /*
    * anime.js v3.2.0
    * (c) 2020 Julian Garnier
@@ -1150,9 +979,7 @@
       });
     };
 
-    for (var i = 0; i < propertyNames.length; i++) {
-      loop(i);
-    }
+    for (var i = 0; i < propertyNames.length; i++) loop(i);
 
     return properties;
   }
@@ -1948,9 +1775,7 @@
           for (var t = 1; t < arguments.length; t++) {
             var n = arguments[t];
 
-            for (var o in n) {
-              Object.prototype.hasOwnProperty.call(n, o) && (e[o] = n[o]);
-            }
+            for (var o in n) Object.prototype.hasOwnProperty.call(n, o) && (e[o] = n[o]);
           }
 
           return e;
@@ -2501,9 +2326,7 @@
         });
 
         var n = function (e) {
-          for (var t = 0, n = 0; e && !isNaN(e.offsetLeft) && !isNaN(e.offsetTop);) {
-            t += e.offsetLeft - ("BODY" != e.tagName ? e.scrollLeft : 0), n += e.offsetTop - ("BODY" != e.tagName ? e.scrollTop : 0), e = e.offsetParent;
-          }
+          for (var t = 0, n = 0; e && !isNaN(e.offsetLeft) && !isNaN(e.offsetTop);) t += e.offsetLeft - ("BODY" != e.tagName ? e.scrollLeft : 0), n += e.offsetTop - ("BODY" != e.tagName ? e.scrollTop : 0), e = e.offsetParent;
 
           return {
             top: n,
@@ -3135,9 +2958,7 @@
             this.length = b.length;
             a = 0;
 
-            for (c = this.length; a < c; a++) {
-              this[a] = b[a];
-            }
+            for (c = this.length; a < c; a++) this[a] = b[a];
           }
         }
 
@@ -3174,12 +2995,10 @@
       }
 
       function I(a, b, c) {
-        if (c) for (c = a.length; c-- && !1 !== b.call(a[c], c, a[c]);) {
-        } else {
+        if (c) for (c = a.length; c-- && !1 !== b.call(a[c], c, a[c]););else {
           c = 0;
 
-          for (var d = a.length; c < d && !1 !== b.call(a[c], c, a[c]); c++) {
-          }
+          for (var d = a.length; c < d && !1 !== b.call(a[c], c, a[c]); c++);
         }
         return a;
       }
@@ -3197,18 +3016,13 @@
       };
 
       function J(a) {
-        for (var b = 1; b < arguments.length; b++) {
-        }
+        for (var b = 1; b < arguments.length; b++);
 
         b = arguments.length;
         if (!b) return {};
         if (1 === b) return J(G, a);
 
-        for (var c = 1; c < b; c++) {
-          for (var d in arguments[c]) {
-            a[d] = arguments[c][d];
-          }
-        }
+        for (var c = 1; c < b; c++) for (var d in arguments[c]) a[d] = arguments[c][d];
 
         return a;
       }
@@ -3261,9 +3075,7 @@
             h[a] = b;
           });
 
-          for (var c in a) {
-            this.prop(c, a[c]);
-          }
+          for (var c in a) this.prop(c, a[c]);
 
           return this;
         }
@@ -3345,9 +3157,7 @@
             });
           }
 
-          for (c in a) {
-            this.attr(c, a[c]);
-          }
+          for (c in a) this.attr(c, a[c]);
 
           return this;
         }
@@ -3372,14 +3182,10 @@
       };
 
       function O(a, b, c, d) {
-        for (var h = [], f = E(b), l = d && L(d), q = 0, z = a.length; q < z; q++) {
-          if (f) {
-            var k = b(a[q]);
-            k.length && ia.apply(h, k);
-          } else for (k = a[q][b]; !(null == k || d && l(-1, k));) {
-            h.push(k), k = c ? k[b] : null;
-          }
-        }
+        for (var h = [], f = E(b), l = d && L(d), q = 0, z = a.length; q < z; q++) if (f) {
+          var k = b(a[q]);
+          k.length && ia.apply(h, k);
+        } else for (k = a[q][b]; !(null == k || d && l(-1, k));) h.push(k), k = c ? k[b] : null;
 
         return h;
       }
@@ -3466,9 +3272,7 @@
           });
         }
 
-        for (var d in a) {
-          this.css(d, a[d]);
-        }
+        for (var d in a) this.css(d, a[d]);
 
         return this;
       };
@@ -3486,9 +3290,7 @@
           var c = {},
               d;
 
-          for (d in this[0].dataset) {
-            c[d] = Ba(this[0], d);
-          }
+          for (d in this[0].dataset) c[d] = Ba(this[0], d);
 
           return c;
         }
@@ -3499,9 +3301,7 @@
           d.dataset[H(a)] = c;
         });
 
-        for (d in a) {
-          this.data(d, a[d]);
-        }
+        for (d in a) this.data(d, a[d]);
 
         return this;
       };
@@ -3599,9 +3399,7 @@
           f = f[2];
           if (h && f.guid !== h.guid || !Ea(l, c) || d && d !== z) return !0;
           a.removeEventListener(b, f);
-        }));else for (b in f) {
-          Y(a, b, c, d, h);
-        }
+        }));else for (b in f) Y(a, b, c, d, h);
       }
 
       F.off = function (a, b, c) {
@@ -3617,9 +3415,7 @@
           d.each(function (a, d) {
             if (B(d) || y(d) || K(d)) Y(d, k, l, b, c), Ka && Y(d, f, l, b, c);
           });
-        });else for (var h in a) {
-          this.off(h, a[h]);
-        }
+        });else for (var h in a) this.off(h, a[h]);
         return this;
       };
 
@@ -3627,9 +3423,7 @@
         var f = this;
 
         if (!D(a)) {
-          for (var l in a) {
-            this.on(l, b, c, a[l], h);
-          }
+          for (var l in a) this.on(l, b, c, a[l], h);
 
           return this;
         }
@@ -3791,9 +3585,7 @@
 
       F.empty = function () {
         return this.each(function (a, b) {
-          for (; b.firstChild;) {
-            b.removeChild(b.firstChild);
-          }
+          for (; b.firstChild;) b.removeChild(b.firstChild);
         });
       };
 
@@ -3831,9 +3623,7 @@
 
       F.offsetParent = function () {
         return this.map(function (a, b) {
-          for (a = b.offsetParent; a && "static" === Q(a, "position");) {
-            a = a.offsetParent;
-          }
+          for (a = b.offsetParent; a && "static" === Q(a, "position");) a = a.offsetParent;
 
           return a || aa;
         });
@@ -3849,9 +3639,7 @@
           if (!b) {
             var d = a.ownerDocument;
 
-            for (b = a.offsetParent || d.documentElement; (b === d.body || b === d.documentElement) && "static" === Q(b, "position");) {
-              b = b.parentNode;
-            }
+            for (b = a.offsetParent || d.documentElement; (b === d.body || b === d.documentElement) && "static" === Q(b, "position");) b = b.parentNode;
 
             b !== a && B(b) && (d = G(b).offset(), c.top -= d.top + R(b, "borderTopWidth"), c.left -= d.left + R(b, "borderLeftWidth"));
           }
@@ -3961,9 +3749,7 @@
       F.wrapAll = function (a) {
         a = G(a);
 
-        for (var b = a[0]; b.children.length;) {
-          b = b.firstElementChild;
-        }
+        for (var b = a[0]; b.children.length;) b = b.firstElementChild;
 
         this.first().before(a);
         return this.appendTo(b);
@@ -4247,7 +4033,7 @@
     };
   };
 
-  var E = {
+  let E = {
     jump
   };
   E.keys = {
@@ -4263,24 +4049,24 @@
    */
 
   E.getTrigger = function (QueryObj) {
-    var QueryElements = [];
+    let QueryElements = [];
 
-    for (var element in QueryObj) {
-      var ElementObj = QueryObj[element];
-      var requiredParameters = "".concat(element);
-      var ElementQueryStrings = [];
+    for (let element in QueryObj) {
+      let ElementObj = QueryObj[element];
+      let requiredParameters = `${element}`;
+      let ElementQueryStrings = [];
 
-      for (var attribute in ElementObj) {
-        var AttributeObj = ElementObj[attribute];
+      for (let attribute in ElementObj) {
+        let AttributeObj = ElementObj[attribute];
 
         if (attribute != "optional") {
-          if (attribute == "class") requiredParameters += ".".concat(AttributeObj);else if (attribute == "id") requiredParameters += "#".concat(AttributeObj);else requiredParameters += "[".concat(attribute, "='").concat(AttributeObj, "']");
+          if (attribute == "class") requiredParameters += `.${AttributeObj}`;else if (attribute == "id") requiredParameters += `#${AttributeObj}`;else requiredParameters += `[${attribute}='${AttributeObj}']`;
         }
       }
 
-      for (var OptionalAttr in ElementObj["optional"]) {
-        var OptionalAttrObj = ElementObj["optional"][OptionalAttr];
-        ElementQueryStrings.push("".concat(requiredParameters, "[").concat(OptionalAttr, "='").concat(OptionalAttrObj, "']"));
+      for (let OptionalAttr in ElementObj["optional"]) {
+        let OptionalAttrObj = ElementObj["optional"][OptionalAttr];
+        ElementQueryStrings.push(`${requiredParameters}[${OptionalAttr}='${OptionalAttrObj}']`);
       }
 
       QueryElements.push(...ElementQueryStrings);
@@ -4299,7 +4085,7 @@
       return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
     }
 
-    return "".concat(uuid() + uuid(), "-").concat(uuid(), "-").concat(uuid(), "-").concat(uuid(), "-").concat(uuid() + uuid() + uuid());
+    return `${uuid() + uuid()}-${uuid()}-${uuid()}-${uuid()}-${uuid() + uuid() + uuid()}`;
   };
   /**
    * Multi browser support for document scroll top
@@ -4338,14 +4124,14 @@
     });
     cash(document).on("click", ".smoothscroll", function (e) {
       e.preventDefault();
-      var target = this.getAttribute("data-scrollto") || this.getAttribute("href");
+      let target = this.getAttribute("data-scrollto") || this.getAttribute("href");
       jump(target, {
         duration: 800
       });
     });
     cash(document).on("click", ".navbar-toggler", function () {
-      var targetSelector = this.getAttribute("data-target") || this.getAttribute("href");
-      var target = cash(document.querySelector(targetSelector));
+      let targetSelector = this.getAttribute("data-target") || this.getAttribute("href");
+      let target = cash(document.querySelector(targetSelector));
       if (target.hasClass("shown")) target.removeClass("shown");else target.addClass("shown");
     });
     window.addEventListener("scroll", () => {
@@ -4357,18 +4143,832 @@
     });
   });
 
-  var EmpyrealComponent = function EmpyrealComponent(el) {
-    _classCallCheck(this, EmpyrealComponent);
+  function Snackbar({
+    html = "",
+    classes = "",
+    dismiss = 5000,
+    complete = () => {}
+  }) {
+    let $snackbar = cash(`<div class="snackbar ${classes}" />`);
+    $snackbar.html(html);
+    cash("body").append($snackbar);
+    $snackbar.css("opacity", 1);
+    let topOffset = 15;
+    let $snackbars = cash(".snackbar");
 
-    if (typeof el === "string") {
-      this.el = document.querySelector(el);
-    } else {
-      this.el = el;
+    for (let i = 0; i < $snackbars.length; i++) {
+      let $node = cash($snackbars[$snackbars.length - i - 1]);
+      let height = $node.outerHeight();
+      let offset = 15;
+      $node.css("top", topOffset + "px");
+      topOffset += height + offset;
     }
-  };
 
-  var VERSION = "0.0.1";
-  var DEFAULTS = {
+    setTimeout(() => {
+      let width = $snackbar.outerWidth() + 20;
+      $snackbar.css({
+        right: `-${width}px`,
+        opacity: 0
+      });
+      complete();
+      setTimeout(() => {
+        $snackbar.remove();
+      }, 500);
+    }, dismiss);
+  }
+
+  class EmpyrealComponent {
+    constructor(el) {
+      if (typeof el === "string") {
+        this.el = document.querySelector(el);
+      } else {
+        this.el = el;
+      }
+    }
+
+  }
+
+  const VERSION = "0.0.1";
+  const DEFAULTS = {
+    animDuration: 500,
+    activeTabClass: "",
+    tabIndicatorClass: "",
+    onTabOpen: null
+  };
+  class Tabs extends EmpyrealComponent {
+    /**
+     * @param {Element} el
+     * @param {Object} options
+     */
+    constructor(el, options) {
+      super(el);
+      this.settings = { ...DEFAULTS,
+        ...options
+      };
+      this.$el = cash(this.el);
+      this.$tabs = this.$el.find(".tab");
+      this.$tabContents = this.$tabs.map(function (i, val) {
+        let id = val.getAttribute("data-target") || val.getAttribute("href");
+        return document.querySelector(`div${id}`);
+      });
+      this.$tabIndicator = cash("<div class='tab-indicator' />");
+      this.$el.append(this.$tabIndicator);
+      this.listeners = [];
+
+      this._init();
+    }
+
+    static get version() {
+      return VERSION;
+    }
+
+    static get defaults() {
+      return DEFAULTS;
+    }
+
+    _init() {
+      this._setupEventHandlers();
+
+      this.$tabIndicator.addClass(this.settings.tabIndicatorClass);
+      if (this.$tabs.filter(".active").length) this._handleTabOpen(this.$tabs.filter(".active")[0]);else this._handleTabOpen(this.$tabs.first());
+    }
+
+    _handleTabOpen(elem) {
+      let $activeTab = cash(elem);
+      let id = $activeTab.attr("data-target") || $activeTab.attr("href");
+      let $previousActiveTabContent = this.$tabContents.filter(".active");
+      let $activeTabContent = this.$tabContents.filter(id); // Tab active color
+
+      this.$tabs.removeClass("active");
+      this.$tabs.removeClass(this.settings.activeTabClass);
+      $activeTab.addClass("active");
+      $activeTab.addClass(this.settings.activeTabClass); // Hiding and showing tab content
+
+      $previousActiveTabContent.removeClass("active");
+      $activeTabContent.addClass("active"); // Moving Tab Indicator
+
+      this.resizeIndicator();
+    }
+
+    _handleTabClick(e) {
+      e.preventDefault();
+
+      if (typeof this.settings.onTabOpen === "function") {
+        this.settings.onTabOpen.call(this, e, this.$el);
+      }
+
+      this._handleTabOpen(e.target);
+    }
+
+    resizeIndicator() {
+      let $active = this.$tabs.filter(".active");
+      let tabSize = $active.size();
+      this.$tabIndicator.css({
+        top: tabSize.height - 2 + "px",
+        left: tabSize.left - this.$el.size().left + "px",
+        width: $active.outerWidth(true) + "px"
+      });
+    }
+
+    _setupEventHandlers() {
+      this.$tabs.on("click", this._handleTabClick.bind(this));
+      window.addEventListener("resize", this.listeners[0] = this.resizeIndicator.bind(this));
+    }
+
+    _removeEventHandlers() {
+      this.$tabs.off("click");
+      window.removeEventListener("resize", this.listeners[0]);
+    }
+
+    toggleTab(selector) {
+      this._handleTabOpen(this.$tabs.filter(selector)[0]);
+    }
+
+    toggleTabUsingIndex(index) {
+      this._handleTabOpen(this.$tabs.filter(`.tab:nth-child(${index})`)[0]);
+    }
+
+    destroy() {
+      this._removeEventHandlers();
+    }
+
+  }
+
+  const VERSION$1 = "0.0.1";
+  const DEFAULTS$1 = {
+    accordion: false,
+    animInDuration: 500,
+    animOutDuration: 500
+  };
+  class Collapsible extends EmpyrealComponent {
+    /**
+     * @param {Element} el
+     * @param {Object} options
+     */
+    constructor(el, options) {
+      super(el);
+      this.settings = { ...DEFAULTS$1,
+        ...options
+      };
+      this.$el = cash(this.el);
+      this.$headers = this.$el.find(".collapsible-header");
+      this.$bodies = this.$el.find(".collapsible-body");
+      this.listeners = [];
+
+      this._init();
+    }
+
+    static get version() {
+      return VERSION$1;
+    }
+
+    static get defaults() {
+      return DEFAULTS$1;
+    }
+
+    _init() {
+      this._setupEventHandlers();
+    }
+
+    _handleHeaderOpen(elem) {
+      let $activeHeader = cash(elem);
+      let $parent = $activeHeader.parent();
+      let $activeBody = $activeHeader.siblings(".collapsible-body");
+      anime_1.remove($activeBody[0]);
+      $activeBody.css({
+        display: "block",
+        overflow: "hidden",
+        height: 0,
+        paddingTop: "",
+        paddingBottom: ""
+      });
+      let paddTop = $activeBody.css("padding-top");
+      let paddBottom = $activeBody.css("padding-bottom");
+      let finalHeight = $activeBody[0].scrollHeight;
+      $activeBody.css({
+        paddingTop: 0,
+        paddingBottom: 0
+      });
+      anime_1({
+        targets: $activeBody[0],
+        height: finalHeight,
+        paddingTop: paddTop,
+        paddingBottom: paddBottom,
+        duration: this.settings.animInDuration,
+        easing: "easeInOutCubic",
+        complete: () => {
+          $activeBody.css({
+            overflow: "",
+            paddingTop: "",
+            paddingBottom: "",
+            height: ""
+          });
+        }
+      });
+      $parent.addClass("active");
+    }
+
+    _handleHeaderClose(elem) {
+      let $activeHeader = cash(elem);
+      let $parent = $activeHeader.parent();
+      let $activeBody = $activeHeader.siblings(".collapsible-body");
+      anime_1.remove($activeBody[0]);
+      $activeBody.css("overflow", "hidden");
+      anime_1({
+        targets: $activeBody[0],
+        height: 0,
+        paddingTop: 0,
+        paddingBottom: 0,
+        duration: this.settings.animOutDuration,
+        easing: "easeInOutCubic",
+        complete: () => {
+          $activeBody.css({
+            height: "",
+            overflow: "",
+            padding: "",
+            display: ""
+          });
+        }
+      });
+      $parent.removeClass("active");
+    }
+
+    _handleHeaderClick(e) {
+      let $parent = cash(e.target).parent();
+
+      if ($parent.hasClass("active")) {
+        this._handleHeaderClose(e.target);
+      } else {
+        this._handleHeaderOpen(e.target);
+      }
+
+      if (this.settings.accordion) {
+        for (let i of $parent.filter(".active").siblings()) this._handleHeaderClose(cash(i).find(".collapsible-header")[0]);
+      }
+    }
+
+    _setupEventHandlers() {
+      this.$headers.on("click", this._handleHeaderClick.bind(this));
+    }
+
+    _removeEventHandlers() {} // Functions used by the dev
+
+
+    destroy() {
+      this._removeEventHandlers();
+    }
+
+  }
+
+  const VERSION$2 = "0.0.1";
+  const DEFAULTS$2 = {
+    coverTrigger: false,
+    isRelative: false,
+    animInDuration: 500,
+    animOutDuration: 500,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null,
+    onItemClick: null
+  };
+  const REGISTRY = {
+    animInEasing: "easeOutQuad",
+    animOutEasing: "easeOutQuint"
+  };
+  class Dropdown extends EmpyrealComponent {
+    /**
+     * @param {Element} el
+     * @param {Object} options
+     */
+    constructor(el, options) {
+      super(el);
+      this.settings = { ...DEFAULTS$2,
+        ...options
+      };
+      this.$el = cash(this.el);
+      this.$items = this.$el.children(".dropdown-item");
+      this.focusedIndex = -1;
+      this.id = this.$el.attr("id");
+      this.trigger = E.getTrigger({
+        a: {
+          class: "dropdown-trigger",
+          optional: {
+            href: `#${this.id}`,
+            "data-target": `#${this.id}`
+          }
+        },
+        button: {
+          class: "dropdown-trigger",
+          optional: {
+            "data-target": `#${this.id}`
+          }
+        }
+      });
+      this.$trigger = cash(this.trigger);
+      this.initialDropdownDimensions = {
+        width: 0,
+        height: 0
+      };
+      this.isOpen = false;
+      this.isAnimationDone = true;
+      this.listeners = [];
+
+      this._init();
+    }
+
+    static get version() {
+      return VERSION$2;
+    }
+
+    static get defaults() {
+      return DEFAULTS$2;
+    }
+
+    _init() {
+      this.calculateDropdownDimensions();
+
+      this._setupEventHandlers();
+    }
+
+    calculateDropdownDimensions() {
+      this.$el.css("display", "block");
+      this.initialDropdownDimensions = {
+        width: this.$el.outerWidth(),
+        height: this.$el.outerHeight()
+      };
+      if (!this.isOpen) this.$el.css("display", "none");
+    }
+
+    positionDropdown() {
+      if (this.isOpen) {
+        let triggerDimensions = this.$trigger.size();
+        let dropdownDimensions = this.initialDropdownDimensions;
+        this.el.style.left = triggerDimensions.left + "px";
+        let dropdownTop = window.scrollY + triggerDimensions.top;
+        if (this.settings.isRelative) dropdownTop = 0;
+
+        if (triggerDimensions.top + dropdownDimensions.height <= window.innerHeight) {
+          // Dropdown positioned on bottom of trigger
+          dropdownTop += triggerDimensions.height + 10;
+          dropdownTop -= this.settings.coverTrigger ? triggerDimensions.height + 10 : 0;
+        } else {
+          // Dropdown positioned on top of trigger
+          dropdownTop -= dropdownDimensions.height + 10;
+          dropdownTop += this.settings.coverTrigger ? triggerDimensions.height + 10 : 0;
+        }
+
+        this.el.style.top = dropdownTop + "px";
+      }
+    }
+
+    _handleDropdownOpen(e = "none") {
+      this.focusedIndex = -1;
+      this.isOpen = true;
+      this.isAnimationDone = false;
+      this.$el.css("display", "block");
+      this.positionDropdown();
+      anime_1({
+        targets: this.el,
+        opacity: [0, 1],
+        duration: this.settings.animInDuration,
+        easing: REGISTRY.animInEasing,
+        begin: () => {
+          if (typeof this.settings.onOpenStart === "function") {
+            this.settings.onOpenStart.call(this, this.el, e.target);
+          }
+        },
+        complete: () => {
+          this.isAnimationDone = true;
+
+          if (typeof this.settings.onOpenEnd === "function") {
+            this.settings.onOpenEnd.call(this, this.el, e.target);
+          }
+        }
+      });
+    }
+
+    _handleDropdownClose(e = "none") {
+      this.isOpen = false;
+      this.isAnimationDone = false;
+      anime_1({
+        targets: this.el,
+        opacity: [1, 0],
+        duration: this.settings.animOutDuration,
+        easing: REGISTRY.animOutEasing,
+        begin: () => {
+          if (typeof this.settings.onCloseStart === "function") {
+            this.settings.onCloseStart.call(this, this.el, e.target);
+          }
+        },
+        complete: () => {
+          this.isAnimationDone = true;
+          this.$el.css("display", "none");
+
+          if (typeof this.settings.onCloseEnd === "function") {
+            this.settings.onCloseEnd.call(this, this.el, e.target);
+          }
+        }
+      });
+    }
+
+    _handleDocumentClick(e) {
+      let $elemClicked = cash(e.target);
+
+      if (!$elemClicked.closest(this.el).length && this.isOpen && this.isAnimationDone && !$elemClicked.hasClass("dropdown-trigger")) {
+        this._handleDropdownClose();
+      }
+    }
+
+    _handleDropdownTriggerClick(e) {
+      e.preventDefault();
+      if (this.isOpen) this._handleDropdownClose(e);else this._handleDropdownOpen(e);
+    }
+
+    _handleDropdownItemClick(e) {
+      this.$items.removeClass("focused");
+      this.focusedIndex = -1;
+
+      if (typeof this.settings.onItemClick === "function") {
+        this.settings.onItemClick.call(this, this.el, e.target);
+      }
+    }
+
+    _handleDropdownKeyPress(e) {
+      if (this.isOpen) {
+        if (e.keyCode == E.keys.TAB) {
+          this._handleDropdownClose();
+
+          e.preventDefault();
+        } else if (e.keyCode == E.keys.ENTER && this.focusedIndex != -1) {
+          this.$items.filter(".focused").trigger("click");
+          e.preventDefault();
+        } else {
+          if (e.keyCode == E.keys.ARROW_DOWN && this.focusedIndex != this.$items.length - 1) {
+            this.focusedIndex += 1;
+            this.focusItem(this.focusedIndex);
+            e.preventDefault();
+          } else if (e.keyCode == E.keys.ARROW_UP && this.focusedIndex > 0) {
+            this.focusedIndex -= 1;
+            this.focusItem(this.focusedIndex);
+            e.preventDefault();
+          }
+        }
+      }
+    }
+
+    _setupEventHandlers() {
+      this.$trigger.on("click ", this._handleDropdownTriggerClick.bind(this));
+      this.$el.on("click", this._handleDropdownItemClick.bind(this));
+      window.addEventListener("scroll", this.listeners[0] = this.positionDropdown.bind(this));
+      document.addEventListener("click", this.listeners[1] = this._handleDocumentClick.bind(this));
+      document.removeEventListener("touchstart", this.listeners[2] = this._handleDocumentClick.bind(this), {
+        passive: true
+      });
+      window.addEventListener("keydown", this.listeners[3] = this._handleDropdownKeyPress.bind(this));
+    }
+
+    _removeEventHandlers() {
+      this.$trigger.off("click");
+      this.$el.off("click");
+      window.removeEventListener("scroll", this.listeners[0]);
+      document.removeEventListener("click", this.listeners[1]);
+      document.removeEventListener("touchstart", this.listeners[2]);
+      window.removeEventListener("keydown", this.listeners[3]);
+    }
+
+    focusItem(index = 0) {
+      this.$el.children(".dropdown-item.focused").removeClass("focused");
+      let $focused = this.$el.children(".dropdown-item").eq(index);
+      $focused.addClass("focused");
+      $focused[0].scrollIntoView();
+    }
+
+    open() {
+      this._handleDropdownOpen();
+    }
+
+    close() {
+      this._handleDropdownClose();
+    }
+
+    destroy() {
+      this._removeEventHandlers();
+    }
+
+  }
+
+  const VERSION$3 = "0.0.1";
+  const DEFAULTS$3 = {
+    position: "top",
+    clickTrigger: false,
+    offset: 10,
+    animInDuration: 200,
+    animOutDuration: 300
+  };
+  const REGISTRY$1 = {
+    animInEasing: "easeInQuad",
+    animOutEasing: "easeOutCubic"
+  };
+  class Tooltip {
+    /**
+    * @param {Element} el
+    * @param {Object} options
+    */
+    constructor(el, options) {
+      this.settings = { ...DEFAULTS$3,
+        ...options
+      };
+      this.el = el;
+      this.$el = cash(this.el);
+      this.listeners = [];
+      this.position = this.$el.data("position") || this.settings.position;
+      this.isOpen = false;
+
+      this._init();
+    }
+
+    static get version() {
+      return VERSION$3;
+    }
+
+    static get defaults() {
+      return DEFAULTS$3;
+    }
+
+    _init() {
+      this.$tooltip = cash("<div class=\"empyreal-tooltip\" />");
+      this.tooltip = this.$tooltip[0];
+      let tooltipContent = this.$el.data("tooltip");
+      this.$tooltip.html(tooltipContent);
+      cash("body").append(this.$tooltip);
+
+      this._setupEventHandlers();
+    }
+
+    _positionTooltip() {
+      // Trigger position is tp
+      let tp = this.$el.size(); // Tooltip position is toolp
+
+      let toolp = this.$tooltip.size();
+
+      if (this.position == "left") {
+        this.tooltip.style.top = tp.top + tp.height / 2 - toolp.height / 2 + "px";
+        this.tooltip.style.left = tp.left - toolp.width + "px";
+      } else if (this.position == "right") {
+        this.tooltip.style.top = tp.top + tp.height / 2 - toolp.height / 2 + "px";
+        this.tooltip.style.left = tp.left + tp.width + "px";
+      } else if (this.position == "bottom") {
+        this.tooltip.style.top = tp.top + tp.height + "px";
+        this.tooltip.style.left = tp.left + tp.width / 2 - toolp.width / 2 + "px";
+      } else {
+        this.tooltip.style.top = tp.top - toolp.height + "px";
+        this.tooltip.style.left = tp.left + tp.width / 2 - toolp.width / 2 + "px";
+      }
+    }
+
+    _handleTooltipOpen() {
+      this.isOpen = true;
+
+      this._positionTooltip();
+
+      let translate = {
+        translateY: [0, -this.settings.offset]
+      };
+      if (this.position == "left") translate = {
+        translateX: [0, -this.settings.offset]
+      };else if (this.position == "right") translate = {
+        translateX: [0, this.settings.offset]
+      };else if (this.position == "bottom") translate = {
+        translateY: [0, this.settings.offset]
+      };
+      anime_1({
+        targets: this.tooltip,
+        duration: this.settings.animInDuration,
+        opacity: [0, 1],
+        easing: REGISTRY$1.animInEasing,
+        ...translate
+      });
+    }
+
+    _handleTooltipClose() {
+      this.isOpen = false;
+      anime_1({
+        targets: this.tooltip,
+        duration: this.settings.animOutDuration,
+        opacity: [1, 0],
+        easing: REGISTRY$1.animOutEasing,
+        translateY: 0,
+        translateX: 0
+      });
+    }
+
+    _handleTriggerClick() {
+      if (this.isOpen) this._handleTooltipClose();else this._handleTooltipOpen();
+    }
+
+    _setupEventHandlers() {
+      if (this.settings.clickTrigger) {
+        this.$el.on("click", this._handleTriggerClick.bind(this));
+      } else {
+        this.$el.on("mouseenter", this._handleTooltipOpen.bind(this));
+        this.$el.on("mouseleave", this._handleTooltipClose.bind(this));
+      }
+    }
+
+    _removeEventHandlers() {
+      if (this.settings.clickTrigger) {
+        this.$el.off("click");
+      } else {
+        this.$el.off("mouseenter");
+        this.$el.off("mouseleave");
+      }
+    }
+
+    open() {
+      this._handleTooltipOpen();
+    }
+
+    destroy() {
+      this._removeEventHandlers();
+    }
+
+  }
+
+  const VERSION$4 = "0.0.1";
+  const DEFAULTS$4 = {
+    width: "300px",
+    overlayColor: "rgba(0, 0, 0, 0.5)",
+    animInDuration: 500,
+    animOutDuration: 500
+  };
+  const REGISTRY$2 = {
+    easingSlideIn: "easeOutQuad",
+    easingSlideOut: "easeOutQuad"
+  };
+  class Sidenav extends EmpyrealComponent {
+    /**
+     * @param {Element} el
+     * @param {Object} options
+     */
+    constructor(el, options) {
+      super(el);
+      this.settings = { ...DEFAULTS$4,
+        ...options
+      };
+      this.$el = cash(this.el);
+      this.id = this.$el.attr("id");
+      this.trigger = E.getTrigger({
+        a: {
+          class: "sidenav-trigger",
+          optional: {
+            href: `#${this.id}`,
+            "data-target": `#${this.id}`
+          }
+        },
+        button: {
+          class: "sidenav-trigger",
+          optional: {
+            "data-target": `#${this.id}`
+          }
+        }
+      });
+      this.$trigger = cash(this.trigger);
+      this.closeTrigger = E.getTrigger({
+        a: {
+          class: "sidenav-close",
+          optional: {
+            href: `#${this.id}`,
+            "data-target": `#${this.id}`
+          }
+        },
+        button: {
+          class: "sidenav-close",
+          optional: {
+            "data-target": `#${this.id}`
+          }
+        }
+      });
+      this.$closeTrigger = cash(this.closeTrigger);
+      this.isOpen = false;
+      this.isAnimationDone = false;
+      this.listeners = [];
+      this.$overlay = cash("<div class=\"sidenav-overlay\" />");
+
+      this._init();
+    }
+
+    static get version() {
+      return VERSION$4;
+    }
+
+    static get defaults() {
+      return DEFAULTS$4;
+    }
+
+    _init() {
+      this.el.style.width = this.settings.width;
+      this.el.style.left = "-100%";
+      this.$el.after(this.$overlay);
+      this.$overlay[0].style.backgroundColor = this.settings.overlayColor;
+
+      this._setupEventHandlers();
+    }
+
+    _handleOverlayFadeIn() {
+      this.$overlay[0].style.display = "block";
+      anime_1({
+        targets: this.$overlay[0],
+        opacity: [0, 1],
+        duration: this.settings.animInDuration,
+        easing: REGISTRY$2.easingSlideIn
+      });
+    }
+
+    _handleOverlayFadeOut() {
+      anime_1({
+        targets: this.$overlay[0],
+        opacity: [1, 0],
+        duration: this.settings.animOutDuration,
+        easing: REGISTRY$2.easingSlideOut,
+        complete: () => {
+          this.$overlay[0].style.display = "none";
+        }
+      });
+    }
+
+    _handleSidenavOpen() {
+      this.el.style.display = "block";
+      anime_1({
+        targets: this.el,
+        left: ["-100%", 0],
+        duration: this.settings.animInDuration,
+        easing: REGISTRY$2.easingSlideIn,
+        begin: () => {
+          this.isOpen = true;
+          this.isAnimationDone = false;
+        },
+        complete: () => {
+          this.isAnimationDone = true;
+        }
+      });
+
+      this._handleOverlayFadeIn();
+    }
+
+    _handleSidenavClose() {
+      anime_1({
+        targets: this.el,
+        left: [0, "-100%"],
+        duration: this.settings.animInDuration,
+        easing: REGISTRY$2.easingSlideOut,
+        begin: () => {
+          this.isOpen = false;
+          this.isAnimationDone = false;
+        },
+        complete: () => {
+          this.isAnimationDone = true;
+          this.el.style.display = "none";
+        }
+      });
+
+      this._handleOverlayFadeOut();
+    }
+
+    _handleKeydown(e) {
+      if (e.keyCode == E.keys.ESC && this.isOpen) this._handleSidenavClose();
+    }
+
+    _setupEventHandlers() {
+      this.$trigger.on("click touchstart", this._handleSidenavOpen.bind(this));
+      this.$overlay.on("click touchstart", this._handleSidenavClose.bind(this));
+      this.$closeTrigger.on("click touchstart", this._handleSidenavClose.bind(this));
+      document.addEventListener("keydown", this.listeners[0] = this._handleKeydown.bind(this));
+    }
+
+    _removeEventHandlers() {
+      this.$trigger.off("click touchstart");
+      this.$overlay.off("click touchstart");
+      this.$closeTrigger.off("click touchstart");
+      document.removeEventListener("keydown", this.listeners[0]);
+    }
+
+    open() {
+      this._handleSidenavOpen();
+    }
+
+    close() {
+      this._handleSidenavClose();
+    }
+
+    destroy() {
+      this._removeEventHandlers();
+    }
+
+  }
+
+  const VERSION$5 = "0.0.1";
+  const DEFAULTS$5 = {
     topOffset: "10%",
     overlayColor: "rgba(0, 0, 0, 0.5)",
     blur: false,
@@ -4381,1307 +4981,248 @@
     onCloseStart: null,
     onCloseEnd: null
   };
-  var REGISTRY = {
+  const REGISTRY$3 = {
     animInEasing: "easeOutQuad",
     animOutEasng: "easeOutQuart",
     modalDialogSlideOffset: 50,
     modalDialogSlideInEasing: "easeInOutQuad",
     modalDialogSlideOutEasing: "easeOutSine"
   };
-
-  var Modal = /*#__PURE__*/function (_EmpyrealComponent) {
-    _inherits(Modal, _EmpyrealComponent);
-
-    var _super = _createSuper(Modal);
-
-    function Modal(el, options) {
-      var _this;
-
-      _classCallCheck(this, Modal);
-
-      _this = _super.call(this, el, options);
-      _this.settings = { ...DEFAULTS,
-        ...options
-      };
-      _this.$el = cash(_this.el);
-      _this.$dialog = _this.$el.find(".modal-dialog");
-      _this.dialog = _this.$dialog[0];
-      _this.id = _this.$el.attr("id");
-      _this.trigger = E.getTrigger({
-        a: {
-          class: "modal-trigger",
-          optional: {
-            href: "#".concat(_this.id),
-            "data-target": "#".concat(_this.id)
-          }
-        },
-        button: {
-          class: "modal-trigger",
-          optional: {
-            "data-target": "#".concat(_this.id)
-          }
-        }
-      });
-      _this.$trigger = cash(_this.trigger);
-      _this.isOpen = false;
-      _this.isAnimationDone = true;
-      _this.$closeModalBtn = _this.$dialog.find(".modal-close");
-      _this.isModalSheet = _this.$dialog.hasClass("modal-sheet") ? true : false;
-      _this.isModalSide = _this.$dialog.hasClass("modal-side") ? true : false;
-      _this.listeners = [];
-
-      _this._init();
-
-      return _this;
-    }
-
-    _createClass(Modal, [{
-      key: "_init",
-      value: function _init() {
-        this.$el.css({
-          "backgroundColor": this.settings.overlayColor
-        });
-        if (!(this.isModalSide || this.isModalSheet)) this.dialog.style.top = this.settings.topOffset;
-
-        this._setupEventHandlers();
-      }
-    }, {
-      key: "_handleModalOpen",
-      value: function _handleModalOpen(e) {
-        window.history.pushState(null, null, window.location.href);
-        if (this.settings.blur) cash(document.body).children().not(".modal").addClass("blurred");
-        anime_1({
-          targets: this.el,
-          opacity: 1,
-          easing: REGISTRY.animInEasing,
-          duration: this.settings.animInDuration,
-          begin: () => {
-            this.isAnimationDone = false;
-            this.isOpen = true;
-            this.el.style.display = "block";
-
-            if (typeof this.settings.onOpenStart === "function") {
-              this.settings.onOpenStart.call(this, this.el, e.target);
-            }
-          },
-          complete: () => {
-            this.isAnimationDone = true;
-
-            if (typeof this.settings.onOpenEnd === "function") {
-              this.settings.onOpenEnd.call(this, this.el, e.target);
-            }
-          }
-        });
-
-        if (!this.isModalSheet && !this.isModalSide) {
-          // Modal dialog slide in down
-          anime_1({
-            targets: this.dialog,
-            translateY: [-REGISTRY.modalDialogSlideOffset, 0],
-            easing: REGISTRY.modalDialogSlideOutEasing,
-            duration: this.settings.animInDuration
-          });
-        }
-
-        if (!this.settings.windowScroll) document.body.style.overflow = "hidden";
-      }
-    }, {
-      key: "_handleModalClose",
-      value: function _handleModalClose(e) {
-        if (this.settings.blur) cash(document.body).children().not(".modal").removeClass("blurred");
-        anime_1({
-          targets: this.el,
-          opacity: 0,
-          easing: REGISTRY.animOutEasng,
-          duration: this.settings.animOutDuration,
-          begin: () => {
-            this.isAnimationDone = false;
-            this.isOpen = false;
-
-            if (typeof this.settings.onCloseStart === "function") {
-              this.settings.onCloseStart.call(this, this.el, e.target);
-            }
-          },
-          complete: () => {
-            this.isAnimationDone = true;
-            this.el.style.display = "none";
-
-            if (typeof this.settings.onCloseEnd === "function") {
-              this.settings.onCloseEnd.call(this, this.el, e.target);
-            }
-          }
-        });
-
-        if (!this.isModalSide && !this.isModalSheet) {
-          // Modal dialog slide out up
-          anime_1({
-            targets: this.dialog,
-            translateY: [0, -REGISTRY.modalDialogSlideOffset],
-            easing: REGISTRY.modalDialogSlideOutEasing,
-            duration: this.settings.animInDuration
-          });
-        }
-
-        if (!this.settings.windowScroll) document.body.style.overflow = "auto";
-      }
-    }, {
-      key: "_handleOverlayClick",
-      value: function _handleOverlayClick(e) {
-        if (!cash(e.target).closest(".modal-dialog").length && this.isAnimationDone && this.isOpen && this.settings.dismissable) this._handleModalClose();
-      }
-    }, {
-      key: "_handleKeyDown",
-      value: function _handleKeyDown(e) {
-        if (e.keyCode == E.keys.ESC) this._handleModalClose();
-      }
-    }, {
-      key: "_setupEventHandlers",
-      value: function _setupEventHandlers() {
-        this.$trigger.on("click", this._handleModalOpen.bind(this));
-        this.$closeModalBtn.on("click", this._handleModalClose.bind(this));
-        document.addEventListener("click", this.listeners[0] = this._handleOverlayClick.bind(this));
-        document.addEventListener("touchstart", this.listeners[1] = this._handleOverlayClick.bind(this), {
-          passive: true
-        });
-        document.addEventListener("keydown", this.listeners[2] = this._handleKeyDown.bind(this));
-      }
-    }, {
-      key: "_removeEventHandlers",
-      value: function _removeEventHandlers() {
-        this.$trigger.off("click");
-        this.$closeModalBtn.off("click");
-        document.removeEventListener("click", this.listeners[0]);
-        document.removeEventListener("touchstart", this.listeners[1]);
-        document.removeEventListener("keydown", this.listeners[2]);
-      }
-    }, {
-      key: "open",
-      value: function open() {
-        this._handleModalOpen();
-      }
-    }, {
-      key: "close",
-      value: function close() {
-        this._handleModalClose();
-      }
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        this._removeEventHandlers();
-      }
-    }], [{
-      key: "version",
-      get: function () {
-        return VERSION;
-      }
-    }, {
-      key: "defaults",
-      get: function () {
-        return DEFAULTS;
-      }
-    }]);
-
-    return Modal;
-  }(EmpyrealComponent);
-
-  var VERSION$1 = "0.0.1";
-  var DEFAULTS$1 = {
-    animDuration: 500,
-    activeTabClass: "",
-    tabIndicatorClass: "",
-    onTabOpen: null
-  };
-
-  var Tabs = /*#__PURE__*/function (_EmpyrealComponent) {
-    _inherits(Tabs, _EmpyrealComponent);
-
-    var _super = _createSuper(Tabs);
-
-    /**
-     * @param {Element} el
-     * @param {Object} options
-     */
-    function Tabs(el, options) {
-      var _this;
-
-      _classCallCheck(this, Tabs);
-
-      _this = _super.call(this, el);
-      _this.settings = { ...DEFAULTS$1,
-        ...options
-      };
-      _this.$el = cash(_this.el);
-      _this.$tabs = _this.$el.find(".tab");
-      _this.$tabContents = _this.$tabs.map(function (i, val) {
-        var id = val.getAttribute("data-target") || val.getAttribute("href");
-        return document.querySelector("div".concat(id));
-      });
-      _this.$tabIndicator = cash("<div class='tab-indicator' />");
-
-      _this.$el.append(_this.$tabIndicator);
-
-      _this.listeners = [];
-
-      _this._init();
-
-      return _this;
-    }
-
-    _createClass(Tabs, [{
-      key: "_init",
-      value: function _init() {
-        this._setupEventHandlers();
-
-        this.$tabIndicator.addClass(this.settings.tabIndicatorClass);
-        if (this.$tabs.filter(".active").length) this._handleTabOpen(this.$tabs.filter(".active")[0]);else this._handleTabOpen(this.$tabs.first());
-      }
-    }, {
-      key: "_handleTabOpen",
-      value: function _handleTabOpen(elem) {
-        var $activeTab = cash(elem);
-        var id = $activeTab.attr("data-target") || $activeTab.attr("href");
-        var $previousActiveTabContent = this.$tabContents.filter(".active");
-        var $activeTabContent = this.$tabContents.filter(id); // Tab active color
-
-        this.$tabs.removeClass("active");
-        this.$tabs.removeClass(this.settings.activeTabClass);
-        $activeTab.addClass("active");
-        $activeTab.addClass(this.settings.activeTabClass); // Hiding and showing tab content
-
-        $previousActiveTabContent.removeClass("active");
-        $activeTabContent.addClass("active"); // Moving Tab Indicator
-
-        this.resizeIndicator();
-      }
-    }, {
-      key: "_handleTabClick",
-      value: function _handleTabClick(e) {
-        e.preventDefault();
-
-        if (typeof this.settings.onTabOpen === "function") {
-          this.settings.onTabOpen.call(this, e, this.$el);
-        }
-
-        this._handleTabOpen(e.target);
-      }
-    }, {
-      key: "resizeIndicator",
-      value: function resizeIndicator() {
-        var $active = this.$tabs.filter(".active");
-        var tabSize = $active.size();
-        this.$tabIndicator.css({
-          top: tabSize.height - 2 + "px",
-          left: tabSize.left - this.$el.size().left + "px",
-          width: $active.outerWidth(true) + "px"
-        });
-      }
-    }, {
-      key: "_setupEventHandlers",
-      value: function _setupEventHandlers() {
-        this.$tabs.on("click", this._handleTabClick.bind(this));
-        window.addEventListener("resize", this.listeners[0] = this.resizeIndicator.bind(this));
-      }
-    }, {
-      key: "_removeEventHandlers",
-      value: function _removeEventHandlers() {
-        this.$tabs.off("click");
-        window.removeEventListener("resize", this.listeners[0]);
-      }
-    }, {
-      key: "toggleTab",
-      value: function toggleTab(selector) {
-        this._handleTabOpen(this.$tabs.filter(selector)[0]);
-      }
-    }, {
-      key: "toggleTabUsingIndex",
-      value: function toggleTabUsingIndex(index) {
-        this._handleTabOpen(this.$tabs.filter(".tab:nth-child(".concat(index, ")"))[0]);
-      }
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        this._removeEventHandlers();
-      }
-    }], [{
-      key: "version",
-      get: function () {
-        return VERSION$1;
-      }
-    }, {
-      key: "defaults",
-      get: function () {
-        return DEFAULTS$1;
-      }
-    }]);
-
-    return Tabs;
-  }(EmpyrealComponent);
-
-  var VERSION$2 = "0.0.1";
-  var DEFAULTS$2 = {
-    coverTrigger: false,
-    isRelative: false,
-    animInDuration: 500,
-    animOutDuration: 500,
-    onOpenStart: null,
-    onOpenEnd: null,
-    onCloseStart: null,
-    onCloseEnd: null,
-    onItemClick: null
-  };
-  var REGISTRY$1 = {
-    animInEasing: "easeOutQuad",
-    animOutEasing: "easeOutQuint"
-  };
-
-  var Dropdown = /*#__PURE__*/function (_EmpyrealComponent) {
-    _inherits(Dropdown, _EmpyrealComponent);
-
-    var _super = _createSuper(Dropdown);
-
-    /**
-     * @param {Element} el
-     * @param {Object} options
-     */
-    function Dropdown(el, options) {
-      var _this;
-
-      _classCallCheck(this, Dropdown);
-
-      _this = _super.call(this, el);
-      _this.settings = { ...DEFAULTS$2,
-        ...options
-      };
-      _this.$el = cash(_this.el);
-      _this.$items = _this.$el.children(".dropdown-item");
-      _this.focusedIndex = -1;
-      _this.id = _this.$el.attr("id");
-      _this.trigger = E.getTrigger({
-        a: {
-          class: "dropdown-trigger",
-          optional: {
-            href: "#".concat(_this.id),
-            "data-target": "#".concat(_this.id)
-          }
-        },
-        button: {
-          class: "dropdown-trigger",
-          optional: {
-            "data-target": "#".concat(_this.id)
-          }
-        }
-      });
-      _this.$trigger = cash(_this.trigger);
-      _this.initialDropdownDimensions = {
-        width: 0,
-        height: 0
-      };
-      _this.isOpen = false;
-      _this.isAnimationDone = true;
-      _this.listeners = [];
-
-      _this._init();
-
-      return _this;
-    }
-
-    _createClass(Dropdown, [{
-      key: "_init",
-      value: function _init() {
-        this.calculateDropdownDimensions();
-
-        this._setupEventHandlers();
-      }
-    }, {
-      key: "calculateDropdownDimensions",
-      value: function calculateDropdownDimensions() {
-        this.$el.css("display", "block");
-        this.initialDropdownDimensions = {
-          width: this.$el.outerWidth(),
-          height: this.$el.outerHeight()
-        };
-        if (!this.isOpen) this.$el.css("display", "none");
-      }
-    }, {
-      key: "positionDropdown",
-      value: function positionDropdown() {
-        if (this.isOpen) {
-          var triggerDimensions = this.$trigger.size();
-          var dropdownDimensions = this.initialDropdownDimensions;
-          this.el.style.left = triggerDimensions.left + "px";
-          var dropdownTop = window.scrollY + triggerDimensions.top;
-          if (this.settings.isRelative) dropdownTop = 0;
-
-          if (triggerDimensions.top + dropdownDimensions.height <= window.innerHeight) {
-            // Dropdown positioned on bottom of trigger
-            dropdownTop += triggerDimensions.height + 10;
-            dropdownTop -= this.settings.coverTrigger ? triggerDimensions.height + 10 : 0;
-          } else {
-            // Dropdown positioned on top of trigger
-            dropdownTop -= dropdownDimensions.height + 10;
-            dropdownTop += this.settings.coverTrigger ? triggerDimensions.height + 10 : 0;
-          }
-
-          this.el.style.top = dropdownTop + "px";
-        }
-      }
-    }, {
-      key: "_handleDropdownOpen",
-      value: function _handleDropdownOpen(e = "none") {
-        this.focusedIndex = -1;
-        this.isOpen = true;
-        this.isAnimationDone = false;
-        this.$el.css("display", "block");
-        this.positionDropdown();
-        anime_1({
-          targets: this.el,
-          opacity: [0, 1],
-          duration: this.settings.animInDuration,
-          easing: REGISTRY$1.animInEasing,
-          begin: () => {
-            if (typeof this.settings.onOpenStart === "function") {
-              this.settings.onOpenStart.call(this, this.el, e.target);
-            }
-          },
-          complete: () => {
-            this.isAnimationDone = true;
-
-            if (typeof this.settings.onOpenEnd === "function") {
-              this.settings.onOpenEnd.call(this, this.el, e.target);
-            }
-          }
-        });
-      }
-    }, {
-      key: "_handleDropdownClose",
-      value: function _handleDropdownClose(e = "none") {
-        this.isOpen = false;
-        this.isAnimationDone = false;
-        anime_1({
-          targets: this.el,
-          opacity: [1, 0],
-          duration: this.settings.animOutDuration,
-          easing: REGISTRY$1.animOutEasing,
-          begin: () => {
-            if (typeof this.settings.onCloseStart === "function") {
-              this.settings.onCloseStart.call(this, this.el, e.target);
-            }
-          },
-          complete: () => {
-            this.isAnimationDone = true;
-            this.$el.css("display", "none");
-
-            if (typeof this.settings.onCloseEnd === "function") {
-              this.settings.onCloseEnd.call(this, this.el, e.target);
-            }
-          }
-        });
-      }
-    }, {
-      key: "_handleDocumentClick",
-      value: function _handleDocumentClick(e) {
-        var $elemClicked = cash(e.target);
-
-        if (!$elemClicked.closest(this.el).length && this.isOpen && this.isAnimationDone && !$elemClicked.hasClass("dropdown-trigger")) {
-          this._handleDropdownClose();
-        }
-      }
-    }, {
-      key: "_handleDropdownTriggerClick",
-      value: function _handleDropdownTriggerClick(e) {
-        e.preventDefault();
-        if (this.isOpen) this._handleDropdownClose(e);else this._handleDropdownOpen(e);
-      }
-    }, {
-      key: "_handleDropdownItemClick",
-      value: function _handleDropdownItemClick(e) {
-        this.$items.removeClass("focused");
-        this.focusedIndex = -1;
-
-        if (typeof this.settings.onItemClick === "function") {
-          this.settings.onItemClick.call(this, this.el, e.target);
-        }
-      }
-    }, {
-      key: "_handleDropdownKeyPress",
-      value: function _handleDropdownKeyPress(e) {
-        if (this.isOpen) {
-          if (e.keyCode == E.keys.TAB) {
-            this._handleDropdownClose();
-
-            e.preventDefault();
-          } else if (e.keyCode == E.keys.ENTER && this.focusedIndex != -1) {
-            this.$items.filter(".focused").trigger("click");
-            e.preventDefault();
-          } else {
-            if (e.keyCode == E.keys.ARROW_DOWN && this.focusedIndex != this.$items.length - 1) {
-              this.focusedIndex += 1;
-              this.focusItem(this.focusedIndex);
-              e.preventDefault();
-            } else if (e.keyCode == E.keys.ARROW_UP && this.focusedIndex > 0) {
-              this.focusedIndex -= 1;
-              this.focusItem(this.focusedIndex);
-              e.preventDefault();
-            }
-          }
-        }
-      }
-    }, {
-      key: "_setupEventHandlers",
-      value: function _setupEventHandlers() {
-        this.$trigger.on("click ", this._handleDropdownTriggerClick.bind(this));
-        this.$el.on("click", this._handleDropdownItemClick.bind(this));
-        window.addEventListener("scroll", this.listeners[0] = this.positionDropdown.bind(this));
-        document.addEventListener("click", this.listeners[1] = this._handleDocumentClick.bind(this));
-        document.removeEventListener("touchstart", this.listeners[2] = this._handleDocumentClick.bind(this), {
-          passive: true
-        });
-        window.addEventListener("keydown", this.listeners[3] = this._handleDropdownKeyPress.bind(this));
-      }
-    }, {
-      key: "_removeEventHandlers",
-      value: function _removeEventHandlers() {
-        this.$trigger.off("click");
-        this.$el.off("click");
-        window.removeEventListener("scroll", this.listeners[0]);
-        document.removeEventListener("click", this.listeners[1]);
-        document.removeEventListener("touchstart", this.listeners[2]);
-        window.removeEventListener("keydown", this.listeners[3]);
-      }
-    }, {
-      key: "focusItem",
-      value: function focusItem(index = 0) {
-        this.$el.children(".dropdown-item.focused").removeClass("focused");
-        var $focused = this.$el.children(".dropdown-item").eq(index);
-        $focused.addClass("focused");
-        $focused[0].scrollIntoView();
-      }
-    }, {
-      key: "open",
-      value: function open() {
-        this._handleDropdownOpen();
-      }
-    }, {
-      key: "close",
-      value: function close() {
-        this._handleDropdownClose();
-      }
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        this._removeEventHandlers();
-      }
-    }], [{
-      key: "version",
-      get: function () {
-        return VERSION$2;
-      }
-    }, {
-      key: "defaults",
-      get: function () {
-        return DEFAULTS$2;
-      }
-    }]);
-
-    return Dropdown;
-  }(EmpyrealComponent);
-
-  var VERSION$3 = "0.0.1";
-  var DEFAULTS$3 = {
-    width: "300px",
-    overlayColor: "rgba(0, 0, 0, 0.5)",
-    animInDuration: 500,
-    animOutDuration: 500
-  };
-  var REGISTRY$2 = {
-    easingSlideIn: "easeOutQuad",
-    easingSlideOut: "easeOutQuad"
-  };
-
-  var Sidenav = /*#__PURE__*/function (_EmpyrealComponent) {
-    _inherits(Sidenav, _EmpyrealComponent);
-
-    var _super = _createSuper(Sidenav);
-
-    /**
-     * @param {Element} el
-     * @param {Object} options
-     */
-    function Sidenav(el, options) {
-      var _this;
-
-      _classCallCheck(this, Sidenav);
-
-      _this = _super.call(this, el);
-      _this.settings = { ...DEFAULTS$3,
-        ...options
-      };
-      _this.$el = cash(_this.el);
-      _this.id = _this.$el.attr("id");
-      _this.trigger = E.getTrigger({
-        a: {
-          class: "sidenav-trigger",
-          optional: {
-            href: "#".concat(_this.id),
-            "data-target": "#".concat(_this.id)
-          }
-        },
-        button: {
-          class: "sidenav-trigger",
-          optional: {
-            "data-target": "#".concat(_this.id)
-          }
-        }
-      });
-      _this.$trigger = cash(_this.trigger);
-      _this.closeTrigger = E.getTrigger({
-        a: {
-          class: "sidenav-close",
-          optional: {
-            href: "#".concat(_this.id),
-            "data-target": "#".concat(_this.id)
-          }
-        },
-        button: {
-          class: "sidenav-close",
-          optional: {
-            "data-target": "#".concat(_this.id)
-          }
-        }
-      });
-      _this.$closeTrigger = cash(_this.closeTrigger);
-      _this.isOpen = false;
-      _this.isAnimationDone = false;
-      _this.listeners = [];
-      _this.$overlay = cash("<div class=\"sidenav-overlay\" />");
-
-      _this._init();
-
-      return _this;
-    }
-
-    _createClass(Sidenav, [{
-      key: "_init",
-      value: function _init() {
-        this.el.style.width = this.settings.width;
-        this.el.style.left = "-100%";
-        this.$el.after(this.$overlay);
-        this.$overlay[0].style.backgroundColor = this.settings.overlayColor;
-
-        this._setupEventHandlers();
-      }
-    }, {
-      key: "_handleOverlayFadeIn",
-      value: function _handleOverlayFadeIn() {
-        this.$overlay[0].style.display = "block";
-        anime_1({
-          targets: this.$overlay[0],
-          opacity: [0, 1],
-          duration: this.settings.animInDuration,
-          easing: REGISTRY$2.easingSlideIn
-        });
-      }
-    }, {
-      key: "_handleOverlayFadeOut",
-      value: function _handleOverlayFadeOut() {
-        anime_1({
-          targets: this.$overlay[0],
-          opacity: [1, 0],
-          duration: this.settings.animOutDuration,
-          easing: REGISTRY$2.easingSlideOut,
-          complete: () => {
-            this.$overlay[0].style.display = "none";
-          }
-        });
-      }
-    }, {
-      key: "_handleSidenavOpen",
-      value: function _handleSidenavOpen() {
-        this.el.style.display = "block";
-        anime_1({
-          targets: this.el,
-          left: ["-100%", 0],
-          duration: this.settings.animInDuration,
-          easing: REGISTRY$2.easingSlideIn,
-          begin: () => {
-            this.isOpen = true;
-            this.isAnimationDone = false;
-          },
-          complete: () => {
-            this.isAnimationDone = true;
-          }
-        });
-
-        this._handleOverlayFadeIn();
-      }
-    }, {
-      key: "_handleSidenavClose",
-      value: function _handleSidenavClose() {
-        anime_1({
-          targets: this.el,
-          left: [0, "-100%"],
-          duration: this.settings.animInDuration,
-          easing: REGISTRY$2.easingSlideOut,
-          begin: () => {
-            this.isOpen = false;
-            this.isAnimationDone = false;
-          },
-          complete: () => {
-            this.isAnimationDone = true;
-            this.el.style.display = "none";
-          }
-        });
-
-        this._handleOverlayFadeOut();
-      }
-    }, {
-      key: "_handleKeydown",
-      value: function _handleKeydown(e) {
-        if (e.keyCode == E.keys.ESC && this.isOpen) this._handleSidenavClose();
-      }
-    }, {
-      key: "_setupEventHandlers",
-      value: function _setupEventHandlers() {
-        this.$trigger.on("click touchstart", this._handleSidenavOpen.bind(this));
-        this.$overlay.on("click touchstart", this._handleSidenavClose.bind(this));
-        this.$closeTrigger.on("click touchstart", this._handleSidenavClose.bind(this));
-        document.addEventListener("keydown", this.listeners[0] = this._handleKeydown.bind(this));
-      }
-    }, {
-      key: "_removeEventHandlers",
-      value: function _removeEventHandlers() {
-        this.$trigger.off("click touchstart");
-        this.$overlay.off("click touchstart");
-        this.$closeTrigger.off("click touchstart");
-        document.removeEventListener("keydown", this.listeners[0]);
-      }
-    }, {
-      key: "open",
-      value: function open() {
-        this._handleSidenavOpen();
-      }
-    }, {
-      key: "close",
-      value: function close() {
-        this._handleSidenavClose();
-      }
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        this._removeEventHandlers();
-      }
-    }], [{
-      key: "version",
-      get: function () {
-        return VERSION$3;
-      }
-    }, {
-      key: "defaults",
-      get: function () {
-        return DEFAULTS$3;
-      }
-    }]);
-
-    return Sidenav;
-  }(EmpyrealComponent);
-
-  var VERSION$4 = "0.0.1";
-  var DEFAULTS$4 = {
-    accordion: false,
-    animInDuration: 500,
-    animOutDuration: 500
-  };
-
-  var Collapsible = /*#__PURE__*/function (_EmpyrealComponent) {
-    _inherits(Collapsible, _EmpyrealComponent);
-
-    var _super = _createSuper(Collapsible);
-
-    /**
-     * @param {Element} el
-     * @param {Object} options
-     */
-    function Collapsible(el, options) {
-      var _this;
-
-      _classCallCheck(this, Collapsible);
-
-      _this = _super.call(this, el);
-      _this.settings = { ...DEFAULTS$4,
-        ...options
-      };
-      _this.$el = cash(_this.el);
-      _this.$headers = _this.$el.find(".collapsible-header");
-      _this.$bodies = _this.$el.find(".collapsible-body");
-      _this.listeners = [];
-
-      _this._init();
-
-      return _this;
-    }
-
-    _createClass(Collapsible, [{
-      key: "_init",
-      value: function _init() {
-        this._setupEventHandlers();
-      }
-    }, {
-      key: "_handleHeaderOpen",
-      value: function _handleHeaderOpen(elem) {
-        var $activeHeader = cash(elem);
-        var $parent = $activeHeader.parent();
-        var $activeBody = $activeHeader.siblings(".collapsible-body");
-        anime_1.remove($activeBody[0]);
-        $activeBody.css({
-          display: "block",
-          overflow: "hidden",
-          height: 0,
-          paddingTop: "",
-          paddingBottom: ""
-        });
-        var paddTop = $activeBody.css("padding-top");
-        var paddBottom = $activeBody.css("padding-bottom");
-        var finalHeight = $activeBody[0].scrollHeight;
-        $activeBody.css({
-          paddingTop: 0,
-          paddingBottom: 0
-        });
-        anime_1({
-          targets: $activeBody[0],
-          height: finalHeight,
-          paddingTop: paddTop,
-          paddingBottom: paddBottom,
-          duration: this.settings.animInDuration,
-          easing: "easeInOutCubic",
-          complete: () => {
-            $activeBody.css({
-              overflow: "",
-              paddingTop: "",
-              paddingBottom: "",
-              height: ""
-            });
-          }
-        });
-        $parent.addClass("active");
-      }
-    }, {
-      key: "_handleHeaderClose",
-      value: function _handleHeaderClose(elem) {
-        var $activeHeader = cash(elem);
-        var $parent = $activeHeader.parent();
-        var $activeBody = $activeHeader.siblings(".collapsible-body");
-        anime_1.remove($activeBody[0]);
-        $activeBody.css("overflow", "hidden");
-        anime_1({
-          targets: $activeBody[0],
-          height: 0,
-          paddingTop: 0,
-          paddingBottom: 0,
-          duration: this.settings.animOutDuration,
-          easing: "easeInOutCubic",
-          complete: () => {
-            $activeBody.css({
-              height: "",
-              overflow: "",
-              padding: "",
-              display: ""
-            });
-          }
-        });
-        $parent.removeClass("active");
-      }
-    }, {
-      key: "_handleHeaderClick",
-      value: function _handleHeaderClick(e) {
-        var $parent = cash(e.target).parent();
-
-        if ($parent.hasClass("active")) {
-          this._handleHeaderClose(e.target);
-        } else {
-          this._handleHeaderOpen(e.target);
-        }
-
-        if (this.settings.accordion) {
-          var _iterator = _createForOfIteratorHelper($parent.filter(".active").siblings()),
-              _step;
-
-          try {
-            for (_iterator.s(); !(_step = _iterator.n()).done;) {
-              var i = _step.value;
-
-              this._handleHeaderClose(cash(i).find(".collapsible-header")[0]);
-            }
-          } catch (err) {
-            _iterator.e(err);
-          } finally {
-            _iterator.f();
-          }
-        }
-      }
-    }, {
-      key: "_setupEventHandlers",
-      value: function _setupEventHandlers() {
-        this.$headers.on("click", this._handleHeaderClick.bind(this));
-      }
-    }, {
-      key: "_removeEventHandlers",
-      value: function _removeEventHandlers() {} // Functions used by the dev
-
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        this._removeEventHandlers();
-      }
-    }], [{
-      key: "version",
-      get: function () {
-        return VERSION$4;
-      }
-    }, {
-      key: "defaults",
-      get: function () {
-        return DEFAULTS$4;
-      }
-    }]);
-
-    return Collapsible;
-  }(EmpyrealComponent);
-
-  var VERSION$5 = "0.0.1";
-  var DEFAULTS$5 = {
-    position: "top",
-    clickTrigger: false,
-    offset: 10,
-    animInDuration: 200,
-    animOutDuration: 300
-  };
-  var REGISTRY$3 = {
-    animInEasing: "easeInQuad",
-    animOutEasing: "easeOutCubic"
-  };
-
-  var Tooltip = /*#__PURE__*/function () {
-    /**
-    * @param {Element} el
-    * @param {Object} options
-    */
-    function Tooltip(el, options) {
-      _classCallCheck(this, Tooltip);
-
+  class Modal extends EmpyrealComponent {
+    constructor(el, options) {
+      super(el, options);
       this.settings = { ...DEFAULTS$5,
         ...options
       };
-      this.el = el;
       this.$el = cash(this.el);
-      this.listeners = [];
-      this.position = this.$el.data("position") || this.settings.position;
+      this.$dialog = this.$el.find(".modal-dialog");
+      this.dialog = this.$dialog[0];
+      this.id = this.$el.attr("id");
+      this.trigger = E.getTrigger({
+        a: {
+          class: "modal-trigger",
+          optional: {
+            href: `#${this.id}`,
+            "data-target": `#${this.id}`
+          }
+        },
+        button: {
+          class: "modal-trigger",
+          optional: {
+            "data-target": `#${this.id}`
+          }
+        }
+      });
+      this.$trigger = cash(this.trigger);
       this.isOpen = false;
+      this.isAnimationDone = true;
+      this.$closeModalBtn = this.$dialog.find(".modal-close");
+      this.isModalSheet = this.$dialog.hasClass("modal-sheet") ? true : false;
+      this.isModalSide = this.$dialog.hasClass("modal-side") ? true : false;
+      this.listeners = [];
 
       this._init();
     }
 
-    _createClass(Tooltip, [{
-      key: "_init",
-      value: function _init() {
-        this.$tooltip = cash("<div class=\"empyreal-tooltip\" />");
-        this.tooltip = this.$tooltip[0];
-        var tooltipContent = this.$el.data("tooltip");
-        this.$tooltip.html(tooltipContent);
-        cash("body").append(this.$tooltip);
-
-        this._setupEventHandlers();
-      }
-    }, {
-      key: "_positionTooltip",
-      value: function _positionTooltip() {
-        // Trigger position is tp
-        var tp = this.$el.size(); // Tooltip position is toolp
-
-        var toolp = this.$tooltip.size();
-
-        if (this.position == "left") {
-          this.tooltip.style.top = tp.top + tp.height / 2 - toolp.height / 2 + "px";
-          this.tooltip.style.left = tp.left - toolp.width + "px";
-        } else if (this.position == "right") {
-          this.tooltip.style.top = tp.top + tp.height / 2 - toolp.height / 2 + "px";
-          this.tooltip.style.left = tp.left + tp.width + "px";
-        } else if (this.position == "bottom") {
-          this.tooltip.style.top = tp.top + tp.height + "px";
-          this.tooltip.style.left = tp.left + tp.width / 2 - toolp.width / 2 + "px";
-        } else {
-          this.tooltip.style.top = tp.top - toolp.height + "px";
-          this.tooltip.style.left = tp.left + tp.width / 2 - toolp.width / 2 + "px";
-        }
-      }
-    }, {
-      key: "_handleTooltipOpen",
-      value: function _handleTooltipOpen() {
-        this.isOpen = true;
-
-        this._positionTooltip();
-
-        var translate = {
-          translateY: [0, -this.settings.offset]
-        };
-        if (this.position == "left") translate = {
-          translateX: [0, -this.settings.offset]
-        };else if (this.position == "right") translate = {
-          translateX: [0, this.settings.offset]
-        };else if (this.position == "bottom") translate = {
-          translateY: [0, this.settings.offset]
-        };
-        anime_1({
-          targets: this.tooltip,
-          duration: this.settings.animInDuration,
-          opacity: [0, 1],
-          easing: REGISTRY$3.animInEasing,
-          ...translate
-        });
-      }
-    }, {
-      key: "_handleTooltipClose",
-      value: function _handleTooltipClose() {
-        this.isOpen = false;
-        anime_1({
-          targets: this.tooltip,
-          duration: this.settings.animOutDuration,
-          opacity: [1, 0],
-          easing: REGISTRY$3.animOutEasing,
-          translateY: 0,
-          translateX: 0
-        });
-      }
-    }, {
-      key: "_handleTriggerClick",
-      value: function _handleTriggerClick() {
-        if (this.isOpen) this._handleTooltipClose();else this._handleTooltipOpen();
-      }
-    }, {
-      key: "_setupEventHandlers",
-      value: function _setupEventHandlers() {
-        if (this.settings.clickTrigger) {
-          this.$el.on("click", this._handleTriggerClick.bind(this));
-        } else {
-          this.$el.on("mouseenter", this._handleTooltipOpen.bind(this));
-          this.$el.on("mouseleave", this._handleTooltipClose.bind(this));
-        }
-      }
-    }, {
-      key: "_removeEventHandlers",
-      value: function _removeEventHandlers() {
-        if (this.settings.clickTrigger) {
-          this.$el.off("click");
-        } else {
-          this.$el.off("mouseenter");
-          this.$el.off("mouseleave");
-        }
-      }
-    }, {
-      key: "open",
-      value: function open() {
-        this._handleTooltipOpen();
-      }
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        this._removeEventHandlers();
-      }
-    }], [{
-      key: "version",
-      get: function () {
-        return VERSION$5;
-      }
-    }, {
-      key: "defaults",
-      get: function () {
-        return DEFAULTS$5;
-      }
-    }]);
-
-    return Tooltip;
-  }();
-
-  var VERSION$6 = "0.0.1";
-  var DEFAULTS$6 = {
-    indicators: false
-  };
-
-  var Carousel = /*#__PURE__*/function (_EmprealComponent) {
-    _inherits(Carousel, _EmprealComponent);
-
-    var _super = _createSuper(Carousel);
-
-    /**
-     * @param {Element} el
-     * @param {Object} options
-     */
-    function Carousel(el, options) {
-      var _this;
-
-      _classCallCheck(this, Carousel);
-
-      _this = _super.call(this, el);
-      _this.settings = { ...DEFAULTS$6,
-        ...options
-      };
-      _this.$el = cash(_this.el);
-      _this.$nextBtn = _this.$el.find(".carousel-next");
-      _this.$prevBtn = _this.$el.find(".carousel-prev");
-      _this.$carouselContainer = _this.$el.find(".carousel-inner");
-      _this.$carouselItems = _this.$carouselContainer.children(".carousel-item");
-      _this.listeners = [];
-
-      _this._init();
-
-      return _this;
+    static get version() {
+      return VERSION$5;
     }
 
-    _createClass(Carousel, [{
-      key: "_init",
-      value: function _init() {
-        if (this.settings.indicators) this._setupIndicators();
+    static get defaults() {
+      return DEFAULTS$5;
+    }
 
-        this._handleCarouselItemFadeIn(0);
+    _init() {
+      this.$el.css({
+        "backgroundColor": this.settings.overlayColor
+      });
+      if (!(this.isModalSide || this.isModalSheet)) this.dialog.style.top = this.settings.topOffset;
 
-        this._setupEventHandlers();
-      }
-    }, {
-      key: "_setupIndicators",
-      value: function _setupIndicators() {
-        var indicatorContainer = cash("<ol class='carousel-indicators'></ol>");
-        this.$el.append(indicatorContainer);
+      this._setupEventHandlers();
+    }
 
-        for (var i = 0; i < this.$carouselItems.length; i++) {
-          indicatorContainer.append("<li />");
+    _handleModalOpen(e) {
+      window.history.pushState(null, null, window.location.href);
+      if (this.settings.blur) cash(document.body).children().not(".modal").addClass("blurred");
+      anime_1({
+        targets: this.el,
+        opacity: 1,
+        easing: REGISTRY$3.animInEasing,
+        duration: this.settings.animInDuration,
+        begin: () => {
+          this.isAnimationDone = false;
+          this.isOpen = true;
+          this.el.style.display = "block";
+
+          if (typeof this.settings.onOpenStart === "function") {
+            this.settings.onOpenStart.call(this, this.el, e.target);
+          }
+        },
+        complete: () => {
+          this.isAnimationDone = true;
+
+          if (typeof this.settings.onOpenEnd === "function") {
+            this.settings.onOpenEnd.call(this, this.el, e.target);
+          }
         }
+      });
 
-        this.$indicators = indicatorContainer.children("li");
-        this.$indicators.eq(0).addClass("active");
+      if (!this.isModalSheet && !this.isModalSide) {
+        // Modal dialog slide in down
+        anime_1({
+          targets: this.dialog,
+          translateY: [-REGISTRY$3.modalDialogSlideOffset, 0],
+          easing: REGISTRY$3.modalDialogSlideOutEasing,
+          duration: this.settings.animInDuration
+        });
       }
-    }, {
-      key: "_handleIndicatorClick",
-      value: function _handleIndicatorClick(e) {
-        var newIndex = this.$indicators.filter(e.target).index();
 
-        this._handleCarouselItemFadeIn(newIndex);
-      }
-    }, {
-      key: "_returnActiveCarouselItemIndex",
-      value: function _returnActiveCarouselItemIndex() {
-        var activeCarouselItem = this.$carouselItems.siblings(".active");
-        return activeCarouselItem.index();
-      }
-    }, {
-      key: "_handleCarouselItemFadeIn",
-      value: function _handleCarouselItemFadeIn(index) {
-        var activeCarouselItem = this.$carouselItems.siblings(".active");
-        activeCarouselItem.removeClass("active");
-        this.$carouselItems.eq(index).addClass("active");
+      if (!this.settings.windowScroll) document.body.style.overflow = "hidden";
+    }
 
-        if (this.settings.indicators) {
-          this.$indicators.removeClass("active");
-          this.$indicators.eq(index).addClass("active");
+    _handleModalClose(e) {
+      if (this.settings.blur) cash(document.body).children().not(".modal").removeClass("blurred");
+      anime_1({
+        targets: this.el,
+        opacity: 0,
+        easing: REGISTRY$3.animOutEasng,
+        duration: this.settings.animOutDuration,
+        begin: () => {
+          this.isAnimationDone = false;
+          this.isOpen = false;
+
+          if (typeof this.settings.onCloseStart === "function") {
+            this.settings.onCloseStart.call(this, this.el, e.target);
+          }
+        },
+        complete: () => {
+          this.isAnimationDone = true;
+          this.el.style.display = "none";
+
+          if (typeof this.settings.onCloseEnd === "function") {
+            this.settings.onCloseEnd.call(this, this.el, e.target);
+          }
         }
-      }
-    }, {
-      key: "_handleCarouselNext",
-      value: function _handleCarouselNext() {
-        var activeIndex = this._returnActiveCarouselItemIndex(); // Check if carousel item is last so loop back
+      });
 
+      if (!this.isModalSide && !this.isModalSheet) {
+        // Modal dialog slide out up
+        anime_1({
+          targets: this.dialog,
+          translateY: [0, -REGISTRY$3.modalDialogSlideOffset],
+          easing: REGISTRY$3.modalDialogSlideOutEasing,
+          duration: this.settings.animInDuration
+        });
+      }
 
-        if (activeIndex == this.$carouselItems.length - 1) this._handleCarouselItemFadeIn(0);else this._handleCarouselItemFadeIn(activeIndex + 1);
-      }
-    }, {
-      key: "_handleCarouselPrev",
-      value: function _handleCarouselPrev() {
-        var activeIndex = this._returnActiveCarouselItemIndex(); // Check if carousel item is last so loop back
+      if (!this.settings.windowScroll) document.body.style.overflow = "auto";
+    }
 
+    _handleOverlayClick(e) {
+      if (!cash(e.target).closest(".modal-dialog").length && this.isAnimationDone && this.isOpen && this.settings.dismissable) this._handleModalClose();
+    }
 
-        if (activeIndex == 0) this._handleCarouselItemFadeIn(this.$carouselItems.length - 1);else this._handleCarouselItemFadeIn(activeIndex - 1);
-      }
-    }, {
-      key: "_setupEventHandlers",
-      value: function _setupEventHandlers() {
-        this.$nextBtn.on("click", this._handleCarouselNext.bind(this));
-        this.$prevBtn.on("click", this._handleCarouselPrev.bind(this));
-        if (this.settings.indicators) this.$indicators.on("click", this._handleIndicatorClick.bind(this));
-      }
-    }, {
-      key: "_removeEventHandlers",
-      value: function _removeEventHandlers() {
-        this.$nextBtn.off("click");
-        this.$prevBtn.off("click");
-        if (this.settings.indicators) this.$indicators.off("click");
-      }
-    }, {
-      key: "open",
-      value: function open(index = 0) {
-        this._handleCarouselItemFadeIn(index);
-      }
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        this._removeEventHandlers();
-      }
-    }], [{
-      key: "version",
-      get: function () {
-        return VERSION$6;
-      }
-    }, {
-      key: "defaults",
-      get: function () {
-        return DEFAULTS$6;
-      }
-    }]);
+    _handleKeyDown(e) {
+      if (e.keyCode == E.keys.ESC) this._handleModalClose();
+    }
 
-    return Carousel;
-  }(EmpyrealComponent);
+    _setupEventHandlers() {
+      this.$trigger.on("click", this._handleModalOpen.bind(this));
+      this.$closeModalBtn.on("click", this._handleModalClose.bind(this));
+      document.addEventListener("click", this.listeners[0] = this._handleOverlayClick.bind(this));
+      document.addEventListener("touchstart", this.listeners[1] = this._handleOverlayClick.bind(this), {
+        passive: true
+      });
+      document.addEventListener("keydown", this.listeners[2] = this._handleKeyDown.bind(this));
+    }
 
-  var VERSION$7 = "0.0.1";
-  var DEFAULTS$7 = {
+    _removeEventHandlers() {
+      this.$trigger.off("click");
+      this.$closeModalBtn.off("click");
+      document.removeEventListener("click", this.listeners[0]);
+      document.removeEventListener("touchstart", this.listeners[1]);
+      document.removeEventListener("keydown", this.listeners[2]);
+    }
+
+    open() {
+      this._handleModalOpen();
+    }
+
+    close() {
+      this._handleModalClose();
+    }
+
+    destroy() {
+      this._removeEventHandlers();
+    }
+
+  }
+
+  const VERSION$6 = "0.0.1";
+  const DEFAULTS$6 = {
     offset: 0,
     stop: Infinity,
     stopperElement: ""
   };
-
-  var Pushpin = /*#__PURE__*/function (_EmpyrealComponent) {
-    _inherits(Pushpin, _EmpyrealComponent);
-
-    var _super = _createSuper(Pushpin);
-
+  class Pushpin extends EmpyrealComponent {
     /**
      * @param {Element} el
      * @param {Object} options
      */
-    function Pushpin(el, options) {
-      var _this;
-
-      _classCallCheck(this, Pushpin);
-
-      _this = _super.call(this, el);
-      _this.settings = { ...DEFAULTS$7,
+    constructor(el, options) {
+      super(el);
+      this.settings = { ...DEFAULTS$6,
         ...options
       };
-      _this.$el = cash(_this.el);
-      _this.listeners = [];
-      _this.width = 0;
-      _this.height = 0;
-      _this.stop = _this.settings.stop;
+      this.$el = cash(this.el);
+      this.listeners = [];
+      this.width = 0;
+      this.height = 0;
+      this.stop = this.settings.stop;
 
-      _this._init();
-
-      return _this;
+      this._init();
     }
 
-    _createClass(Pushpin, [{
-      key: "_init",
-      value: function _init() {
-        this._setupEventHandlers();
+    static get version() {
+      return VERSION$6;
+    }
+
+    static get defaults() {
+      return DEFAULTS$6;
+    }
+
+    _init() {
+      this._setupEventHandlers();
+    }
+
+    _calculateElementDimensions() {
+      this.$el.css({
+        position: "",
+        top: "",
+        left: "",
+        width: "",
+        height: ""
+      });
+      this.initialY = this.$el.offset().top;
+      let size = this.$el.size();
+      this.width = size.width;
+      this.height = size.height;
+
+      if (this.settings.stopperElement) {
+        let stopperSize = cash(this.settings.stopperElement).offset();
+        this.stop = stopperSize.top - this.$el.outerHeight() - 10;
       }
-    }, {
-      key: "_calculateElementDimensions",
-      value: function _calculateElementDimensions() {
+    }
+
+    _handleElementPosition() {
+      let windowY = E.getDocumentScrollTop();
+
+      if (windowY >= this.stop - this.settings.offset) {
+        this.$el.css({
+          position: "absolute",
+          top: this.stop
+        });
+      } else if (windowY < this.initialY - this.settings.offset) {
         this.$el.css({
           position: "",
           top: "",
@@ -5689,604 +5230,274 @@
           width: "",
           height: ""
         });
-        this.initialY = this.$el.offset().top;
-        var size = this.$el.size();
-        this.width = size.width;
-        this.height = size.height;
-
-        if (this.settings.stopperElement) {
-          var stopperSize = cash(this.settings.stopperElement).offset();
-          this.stop = stopperSize.top - this.$el.outerHeight() - 10;
-        }
+      } else {
+        this.$el.css({
+          position: "fixed",
+          top: this.settings.offset,
+          width: this.width,
+          height: this.height
+        });
       }
-    }, {
-      key: "_handleElementPosition",
-      value: function _handleElementPosition() {
-        var windowY = E.getDocumentScrollTop();
-
-        if (windowY >= this.stop - this.settings.offset) {
-          this.$el.css({
-            position: "absolute",
-            top: this.stop
-          });
-        } else if (windowY < this.initialY - this.settings.offset) {
-          this.$el.css({
-            position: "",
-            top: "",
-            left: "",
-            width: "",
-            height: ""
-          });
-        } else {
-          this.$el.css({
-            position: "fixed",
-            top: this.settings.offset,
-            width: this.width,
-            height: this.height
-          });
-        }
-      }
-    }, {
-      key: "_setupEventHandlers",
-      value: function _setupEventHandlers() {
-        window.addEventListener("DOMContentLoaded", this._calculateElementDimensions.bind(this));
-        window.addEventListener("scroll", this.listeners[0] = this._handleElementPosition.bind(this));
-        window.addEventListener("resize", this.listeners[1] = this._calculateElementDimensions.bind(this));
-      }
-    }, {
-      key: "_removeEventHandlers",
-      value: function _removeEventHandlers() {
-        window.removeEventListener("scroll", this.listeners[0]);
-        window.removeEventListener("resize", this.listeners[1]);
-      } // Functions used by the dev
-
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        this._removeEventHandlers();
-      }
-    }], [{
-      key: "version",
-      get: function () {
-        return VERSION$7;
-      }
-    }, {
-      key: "defaults",
-      get: function () {
-        return DEFAULTS$7;
-      }
-    }]);
-
-    return Pushpin;
-  }(EmpyrealComponent);
-
-  var VERSION$8 = "0.0.1";
-  var DEFAULTS$8 = {
-    offset: 0,
-    activeClass: "active",
-    linkNode: function (node) {
-      return node;
     }
-  }; // Do not add `extends EmpyrealComponent` here as this takes a NodeList as input instead of a single Node
 
-  var ScrollSpy = /*#__PURE__*/function () {
+    _setupEventHandlers() {
+      window.addEventListener("DOMContentLoaded", this._calculateElementDimensions.bind(this));
+      window.addEventListener("scroll", this.listeners[0] = this._handleElementPosition.bind(this));
+      window.addEventListener("resize", this.listeners[1] = this._calculateElementDimensions.bind(this));
+    }
+
+    _removeEventHandlers() {
+      window.removeEventListener("scroll", this.listeners[0]);
+      window.removeEventListener("resize", this.listeners[1]);
+    } // Functions used by the dev
+
+
+    destroy() {
+      this._removeEventHandlers();
+    }
+
+  }
+
+  const VERSION$7 = "0.0.1";
+  const DEFAULTS$7 = {
+    indicators: false
+  };
+  class Carousel extends EmpyrealComponent {
     /**
      * @param {Element} el
      * @param {Object} options
      */
-    function ScrollSpy(el, options) {
-      _classCallCheck(this, ScrollSpy);
-
-      this.settings = { ...DEFAULTS$8,
+    constructor(el, options) {
+      super(el);
+      this.settings = { ...DEFAULTS$7,
         ...options
       };
-      this.el = el;
       this.$el = cash(this.el);
-      this.activeSection;
+      this.$nextBtn = this.$el.find(".carousel-next");
+      this.$prevBtn = this.$el.find(".carousel-prev");
+      this.$carouselContainer = this.$el.find(".carousel-inner");
+      this.$carouselItems = this.$carouselContainer.children(".carousel-item");
       this.listeners = [];
 
       this._init();
     }
 
-    _createClass(ScrollSpy, [{
-      key: "_init",
-      value: function _init() {
-        this._calculateOffsets();
-
-        this._setupEventHandlers();
-      }
-    }, {
-      key: "_calculateOffsets",
-      value: function _calculateOffsets() {
-        this.sectionOffsets = {};
-
-        var _iterator = _createForOfIteratorHelper(this.$el),
-            _step;
-
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var section = _step.value;
-            this.sectionOffsets[section.id] = section.offsetTop;
-          }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
-        }
-      }
-    }, {
-      key: "_getLinkofSection",
-      value: function _getLinkofSection(id) {
-        var targetLink = E.getTrigger({
-          a: {
-            optional: {
-              href: "#" + id,
-              "data-scrollspy": "#" + id
-            }
-          },
-          button: {
-            optional: {
-              "data-scrollspy": "#" + id
-            }
-          }
-        });
-        var nodeTransformer = this.settings.linkNode.call(this, targetLink);
-        return cash(nodeTransformer);
-      }
-    }, {
-      key: "_handleWindowScroll",
-      value: function _handleWindowScroll() {
-        var windowTop = E.getDocumentScrollTop();
-        windowTop += this.settings.offset + window.innerHeight / 2;
-
-        for (var id in this.sectionOffsets) {
-          if (this.sectionOffsets[id] < windowTop) {
-            this.activeSection = document.getElementById(id);
-
-            this._getLinkofSection(id).addClass(this.settings.activeClass).siblings().removeClass(this.settings.activeClass);
-          }
-        }
-      }
-    }, {
-      key: "_setupEventHandlers",
-      value: function _setupEventHandlers() {
-        window.addEventListener("scroll", this.listeners[0] = this._handleWindowScroll.bind(this));
-        document.addEventListener("DOMContentLoaded", this._calculateOffsets.bind(this));
-      }
-    }, {
-      key: "_removeEventHandlers",
-      value: function _removeEventHandlers() {
-        window.removeEventListener("scroll", this.listeners[0]);
-      }
-    }, {
-      key: "open",
-      value: function open(id) {
-        this._getLinkofSection(id).addClass(this.settings.activeClass).siblings().removeClass(this.settings.activeClass);
-      }
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        this._removeEventHandlers();
-      }
-    }], [{
-      key: "version",
-      get: function () {
-        return VERSION$8;
-      }
-    }, {
-      key: "defaults",
-      get: function () {
-        return DEFAULTS$8;
-      }
-    }]);
-
-    return ScrollSpy;
-  }();
-
-  var VERSION$9 = "0.0.1";
-  var DEFAULTS$9 = {
-    animInDuration: 600,
-    animOutDuration: 600
-  };
-
-  var Lightbox = /*#__PURE__*/function (_EmpyrealComponent) {
-    _inherits(Lightbox, _EmpyrealComponent);
-
-    var _super = _createSuper(Lightbox);
-
-    /**
-     * @param {Element} el
-     * @param {Object} options
-     */
-    function Lightbox(el, options) {
-      var _this;
-
-      _classCallCheck(this, Lightbox);
-
-      _this = _super.call(this, el);
-      _this.settings = { ...DEFAULTS$9,
-        ...options
-      };
-      _this.$el = cash(_this.el);
-      _this.id = _this.el.id;
-
-      if (!_this.id) {
-        _this.id = E.generateUUID();
-
-        _this.$el.attr("id", _this.id);
-      }
-
-      _this.$images = _this.$el.find("img");
-      _this.numberOfImages = _this.$el.find("img").length;
-      _this.listeners = [];
-
-      _this._init();
-
-      return _this;
+    static get version() {
+      return VERSION$7;
     }
 
-    _createClass(Lightbox, [{
-      key: "_init",
-      value: function _init() {
-        this.$lightbox = cash("<div class=\"lightbox-ui\" data-lightbox=".concat(this.id, " />"));
-        this.$imageContainer = cash("<div class=\"lightbox-images\" />");
-        this.$lightboxImages = this.$images.clone();
-        this.$imageContainer.append(this.$lightboxImages);
-        this.$topbar = cash("<div class=\"top-bar\" />");
-        this.$lightboxCounter = cash("<span class=\"lightbox-counter\" />");
-        this.$lightboxClose = cash("<span class=\"lightbox-close\" />");
-        this.$lightboxFullscreen = cash("<span class=\"lightbox-fullscreen\" />");
-        this.$topbar.append(this.$lightboxCounter).append(this.$lightboxClose).append(this.$lightboxFullscreen);
-        this.$nextBtn = cash("<span class=\"right\" />");
-        this.$prevBtn = cash("<span class=\"left\" />");
-        this.$lightbox.append(this.$imageContainer).append(this.$topbar).append(this.$prevBtn).append(this.$nextBtn);
-        cash("body").append(this.$lightbox);
-
-        this._setupEventHandlers();
-      }
-    }, {
-      key: "_handleLightboxOpen",
-      value: function _handleLightboxOpen(e) {
-        this.open(this.$images.index(e.target));
-        this.$lightbox.addClass("active");
-        anime_1({
-          targets: this.$lightbox[0],
-          opacity: 1,
-          duration: this.settings.animInDuration,
-          easing: "easeOutQuad"
-        });
-      }
-    }, {
-      key: "_handleLightboxClick",
-      value: function _handleLightboxClick(e) {
-        if (cash(e.target).hasClass("lightbox-ui") || cash(e.target).hasClass("lightbox-images")) this.close();
-      }
-    }, {
-      key: "_handleFullscreenButtonClick",
-      value: function _handleFullscreenButtonClick() {
-        if (this.$lightbox.hasClass("fullscreen")) {
-          this.$lightbox.removeClass("fullscreen");
-
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-          } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-          }
-        } else {
-          this.$lightbox.addClass("fullscreen");
-
-          if (this.$lightbox[0].requestFullscreen) {
-            this.$lightbox[0].requestFullscreen();
-          } else if (this.$lightbox[0].mozRequestFullScreen) {
-            this.$lightbox[0].mozRequestFullScreen();
-          } else if (this.$lightbox[0].webkitRequestFullscreen) {
-            this.$lightbox[0].webkitRequestFullscreen();
-          } else if (this.$lightbox[0].msRequestFullscreen) {
-            this.$lightbox[0].msRequestFullscreen();
-          }
-        }
-      }
-    }, {
-      key: "_setupEventHandlers",
-      value: function _setupEventHandlers() {
-        this.$images.on("click", this._handleLightboxOpen.bind(this));
-        this.$nextBtn.on("click", this.next.bind(this));
-        this.$prevBtn.on("click", this.prev.bind(this));
-        this.$lightboxClose.on("click", this.close.bind(this));
-        this.$lightboxFullscreen.on("click", this._handleFullscreenButtonClick.bind(this));
-        document.addEventListener("click", this.listeners[0] = this._handleLightboxClick.bind(this));
-      }
-    }, {
-      key: "_removeEventHandlers",
-      value: function _removeEventHandlers() {
-        this.$images.off("click");
-        this.$nextBtn.off("click");
-        this.$prevBtn.off("click");
-        this.$lightboxClose.off("click");
-        this.$lightboxFullscreen.off("click");
-        document.removeEventListener("click", this.listeners[0]);
-      }
-    }, {
-      key: "next",
-      value: function next() {
-        var $activeImageIndex = this.$lightboxImages.filter(".active").index();
-
-        if ($activeImageIndex + 1 == this.numberOfImages) {
-          this.open(0);
-        } else {
-          this.open($activeImageIndex + 1);
-        }
-      }
-    }, {
-      key: "prev",
-      value: function prev() {
-        var $activeImageIndex = this.$lightboxImages.filter(".active").index();
-
-        if ($activeImageIndex == 0) {
-          this.open(this.numberOfImages - 1);
-        } else {
-          this.open($activeImageIndex - 1);
-        }
-      }
-    }, {
-      key: "close",
-      value: function close() {
-        if (this.$lightbox.hasClass("fullscreen")) this.$lightboxFullscreen.trigger("click");
-        anime_1({
-          targets: this.$lightbox[0],
-          opacity: 0,
-          duration: this.settings.animOutDuration,
-          easing: "easeOutCubic",
-          complete: () => {
-            this.$lightbox.removeClass("active");
-          }
-        });
-      }
-    }, {
-      key: "open",
-      value: function open(index = 0) {
-        var $activeImage = this.$lightboxImages.eq(index);
-        this.$lightboxCounter.text(index + 1 + " / " + this.numberOfImages);
-        $activeImage.addClass("active").siblings().removeClass("active");
-      }
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        this._removeEventHandlers();
-      }
-    }], [{
-      key: "version",
-      get: function () {
-        return VERSION$9;
-      }
-    }, {
-      key: "defaults",
-      get: function () {
-        return DEFAULTS$9;
-      }
-    }]);
-
-    return Lightbox;
-  }(EmpyrealComponent);
-
-  function Snackbar({
-    html = "",
-    classes = "",
-    dismiss = 5000,
-    complete = () => {}
-  }) {
-    var $snackbar = cash("<div class=\"snackbar ".concat(classes, "\" />"));
-    $snackbar.html(html);
-    cash("body").append($snackbar);
-    $snackbar.css("opacity", 1);
-    var topOffset = 15;
-    var $snackbars = cash(".snackbar");
-
-    for (var i = 0; i < $snackbars.length; i++) {
-      var $node = cash($snackbars[$snackbars.length - i - 1]);
-      var height = $node.outerHeight();
-      var offset = 15;
-      $node.css("top", topOffset + "px");
-      topOffset += height + offset;
+    static get defaults() {
+      return DEFAULTS$7;
     }
 
-    setTimeout(() => {
-      var width = $snackbar.outerWidth() + 20;
-      $snackbar.css({
-        right: "-".concat(width, "px"),
-        opacity: 0
-      });
-      complete();
-      setTimeout(() => {
-        $snackbar.remove();
-      }, 500);
-    }, dismiss);
+    _init() {
+      if (this.settings.indicators) this._setupIndicators();
+
+      this._handleCarouselItemFadeIn(0);
+
+      this._setupEventHandlers();
+    }
+
+    _setupIndicators() {
+      let indicatorContainer = cash("<ol class='carousel-indicators'></ol>");
+      this.$el.append(indicatorContainer);
+
+      for (let i = 0; i < this.$carouselItems.length; i++) indicatorContainer.append("<li />");
+
+      this.$indicators = indicatorContainer.children("li");
+      this.$indicators.eq(0).addClass("active");
+    }
+
+    _handleIndicatorClick(e) {
+      let newIndex = this.$indicators.filter(e.target).index();
+
+      this._handleCarouselItemFadeIn(newIndex);
+    }
+
+    _returnActiveCarouselItemIndex() {
+      let activeCarouselItem = this.$carouselItems.siblings(".active");
+      return activeCarouselItem.index();
+    }
+
+    _handleCarouselItemFadeIn(index) {
+      let activeCarouselItem = this.$carouselItems.siblings(".active");
+      activeCarouselItem.removeClass("active");
+      this.$carouselItems.eq(index).addClass("active");
+
+      if (this.settings.indicators) {
+        this.$indicators.removeClass("active");
+        this.$indicators.eq(index).addClass("active");
+      }
+    }
+
+    _handleCarouselNext() {
+      let activeIndex = this._returnActiveCarouselItemIndex(); // Check if carousel item is last so loop back
+
+
+      if (activeIndex == this.$carouselItems.length - 1) this._handleCarouselItemFadeIn(0);else this._handleCarouselItemFadeIn(activeIndex + 1);
+    }
+
+    _handleCarouselPrev() {
+      let activeIndex = this._returnActiveCarouselItemIndex(); // Check if carousel item is last so loop back
+
+
+      if (activeIndex == 0) this._handleCarouselItemFadeIn(this.$carouselItems.length - 1);else this._handleCarouselItemFadeIn(activeIndex - 1);
+    }
+
+    _setupEventHandlers() {
+      this.$nextBtn.on("click", this._handleCarouselNext.bind(this));
+      this.$prevBtn.on("click", this._handleCarouselPrev.bind(this));
+      if (this.settings.indicators) this.$indicators.on("click", this._handleIndicatorClick.bind(this));
+    }
+
+    _removeEventHandlers() {
+      this.$nextBtn.off("click");
+      this.$prevBtn.off("click");
+      if (this.settings.indicators) this.$indicators.off("click");
+    }
+
+    open(index = 0) {
+      this._handleCarouselItemFadeIn(index);
+    }
+
+    destroy() {
+      this._removeEventHandlers();
+    }
+
   }
 
-  var VERSION$a = "0.0.1";
-  var DEFAULTS$a = {
+  const VERSION$8 = "0.0.1";
+  const DEFAULTS$8 = {
     data: [],
     highlightClass: "primary-text font-weight-400",
     dropdown: {},
     minLength: 1
   };
-
-  var Autocomplete = /*#__PURE__*/function (_EmpyrealComponent) {
-    _inherits(Autocomplete, _EmpyrealComponent);
-
-    var _super = _createSuper(Autocomplete);
-
-    function Autocomplete(el, options) {
-      var _this;
-
-      _classCallCheck(this, Autocomplete);
-
-      _this = _super.call(this, el, options);
-      _this.settings = { ...DEFAULTS$a,
+  class Autocomplete extends EmpyrealComponent {
+    constructor(el, options) {
+      super(el, options);
+      this.settings = { ...DEFAULTS$8,
         ...options
       };
-      _this.$el = cash(_this.el);
-      _this.id = _this.$el.attr("id") || E.generateUUID();
-      _this.isDropdownEmpty = true;
+      this.$el = cash(this.el);
+      this.id = this.$el.attr("id") || E.generateUUID();
+      this.isDropdownEmpty = true;
 
-      _this._init();
+      this._init();
 
-      _this.listeners = [];
-      return _this;
+      this.listeners = [];
     }
 
-    _createClass(Autocomplete, [{
-      key: "_init",
-      value: function _init() {
-        this.$list = cash("<ul class=dropdown id=".concat("dropdown-" + this.id, "></ul>"));
-        this.$el.parent().append(this.$list);
-        this.renderAutocompleteItems("");
-        this.dropdown = new Dropdown("#dropdown-" + this.id, {
-          isRelative: true,
-          ...this.settings.dropdown
-        });
+    static get version() {
+      return VERSION$8;
+    }
 
-        this.dropdown._removeEventHandlers();
+    static get defaults() {
+      return DEFAULTS$8;
+    }
 
-        this.dropdown.trigger = this.el;
-        this.dropdown.$trigger = this.$el;
+    _init() {
+      this.$list = cash(`<ul class=dropdown id=${"dropdown-" + this.id}></ul>`);
+      this.$el.parent().append(this.$list);
+      this.renderAutocompleteItems("");
+      this.dropdown = new Dropdown("#dropdown-" + this.id, {
+        isRelative: true,
+        ...this.settings.dropdown
+      });
 
-        this.dropdown._init();
+      this.dropdown._removeEventHandlers();
 
-        this._setupEventHandlers();
+      this.dropdown.trigger = this.el;
+      this.dropdown.$trigger = this.$el;
+
+      this.dropdown._init();
+
+      this._setupEventHandlers();
+    }
+
+    _addItem(text, input, href = "", image = "") {
+      let startIndex = text.toLowerCase().indexOf(input);
+      let value = text;
+
+      if (startIndex != -1) {
+        let highlight = text.slice(startIndex, startIndex + input.length);
+        let highlightElem = `<span class='${this.settings.highlightClass}'>${highlight}</span>`;
+        value = text.replace(highlight, highlightElem);
       }
-    }, {
-      key: "_addItem",
-      value: function _addItem(text, input, href = "", image = "") {
-        var startIndex = text.toLowerCase().indexOf(input);
-        var value = text;
 
-        if (startIndex != -1) {
-          var highlight = text.slice(startIndex, startIndex + input.length);
-          var highlightElem = "<span class='".concat(this.settings.highlightClass, "'>").concat(highlight, "</span>");
-          value = text.replace(highlight, highlightElem);
-        }
+      let $item = cash(`<a class=dropdown-item>${value}</a>`);
+      if (href) $item.attr("href", href);
+      if (image) $item.append(`<img src=${image} />`);
+      this.$list.append($item);
+    }
 
-        var $item = cash("<a class=dropdown-item>".concat(value, "</a>"));
-        if (href) $item.attr("href", href);
-        if (image) $item.append("<img src=".concat(image, " />"));
-        this.$list.append($item);
-      }
-    }, {
-      key: "renderAutocompleteItems",
-      value: function renderAutocompleteItems(input) {
-        this.$list.empty();
-        this.isDropdownEmpty = true;
+    renderAutocompleteItems(input) {
+      this.$list.empty();
+      this.isDropdownEmpty = true;
 
-        var _iterator = _createForOfIteratorHelper(this.settings.data),
-            _step;
+      for (let item of this.settings.data) {
+        if (typeof item == "string") {
+          if (item.toLowerCase().includes(input)) {
+            this._addItem(item, input);
 
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var item = _step.value;
+            this.isDropdownEmpty = false;
+          }
+        } else {
+          let names = [item.value];
 
-            if (typeof item == "string") {
-              if (item.toLowerCase().includes(input)) {
-                this._addItem(item, input);
+          if (item.alias) {
+            for (let alias of item.alias) names.push(alias);
+          }
 
-                this.isDropdownEmpty = false;
-              }
-            } else {
-              var names = [item.value];
+          for (let name of names) {
+            if (name.toLowerCase().includes(input)) {
+              this._addItem(item.value, input, item.href, item.image);
 
-              if (item.alias) {
-                var _iterator2 = _createForOfIteratorHelper(item.alias),
-                    _step2;
-
-                try {
-                  for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-                    var alias = _step2.value;
-                    names.push(alias);
-                  }
-                } catch (err) {
-                  _iterator2.e(err);
-                } finally {
-                  _iterator2.f();
-                }
-              }
-
-              for (var _i = 0, _names = names; _i < _names.length; _i++) {
-                var name = _names[_i];
-
-                if (name.toLowerCase().includes(input)) {
-                  this._addItem(item.value, input, item.href, item.image);
-
-                  this.isDropdownEmpty = false;
-                  break;
-                }
-              }
+              this.isDropdownEmpty = false;
+              break;
             }
           }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
         }
       }
-    }, {
-      key: "_handleKeyPress",
-      value: function _handleKeyPress(e) {
-        if (e.keyCode == E.keys.ARROW_DOWN || e.keyCode == E.keys.ARROW_UP) return;
-        var input = this.$el.val().toLowerCase();
-        if (input.length >= this.settings.minLength) this.renderAutocompleteItems(input);
-        this.dropdown.$items = this.$list.children(".dropdown-item");
-        this.dropdown.focusedIndex = -1;
-        this.dropdown.calculateDropdownDimensions();
-        this.dropdown.positionDropdown();
-        if (!this.dropdown.isOpen) this.dropdown.open();
-        if (this.isDropdownEmpty) this.$list.css("display", "none");
-      }
-    }, {
-      key: "_handleDropdownClick",
-      value: function _handleDropdownClick(e) {
-        var $item = cash(e.target);
-        this.$el.siblings("label").addClass("active");
-        this.$el.val($item.text());
-        this.dropdown.close();
-      }
-    }, {
-      key: "_setupEventHandlers",
-      value: function _setupEventHandlers() {
-        this.$el.on("keyup change paste", this._handleKeyPress.bind(this));
-        this.$list.on("click", this._handleDropdownClick.bind(this));
-      }
-    }, {
-      key: "_removeEventHandlers",
-      value: function _removeEventHandlers() {
-        this.$el.off("keyup change paste");
-        this.$list.off("click");
-      }
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        this._removeEventHandlers();
-      }
-    }], [{
-      key: "version",
-      get: function () {
-        return VERSION$a;
-      }
-    }, {
-      key: "defaults",
-      get: function () {
-        return DEFAULTS$a;
-      }
-    }]);
+    }
 
-    return Autocomplete;
-  }(EmpyrealComponent);
+    _handleKeyPress(e) {
+      if (e.keyCode == E.keys.ARROW_DOWN || e.keyCode == E.keys.ARROW_UP) return;
+      let input = this.$el.val().toLowerCase();
+      if (input.length >= this.settings.minLength) this.renderAutocompleteItems(input);
+      this.dropdown.$items = this.$list.children(".dropdown-item");
+      this.dropdown.focusedIndex = -1;
+      this.dropdown.calculateDropdownDimensions();
+      this.dropdown.positionDropdown();
+      if (!this.dropdown.isOpen) this.dropdown.open();
+      if (this.isDropdownEmpty) this.$list.css("display", "none");
+    }
 
-  var VERSION$b = "0.0.1";
-  var DEFAULTS$b = {
+    _handleDropdownClick(e) {
+      let $item = cash(e.target);
+      this.$el.siblings("label").addClass("active");
+      this.$el.val($item.text());
+      this.dropdown.close();
+    }
+
+    _setupEventHandlers() {
+      this.$el.on("keyup change paste", this._handleKeyPress.bind(this));
+      this.$list.on("click", this._handleDropdownClick.bind(this));
+    }
+
+    _removeEventHandlers() {
+      this.$el.off("keyup change paste");
+      this.$list.off("click");
+    }
+
+    destroy() {
+      this._removeEventHandlers();
+    }
+
+  }
+
+  const VERSION$9 = "0.0.1";
+  const DEFAULTS$9 = {
     data: [],
     placeholder: "",
     secondaryPlaceholder: "",
@@ -6296,382 +5507,293 @@
     onChipDelete: null,
     onChipSelect: null
   };
-
-  var Chips = /*#__PURE__*/function (_EmpyrealComponent) {
-    _inherits(Chips, _EmpyrealComponent);
-
-    var _super = _createSuper(Chips);
-
-    function Chips(el, options) {
-      var _this;
-
-      _classCallCheck(this, Chips);
-
-      _this = _super.call(this, el, options);
-      _this.settings = { ...DEFAULTS$b,
+  class Chips extends EmpyrealComponent {
+    constructor(el, options) {
+      super(el, options);
+      this.settings = { ...DEFAULTS$9,
         ...options
       };
-      _this.$el = cash(_this.el);
-      _this.$input = _this.$el.find("input");
-      _this.value = [];
+      this.$el = cash(this.el);
+      this.$input = this.$el.find("input");
+      this.value = [];
 
-      _this._init();
-
-      return _this;
+      this._init();
     }
 
-    _createClass(Chips, [{
-      key: "_init",
-      value: function _init() {
-        this.$input.attr("placeholder", this.settings.placeholder);
+    static get version() {
+      return VERSION$9;
+    }
 
-        var _iterator = _createForOfIteratorHelper(this.settings.data),
-            _step;
+    static get defaults() {
+      return DEFAULTS$9;
+    }
 
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var i = _step.value;
-            this.add(i);
-          }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
-        }
+    _init() {
+      this.$input.attr("placeholder", this.settings.placeholder);
 
-        if (this.settings.autocomplete) {
-          this.autocomplete = new Autocomplete(this.$input[0], { ...this.settings.autocomplete
+      for (let i of this.settings.data) this.add(i);
+
+      if (this.settings.autocomplete) {
+        this.autocomplete = new Autocomplete(this.$input[0], { ...this.settings.autocomplete
+        });
+      }
+
+      this._setupEventHandlers();
+    }
+
+    add({
+      tag,
+      image
+    }) {
+      let chip = cash(`
+        <div class=chip tabindex=0 data-value=${tag}>
+            ${tag} <i class='material-icons close'>close</i>
+        </div>
+        `);
+      if (image) chip.append(`<img src=${image} />`);
+      this.value.push(tag);
+      chip.insertBefore(this.$input);
+      if (typeof this.settings.onChipAdd === "function") this.settings.onChipAdd.call(this, tag, this.el);
+      if (this.settings.secondaryPlaceholder) this.$input.attr("placeholder", this.settings.secondaryPlaceholder);
+    }
+
+    _handleInputKeypress(e) {
+      if (e.keyCode == E.keys.ENTER) {
+        let val = this.$input.val();
+
+        if (val != "" && this.value.indexOf(val) == -1) {
+          this.add({
+            tag: val
           });
-        }
-
-        this._setupEventHandlers();
-      }
-    }, {
-      key: "add",
-      value: function add({
-        tag,
-        image
-      }) {
-        var chip = cash("\n        <div class=chip tabindex=0 data-value=".concat(tag, ">\n            ").concat(tag, " <i class='material-icons close'>close</i>\n        </div>\n        "));
-        if (image) chip.append("<img src=".concat(image, " />"));
-        this.value.push(tag);
-        chip.insertBefore(this.$input);
-        if (typeof this.settings.onChipAdd === "function") this.settings.onChipAdd.call(this, tag, this.el);
-        if (this.settings.secondaryPlaceholder) this.$input.attr("placeholder", this.settings.secondaryPlaceholder);
-      }
-    }, {
-      key: "_handleInputKeypress",
-      value: function _handleInputKeypress(e) {
-        if (e.keyCode == E.keys.ENTER) {
-          var val = this.$input.val();
-
-          if (val != "" && this.value.indexOf(val) == -1) {
-            this.add({
-              tag: val
-            });
-            this.$input.val("");
-          }
+          this.$input.val("");
         }
       }
-    }, {
-      key: "_handleInputClick",
-      value: function _handleInputClick(e) {
-        if (cash(e.target).closest(".chip").length) {
-          if (cash(e.target).hasClass("close")) {
-            this.value.splice(this.value.indexOf(cash(e.target).closest(".chip").data("value")), 1);
-            if (typeof this.settings.onChipDelete === "function") this.settings.onChipDelete.call(this, e.target, this.el);
-            if (this.$el.children(".chip").length == 0) this.$input.attr("placeholder", this.settings.placeholder);
-          }
-        } else {
-          this.$input[0].focus();
-          this.$el.addClass("focused");
+    }
+
+    _handleInputClick(e) {
+      if (cash(e.target).closest(".chip").length) {
+        if (cash(e.target).hasClass("close")) {
+          this.value.splice(this.value.indexOf(cash(e.target).closest(".chip").data("value")), 1);
+          if (typeof this.settings.onChipDelete === "function") this.settings.onChipDelete.call(this, e.target, this.el);
+          if (this.$el.children(".chip").length == 0) this.$input.attr("placeholder", this.settings.placeholder);
         }
+      } else {
+        this.$input[0].focus();
+        this.$el.addClass("focused");
       }
-    }, {
-      key: "_handleChipFocus",
-      value: function _handleChipFocus(e) {
-        if (typeof this.settings.onChipSelect === "function") this.settings.onChipDelete.call(this, e.target, this.el);
-      }
-    }, {
-      key: "_handleInputBlur",
-      value: function _handleInputBlur() {
-        this.$el.removeClass("focused");
-      }
-    }, {
-      key: "_setupEventHandlers",
-      value: function _setupEventHandlers() {
-        this.$input.on("keyup", this._handleInputKeypress.bind(this));
-        this.$el.on("click", this._handleInputClick.bind(this));
-        this.$input.on("blur", this._handleInputBlur.bind(this));
-        this.$el.children(".chip").on("focus", this._handleChipFocus.bind(this));
-      }
-    }, {
-      key: "_removeEventHandlers",
-      value: function _removeEventHandlers() {
-        this.$input.off("keyup");
-        this.$el.off("click");
-        this.$input.off("blur");
-        this.$el.children(".chip").off("focus");
-      }
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        this._removeEventHandlers();
-      }
-    }], [{
-      key: "version",
-      get: function () {
-        return VERSION$b;
-      }
-    }, {
-      key: "defaults",
-      get: function () {
-        return DEFAULTS$b;
-      }
-    }]);
+    }
 
-    return Chips;
-  }(EmpyrealComponent);
+    _handleChipFocus(e) {
+      if (typeof this.settings.onChipSelect === "function") this.settings.onChipDelete.call(this, e.target, this.el);
+    }
 
-  var VERSION$c = "0.0.1";
-  var DEFAULTS$c = {
+    _handleInputBlur() {
+      this.$el.removeClass("focused");
+    }
+
+    _setupEventHandlers() {
+      this.$input.on("keyup", this._handleInputKeypress.bind(this));
+      this.$el.on("click", this._handleInputClick.bind(this));
+      this.$input.on("blur", this._handleInputBlur.bind(this));
+      this.$el.children(".chip").on("focus", this._handleChipFocus.bind(this));
+    }
+
+    _removeEventHandlers() {
+      this.$input.off("keyup");
+      this.$el.off("click");
+      this.$input.off("blur");
+      this.$el.children(".chip").off("focus");
+    }
+
+    destroy() {
+      this._removeEventHandlers();
+    }
+
+  }
+
+  const VERSION$a = "0.0.1";
+  const DEFAULTS$a = {
     dropdown: {}
   };
-
-  var Select = /*#__PURE__*/function (_EmpyrealComponent) {
-    _inherits(Select, _EmpyrealComponent);
-
-    var _super = _createSuper(Select);
-
-    function Select(el, options) {
-      var _this;
-
-      _classCallCheck(this, Select);
-
-      _this = _super.call(this, el, options);
-      _this.settings = { ...DEFAULTS$c,
+  class Select extends EmpyrealComponent {
+    constructor(el, options) {
+      super(el, options);
+      this.settings = { ...DEFAULTS$a,
         ...options
       };
-      _this.$el = cash(_this.el);
-      _this.id = _this.$el.attr("id") || E.generateUUID();
-      _this.$input = cash("<input type='text' readonly='true' class=\"select-dropdown\" />");
+      this.$el = cash(this.el);
+      this.id = this.$el.attr("id") || E.generateUUID();
+      this.$input = cash("<input type='text' readonly='true' class=\"select-dropdown\" />");
+      this.$input.attr("id", this.id);
+      this.isSelectMultiple = this.el.hasAttribute("multiple");
+      this.$list = cash("<ul class=select-list />");
+      this.value = [];
+      this.textinput_content = [];
 
-      _this.$input.attr("id", _this.id);
-
-      _this.isSelectMultiple = _this.el.hasAttribute("multiple");
-      _this.$list = cash("<ul class=select-list />");
-      _this.value = [];
-      _this.textinput_content = [];
-
-      _this._init();
-
-      return _this;
+      this._init();
     }
 
-    _createClass(Select, [{
-      key: "_init",
-      value: function _init() {
-        cash("<span class='caret' />").insertAfter(this.$el);
-        this.$list.insertAfter(this.$el);
-        this.$input.insertAfter(this.$el);
+    static get version() {
+      return VERSION$a;
+    }
 
-        var _iterator = _createForOfIteratorHelper(this.$el.children()),
-            _step;
+    static get defaults() {
+      return DEFAULTS$a;
+    }
 
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var elem = _step.value;
+    _init() {
+      cash("<span class='caret' />").insertAfter(this.$el);
+      this.$list.insertAfter(this.$el);
+      this.$input.insertAfter(this.$el);
 
-            if (elem.nodeName.toLowerCase() == "option") {
-              var $selectItem = this._createSelectOption(elem);
+      for (let elem of this.$el.children()) {
+        if (elem.nodeName.toLowerCase() == "option") {
+          let $selectItem = this._createSelectOption(elem);
 
-              this.$list.append($selectItem);
-            } else if (elem.nodeName.toLowerCase() == "optgroup") {
-              var $group = cash("<li class='optgroup'><p>".concat(cash(elem).attr("label"), "</p></li>"));
+          this.$list.append($selectItem);
+        } else if (elem.nodeName.toLowerCase() == "optgroup") {
+          let $group = cash(`<li class='optgroup'><p>${cash(elem).attr("label")}</p></li>`);
 
-              var _iterator2 = _createForOfIteratorHelper(cash(elem).children()),
-                  _step2;
+          for (let item of cash(elem).children()) {
+            let $selectItem = this._createSelectOption(item);
 
-              try {
-                for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-                  var item = _step2.value;
-
-                  var _$selectItem = this._createSelectOption(item);
-
-                  $group.append(_$selectItem);
-                }
-              } catch (err) {
-                _iterator2.e(err);
-              } finally {
-                _iterator2.f();
-              }
-
-              this.$list.append($group);
-            }
+            $group.append($selectItem);
           }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
+
+          this.$list.append($group);
         }
-
-        this.dropdown = new Dropdown(this.$list[0], {
-          isRelative: true,
-          onOpenStart: () => {
-            this.$el.siblings(".caret").addClass("active");
-          },
-          onCloseStart: () => {
-            this.$el.siblings(".caret").removeClass("active");
-          },
-          ...this.settings.dropdown
-        });
-
-        this.dropdown._removeEventHandlers();
-
-        this.dropdown.trigger = this.$input[0];
-        this.dropdown.$trigger = this.$input;
-
-        this.dropdown._init();
-
-        this._setupEventHandlers();
       }
-    }, {
-      key: "_createSelectOption",
-      value: function _createSelectOption(element) {
-        var $element = cash(element);
-        var $item = cash("<li>".concat($element.html(), "</li>"));
 
-        if (this.isSelectMultiple) {
-          $item = cash("<li class=checkbox-field><label><input type=\"checkbox\"><span>".concat($element.html(), "</span></label></li>"));
-        }
+      this.dropdown = new Dropdown(this.$list[0], {
+        isRelative: true,
+        onOpenStart: () => {
+          this.$el.siblings(".caret").addClass("active");
+        },
+        onCloseStart: () => {
+          this.$el.siblings(".caret").removeClass("active");
+        },
+        ...this.settings.dropdown
+      });
 
-        var value = $element.attr("value") || $element.text();
-        $item.data("value", value);
-        var img = $element.data("icon");
+      this.dropdown._removeEventHandlers();
 
-        if (img) {
-          $item.append("<img src=\"".concat(img, "\" />"));
-        }
+      this.dropdown.trigger = this.$input[0];
+      this.dropdown.$trigger = this.$input;
 
-        if ($element.attr("class")) {
-          $item.attr("class", $element.attr("class"));
-        }
+      this.dropdown._init();
 
-        if (element.hasAttribute("disabled")) {
-          $item.addClass("disabled");
-        }
+      this._setupEventHandlers();
+    }
 
-        return $item;
+    _createSelectOption(element) {
+      let $element = cash(element);
+      let $item = cash(`<li>${$element.html()}</li>`);
+
+      if (this.isSelectMultiple) {
+        $item = cash(`<li class=checkbox-field><label><input type="checkbox"><span>${$element.html()}</span></label></li>`);
       }
-    }, {
-      key: "_updateTextInputValue",
-      value: function _updateTextInputValue() {
-        if (this.textinput_content.length) {
-          this.$input.siblings("label").addClass("active");
+
+      let value = $element.attr("value") || $element.text();
+      $item.data("value", value);
+      let img = $element.data("icon");
+
+      if (img) {
+        $item.append(`<img src="${img}" />`);
+      }
+
+      if ($element.attr("class")) {
+        $item.attr("class", $element.attr("class"));
+      }
+
+      if (element.hasAttribute("disabled")) {
+        $item.addClass("disabled");
+      }
+
+      return $item;
+    }
+
+    _updateTextInputValue() {
+      if (this.textinput_content.length) {
+        this.$input.siblings("label").addClass("active");
+      } else {
+        this.$input.siblings("label").removeClass("active");
+      }
+
+      if (typeof this.textinput_content == "string") {
+        this.$input.val(this.textinput_content);
+      } else if (typeof this.textinput_content == "object") {
+        this.$input.val(this.textinput_content.join(", "));
+      }
+    }
+
+    _handleSelectItemClick(e) {
+      let $item = cash(e.target).closest("li");
+
+      if (!$item.hasClass("disabled") && !$item.hasClass("optgroup")) {
+        if (!this.isSelectMultiple) {
+          this.value = $item.data("value");
+          this.textinput_content = $item.text();
+          this.close();
         } else {
-          this.$input.siblings("label").removeClass("active");
-        }
-
-        if (typeof this.textinput_content == "string") {
-          this.$input.val(this.textinput_content);
-        } else if (typeof this.textinput_content == "object") {
-          this.$input.val(this.textinput_content.join(", "));
-        }
-      }
-    }, {
-      key: "_handleSelectItemClick",
-      value: function _handleSelectItemClick(e) {
-        var $item = cash(e.target).closest("li");
-
-        if (!$item.hasClass("disabled") && !$item.hasClass("optgroup")) {
-          if (!this.isSelectMultiple) {
-            this.value = $item.data("value");
-            this.textinput_content = $item.text();
-            this.close();
+          if ($item.hasClass("selected")) {
+            this.value.splice(this.value.indexOf($item.data("value")), 1);
+            this.textinput_content.splice(this.value.indexOf($item.text()), 1);
+            $item.find("input[type=checkbox]").prop("checked", false);
+            $item.removeClass("selected");
           } else {
-            if ($item.hasClass("selected")) {
-              this.value.splice(this.value.indexOf($item.data("value")), 1);
-              this.textinput_content.splice(this.value.indexOf($item.text()), 1);
-              $item.find("input[type=checkbox]").prop("checked", false);
-              $item.removeClass("selected");
-            } else {
-              this.value.push($item.data("value"));
-              this.textinput_content.push($item.text());
-              $item.find("input[type=checkbox]").prop("checked", true);
-              $item.addClass("selected");
-            }
+            this.value.push($item.data("value"));
+            this.textinput_content.push($item.text());
+            $item.find("input[type=checkbox]").prop("checked", true);
+            $item.addClass("selected");
           }
-
-          this._updateTextInputValue();
         }
-      }
-    }, {
-      key: "_setupEventHandlers",
-      value: function _setupEventHandlers() {
-        this.$list.on("click", this._handleSelectItemClick.bind(this));
-      }
-    }, {
-      key: "open",
-      value: function open() {
-        this.dropdown.open();
-      }
-    }, {
-      key: "close",
-      value: function close() {
-        this.dropdown.close();
-      }
-    }], [{
-      key: "version",
-      get: function () {
-        return VERSION$c;
-      }
-    }, {
-      key: "defaults",
-      get: function () {
-        return DEFAULTS$c;
-      }
-    }]);
 
-    return Select;
-  }(EmpyrealComponent);
+        this._updateTextInputValue();
+      }
+    }
 
-  var empyreal = {
-    Modal,
-    Tabs,
-    Dropdown,
-    Sidenav,
-    Collapsible,
-    Tooltip,
-    Carousel,
-    Pushpin,
-    ScrollSpy,
-    Lightbox,
+    _setupEventHandlers() {
+      this.$list.on("click", this._handleSelectItemClick.bind(this));
+    }
+
+    open() {
+      this.dropdown.open();
+    }
+
+    close() {
+      this.dropdown.close();
+    }
+
+  }
+
+  var components = {
     Snackbar,
-    Autocomplete,
-    Select,
+    Tabs,
+    Collapsible,
+    Dropdown,
+    Tooltips: Tooltip,
+    Sidenav,
+    Modal,
+    Pushpin,
+    Carousel,
     Chips,
+    Autocomplete,
+    Select
+  };
+
+  let empyreal = { ...components,
     updateTextFields: E.updateTextFields(),
     jump: E.jump
   };
   empyreal.version = "0.0.1";
 
   empyreal.activate = function (selector, component, options = {}, json = false) {
-    var elements = NodeList.prototype.isPrototypeOf(selector) ? selector : document.querySelectorAll(selector);
-    var components = json ? {} : [];
+    let elements = NodeList.prototype.isPrototypeOf(selector) ? selector : document.querySelectorAll(selector);
+    let components = json ? {} : [];
 
-    var _iterator = _createForOfIteratorHelper(elements),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var element = _step.value;
-        var initailize = new component(element, options);
-        json ? components[element] = initailize : components.push(initailize);
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
+    for (let element of elements) {
+      let initailize = new component(element, options);
+      json ? components[element] = initailize : components.push(initailize);
     }
 
     return components;
