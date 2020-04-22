@@ -176,22 +176,6 @@ img.thumbnail {
 	transition: .8s filter;
 }
 
-.empyreal-tooltip {
-	background-color: var(--tooltip-bg-color);
-	padding: var(--tooltip-padding);
-	position: absolute;
-	color: #FFFFFF;
-	z-index: var(--z-index-tooltip);
-	font-size: var(--tooltip-font-size);
-	opacity: 0;
-	transition: opacity 0.4s, transform 0.3s ease-out;
-	border-radius: var(--tooltip-border-radius);
-	&.active {
-		opacity: 1;
-	}
-}
-
-
 .pagination {
 	padding-left: 0;
 	li {

@@ -613,23 +613,6 @@ rgba(0, 0, 0, 0.19);
 	transition: .8s filter;
 }
 
-.empyreal-tooltip {
-	background-color: #212121;
-	padding: 10px
-8px;
-	position: absolute;
-	color: #FFFFFF;
-	z-index: 5;
-	font-size: 14px;
-	opacity: 0;
-	transition: opacity 0.4s, transform 0.3s ease-out;
-	border-radius: 2px;
-}
-
-.empyreal-tooltip.active {
-		opacity: 1;
-	}
-
 .pagination {
 	padding-left: 0;
 }
@@ -786,6 +769,23 @@ input:focus, select:focus, textarea:focus, button:focus {
 	outline: 0px transparent solid;
 	border: 0px transparent solid;
 }
+
+.empyreal-tooltip {
+	background-color: #212121;
+	padding: 10px
+8px;
+	position: absolute;
+	color: #FFFFFF;
+	z-index: 5;
+	font-size: 14px;
+	opacity: 0;
+	transition: opacity 0.4s, transform 0.3s ease-out;
+	border-radius: 2px;
+}
+
+.empyreal-tooltip.active {
+		opacity: 1;
+	}
 
 .snackbar {
 	padding: 16px
@@ -7896,4 +7896,4 @@ rgba(0, 0, 0, 0.15)
     top: 50%;
     right: 120%;
 }
-/*# sourceMappingURL=css/empyreal.css.map */
+/*# sourceMappingURL=../css/empyreal.css.map */

@@ -1,5 +1,6 @@
 @import "./components/normalize.css";
 @import "./components/global.css";
+@import "./components/tooltips.css";
 @import "./components/snackbar.css";
 @import "./components/progress.css";
 @import "./components/helper.js";
