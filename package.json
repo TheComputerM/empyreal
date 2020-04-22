@@ -12,10 +12,12 @@
     "publish": "np"
   },
   "files": [
-    "./dist/**/*",
-    "./js/**/*",
-    "./css/**/*",
-    "./utils/**/*"
+    "dist",
+    "js",
+    "css",
+    "utils",
+    "README.md",
+    "LICENSE"
   ],
   "bin": {
     "empyreal": "./utils/cli.js"
