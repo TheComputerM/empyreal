@@ -1,6 +1,6 @@
 {
   "name": "empyreal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Empyreal CSS is a HTML, CSS, and JavaScript framework based on Material Design for developing responsive and beautiful websites.",
   "main": "dist/js/ethereal.umd.js",
   "scripts": {
@@ -9,7 +9,6 @@
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint js/** --fix",
     "lint:css": "stylelint \"**/*.scss\" --fix",
-    "publish": "np"
   },
   "files": [
     "dist",
