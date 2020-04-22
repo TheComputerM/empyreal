@@ -1,6 +1,6 @@
 {
   "name": "empyreal",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Empyreal CSS is a HTML, CSS, and JavaScript framework based on Material Design for developing responsive and beautiful websites.",
   "main": "dist/js/ethereal.umd.js",
   "scripts": {
